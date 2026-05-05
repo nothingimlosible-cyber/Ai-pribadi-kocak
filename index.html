@@ -3,69 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Pribadi Alan - Smart Google Edition</title>
+    <title>Core Intelligence - Hybrid AI</title>
     <script src="database/otakai.js"></script>
     <style>
-        :root { --primary: #4285f4; --bg: #f1f3f4; --white: #ffffff; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; display: flex; flex-direction: column; height: 100vh; color: #202124; }
-        
-        /* Header Ala Google */
-        header { background: var(--white); padding: 15px 20px; box-shadow: 0 1px 2px rgba(60,64,67,0.3); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 1.2rem; }
+        :root {
+            --bg-color: #0e1117;
+            --panel-color: #161b22;
+            --accent-gradient: linear-gradient(135deg, #4285f4, #9b51e0, #00d4ff);
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --user-bubble: #1f6feb;
+            --ai-bubble: #21262d;
+        }
 
-        #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
-        
-        .msg { max-width: 85%; padding: 12px 18px; border-radius: 18px; line-height: 1.6; font-size: 15px; position: relative; word-wrap: break-word; }
-        .user { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 4px; box-shadow: 0 4px 12px rgba(66,133,244,0.3); }
-        .ai { align-self: flex-start; background: var(--white); color: #3c4043; border-bottom-left-radius: 4px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        
-        #input-area { background: var(--white); padding: 20px; display: flex; gap: 12px; border-top: 1px solid #dadce0; align-items: center; }
-        input { flex: 1; padding: 14px 20px; border: 1px solid #dfe1e5; border-radius: 30px; outline: none; font-size: 16px; transition: 0.2s; }
-        input:focus { box-shadow: 0 1px 6px rgba(32,33,36,0.28); border-color: rgba(223,225,229,0); }
-        
-        button { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #3367d6; box-shadow: 0 1px 3px rgba(66,133,244,0.4); }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-        .typing { font-size: 12px; color: #70757a; margin-left: 10px; display: none; }
+        /* Header Profesional ala Meta x Gemini */
+        header {
+            padding: 15px 25px;
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #status-indicator {
+            font-size: 11px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dot { width: 8px; height: 8px; background: #238636; border-radius: 50%; box-shadow: 0 0 8px #238636; }
+
+        /* Chat Area */
+        #chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 14px 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .user {
+            align-self: flex-end;
+            background: var(--user-bubble);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai {
+            align-self: flex-start;
+            background: var(--ai-bubble);
+            color: var(--text-main);
+            border: 1px solid #30363d;
+            border-bottom-left-radius: 4px;
+        }
+
+        /* Input Area ala Modern AI */
+        .input-wrapper {
+            padding: 20px 25px 30px;
+            background: transparent;
+        }
+
+        .input-box {
+            background: var(--panel-color);
+            border: 1px solid #30363d;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            padding: 6px 10px 6px 20px;
+            transition: 0.3s;
+        }
+
+        .input-box:focus-within {
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+
+        input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            padding: 10px 0;
+            font-size: 15px;
+            outline: none;
+        }
+
+        button {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        button:hover { transform: scale(1.05); opacity: 0.9; }
+        button:disabled { filter: grayscale(1); cursor: not-allowed; }
+
+        /* Loading Progress */
+        .loader-ui {
+            margin: 0 25px;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        progress { width: 100%; height: 4px; accent-color: #4285f4; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-<header>Google Alan v2.0</header>
+<header>
+    <div class="logo">CORE INTELLIGENCE</div>
+    <div id="status-indicator"><div class="dot"></div> <span id="status-text">Inisialisasi Sistem...</span></div>
+</header>
 
 <div id="chat-container">
-    <div class="msg ai">Halo Alan! Database 1000 materi sudah siap. Mau nanya apa hari ini?</div>
+    <div class="msg ai">Sistem siap. Database 1.000+ index terdeteksi. Silakan ajukan permintaan informasi Anda.</div>
 </div>
 
-<div class="typing" id="typingStatus">Memilah 1000 data...</div>
+<div id="loader-area" class="loader-ui"></div>
 
-<div id="input-area">
-    <input type="text" id="userInput" placeholder="Ketik kata kunci (contoh: Trading, Sejarah, Hukum)..." onkeypress="if(event.key === 'Enter') sendChat()">
-    <button onclick="sendChat()">Cari</button>
+<div class="input-wrapper">
+    <div class="input-box">
+        <input type="text" id="userInput" placeholder="Tanya sesuatu..." disabled>
+        <button id="sendBtn" onclick="sendChat()" disabled>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+    </div>
 </div>
 
-<script>
+<script type="module">
+    import * as webllm from "https://esm.run/@mlc-ai/web-llm";
+
     const chatContainer = document.getElementById('chat-container');
     const userInput = document.getElementById('userInput');
-    const typingStatus = document.getElementById('typingStatus');
+    const sendBtn = document.getElementById('sendBtn');
+    const statusText = document.getElementById('status-text');
+    const loaderArea = document.getElementById('loader-area');
 
-    function sendChat() {
+    const modelId = "TinyLlama-1.1B-Chat-v1.0-q4f16_1-MLC";
+    let engine;
+
+    async function startEngine() {
+        try {
+            const initProgressCallback = (report) => {
+                statusText.innerText = `Loading Engine: ${(report.progress * 100).toFixed(0)}%`;
+                if (report.progress < 1) {
+                    loaderArea.innerHTML = `<progress value="${report.progress}" max="1"></progress>`;
+                } else {
+                    loaderArea.innerHTML = "";
+                }
+            };
+
+            engine = await webllm.CreateMLCEngine(modelId, { initProgressCallback });
+            
+            statusText.innerText = "Online";
+            userInput.disabled = false;
+            sendBtn.disabled = false;
+            userInput.placeholder = "Ketik pesan...";
+        } catch (e) {
+            statusText.innerText = "Koneksi Bermasalah";
+            console.error(e);
+        }
+    }
+
+    function scanDatabase(query) {
+        if (typeof otakAI === 'undefined') return "";
+        const q = query.toLowerCase();
+        let matches = otakAI.map(item => {
+            let skor = 0;
+            const t = (item.topic || "").toLowerCase();
+            const s = (item.summary || "").toLowerCase();
+            if (t.includes(q)) skor += 50;
+            const words = q.split(" ");
+            words.forEach(w => { if(s.includes(w)) skor += 5; });
+            return { ...item, skor };
+        }).filter(i => i.skor > 0).sort((a,b) => b.skor - a.skor);
+
+        return matches.slice(0, 3).map(m => m.summary).join("\\n\\n");
+    }
+
+    window.sendChat = async () => {
         const text = userInput.value.trim();
         if (!text) return;
 
-        // Tampilkan chat user
         appendMsg(text, 'user');
         userInput.value = '';
-        
-        // Tampilkan status ngetik
-        typingStatus.style.display = 'block';
+        sendBtn.disabled = true;
 
-        // Proses pencarian (agak telat dikit biar kerasa mikir)
-        setTimeout(() => {
-            typingStatus.style.display = 'none';
-            const jawaban = cariJawabanCerdas(text);
-            appendMsg(jawaban, 'ai');
-        }, 400);
-    }
+        const dataKonteks = scanDatabase(text);
+        
+        const messages = [
+            { role: "system", content: "Kamu adalah asisten profesional berbasis data. Jawab pertanyaan berdasarkan referensi ini: " + dataKonteks },
+            { role: "user", content: text }
+        ];
+
+        try {
+            const reply = await engine.chat.completions.create({ messages });
+            appendMsg(reply.choices[0].message.content, 'ai');
+        } catch (err) {
+            appendMsg("Maaf, terjadi kegagalan pemrosesan data.", "ai");
+        } finally {
+            sendBtn.disabled = false;
+        }
+    };
 
     function appendMsg(text, sender) {
         const div = document.createElement('div');
@@ -75,58 +258,7 @@
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
-    function cariJawabanCerdas(tanya) {
-        const input = tanya.toLowerCase();
-        const keywords = input.split(" ").filter(k => k.length > 2);
-        
-        // Cek apakah database otakAI ada
-        let db = [];
-        if (typeof otakAI !== 'undefined') { db = otakAI; }
-        else if (window.otakAI) { db = window.otakAI; }
-
-        if (db.length === 0) {
-            return "Waduh! Sepertinya file 'otakai.js' belum terbaca. Cek apa file-nya sudah di-upload ke folder database?";
-        }
-
-        let rujukan = [];
-
-        db.forEach(item => {
-            let skor = 0;
-            // Deteksi judul dan isi secara fleksibel (antisipasi beda nama variabel)
-            const judul = (item.topic || item.judul || item.title || "").toLowerCase();
-            const isi = (item.summary || item.isi || item.content || "").toLowerCase();
-
-            // Skor 1: Kalau input user ada di Judul (Prioritas Utama)
-            if (judul.includes(input)) skor += 50;
-            
-            // Skor 2: Cek kata per kata di judul
-            keywords.forEach(kw => {
-                if (judul.includes(kw)) skor += 20;
-                if (isi.includes(kw)) skor += 5;
-            });
-
-            if (skor > 0) {
-                rujukan.push({ ...item, skor, textIsi: (item.summary || item.isi || "") });
-            }
-        });
-
-        // Urutkan skor tertinggi ke terendah
-        rujukan.sort((a, b) => b.skor - a.skor);
-
-        if (rujukan.length > 0) {
-            // Berikan hasil yang skornya paling tinggi
-            return rujukan[0].textIsi;
-        } else {
-            // Jika benar-benar tidak ada yang cocok
-            const randomGakNemu = [
-                `Maaf Lan, materi tentang "${tanya}" belum masuk di 1000 data tambang.`,
-                "Wah, pencarian tidak ditemukan. Coba ganti kata kunci yang lebih simpel?",
-                "Data tersebut belum saya pelajari. Coba tanya soal Trading atau Sejarah?"
-            ];
-            return randomGakNemu[Math.floor(Math.random() * randomGakNemu.length)];
-        }
-    }
+    startEngine();
 </script>
-
 </body>
 </html>
