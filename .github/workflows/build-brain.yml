@@ -2,7 +2,7 @@ name: Auto Build Brain
 on:
   push:
     paths:
-      - 'database/**' # Robot jalan kalau ada file di folder database yang berubah
+      - 'database/**' # Robot jalan kalau ada file baru di folder database
 
 jobs:
   build:
@@ -26,21 +26,19 @@ jobs:
           import yaml, json, os
           merged_data = []
           db_path = 'database'
-          try:
-              if os.path.exists(db_path):
-                  # Ambil semua file .yml di folder database
-                  for filename in sorted(os.listdir(db_path)):
-                      if filename.endswith('.yml') or filename.endswith('.yaml'):
-                          with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
-                              content = yaml.safe_load(f)
-                              if isinstance(content, list):
-                                  merged_data.extend(content)
-              
-              with open('otakai.js', 'w', encoding='utf-8') as f:
-                  f.write('const otakAI = ' + json.dumps(merged_data, indent=2, ensure_ascii=False) + ';')
-              print(f'Berhasil gabungin {len(merged_data)} data!')
-          except Exception as e:
-              print(f'Error: {e}'); exit(1)
+          if not os.path.exists(db_path):
+              os.makedirs(db_path)
+          
+          files = [f for f in os.listdir(db_path) if f.endswith('.yml') or f.endswith('.yaml')]
+          for filename in sorted(files):
+              with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
+                  content = yaml.safe_load(f)
+                  if isinstance(content, list):
+                      merged_data.extend(content)
+          
+          with open('otakai.js', 'w', encoding='utf-8') as f:
+              f.write('const otakAI = ' + json.dumps(merged_data, indent=2, ensure_ascii=False) + ';')
+          print(f'Total {len(merged_data)} data berhasil digabung!')
           "
       
       - name: Push Ke Repositori
@@ -48,4 +46,4 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add otakai.js
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Merge semua otak otomatis" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Merge otak otomatis" && git push)
