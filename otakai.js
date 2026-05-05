@@ -1,26 +1,50 @@
 const otakAI = [
   {
-    "id": 30001,
-    "topic": "Cara rakit web, Bikin website dari nol, Belajar web dev",
-    "summary": "Rakit web itu ibarat bangun rumah. Pertama, kamu butuh HTML buat bikin kerangka atau struktur dasarnya. Kedua, kamu pakai CSS buat desain, warna, dan tata letak biar cantik. Ketiga, pakai JavaScript (JS) buat kasih logika atau 'otak' supaya webnya bisa interaktif, kayak chat AI yang kita bikin ini. Terakhir, kamu butuh hosting seperti Vercel atau GitHub Pages buat naruh file kamu biar bisa diakses semua orang secara online.",
+    "id": 6001,
+    "topic": "Halo, Hai, Hello, P, Assalamualaikum, Hey",
+    "summary": "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?",
     "date": "2026-05-06"
   },
   {
-    "id": 30002,
-    "topic": "Apa itu Hosting, Vercel, Deploy website",
-    "summary": "Hosting adalah tempat penyimpanan file website kamu di internet supaya bisa diakses 24 jam. Vercel adalah salah satu penyedia hosting gratis yang paling populer karena sangat cepat dan mudah. Kamu tinggal hubungkan akun GitHub kamu ke Vercel, lalu setiap kali kamu update kode (push) ke GitHub, website kamu di Vercel bakal otomatis update juga. Gak perlu ribet sewa server mahal-mahal!",
+    "id": 6002,
+    "topic": "Siapa kamu, Kamu siapa, Nama kamu, Tentang kamu",
+    "summary": "Aku adalah Neural Core, asisten digital yang dirancang buat nemenin kamu belajar dan nyari info apa aja. Salam kenal ya!",
     "date": "2026-05-06"
   },
   {
-    "id": 30003,
-    "topic": "Belajar JavaScript, Logika coding, JS",
-    "summary": "JavaScript adalah bahasa pemrograman yang bikin website jadi hidup. Kalau HTML itu cuma teks diam, JS bisa bikin tombol berfungsi, munculin notifikasi, sampai ngerakit jawaban AI secara otomatis. Belajarnya emang butuh waktu, tapi kalau kamu udah paham konsep variabel, fungsi, dan array, kamu bisa bikin aplikasi apa aja di internet.",
+    "id": 7001,
+    "topic": "Aku capek, Aku lelah, Capek banget, Lelah",
+    "summary": "Istirahat dulu yuk. Gak apa-apa kok kalau ngerasa capek, itu tandanya kamu udah berjuang hebat hari ini. Minum air putih dulu sana, biar seger lagi.",
     "date": "2026-05-06"
   },
   {
-    "id": 30004,
-    "topic": "Pentingnya GitHub, Repositori, Simpan kode",
-    "summary": "GitHub bukan cuma tempat simpan kode, tapi juga alat buat kerja sama dan automasi. Dengan GitHub, kamu punya catatan riwayat (history) setiap perubahan yang kamu buat. Jadi kalau kodenya error, kamu bisa balik ke versi sebelumnya dengan mudah. Plus, kamu bisa pakai fitur 'Actions' buat bikin robot otomatis kayak pabrik otak AI kita sekarang.",
+    "id": 7002,
+    "topic": "Semangat dong, Motivasi, Butuh semangat",
+    "summary": "Ingat ya, langkah kecil yang kamu ambil hari ini bakal jadi hasil besar di masa depan. Jangan menyerah, aku bakal selalu ada di sini buat dukung kamu!",
+    "date": "2026-05-06"
+  },
+  {
+    "id": 7003,
+    "topic": "Ngantuk, Mau tidur, Ngantuk banget",
+    "summary": "Kalau udah ngantuk, mending tidur aja. Jangan dipaksain, kesehatan kamu itu jauh lebih penting daripada apa pun. Selamat istirahat ya!",
+    "date": "2026-05-06"
+  },
+  {
+    "id": 8001,
+    "topic": "Lagi apa, Sedang apa, Kabar kamu",
+    "summary": "Aku lagi siap-siap nungguin pertanyaan seru dari kamu nih! Kabarku selalu baik selama sistemku jalan lancar. Kamu sendiri gimana?",
+    "date": "2026-05-06"
+  },
+  {
+    "id": 8002,
+    "topic": "Makan apa, Rekomendasi makanan, Enaknya makan apa",
+    "summary": "Kalau lagi bingung, nasi goreng atau mi instan pake telor biasanya nggak pernah salah sih! Tapi jangan lupa makan sayur juga ya biar sehat.",
+    "date": "2026-05-06"
+  },
+  {
+    "id": 9001,
+    "topic": "Lucu dong, Cerita lucu, Pantun, Humor",
+    "summary": "Ada kucing naik sepeda, sepedanya ditarik pake benang. Kalau kamu lagi merasa hampa, coba liat cermin, pasti ada yang ganteng/cantik lagi mandang! Hahaha.",
     "date": "2026-05-06"
   }
 ];
