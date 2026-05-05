@@ -1,8 +1,9 @@
-name: Auto Build Brain
+name: Auto Build & Mine Brain
 on:
   push:
     paths:
-      - 'database/**' # Robot jalan kalau ada file baru di folder database
+      - 'database/**'
+      - 'tambang.txt'
 
 jobs:
   build:
@@ -11,39 +12,65 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
-      
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-
       - name: Install PyYAML
         run: pip install pyyaml
 
-      - name: Merge All YAMLs to JS
+      - name: Auto Mining & Merging
         run: |
           python -c "
-          import yaml, json, os
-          merged_data = []
+          import yaml, json, os, time
           db_path = 'database'
-          if not os.path.exists(db_path):
-              os.makedirs(db_path)
+          if not os.path.exists(db_path): os.makedirs(db_path)
           
-          files = [f for f in os.listdir(db_path) if f.endswith('.yml') or f.endswith('.yaml')]
-          for filename in sorted(files):
-              with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
-                  content = yaml.safe_load(f)
-                  if isinstance(content, list):
-                      merged_data.extend(content)
+          # PROSES MINING BANYAK DATA SEKALIGUS
+          if os.path.exists('tambang.txt'):
+              with open('tambang.txt', 'r', encoding='utf-8') as f:
+                  raw_content = f.read().strip()
+              
+              if raw_content:
+                  # Pisah per blok materi pake tanda ---
+                  blocks = raw_content.split('---')
+                  new_entries = []
+                  
+                  for block in blocks:
+                      lines = block.strip().split('\n')
+                      if len(lines) >= 2:
+                          topic = lines[0].strip() # Baris pertama tiap blok jadi TOPIK
+                          summary = ' '.join(lines[1:]).replace('\"', '\'')
+                          new_entries.append({
+                              'id': int(time.time()) + len(new_entries),
+                              'topic': topic,
+                              'summary': summary,
+                              'date': time.strftime('%Y-%m-%d')
+                          })
+                  
+                  if new_entries:
+                      filename = f'mine_bulk_{int(time.time())}.yml'
+                      with open(os.path.join(db_path, filename), 'w', encoding='utf-8') as f:
+                          yaml.dump(new_entries, f)
+                  
+                  # Kosongkan tambang setelah sukses
+                  open('tambang.txt', 'w').close()
+
+          # PROSES GABUNGIN SEMUA
+          merged_data = []
+          for filename in sorted(os.listdir(db_path)):
+              if filename.endswith(('.yml', '.yaml')):
+                  with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
+                      content = yaml.safe_load(f)
+                      if isinstance(content, list): merged_data.extend(content)
           
           with open('otakai.js', 'w', encoding='utf-8') as f:
               f.write('const otakAI = ' + json.dumps(merged_data, indent=2, ensure_ascii=False) + ';')
-          print(f'Total {len(merged_data)} data berhasil digabung!')
           "
       
-      - name: Push Ke Repositori
+      - name: Save Changes
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add otakai.js
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Merge otak otomatis" && git push)
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Robot nambang borongan ⛏️📦" && git push)
