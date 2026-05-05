@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neural Core AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="otakai.js"></script> <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { background-color: #000; color: #efefef; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .ai-node { background: rgba(25, 25, 25, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px 20px 20px 4px; backdrop-filter: blur(10px); }
+        .user-node { background: #2563eb; color: white; border-radius: 20px 20px 4px 20px; }
+        .typing-dot { width: 4px; height: 4px; background: #666; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-6px); } }
+        #display::-webkit-scrollbar { width: 0px; }
+    </style>
+</head>
+<body class="flex flex-col h-screen max-w-md mx-auto border-x border-zinc-900 bg-black">
+
+    <header class="p-5 border-b border-zinc-900 bg-black/80 backdrop-blur-xl flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_10px_#2563eb]"></div>
+            <h1 class="font-extrabold text-sm tracking-widest uppercase text-white">Neural Core <span class="text-blue-500">v5</span></h1>
+        </div>
+    </header>
+
+    <main id="display" class="flex-1 overflow-y-auto p-4 space-y-6"></main>
+
+    <footer class="p-4 bg-black border-t border-zinc-900">
+        <div class="relative flex items-center gap-2">
+            <input type="text" id="userInput" placeholder="Tanyakan sesuatu..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-2xl py-4 px-5 focus:outline-none focus:border-blue-600 text-sm">
+            <button onclick="processQuery()" class="bg-blue-600 p-4 rounded-2xl active:scale-95 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        const display = document.getElementById('display');
+        const input = document.getElementById('userInput');
+
+        const persona = {
+            opening: ["Oh, soal ", "Nah, kalau tentang ", "Oke, ini ada info menarik tentang ", "Tentu! Jadi gini gambaran soal "],
+            bridge: [" Intinya sih, ", " Jadi sebenarnya, ", " Penjelasan singkatnya, ", " Kalau menurut data yang ada, "],
+            connectors: [" Terus, ", " Selain itu, ", " Oh iya, ada lagi, ", " Menariknya, "],
+            closing: [" Semoga jelas ya!", " Ada lagi yang mau ditanyain?", " Gimana? Sudah cukup jelas?", " Itu sih garis besarnya."]
+        };
+
+        const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+        function processQuery() {
+            const val = input.value.trim();
+            if(!val) return;
+            renderMsg(val, 'user');
+            input.value = '';
+            
+            const loadingId = "loading-" + Date.now();
+            renderLoading(loadingId);
+
+            setTimeout(() => {
+                document.getElementById(loadingId).remove();
+                const response = brainEngine(val);
+                renderMsg(response, 'ai');
+            }, 1000); 
+        }
+
+        function brainEngine(query) {
+            const q = query.toLowerCase();
+            if(q.includes("halo") || q.includes("hai")) return "Halo! Ada yang seru buat kita bahas hari ini?";
+
+            // Pencarian data di otakAI yang di-load dari file .js otomatis
+            let data = typeof otakAI !== 'undefined' ? otakAI.find(item => 
+                q.includes(item.topic.toLowerCase()) || 
+                item.topic.toLowerCase().includes(q) ||
+                item.summary.toLowerCase().includes(q)
+            ) : null;
+
+            if (data) {
+                let clean = data.summary.replace(/\\n/g, " ").trim();
+                let sentences = clean.split(/[.!?]\s/);
+                let first = sentences[0] || "";
+                let rest = sentences.slice(1).join(". ");
+
+                let res = pick(persona.opening) + "<b>" + data.topic + "</b>. ";
+                res += pick(persona.bridge) + first + ". ";
+                if(rest.length > 10) res += pick(persona.connectors) + rest + ".";
+                res += "\n\n" + pick(persona.closing);
+                return res;
+            }
+            return "Waduh, aku belum punya data soal itu. Coba tanya topik lain ya!";
+        }
+
+        function renderMsg(text, type) {
+            const div = document.createElement('div');
+            div.className = type === 'user' ? 'flex justify-end' : 'flex justify-start';
+            div.innerHTML = `<div class="${type === 'user' ? 'user-node' : 'ai-node'} p-4 max-w-[85%] text-[13px] leading-relaxed shadow-xl">${text.replace(/\n/g, '<br>')}</div>`;
+            display.appendChild(div);
+            display.scrollTop = display.scrollHeight;
+        }
+
+        function renderLoading(id) {
+            const div = document.createElement('div');
+            div.id = id; div.className = 'flex justify-start';
+            div.innerHTML = `<div class="ai-node p-4 flex gap-1 items-center"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;
+            display.appendChild(div);
+            display.scrollTop = display.scrollHeight;
+        }
+
+        input.addEventListener("keypress", (e) => { if (e.key === "Enter") processQuery(); });
+        window.onload = () => { setTimeout(() => { renderMsg("Sistem Aktif. Apa yang ingin Anda ketahui?", "ai"); }, 500); };
+    </script>
+</body>
+</html>
+
