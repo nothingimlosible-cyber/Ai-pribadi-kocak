@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core Intelligence - Hybrid AI</title>
+    <title>Core Intelligence - Professional Hybrid</title>
     <script src="database/otakai.js"></script>
     <style>
         :root {
-            --bg-color: #0e1117;
-            --panel-color: #161b22;
-            --accent-gradient: linear-gradient(135deg, #4285f4, #9b51e0, #00d4ff);
-            --text-main: #e6edf3;
-            --text-dim: #8b949e;
-            --user-bubble: #1f6feb;
-            --ai-bubble: #21262d;
+            --bg: #090b0f;
+            --panel: #12151a;
+            --accent: linear-gradient(135deg, #4285f4, #9b51e0, #00d4ff);
+            --text-primary: #f0f2f5;
+            --text-secondary: #9aa0a6;
+            --border: #2d3135;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -27,38 +26,41 @@
             overflow: hidden;
         }
 
-        /* Header Profesional ala Meta x Gemini */
+        /* Header Premium */
         header {
-            padding: 15px 25px;
-            background: rgba(22, 27, 34, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #30363d;
+            padding: 18px 25px;
+            background: rgba(18, 21, 26, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
         }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
-            background: var(--accent-gradient);
+        .brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.8px;
+            background: var(--accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        #status-indicator {
+        .status-pill {
             font-size: 11px;
-            color: var(--text-dim);
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: #1a1d23;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .dot { width: 8px; height: 8px; background: #238636; border-radius: 50%; box-shadow: 0 0 8px #238636; }
+        .pulse { width: 6px; height: 6px; background: #00e676; border-radius: 50%; box-shadow: 0 0 8px #00e676; }
 
-        /* Chat Area */
+        /* Chat Workspace */
         #chat-container {
             flex: 1;
             overflow-y: auto;
@@ -66,72 +68,62 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            scroll-behavior: smooth;
         }
 
         .msg {
-            max-width: 80%;
+            max-width: 85%;
             padding: 14px 18px;
-            border-radius: 20px;
-            font-size: 15px;
+            border-radius: 22px;
+            font-size: 14.5px;
             line-height: 1.6;
-            animation: fadeIn 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .user {
             align-self: flex-end;
-            background: var(--user-bubble);
+            background: #1a73e8;
             color: white;
             border-bottom-right-radius: 4px;
         }
 
         .ai {
             align-self: flex-start;
-            background: var(--ai-bubble);
-            color: var(--text-main);
-            border: 1px solid #30363d;
+            background: var(--panel);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
             border-bottom-left-radius: 4px;
         }
 
-        /* Input Area ala Modern AI */
-        .input-wrapper {
-            padding: 20px 25px 30px;
-            background: transparent;
-        }
+        /* Input Area Modern */
+        .input-section { padding: 20px 25px 35px; background: var(--bg); }
 
-        .input-box {
-            background: var(--panel-color);
-            border: 1px solid #30363d;
-            border-radius: 28px;
+        .input-bar {
+            background: #1c1f26;
+            border: 1px solid var(--border);
+            border-radius: 30px;
             display: flex;
             align-items: center;
-            padding: 6px 10px 6px 20px;
+            padding: 5px 8px 5px 22px;
             transition: 0.3s;
         }
 
-        .input-box:focus-within {
-            border-color: #58a6ff;
-            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
-        }
+        .input-bar:focus-within { border-color: #4285f4; box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1); }
 
         input {
             flex: 1;
             background: transparent;
             border: none;
-            color: var(--text-main);
-            padding: 10px 0;
+            color: white;
+            padding: 12px 0;
             font-size: 15px;
             outline: none;
         }
 
         button {
-            background: var(--accent-gradient);
-            color: white;
+            background: var(--accent);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -140,36 +132,31 @@
             transition: 0.2s;
         }
 
-        button:hover { transform: scale(1.05); opacity: 0.9; }
-        button:disabled { filter: grayscale(1); cursor: not-allowed; }
+        button:disabled { filter: grayscale(1); opacity: 0.5; }
 
-        /* Loading Progress */
-        .loader-ui {
-            margin: 0 25px;
-            font-size: 12px;
-            color: var(--text-dim);
-        }
-        progress { width: 100%; height: 4px; accent-color: #4285f4; border-radius: 10px; }
+        /* Progress Bar */
+        #loader-box { margin: 0 25px; }
+        progress { width: 100%; height: 3px; accent-color: #9b51e0; border-radius: 10px; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">CORE INTELLIGENCE</div>
-    <div id="status-indicator"><div class="dot"></div> <span id="status-text">Inisialisasi Sistem...</span></div>
+    <div class="brand">CORE INTELLIGENCE</div>
+    <div class="status-pill"><div class="pulse"></div> <span id="st-text">Menunggu...</span></div>
 </header>
 
 <div id="chat-container">
-    <div class="msg ai">Sistem siap. Database 1.000+ index terdeteksi. Silakan ajukan permintaan informasi Anda.</div>
+    <div class="msg ai">Sistem diinisialisasi. Menghubungkan ke 1.000+ index data tambang. Silakan masukkan kueri Anda.</div>
 </div>
 
-<div id="loader-area" class="loader-ui"></div>
+<div id="loader-box"></div>
 
-<div class="input-wrapper">
-    <div class="input-box">
-        <input type="text" id="userInput" placeholder="Tanya sesuatu..." disabled>
+<div class="input-section">
+    <div class="input-bar">
+        <input type="text" id="userInput" placeholder="Tunggu sistem siap..." disabled onkeypress="if(event.key === 'Enter') sendChat()">
         <button id="sendBtn" onclick="sendChat()" disabled>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
     </div>
 </div>
@@ -180,63 +167,63 @@
     const chatContainer = document.getElementById('chat-container');
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
-    const statusText = document.getElementById('status-text');
-    const loaderArea = document.getElementById('loader-area');
+    const stText = document.getElementById('st-text');
+    const loaderBox = document.getElementById('loader-box');
 
-    const modelId = "TinyLlama-1.1B-Chat-v1.0-q4f16_1-MLC";
+    // Model Qwen 0.5B: Pintar, Ringkas, dan Kecil (Optimized for RAM 4GB)
+    const modelId = "Qwen2-0.5B-Instruct-q4f16_1-MLC";
     let engine;
 
-    async function startEngine() {
+    async function initSystem() {
         try {
             const initProgressCallback = (report) => {
-                statusText.innerText = `Loading Engine: ${(report.progress * 100).toFixed(0)}%`;
+                stText.innerText = `Sync: ${(report.progress * 100).toFixed(0)}%`;
                 if (report.progress < 1) {
-                    loaderArea.innerHTML = `<progress value="${report.progress}" max="1"></progress>`;
+                    loaderBox.innerHTML = `<progress value="${report.progress}" max="1"></progress>`;
                 } else {
-                    loaderArea.innerHTML = "";
+                    loaderBox.innerHTML = "";
                 }
             };
 
             engine = await webllm.CreateMLCEngine(modelId, { initProgressCallback });
             
-            statusText.innerText = "Online";
+            stText.innerText = "Online";
             userInput.disabled = false;
             sendBtn.disabled = false;
-            userInput.placeholder = "Ketik pesan...";
+            userInput.placeholder = "Ajukan pertanyaan...";
         } catch (e) {
-            statusText.innerText = "Koneksi Bermasalah";
+            stText.innerText = "Error System";
             console.error(e);
         }
     }
 
-    function scanDatabase(query) {
+    function searchTambang(query) {
         if (typeof otakAI === 'undefined') return "";
         const q = query.toLowerCase();
-        let matches = otakAI.map(item => {
+        let results = otakAI.map(item => {
             let skor = 0;
-            const t = (item.topic || "").toLowerCase();
-            const s = (item.summary || "").toLowerCase();
-            if (t.includes(q)) skor += 50;
-            const words = q.split(" ");
-            words.forEach(w => { if(s.includes(w)) skor += 5; });
+            const topic = (item.topic || "").toLowerCase();
+            const summary = (item.summary || "").toLowerCase();
+            if (topic.includes(q)) skor += 60;
+            q.split(" ").forEach(w => { if(summary.includes(w)) skor += 5; });
             return { ...item, skor };
         }).filter(i => i.skor > 0).sort((a,b) => b.skor - a.skor);
 
-        return matches.slice(0, 3).map(m => m.summary).join("\\n\\n");
+        return results.slice(0, 3).map(r => r.summary).join("\\n\\n");
     }
 
     window.sendChat = async () => {
         const text = userInput.value.trim();
-        if (!text) return;
+        if (!text || sendBtn.disabled) return;
 
         appendMsg(text, 'user');
         userInput.value = '';
         sendBtn.disabled = true;
 
-        const dataKonteks = scanDatabase(text);
+        const context = searchTambang(text);
         
         const messages = [
-            { role: "system", content: "Kamu adalah asisten profesional berbasis data. Jawab pertanyaan berdasarkan referensi ini: " + dataKonteks },
+            { role: "system", content: "Kamu adalah AI profesional. Gunakan data tambang ini untuk menjawab secara cerdas dan ringkas: " + context },
             { role: "user", content: text }
         ];
 
@@ -244,7 +231,7 @@
             const reply = await engine.chat.completions.create({ messages });
             appendMsg(reply.choices[0].message.content, 'ai');
         } catch (err) {
-            appendMsg("Maaf, terjadi kegagalan pemrosesan data.", "ai");
+            appendMsg("Gagal memproses permintaan informasi.", "ai");
         } finally {
             sendBtn.disabled = false;
         }
@@ -258,7 +245,7 @@
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
-    startEngine();
+    initSystem();
 </script>
 </body>
 </html>
