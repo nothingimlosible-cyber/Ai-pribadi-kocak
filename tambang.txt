@@ -1,0 +1,14 @@
+Cara Bikin Web AI
+Langkah pertama adalah bikin struktur folder di GitHub, terus pake GitHub Actions buat ngerakit data otomatis. Kita pake format YAML biar enteng dan Vercel buat hostingnya biar kenceng diakses lewat HP.
+---
+Tips Sukses Digital
+Konsistensi adalah kunci utama. Jangan cuma semangat di awal, tapi terus upload konten atau update data tiap hari. Fokus pada kualitas dan dengerin apa yang audience mau, pasti pelan-pelan hasilnya bakal kelihatan besar.
+---
+Rahasia Robot GitHub
+Robot ini kerja di awan pake Python. Dia bakal scan folder database kamu, ambil semua ilmunya, terus dijadiin satu file JavaScript raksasa. Jadi meskipun kamu nambah data lewat HP, yang kerja keras sebenernya server GitHub.
+---
+Menu Makan Enak
+Kalau lagi pusing mikir kode, mending makan nasi goreng spesial pake telor ceplok atau mi instan double. Jangan lupa minum air putih yang banyak biar otak tetep seger pas lagi nambang data di GitHub.
+---
+Masa Depan AI
+AI itu bukan buat gantiin manusia, tapi buat jadi asisten biar kerjaan kita lebih cepet. Kayak proyek kita ini, kamu yang kasih ide dan datanya, robotnya yang urus teknis ngerakitnya. Kolaborasi yang mantap kan!
