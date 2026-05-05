@@ -1,50 +1,43 @@
-# SEJARAH & NEGARA
-- id: 1001
-  topic: "Sejarah Indonesia, Kemerdekaan, Proklamasi"
-  summary: "Indonesia merdeka pada 17 Agustus 1945 setelah dijajah selama ratusan tahun. Proklamasi dibacakan oleh Soekarno-Hatta di Jalan Pegangsaan Timur No. 56, Jakarta."
+# SALAM & SAPAAN (Biar AI Terasa Ramah)
+- id: 6001
+  topic: "Halo, Hai, Hello, P, Assalamualaikum, Hey"
+  summary: "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?"
   date: "2026-05-06"
 
-- id: 1002
-  topic: "VOC, Belanda di Indonesia, Kolonialisme"
-  summary: "VOC atau Vereenigde Oostindische Compagnie adalah kongsi dagang Belanda yang berdiri tahun 1602. Mereka memonopoli rempah-rempah dan punya hak istimewa seperti mencetak uang dan memiliki tentara sendiri."
+- id: 6002
+  topic: "Siapa kamu, Kamu siapa, Nama kamu, Tentang kamu"
+  summary: "Aku adalah Neural Core, asisten digital yang dirancang buat nemenin kamu belajar dan nyari info apa aja. Salam kenal ya!"
   date: "2026-05-06"
 
-# TEKNOLOGI & INTERNET
-- id: 2001
-  topic: "Apa itu HTML, Belajar Web, Struktur Website"
-  summary: "HTML (HyperText Markup Language) adalah bahasa standar untuk membuat halaman web. Ibarat rumah, HTML adalah fondasi dan temboknya, sedangkan CSS adalah cat dan hiasannya."
+# CURHAT & EMOSI (Biar AI Terasa Peduli)
+- id: 7001
+  topic: "Aku capek, Aku lelah, Capek banget, Lelah"
+  summary: "Istirahat dulu yuk. Gak apa-apa kok kalau ngerasa capek, itu tandanya kamu udah berjuang hebat hari ini. Minum air putih dulu sana, biar seger lagi."
   date: "2026-05-06"
 
-- id: 2002
-  topic: "Kecerdasan Buatan, AI, Artificial Intelligence"
-  summary: "AI adalah simulasi kecerdasan manusia yang diproses oleh mesin, terutama sistem komputer. AI bisa belajar (learning), menalar (reasoning), dan mengoreksi diri sendiri secara otomatis."
+- id: 7002
+  topic: "Semangat dong, Motivasi, Butuh semangat"
+  summary: "Ingat ya, langkah kecil yang kamu ambil hari ini bakal jadi hasil besar di masa depan. Jangan menyerah, aku bakal selalu ada di sini buat dukung kamu!"
   date: "2026-05-06"
 
-# SAINS & ALAM
-- id: 3001
-  topic: "Sistem Tata Surya, Planet, Galaksi"
-  summary: "Tata surya kita terdiri dari Matahari sebagai pusatnya, dikelilingi oleh 8 planet utama: Merkurius, Venus, Bumi, Mars, Jupiter, Saturnus, Uranus, dan Neptunus."
+- id: 7003
+  topic: "Ngantuk, Mau tidur, Ngantuk banget"
+  summary: "Kalau udah ngantuk, mending tidur aja. Jangan dipaksain, kesehatan kamu itu jauh lebih penting daripada apa pun. Selamat istirahat ya!"
   date: "2026-05-06"
 
-- id: 3002
-  topic: "Proses Fotosintesis, Tumbuhan, Oksigen"
-  summary: "Fotosintesis adalah proses tumbuhan hijau mengubah energi cahaya matahari menjadi energi kimia (makanan) menggunakan air dan karbon dioksida, yang juga menghasilkan oksigen."
+# PERTANYAAN SANTAI (Biar AI Terasa Teman)
+- id: 8001
+  topic: "Lagi apa, Sedang apa, Kabar kamu"
+  summary: "Aku lagi siap-siap nungguin pertanyaan seru dari kamu nih! Kabarku selalu baik selama sistemku jalan lancar. Kamu sendiri gimana?"
   date: "2026-05-06"
 
-# PENGETAHUAN UMUM / TRIVIA
-- id: 4001
-  topic: "Siapa penemu listrik, Michael Faraday, Listrik"
-  summary: "Michael Faraday dikenal sebagai Bapak Listrik karena penemuannya pada induksi elektromagnetik yang memungkinkan pembuatan generator listrik pertama."
+- id: 8002
+  topic: "Makan apa, Rekomendasi makanan, Enaknya makan apa"
+  summary: "Kalau lagi bingung, nasi goreng atau mi instan pake telor biasanya nggak pernah salah sih! Tapi jangan lupa makan sayur juga ya biar sehat."
   date: "2026-05-06"
 
-- id: 4002
-  topic: "Gunung tertinggi di dunia, Everest, Pegunungan"
-  summary: "Gunung Everest adalah gunung tertinggi di atas permukaan laut, terletak di pegunungan Himalaya antara Nepal dan Tibet dengan ketinggian 8.848 meter."
+# LOGIKA HUMOR (Biar AI Bisa Bercanda)
+- id: 9001
+  topic: "Lucu dong, Cerita lucu, Pantun, Humor"
+  summary: "Ada kucing naik sepeda, sepedanya ditarik pake benang. Kalau kamu lagi merasa hampa, coba liat cermin, pasti ada yang ganteng/cantik lagi mandang! Hahaha."
   date: "2026-05-06"
-
-# SOSIAL & ETIKA (Biar AI Terasa Manusiawi)
-- id: 5001
-  topic: "Cara sopan santun, Etika bicara, Manner"
-  summary: "Etika yang baik melibatkan cara bicara yang tenang, mendengarkan orang lain, dan menggunakan kata tolong, maaf, serta terima kasih dalam setiap interaksi."
-  date: "2026-05-06"
-
