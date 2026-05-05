@@ -3,56 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Pribadi Alan - Google Edition</title>
+    <title>AI Pribadi Alan - Smart Google Edition</title>
     <script src="database/otakai.js"></script>
     <style>
-        :root { --primary: #4285f4; --bg: #f8f9fa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; display: flex; flex-direction: column; height: 100vh; }
+        :root { --primary: #4285f4; --bg: #f1f3f4; --white: #ffffff; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; display: flex; flex-direction: column; height: 100vh; color: #202124; }
+        
+        /* Header Ala Google */
+        header { background: var(--white); padding: 15px 20px; box-shadow: 0 1px 2px rgba(60,64,67,0.3); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 1.2rem; }
+
         #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
-        .msg { max-width: 80%; padding: 12px 16px; border-radius: 15px; line-height: 1.5; font-size: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .user { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 2px; }
-        .ai { align-self: flex-start; background: white; color: #333; border-bottom-left-radius: 2px; }
-        #input-area { background: white; padding: 15px; display: flex; gap: 10px; border-top: 1px solid #ddd; }
-        input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 25px; outline: none; }
-        button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; }
-        .typing { font-style: italic; font-size: 12px; color: #777; margin-bottom: 5px; }
+        
+        .msg { max-width: 85%; padding: 12px 18px; border-radius: 18px; line-height: 1.6; font-size: 15px; position: relative; word-wrap: break-word; }
+        .user { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 4px; box-shadow: 0 4px 12px rgba(66,133,244,0.3); }
+        .ai { align-self: flex-start; background: var(--white); color: #3c4043; border-bottom-left-radius: 4px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        
+        #input-area { background: var(--white); padding: 20px; display: flex; gap: 12px; border-top: 1px solid #dadce0; align-items: center; }
+        input { flex: 1; padding: 14px 20px; border: 1px solid #dfe1e5; border-radius: 30px; outline: none; font-size: 16px; transition: 0.2s; }
+        input:focus { box-shadow: 0 1px 6px rgba(32,33,36,0.28); border-color: rgba(223,225,229,0); }
+        
+        button { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #3367d6; box-shadow: 0 1px 3px rgba(66,133,244,0.4); }
+
+        .typing { font-size: 12px; color: #70757a; margin-left: 10px; display: none; }
     </style>
 </head>
 <body>
 
+<header>Google Alan v2.0</header>
+
 <div id="chat-container">
-    <div class="msg ai">Halo Alan! Aku asisten pribadi kamu yang sudah "makan" data tambang. Mau tanya apa hari ini?</div>
+    <div class="msg ai">Halo Alan! Database 1000 materi sudah siap. Mau nanya apa hari ini?</div>
 </div>
 
+<div class="typing" id="typingStatus">Memilah 1000 data...</div>
+
 <div id="input-area">
-    <input type="text" id="userInput" placeholder="Tanya sesuatu..." onkeypress="if(event.key === 'Enter') sendChat()">
-    <button onclick="sendChat()">Kirim</button>
+    <input type="text" id="userInput" placeholder="Ketik kata kunci (contoh: Trading, Sejarah, Hukum)..." onkeypress="if(event.key === 'Enter') sendChat()">
+    <button onclick="sendChat()">Cari</button>
 </div>
 
 <script>
     const chatContainer = document.getElementById('chat-container');
     const userInput = document.getElementById('userInput');
+    const typingStatus = document.getElementById('typingStatus');
 
     function sendChat() {
         const text = userInput.value.trim();
         if (!text) return;
 
+        // Tampilkan chat user
         appendMsg(text, 'user');
         userInput.value = '';
+        
+        // Tampilkan status ngetik
+        typingStatus.style.display = 'block';
 
-        // Efek ngetik sebentar biar keren
-        const typingId = 'typing-' + Date.now();
-        const typingDiv = document.createElement('div');
-        typingDiv.id = typingId;
-        typingDiv.className = 'typing';
-        typingDiv.innerText = 'AI Alan sedang memilah memori...';
-        chatContainer.appendChild(typingDiv);
-
+        // Proses pencarian (agak telat dikit biar kerasa mikir)
         setTimeout(() => {
-            document.getElementById(typingId).remove();
+            typingStatus.style.display = 'none';
             const jawaban = cariJawabanCerdas(text);
             appendMsg(jawaban, 'ai');
-        }, 600);
+        }, 400);
     }
 
     function appendMsg(text, sender) {
@@ -63,49 +75,55 @@
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
-    // --- LOGIKA GOOGLE LOKAL (SCORING) ---
     function cariJawabanCerdas(tanya) {
         const input = tanya.toLowerCase();
         const keywords = input.split(" ").filter(k => k.length > 2);
         
-        let database = typeof otakAI !== 'undefined' ? otakAI : [];
+        // Cek apakah database otakAI ada
+        let db = [];
+        if (typeof otakAI !== 'undefined') { db = otakAI; }
+        else if (window.otakAI) { db = window.otakAI; }
+
+        if (db.length === 0) {
+            return "Waduh! Sepertinya file 'otakai.js' belum terbaca. Cek apa file-nya sudah di-upload ke folder database?";
+        }
+
         let rujukan = [];
 
-        database.forEach(item => {
+        db.forEach(item => {
             let skor = 0;
-            const judul = item.topic.toLowerCase();
-            const isi = item.summary.toLowerCase();
+            // Deteksi judul dan isi secara fleksibel (antisipasi beda nama variabel)
+            const judul = (item.topic || item.judul || item.title || "").toLowerCase();
+            const isi = (item.summary || item.isi || item.content || "").toLowerCase();
 
-            // 1. Cek kecocokan total (Skor paling tinggi)
-            if (judul.includes(input)) skor += 20;
-            if (isi.includes(input)) skor += 5;
-
-            // 2. Cek kecocokan per kata kunci
+            // Skor 1: Kalau input user ada di Judul (Prioritas Utama)
+            if (judul.includes(input)) skor += 50;
+            
+            // Skor 2: Cek kata per kata di judul
             keywords.forEach(kw => {
-                if (judul.includes(kw)) skor += 10; // Kata kunci ada di judul
-                if (isi.includes(kw)) skor += 2;   // Kata kunci ada di penjelasan
+                if (judul.includes(kw)) skor += 20;
+                if (isi.includes(kw)) skor += 5;
             });
 
             if (skor > 0) {
-                rujukan.push({ ...item, skor });
+                rujukan.push({ ...item, skor, textIsi: (item.summary || item.isi || "") });
             }
         });
 
-        // Urutkan dari skor tertinggi
+        // Urutkan skor tertinggi ke terendah
         rujukan.sort((a, b) => b.skor - a.skor);
 
         if (rujukan.length > 0) {
-            // Ambil yang paling relevan
-            const terbaik = rujukan[0];
-            return terbaik.summary;
+            // Berikan hasil yang skornya paling tinggi
+            return rujukan[0].textIsi;
         } else {
-            // Kalimat kalau tidak nemu
-            const bingung = [
-                "Wah, data itu belum ada di tambang aku, Lan. Coba kasih kata kunci lain?",
-                "Hmm, memori aku soal itu masih kosong. Perlu nambang lagi nih!",
-                "Aku cari di database tapi nggak ketemu. Mungkin judulnya beda?"
+            // Jika benar-benar tidak ada yang cocok
+            const randomGakNemu = [
+                `Maaf Lan, materi tentang "${tanya}" belum masuk di 1000 data tambang.`,
+                "Wah, pencarian tidak ditemukan. Coba ganti kata kunci yang lebih simpel?",
+                "Data tersebut belum saya pelajari. Coba tanya soal Trading atau Sejarah?"
             ];
-            return bingung[Math.floor(Math.random() * bingung.length)];
+            return randomGakNemu[Math.floor(Math.random() * randomGakNemu.length)];
         }
     }
 </script>
