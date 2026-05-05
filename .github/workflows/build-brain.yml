@@ -1,0 +1,46 @@
+name: Auto Build Brain
+on:
+  push:
+    paths:
+      - 'data.yml' # Robot cuma gerak kalau file ini kamu edit
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Convert YAML to JS
+        run: |
+          python -c "
+          import yaml, json, os
+          try:
+              if not os.path.exists('data.yml'):
+                  print('File data.yml tidak ditemukan!'); exit(1)
+              with open('data.yml', 'r', encoding='utf-8') as f:
+                  data = yaml.safe_load(f)
+              if data is None: data = []
+              with open('otakai.js', 'w', encoding='utf-8') as f:
+                  f.write('const otakAI = ' + json.dumps(data, indent=2, ensure_ascii=False) + ';')
+              print('Berhasil merakit otak baru!')
+          except Exception as e:
+              print(f'Error: {e}'); exit(1)
+          "
+      
+      - name: Push Ke Repositori
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add otakai.js
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update otakai.js otomatis" && git push)
+
