@@ -2,7 +2,7 @@ name: Auto Build Brain
 on:
   push:
     paths:
-      - 'data.yml' # Robot cuma gerak kalau file ini kamu edit
+      - 'database/**' # Robot jalan kalau ada file di folder database yang berubah
 
 jobs:
   build:
@@ -20,19 +20,25 @@ jobs:
       - name: Install PyYAML
         run: pip install pyyaml
 
-      - name: Convert YAML to JS
+      - name: Merge All YAMLs to JS
         run: |
           python -c "
           import yaml, json, os
+          merged_data = []
+          db_path = 'database'
           try:
-              if not os.path.exists('data.yml'):
-                  print('File data.yml tidak ditemukan!'); exit(1)
-              with open('data.yml', 'r', encoding='utf-8') as f:
-                  data = yaml.safe_load(f)
-              if data is None: data = []
+              if os.path.exists(db_path):
+                  # Ambil semua file .yml di folder database
+                  for filename in sorted(os.listdir(db_path)):
+                      if filename.endswith('.yml') or filename.endswith('.yaml'):
+                          with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
+                              content = yaml.safe_load(f)
+                              if isinstance(content, list):
+                                  merged_data.extend(content)
+              
               with open('otakai.js', 'w', encoding='utf-8') as f:
-                  f.write('const otakAI = ' + json.dumps(data, indent=2, ensure_ascii=False) + ';')
-              print('Berhasil merakit otak baru!')
+                  f.write('const otakAI = ' + json.dumps(merged_data, indent=2, ensure_ascii=False) + ';')
+              print(f'Berhasil gabungin {len(merged_data)} data!')
           except Exception as e:
               print(f'Error: {e}'); exit(1)
           "
@@ -42,5 +48,4 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add otakai.js
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update otakai.js otomatis" && git push)
-
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Merge semua otak otomatis" && git push)
