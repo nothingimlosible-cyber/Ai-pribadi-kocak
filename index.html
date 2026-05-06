@@ -6,61 +6,18 @@
     <title>Core Intelligence</title>
     <script src="database/otakai.js"></script>
     <style>
-        :root {
-            --bg: #090b0f;
-            --panel: #12151a;
-            --accent: linear-gradient(135deg, #4285f4, #9b51e0);
-            --text: #f0f2f5;
-            --border: #23262b;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg); color: var(--text);
-            margin: 0; display: flex; flex-direction: column; height: 100vh;
-        }
-
-        header {
-            padding: 15px 20px;
-            background: rgba(18, 21, 26, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .logo {
-            font-weight: 800; font-size: 1rem; letter-spacing: 1px;
-            background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        #chat-container {
-            flex: 1; overflow-y: auto; padding: 20px;
-            display: flex; flex-direction: column; gap: 12px;
-        }
-
-        .msg {
-            max-width: 80%; padding: 12px 16px; border-radius: 18px;
-            font-size: 14.5px; line-height: 1.5; word-wrap: break-word;
-        }
-
+        :root { --bg: #090b0f; --panel: #12151a; --accent: linear-gradient(135deg, #4285f4, #9b51e0); --text: #f0f2f5; --border: #23262b; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; }
+        header { padding: 15px; background: rgba(18, 21, 26, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); text-align: center; }
+        .logo { font-weight: 800; font-size: 1rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .msg { max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14.5px; line-height: 1.5; }
         .user { align-self: flex-end; background: #1a73e8; color: white; border-bottom-right-radius: 4px; }
         .ai { align-self: flex-start; background: var(--panel); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
-
-        .input-area { padding: 15px 20px 25px 20px; background: var(--bg); }
-        .input-bar {
-            background: #1c1f26; border: 1px solid var(--border);
-            border-radius: 25px; display: flex; padding: 5px 10px 5px 15px; align-items: center;
-        }
-
-        input {
-            flex: 1; background: transparent; border: none; color: white;
-            padding: 10px 0; outline: none; font-size: 15px;
-        }
-
-        button {
-            background: var(--accent); border: none; width: 35px; height: 35px;
-            border-radius: 50%; cursor: pointer; color: white; font-weight: bold;
-        }
+        .input-area { padding: 20px; background: var(--bg); }
+        .input-bar { background: #1c1f26; border: 1px solid var(--border); border-radius: 25px; display: flex; padding: 5px 10px 5px 15px; align-items: center; }
+        input { flex: 1; background: transparent; border: none; color: white; padding: 10px 0; outline: none; font-size: 15px; }
+        button { background: var(--accent); border: none; width: 35px; height: 35px; border-radius: 50%; color: white; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -68,30 +25,31 @@
 <header><div class="logo">CORE INTELLIGENCE</div></header>
 
 <div id="chat-container">
-    <div class="msg ai">Sistem aktif. Apa yang bisa saya bantu, Lan?</div>
+    <div class="msg ai">Sistem AI Lokal Aktif. Model 20MB & Tambang sudah siap, Lan!</div>
 </div>
 
 <div class="input-area">
     <div class="input-bar">
-        <input type="text" id="userInput" placeholder="Tanya sesuatu..." onkeypress="if(event.key === 'Enter') sendChat()">
-        <button onclick="sendChat()">↑</button>
+        <input type="text" id="userInput" placeholder="Tanya apa saja..." onkeypress="if(event.key === 'Enter') sendChat()">
+        <button id="sendBtn" onclick="sendChat()">↑</button>
     </div>
 </div>
 
 <script type="module">
     import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
 
-    let brain = null;
+    let modelAI = null;
     const chatContainer = document.getElementById('chat-container');
 
-    // Load diam-diam di background (Nyicil)
-    async function silentLoad() {
+    // Inisialisasi Model (Si Kecil Pinter)
+    async function loadModel() {
         try {
-            brain = await pipeline('text-generation', 'Xenova/SmolLM-135M-Instruct');
-        } catch (e) { console.log("Silent mode active"); }
+            modelAI = await pipeline('text-generation', 'Xenova/SmolLM-135M-Instruct');
+            console.log("Model Siap!");
+        } catch (e) { console.log("Gagal muat model."); }
     }
 
-    function searchTambang(q) {
+    function cariDaging(q) {
         if (typeof otakAI === 'undefined') return "";
         const query = q.toLowerCase();
         let match = otakAI.find(i => (i.topic||"").toLowerCase().includes(query) || (i.summary||"").toLowerCase().includes(query));
@@ -105,41 +63,34 @@
         appendMsg(text, 'user');
         document.getElementById('userInput').value = '';
 
-        // Respon sapaan instan tanpa nunggu model
-        if (["halo","helo","p","hi","hallo"].includes(text.toLowerCase())) {
-            appendMsg("Halo Alan! Ada yang ingin ditanyakan dari tambang hari ini?", "ai");
-            return;
-        }
-
-        const data = searchTambang(text);
+        const dataTambang = cariDaging(text);
         const aiMsgDiv = appendMsg("...", 'ai');
 
-        if (!brain) await silentLoad(); // Panggil otak pas butuh aja
-
-        if (brain) {
+        if (modelAI) {
             try {
-                const prompt = `Data: ${data}\nUser: ${text}\nAssistant:`;
-                const out = await brain(prompt, { max_new_tokens: 60, temperature: 0.3 });
-                const hasil = out[0].generated_text.split('Assistant:')[1].trim();
+                // Prompt maut: Gabungin Model & Tambang
+                const prompt = `<|im_start|>system\nKamu asisten cerdas. Gunakan info ini: ${dataTambang}\nJawab dengan ramah dan pinter.<|im_end|>\n<|im_start|>user\n${text}<|im_end|>\n<|im_start|>assistant\n`;
                 
-                // Efek ngetik halus
+                const out = await modelAI(prompt, { max_new_tokens: 100, temperature: 0.6 });
+                let hasil = out[0].generated_text.split('assistant\n')[1]?.trim() || "Saya sedang memikirkan itu...";
+                
+                // Efek ngetik real-time biar kerasa AI-nya
                 aiMsgDiv.innerText = "";
                 let i = 0;
-                const speed = 25;
-                function type() {
+                function ngetik() {
                     if (i < hasil.length) {
                         aiMsgDiv.innerText += hasil.charAt(i);
                         i++;
                         chatContainer.scrollTop = chatContainer.scrollHeight;
-                        setTimeout(type, speed);
+                        setTimeout(ngetik, 20);
                     }
                 }
-                type();
+                ngetik();
             } catch (err) {
-                aiMsgDiv.innerText = data || "Maaf Lan, RAM lagi padat.";
+                aiMsgDiv.innerText = dataTambang || "Aduh Lan, memoriku lagi penuh buat mikir itu.";
             }
         } else {
-            aiMsgDiv.innerText = data || "Informasi tidak ditemukan.";
+            aiMsgDiv.innerText = dataTambang || "Model belum siap, tapi di tambang gak ada data itu.";
         }
     };
 
@@ -152,7 +103,7 @@
         return d;
     }
 
-    silentLoad();
+    loadModel();
 </script>
 </body>
 </html>
