@@ -69,28 +69,28 @@
 <header><div class="logo">CORE INTELLIGENCE</div></header>
 
 <div id="chat-container">
-    <div class="msg ai">Halo Alan! Sistem Model x Tambang sudah aktif dan siap digunakan.</div>
+    <div class="msg ai">Halo Alan! Sistem Model x Tambang sudah aktif. Coba sapa aku!</div>
 </div>
 
 <div class="input-area">
     <div class="input-bar">
-        <input type="text" id="userInput" placeholder="Tanya sesuatu..." onkeypress="if(event.key === 'Enter') sendChat()">
-        <button id="sendBtn" onclick="sendChat()">
+        <input type="text" id="userInput" placeholder="Tanya sesuatu..." onkeypress="if(event.key === 'Enter') window.sendChat()">
+        <button id="sendBtn" onclick="window.sendChat()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
     </div>
 </div>
 
 <script type="module">
-    // Mengimpor mesin dari file brain.js
+    // 1. Import dari brain.js
     import { bangunkanModel, tanyaModel } from './database/brain.js';
 
-    // Mulai proses memuat model di background agar instan
+    // Bangunkan otak AI di background
     bangunkanModel();
 
     const chatContainer = document.getElementById('chat-container');
 
-    // Fungsi mencari data mentah di Tambang (Database lokal)
+    // 2. Fungsi cari di tambang tetap di sini
     function ambilDataTambang(q) {
         if (typeof otakAI === 'undefined') return "";
         const query = q.toLowerCase();
@@ -101,38 +101,39 @@
         return match ? match.summary : "";
     }
 
+    // 3. DAFTARKAN KE WINDOW BIAR TOMBOL BISA KLIK (PENTING!)
     window.sendChat = async () => {
         const inputField = document.getElementById('userInput');
         const text = inputField.value.trim();
         if (!text) return;
 
-        // Tampilkan pesan user
         appendMsg(text, 'user');
         inputField.value = '';
 
-        // Cari dagingnya di tambang dulu
         const dataDaging = ambilDataTambang(text);
-        
-        // Siapkan balon chat AI (masih kosong/loading)
         const aiMsgBox = appendMsg("...", 'ai');
 
-        // Panggil Otak AI (Model 20MB) untuk mengolah data
-        const jawabanAI = await tanyaModel(text, dataDaging);
+        try {
+            // Panggil model dari brain.js
+            const jawabanAI = await tanyaModel(text, dataDaging);
 
-        // Efek ngetik streaming agar terasa instan kayak GPT
-        aiMsgBox.innerText = "";
-        let i = 0;
-        const typingSpeed = 20; // dalam milidetik
+            // Efek ngetik streaming
+            aiMsgBox.innerText = "";
+            let i = 0;
+            const typingSpeed = 20;
 
-        function typeWriter() {
-            if (i < jawabanAI.length) {
-                aiMsgBox.innerText += jawabanAI.charAt(i);
-                i++;
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-                setTimeout(typeWriter, typingSpeed);
+            function typeWriter() {
+                if (i < jawabanAI.length) {
+                    aiMsgBox.innerText += jawabanAI.charAt(i);
+                    i++;
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    setTimeout(typeWriter, typingSpeed);
+                }
             }
+            typeWriter();
+        } catch (e) {
+            aiMsgBox.innerText = "Gagal memproses. Cek file brain.js kamu, Lan.";
         }
-        typeWriter();
     };
 
     function appendMsg(t, s) {
