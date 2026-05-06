@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Core Intelligence - Fix Total</title>
+    <title>Core Intelligence - Fix</title>
     <script src="otakai.js"></script>
     <style>
         :root { --bg: #090b0f; --panel: #12151a; --accent: linear-gradient(135deg, #4285f4, #9b51e0); --text: #f0f2f5; --border: #23262b; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        header { padding: 15px; background: rgba(18, 21, 26, 0.85); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); text-align: center; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        header { padding: 15px; background: rgba(18, 21, 26, 0.85); border-bottom: 1px solid var(--border); text-align: center; }
         .logo { font-weight: 800; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .msg { max-width: 82%; padding: 12px 16px; border-radius: 20px; font-size: 14.5px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
@@ -17,7 +17,7 @@
         .input-area { padding: 15px 20px 25px 20px; }
         .input-bar { background: #1c1f26; border: 1px solid var(--border); border-radius: 30px; display: flex; padding: 5px 10px 5px 15px; align-items: center; }
         input { flex: 1; background: transparent; border: none; color: white; padding: 10px; outline: none; }
-        button { background: var(--accent); border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; }
+        button { background: var(--accent); border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -25,29 +25,31 @@
 <header><div class="logo">CORE INTELLIGENCE</div></header>
 
 <div id="chat-container">
-    <div class="msg ai">Sistem Aktif. Semua file (index, otakai, brain) sudah sinkron di luar, Lan!</div>
+    <div class="msg ai">Sistem Siap. Model & Tambang sinkron di root, Lan!</div>
 </div>
 
 <div class="input-area">
     <div class="input-bar">
-        <input type="text" id="userInput" placeholder="Tanya sesuatu...">
+        <input type="text" id="userInput" placeholder="Tanya tentang isi tambang...">
         <button id="sendBtn">↑</button>
     </div>
 </div>
 
 <script type="module">
-    // PANGGIL brain.js DI LUAR (Tanpa folder database)
+    // Panggil brain.js (PASTIKAN pakai .js di belakangnya biar gak masuk ke folder brain)
     import { bangunkanModel, tanyaModel } from './brain.js';
 
     const inputField = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
     const chatContainer = document.getElementById('chat-container');
 
+    // Aktifkan model SmolLM
     bangunkanModel();
 
     function ambilData(q) {
         if (typeof otakAI === 'undefined') return "";
         const query = q.toLowerCase();
+        // Cari data yang paling relevan biar gak 'halu' ke data lain
         let matches = otakAI.filter(i => 
             (i.topic||"").toLowerCase().includes(query) || 
             (i.summary||"").toLowerCase().includes(query)
@@ -66,7 +68,7 @@
         const aiMsgBox = appendMsg("...", 'ai');
 
         try {
-            // Tanya ke brain.js
+            // Tanya ke brain.js dengan data tambang
             const jawaban = await tanyaModel(text, data);
             
             aiMsgBox.textContent = "";
@@ -81,7 +83,8 @@
             }
             ngetik();
         } catch (e) {
-            aiMsgBox.textContent = data || "Gagal panggil brain.js, Lan.";
+            // Kalau model gagal, tampilkan data mentah tambang sebagai backup
+            aiMsgBox.textContent = data || "Gagal memproses, Lan.";
         }
     }
 
