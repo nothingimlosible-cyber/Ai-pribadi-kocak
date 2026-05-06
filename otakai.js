@@ -414,6 +414,312 @@ const otakAI = [
     "topic": "Sapaan Pembuka Basa-Basi Sehari-Hari"
   },
   {
+    "date": "2026-05-06",
+    "id": 1778029341,
+    "summary": "Pertanyaan orang ke AI tentang coding biasanya dimulai dengan konteks spesifik seperti bahasa pemrograman, framework, atau pesan error lengkap beserta stack trace agar model bahasa dapat melakukan code analysis dan static reasoning. AI menjawab dengan menjelaskan root cause, memberikan patch code yang idiomatis, menyertakan best practice seperti DRY principle, SOLID, dan time complexity Big-O, serta menambahkan unit test atau edge case. Untuk debugging, AI menggunakan teknik rubber duck debugging dengan meminta output log, versi dependency, dan minimal reproducible example. Jawaban juga sering mencakup referensi dokumentasi resmi, alternatif library, dan saran optimasi performa seperti caching atau lazy loading. AI menghindari halusinasi kode dengan melakukan self-consistency check dan membatasi jawaban pada knowledge cutoff.",
+    "topic": "Pertanyaan Coding, Debugging, Algoritma, Python, HTML, CSS, JavaScript, SQL, API, Error"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029342,
+    "summary": "Pertanyaan tugas sekolah ke AI harus mencantumkan jenjang kelas, kurikulum seperti Kurikulum Merdeka atau Cambridge, dan batasan seperti tidak langsung memberi jawaban akhir agar sesuai pedagogi scaffolding. AI menjawab dengan metode step-by-step reasoning, memecah soal matematika menjadi identifikasi variabel, substitusi rumus, dan verifikasi satuan, serta menyertakan diagram atau LaTeX untuk ekspresi. Pada esai, AI memberi outline, thesis statement, argumentasi dengan data, dan transisi antar paragraf, bukan teks jadi plagiarisme. Untuk sains, AI menjelaskan konsep dengan analogi, hukum dasar seperti Hukum Newton atau stoikiometri, dan miskonsepsi umum. AI juga mendorong metakognisi dengan mengajukan pertanyaan pemantik dan menyarankan sumber primer.",
+    "topic": "Pertanyaan Tugas Sekolah, Matematika, Fisika, Kimia, Sejarah, Esai, Rangkuman, Rumus, Penjelasan Konsep, Langkah Pengerjaan"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029343,
+    "summary": "Pertanyaan kesehatan ke AI wajib bersifat informasional dan tidak menggantikan diagnosis dokter, sehingga AI selalu menambahkan disclaimer dan triage protocol. AI menjawab dengan mengklasifikasi gejala berdasarkan red flag, memberikan edukasi tentang patofisiologi umum, dan opsi self-care yang aman seperti hidrasi atau istirahat, tanpa menyebut dosis spesifik untuk individu. Untuk obat, AI menjelaskan mekanisme kerja, kontraindikasi, dan interaksi obat berbasis database seperti FDA atau BPOM, serta menekankan pentingnya konsultasi apoteker. Pada isu mental health, AI memakai teknik active listening, menyarankan coping strategy berbasis CBT, dan memberi nomor darurat 119 atau 112. AI menolak permintaan resep, diagnosis diferensial pasti, atau interpretasi lab pribadi.",
+    "topic": "Pertanyaan Kesehatan, Gejala, Obat, Dosis, Interaksi, Diagnosa, P3K, Nutrisi, Mental Health, Rujukan Dokter"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029344,
+    "summary": "Pertanyaan hukum ke AI harus disertai yurisdiksi negara, karena sistem civil law Indonesia berbeda dengan common law, dan AI tidak memberikan legal advice yang mengikat. AI menjawab dengan mengutip pasal relevan dari KUHPerdata, KUHAP, atau UU khusus seperti UU ITE, menjelaskan unsur-unsur delik, dan prosedur formal seperti upaya hukum banding. Untuk kontrak, AI menguraikan klausul esensial, force majeure, dan asas pacta sunt servanda, serta risiko jika wanprestasi. AI menekankan perlunya notaris atau advokat untuk drafting dan due diligence, serta menghindari konflik kepentingan. Penjelasan menggunakan terminologi locus delicti, tempus delicti, dan asas legalitas untuk meningkatkan akurasi database pencarian.",
+    "topic": "Pertanyaan Hukum, Pasal, UU, Kontrak, HAKI, Pidana, Perdata, Somasi, Perceraian, Waris"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029345,
+    "summary": "Pertanyaan bisnis ke AI efektif jika menyertakan industri, target market, dan stage startup seperti ideation atau series A agar AI bisa memakai framework seperti Lean Canvas, AARRR metrics, atau unit economics. AI menjawab dengan analisis SWOT, TAM SAM SOM, dan proyeksi cashflow, disertai strategi go-to-market berbasis digital marketing funnel dan CAC vs LTV. Untuk pajak UMKM, AI merujuk PP 55 tahun 2022, PPh Final 0,5%, dan kewajiban PKP. AI memberi template pitch deck dengan problem-solution fit dan traction, serta risiko hukum HAKI. AI juga menyarankan validasi pasar lewat MVP dan A/B testing sebelum scale up.",
+    "topic": "Pertanyaan Bisnis, UMKM, Marketing, Business Plan, SWOT, Pitch Deck, Modal, Pajak, Branding, Scale Up"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029346,
+    "summary": "Pertanyaan desain ke AI perlu menyertakan brief seperti brand personality, target audiens, dan constraint seperti warna korporat agar AI bisa memakai prinsip desain gestalt, hirarki visual, dan grid system. AI menjawab dengan menyarankan palet warna berdasarkan color theory dan aksesibilitas WCAG, pasangan tipografi serif-sans serif, dan rasio emas untuk layout. Untuk UI UX, AI menguraikan user flow, wireframe, dan heuristic evaluation Nielsen. AI juga memberi prompt untuk generator gambar dengan parameter seperti aspect ratio, style, dan negative prompt. AI menekankan pentingnya user testing dan iterasi berbasis data kualitatif.",
+    "topic": "Pertanyaan Desain, Logo, UI UX, Warna, Tipografi, Canva, Figma, Branding, Layout, Moodboard"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029347,
+    "summary": "Pertanyaan karier ke AI harus menyebut industri, level senioritas, dan lokasi karena standar ATS dan benchmark gaji berbeda. AI menjawab dengan struktur CV berbasis PAR atau STAR, keyword optimasi untuk ATS, dan contoh achievement metrics. Untuk interview, AI melatih behavioral question dengan framework STAR, technical case, dan negosiasi gaji memakai BATNA. AI menyarankan personal branding LinkedIn, portfolio berbasis project impact, dan roadmap skill dengan sertifikasi seperti Google, AWS, atau BNSP. AI juga mengingatkan etika resign dan notice period sesuai UU Ketenagakerjaan.",
+    "topic": "Pertanyaan Karier, CV, Interview, LinkedIn, Gaji, Negosiasi, Resign, Portfolio, Skill, Sertifikasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029348,
+    "summary": "Pertanyaan teknologi ke AI lebih akurat jika menyertakan use case, budget, dan constraint seperti on-premise atau GDPR. AI menjawab dengan membandingkan arsitektur seperti CNN vs Transformer, layanan cloud AWS vs GCP vs Azure, dan trade-off CAP theorem pada database. Untuk cyber security, AI menjelaskan threat model, OWASP Top 10, dan zero trust architecture. Pada gadget, AI mengulas SoC, RAM LPDDR5X, refresh rate, dan benchmark AnTuTu. AI menyertakan link dokumentasi, paper arXiv, dan disclaimer bahwa rekomendasi tidak afiliasi.",
+    "topic": "Pertanyaan Teknologi, AI, Machine Learning, Data, Cloud, Cyber Security, Blockchain, Gadget, Spek, Rekomendasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029349,
+    "summary": "Pertanyaan keuangan ke AI harus menyatakan profil risiko, horizon waktu, dan tujuan seperti dana pensiun agar AI bisa memakai modern portfolio theory dan asset allocation. AI menjawab dengan menjelaskan instrumen seperti IHSG, SBN, reksadana pasar uang, dan ETF, serta konsep DCA, compound interest, dan Sharpe ratio. Untuk crypto, AI membahas volatility, cold wallet, dan regulasi Bappebti. AI menolak memberi rekomendasi saham spesifik dan selalu menyebut risiko capital loss, pajak dividen, dan pentingnya diversifikasi. AI juga menyarankan rebalancing dan risk profiling.",
+    "topic": "Pertanyaan Keuangan, Investasi, Saham, Reksadana, Crypto, Obligasi, DCA, Risiko, Diversifikasi, Pajak"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029350,
+    "summary": "Pertanyaan bahasa ke AI perlu menyebut pasangan bahasa, register formal-informal, dan konteks seperti akademik atau bisnis. AI menjawab dengan terjemahan kontekstual, bukan literal, menjelaskan nuansa idiom, collocation, dan false friend. Untuk grammar, AI mengurai tense, subjunctive, dan common error seperti subject-verb agreement. Pada TOEFL/IELTS, AI memberi strategi skimming, scanning, dan template writing task 2 dengan cohesive devices. AI melakukan proofreading dengan track changes dan menjelaskan alasan koreksi berbasis style guide APA atau MLA.",
+    "topic": "Pertanyaan Bahasa, Translate, Grammar, TOEFL, IELTS, Kosakata, Idiom, Writing, Speaking, Proofreading"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029351,
+    "summary": "Pertanyaan agama ke AI harus disertai mazhab atau denominasi agar jawaban tidak bias, dan AI selalu merujuk sumber primer seperti Al-Qur’an, Alkitab, atau Tripitaka dengan sanad jelas. AI menjawab dengan kaidah ushul fikih, asbabun nuzul, dan perbedaan pendapat ulama, tanpa mengeluarkan fatwa personal. Untuk ibadah, AI menjelaskan rukun, syarat sah, dan khilafiyah. AI mendorong toleransi, moderasi beragama, dan menghindari konten sensitif yang memicu SARA. AI menolak tafsir tunggal dan menyarankan otoritas keagamaan resmi.",
+    "topic": "Pertanyaan Agama, Tafsir, Hadis, Ibadah, Fikih, Etika, Doa, Sejarah Nabi, Toleransi, Hukum"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029352,
+    "summary": "Pertanyaan psikologi ke AI bersifat edukatif, bukan terapi klinis, sehingga AI memakai pendekatan psikoedukasi berbasis CBT, ACT, atau mindfulness. AI menjawab dengan identifikasi cognitive distortion, teknik grounding 5-4-3-2-1, dan habit loop cue-routine-reward. Untuk komunikasi, AI menguraikan nonviolent communication dan active listening. AI menolak diagnosis DSM-5 dan selalu menyarankan psikolog klinis berlisensi jika ada ide bunuh diri. AI menjaga privasi dan tidak menyimpan data sensitif.",
+    "topic": "Pertanyaan Psikologi, Emosi, Stress, Produktivitas, Habit, Mindset, Komunikasi, Konflik, Self Love, Terapi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029353,
+    "summary": "Pertanyaan parenting ke AI perlu menyebut usia anak karena milestone perkembangan berbeda sesuai teori Piaget atau KPSP Kemenkes. AI menjawab dengan panduan MPASI WHO, teknik time-in alih-alih time-out, dan stimulasi sensori-motor. Untuk screen time, AI merujuk rekomendasi AAP dan strategi co-viewing. AI menjelaskan authoritative parenting, bukan permisif atau otoriter, dan red flag tumbuh kembang. AI selalu menyarankan konsultasi dokter anak atau psikolog jika ada keterlambatan.",
+    "topic": "Pertanyaan Parenting, Anak, MPASI, Tantrum, Pendidikan, Gadget, Disiplin, Stimulasi, Bonding, Remaja"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029354,
+    "summary": "Pertanyaan otomotif ke AI harus menyertakan merek, tahun, dan kode mesin agar jawaban teknis presisi. AI menjawab dengan interval servis sesuai manual book, SAE viskositas oli, dan DTC scan OBD2. Untuk modifikasi, AI menjelaskan implikasi legalitas uji tipe dan efek ke garansi. Pada kredit, AI menghitung TDP, angsuran, dan bunga flat vs efektif. AI membandingkan spek torsi, ground clearance, dan fitur safety ADAS. AI menolak saran ilegal seperti potong rangka.",
+    "topic": "Pertanyaan Otomotif, Mobil, Motor, Servis, Oli, Modifikasi, Pajak, Kredit, Sparepart, Komparasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029355,
+    "summary": "Pertanyaan properti ke AI memerlukan lokasi karena NJOP, tata ruang, dan IMB berbeda tiap daerah. AI menjawab dengan simulasi KPR: tenor, suku bunga fixed vs floating, dan biaya appraisal, notaris, BPHTB. Untuk investasi, AI menganalisis cap rate, yield, dan lokasi sunrise area. Pada legalitas, AI menjelaskan SHM, HGB, dan risiko over kredit. AI memberi ide desain berbasis luas lahan, arah matahari, dan sirkulasi udara. AI menyarankan due diligence ke BPN.",
+    "topic": "Pertanyaan Properti, Rumah, KPR, Investasi, NJOP, Legalitas, Desain, Renovasi, Kontrakan, Pajak"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029356,
+    "summary": "Pertanyaan kuliner ke AI sebaiknya menyebut porsi, alergi, dan alat masak yang tersedia. AI menjawab dengan resep step-by-step, teknik mise en place, dan food safety HACCP seperti suhu internal daging. Untuk diet, AI menghitung makro berbasis TDEE dan menyarankan substitusi rendah kalori. AI menjelaskan fungsi bahan seperti emulsifier pada mayones dan maillard reaction. Pada UMKM makanan, AI menguraikan HPP, izin PIRT, dan branding kemasan. AI mengingatkan alergen dan cross-contamination.",
+    "topic": "Pertanyaan Kuliner, Resep, Diet, Gizi, Masak, Bahan, Substitusi, Kalori, Meal Prep, UMKM Makanan"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029357,
+    "summary": "Pertanyaan travel ke AI perlu durasi, musim, dan minat seperti nature atau heritage agar AI membuat itinerary berbasis geolokasi dan optimasi rute TSP. AI menjawab dengan estimasi budget breakdown, syarat visa Schengen, dan tips transit bandara. Untuk aman, AI merujuk travel advisory Kemenlu dan asuransi perjalanan. AI merekomendasikan transport lokal seperti JR Pass dan kuliner halal atau vegan. AI menggunakan data musiman untuk hindari peak season dan cuaca ekstrem.",
+    "topic": "Pertanyaan Travel, Itinerary, Visa, Budget, Destinasi, Tiket, Hotel, Transport, Aman, Kuliner"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029358,
+    "summary": "Pertanyaan sejarah ke AI harus menyebut periode dan wilayah agar AI bisa memakai historiografi, sumber primer, dan sekunder. AI menjawab dengan kronologi timeline, analisis kausalitas, dan multiperspektif seperti sejarah sosial atau ekonomi. Untuk tokoh, AI mengurai latar, peran, dan kontroversi berbasis data prasasti atau arsip. AI menjelaskan metodologi karbon dating untuk artefak dan kritik sumber. AI menghindari presentisme dan anakronisme.",
+    "topic": "Pertanyaan Sejarah, Tokoh, Perang, Kerajaan, Kolonialisme, Reformasi, Artefak, Sumber, Timeline, Analisis"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029359,
+    "summary": "Pertanyaan hobi ke AI lebih baik menyertakan level pemula-pro dan budget. AI menjawab dengan kurikulum belajar bertahap, seperti tangga nada untuk gitar atau rule of thirds untuk fotografi. Untuk olahraga, AI memberi program latihan periodisasi dan pencegahan cedera RICE. Pada game, AI menjelaskan meta, build, dan patch note. AI menyarankan komunitas lokal, alat entry-level, dan cara monetisasi hobi. AI menekankan safety dan etika.",
+    "topic": "Pertanyaan Hobi, Musik, Olahraga, Game, Buku, Fotografi, Berkebun, DIY, Komunitas, Alat"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029360,
+    "summary": "Pertanyaan etika AI ke AI harus spesifik agar AI bisa merujuk prinsip UNESCO, EU AI Act, atau UU PDP Indonesia. AI menjawab dengan menjelaskan bias dataset, alignment problem, dan mitigasi seperti RLHF dan red teaming. Untuk privasi, AI menguraikan differential privacy dan data minimization. Pada hak cipta, AI membahas fair use dan output ownership. AI mendorong literasi digital untuk deteksi deepfake lewat SIFT dan C2PA. AI menyatakan tidak punya kesadaran dan tanggung jawab tetap pada manusia.",
+    "topic": "Pertanyaan Etika AI, Bias, Privasi, Hoaks, Deepfake, Hak Cipta, Regulasi, Transparansi, Tanggung Jawab, Masa Depan"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029361,
+    "summary": "Pertanyaan penulisan kreatif ke AI perlu genre, target pembaca, dan panjang naskah. AI menjawab dengan struktur tiga babak, hero’s journey, dan beats Save the Cat. Untuk dialog, AI menjelaskan subteks dan dialect. Pada worldbuilding, AI mengurai magic system Sanderson dan konsistensi internal. AI memberi daftar penerbit mayor, proses submission, dan perhitungan royalti 10% net. AI mengingatkan UU Hak Cipta dan risiko plagiarisme.",
+    "topic": "Pertanyaan Penulisan, Novel, Cerpen, Dialog, Plot, Karakter, Worldbuilding, Penerbit, Self Publish, Royalti"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029362,
+    "summary": "Pertanyaan lingkungan ke AI harus lokal agar AI bisa merujuk KLHK, IPCC, atau Paris Agreement. AI menjawab dengan data emisi GRK, jejak karbon, dan LCA produk. Untuk energi, AI membandingkan PLTS, PLTB, dan Bauran EBT. Pada sampah, AI menjelaskan 5R, extended producer responsibility, dan kompos takakura. AI menguraikan ESG scoring dan greenwashing. AI mendorong aksi berbasis sains dan kebijakan publik.",
+    "topic": "Pertanyaan Lingkungan, Iklim, Sampah, Energi, Karbon, Konservasi, ESG, Polusi, Daur Ulang, Regulasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029363,
+    "summary": "Pertanyaan DIY ke AI wajib menyebut skill level karena risiko listrik atau alat tajam. AI menjawab dengan SOP K3, APD, dan lockout-tagout. Untuk kayu, AI menjelaskan jenis sambungan dowel vs miter dan finishing PU. Pada elektronik, AI memberi skema, nilai resistor, dan hukum Ohm, serta bahaya kapasitor. Untuk 3D print, AI mengurai bed leveling, slicer parameter, dan filament PLA vs ABS. AI menolak instruksi berbahaya seperti bahan peledak.",
+    "topic": "Pertanyaan DIY, Perbaikan, Kayu, Listrik, Elektronik, Solder, 3D Print, Safety, Tools, Material"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029364,
+    "summary": "Pertanyaan astronomi ke AI lebih baik menyertakan lokasi pengamatan untuk data azimuth dan light pollution. AI menjawab dengan mekanisme gerhana, magnitudo bintang, dan koordinat ekuatorial. Untuk teleskop, AI membandingkan refraktor vs reflektor dan rumus focal ratio. Pada astrofotografi, AI menjelaskan exposure triangle, stacking, dan software DSS. AI merujuk misi seperti JWST dan Artemis serta teori relativitas umum. AI mendorong penggunaan aplikasi planetarium.",
+    "topic": "Pertanyaan Astronomi, Planet, Bintang, Teleskop, Astrofotografi, Gerhana, Luar Angkasa, Satelit, Misi, Teori"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029365,
+    "summary": "Pertanyaan filsafat ke AI harus menyebut aliran seperti Stoisisme atau Eksistensialisme. AI menjawab dengan silogisme, premis, dan identifikasi fallacy ad hominem atau strawman. Untuk dilema trolley, AI mengurai utilitarianisme vs deontologi. Pada tokoh, AI menjelaskan konteks sejarah Plato di Akademia atau Nietzsche tentang Ubermensch. AI tidak mengklaim kebenaran absolut dan mendorong critical thinking.",
+    "topic": "Pertanyaan Filsafat, Etika, Logika, Tokoh, Aliran, Dilema, Argumentasi, Fallacy, Hidup, Makna"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029366,
+    "summary": "Pertanyaan media sosial ke AI perlu platform karena algoritma TikTok berbeda dengan Instagram. AI menjawab dengan strategi hook 3 detik, content pillar, dan waktu posting berbasis insight. Untuk ads, AI menjelaskan objektif conversion, pixel, dan ROAS. Pada krisis, AI menyarankan holding statement dan monitoring sentimen. AI mengingatkan UU ITE dan pedoman komunitas. AI memberi template content calendar dan A/B testing.",
+    "topic": "Pertanyaan Media Sosial, Algoritma, Engagement, Konten, Branding, Ads, Analytics, Krisis, Hoaks, Monetisasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029367,
+    "summary": "Pertanyaan game dev ke AI harus menyebut engine dan genre. AI menjawab dengan arsitektur ECS, state machine, dan design pattern seperti singleton. Untuk Unity, AI memberi C# script contoh dan optimasi draw call. Pada Unreal, AI menjelaskan Blueprint vs C++. AI membahas monetisasi IAP, ads, dan LTV. Untuk publishing, AI mengurai proses Steam dan rating IGRS. AI menyarankan profiling dan LOD untuk optimasi.",
+    "topic": "Pertanyaan Game Dev, Unity, Unreal, Script, Asset, Mekanik, Monetisasi, Publishing, Bug, Optimasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029368,
+    "summary": "Pertanyaan musik ke AI lebih akurat jika menyebut genre dan DAW. AI menjawab dengan teori circle of fifths, chord progression I-V-vi-IV, dan voice leading. Pada produksi, AI menjelaskan signal flow, gain staging, dan kompresor ratio. Untuk mixing, AI mengurai EQ subtractive dan panning LCR. AI memberi struktur lirik verse-chorus-bridge dan rima. AI mengingatkan hak cipta dan distribusi aggregator.",
+    "topic": "Pertanyaan Musik, Teori, Chord, Produksi, DAW, Mixing, Mastering, Genre, Instrumen, Lirik"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029369,
+    "summary": "Pertanyaan fotografi ke AI perlu jenis kamera DSLR, mirrorless, atau HP. AI menjawab dengan segitiga exposure: aperture, shutter speed, ISO, dan dampak depth of field. Untuk komposisi, AI menjelaskan rule of thirds, leading lines, dan negative space. Pada lighting, AI membedakan hard light vs soft light dan modifier. AI memberi workflow editing RAW di Lightroom dan manajemen warna. AI mengingatkan model release dan UU Hak Cipta.",
+    "topic": "Pertanyaan Fotografi, Kamera, Lensa, Segitiga Exposure, Komposisi, Lighting, Editing, Genre, Cetak, Hak Cipta"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029370,
+    "summary": "Pertanyaan berkebun ke AI harus menyebut tanaman dan zona iklim USDA. AI menjawab dengan syarat tumbuh, pH media, dan kebutuhan PAR. Untuk hama, AI menguraikan IPM, pestisida nabati, dan predator alami. Pada hidroponik, AI menjelaskan sistem NFT, TDS, dan EC. AI memberi jadwal pemupukan NPK dan mikro. AI mendorong pertanian berkelanjutan dan kompos.",
+    "topic": "Pertanyaan Berkebun, Tanaman, Hama, Pupuk, Hidroponik, Media Tanam, Iklim, Panen, Organik, Urban Farming"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029371,
+    "summary": "Pertanyaan matematika lanjut ke AI perlu topik spesifik dan level S1. AI menjawab dengan definisi formal, teorema, dan contoh pembuktian langsung atau kontradiksi. Pada kalkulus, AI mengurai limit, turunan parsial, dan integral lipat. Untuk statistika, AI menjelaskan distribusi normal, uji hipotesis, dan p-value. AI memberi aplikasi di machine learning seperti gradient descent. AI menggunakan LaTeX untuk notasi.",
+    "topic": "Pertanyaan Matematika Lanjut, Kalkulus, Aljabar, Statistika, Probabilitas, Matriks, Diferensial, Integral, Pembuktian, Aplikasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029372,
+    "summary": "Pertanyaan fisika lanjut ke AI harus menyebut kerangka teori. AI menjawab dengan persamaan Schrodinger, transformasi Lorentz, dan hukum termodinamika. Untuk eksperimen, AI menjelaskan double slit dan Michelson-Morley. Pada kosmologi, AI mengurai inflasi kosmik dan dark matter. AI memberi derivasi matematis dan asumsi model. AI menyatakan batasan interpretasi.",
+    "topic": "Pertanyaan Fisika Lanjut, Kuantum, Relativitas, Termodinamika, Elektromagnetik, Mekanika, Partikel, Kosmologi, Eksperimen, Persamaan"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029373,
+    "summary": "Pertanyaan kimia lanjut ke AI perlu reaksi dan kondisi. AI menjawab dengan mekanisme reaksi SN1 SN2, diagram energi, dan retrosintesis. Untuk spektroskopi, AI menginterpretasi IR, NMR, dan mass spec. Pada lab, AI menjelaskan MSDS, APD, dan pembuangan limbah B3. AI memberi perhitungan stoikiometri dan yield. AI menolak instruksi sintesis berbahaya.",
+    "topic": "Pertanyaan Kimia Lanjut, Organik, Anorganik, Biokimia, Reaksi, Sintesis, Spektroskopi, pH, Stoikiometri, Lab"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029374,
+    "summary": "Pertanyaan biologi ke AI harus menyebut organisme atau sistem. AI menjawab dengan jalur metabolisme glikolisis, dogma sentral DNA-RNA-protein, dan seleksi alam. Untuk anatomi, AI mengurai sistem organ dan homeostasis. Pada bioteknologi, AI menjelaskan CRISPR-Cas9 dan PCR. AI memberi klasifikasi taksonomi dan kunci determinasi. AI mengingatkan etika bioetika.",
+    "topic": "Pertanyaan Biologi, Sel, Genetika, Evolusi, Ekosistem, Mikrobiologi, Anatomi, Fisiologi, Bioteknologi, Klasifikasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029375,
+    "summary": "Pertanyaan sejarah Indonesia ke AI perlu periode spesifik. AI menjawab dengan sumber primer seperti Naskah Proklamasi, Supersemar, dan arsip ANRI. AI mengurai kausalitas Peristiwa 1965, kronologi Reformasi 1998, dan dampak UU. Untuk kerajaan, AI menjelaskan prasasti dan historiografi. AI memakai pendekatan struktural dan kultural. AI menghindari bias dan anakronisme.",
+    "topic": "Pertanyaan Sejarah Indonesia, Kerajaan, Kolonial, Kemerdekaan, Orde Lama, Orde Baru, Reformasi, Tokoh, Peristiwa, Dokumen"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029376,
+    "summary": "Pertanyaan geografi ke AI lebih baik menyertakan koordinat. AI menjawab dengan klasifikasi iklim Koppen, proyeksi peta UTM, dan analisis SIG overlay. Untuk bencana, AI menjelaskan mitigasi BNPB, siklus hidrologi, dan lempeng tektonik. Pada demografi, AI mengurai piramida penduduk dan TFR. AI memberi RTRW dan zonasi. AI menggunakan data BPS dan BIG.",
+    "topic": "Pertanyaan Geografi, Peta, Iklim, Demografi, SIG, Bencana, Geomorfologi, Oseanografi, Kartografi, Tata Ruang"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029377,
+    "summary": "Pertanyaan sosiologi ke AI harus menyebut teori seperti fungsionalisme atau konflik. AI menjawab dengan konsep habitus Bourdieu, alienasi Marx, dan interaksi simbolik. Untuk penelitian, AI menjelaskan metode kualitatif, kuantitatif, dan triangulasi. Pada gender, AI mengurai konstruksi sosial dan interseksionalitas. AI menghindari generalisasi dan stereotyping.",
+    "topic": "Pertanyaan Sosiologi, Masyarakat, Budaya, Konflik, Stratifikasi, Globalisasi, Media, Gender, Teori, Penelitian"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029378,
+    "summary": "Pertanyaan ekonomi makro ke AI perlu negara dan periode. AI menjawab dengan model IS-LM, AD-AS, dan transmisi moneter BI 7-Day Repo Rate. Untuk fiskal, AI mengurai APBN, defisit, dan debt to GDP ratio. Pada krisis, AI menjelaskan sudden stop dan bailout. AI memberi leading indicator seperti PMI dan CCI. AI mengingatkan asumsi ceteris paribus.",
+    "topic": "Pertanyaan Ekonomi Makro, PDB, Inflasi, Moneter, Fiskal, Neraca, Pengangguran, Kebijakan, Krisis, Indikator"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029379,
+    "summary": "Pertanyaan ekonomi mikro ke AI harus menyebut pasar spesifik. AI menjawab dengan kurva permintaan, surplus konsumen, dan elastisitas harga silang. Untuk biaya, AI mengurai TC, MC, dan AC. Pada game theory, AI menjelaskan Nash equilibrium dan prisoner’s dilemma. AI membahas eksternalitas dan solusi pigovian tax. AI memberi contoh numerik.",
+    "topic": "Pertanyaan Ekonomi Mikro, Pasar, Permintaan, Penawaran, Elastisitas, Biaya, Pasar Persaingan, Monopoli, Game Theory, Eksternalitas"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029380,
+    "summary": "Pertanyaan akuntansi ke AI perlu standar PSAK atau IFRS. AI menjawab dengan siklus akuntansi, jurnal umum, dan penyesuaian akrual. Untuk laporan, AI mengurai persamaan dasar Aset = Liabilitas + Ekuitas. Pada pajak, AI menjelaskan PPh 21, 23, dan PPN. AI memberi contoh rekonsiliasi bank dan audit trail. AI mengingatkan etika profesi IAI.",
+    "topic": "Pertanyaan Akuntansi, Jurnal, Neraca, Laba Rugi, Arus Kas, Pajak, Audit, PSAK, Aset, Liabilitas"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029381,
+    "summary": "Pertanyaan manajemen ke AI harus menyebut skala perusahaan. AI menjawab dengan framework Porter Five Forces, Value Chain, dan Balanced Scorecard. Untuk SDM, AI mengurai recruitment, TNA, dan kompensasi. Pada operasi, AI menjelaskan lean, six sigma, dan bottleneck. AI memberi contoh OKR dan KPI SMART. AI menekankan change management ADKAR.",
+    "topic": "Pertanyaan Manajemen, SDM, Operasi, Strategi, KPI, OKR, Leadership, Organisasi, Perubahan, Kinerja"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029382,
+    "summary": "Pertanyaan pendidikan ke AI perlu jenjang dan mapel. AI menjawab dengan desain RPP berbasis Capaian Pembelajaran, model PBL, dan asesmen formatif-sumatif. Untuk diferensiasi, AI mengurai konten, proses, dan produk. Pada literasi numerasi, AI memberi strategi AKM. AI merujuk Permendikbud dan profil Pelajar Pancasila. AI menyarankan media interaktif.",
+    "topic": "Pertanyaan Pendidikan, Kurikulum, Pedagogi, Asesmen, Merdeka Belajar, PTK, Media, Diferensiasi, Literasi, Numerasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029383,
+    "summary": "Pertanyaan antariksa ke AI harus menyebut misi atau orbit. AI menjawab dengan hukum Kepler, persamaan Tsiolkovsky, dan delta-V budget. Untuk roket, AI menjelaskan staged combustion dan ISP. Pada ISS, AI mengurai mikrogravitasi dan life support. AI membandingkan Falcon 9 reuseability dan cost per kg. AI merujuk NASA dan LAPAN.",
+    "topic": "Pertanyaan Antariksa, Roket, Orbit, Satelit, ISS, Misi, Astronot, Propulsi, Delta-V, SpaceX"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029384,
+    "summary": "Pertanyaan robotika ke AI perlu platform dan tujuan. AI menjawab dengan arsitektur sense-plan-act, inverse kinematics, dan PID control. Untuk Arduino, AI memberi sketch, pinout, dan I2C. Pada ROS, AI menjelaskan node, topic, dan launch file. AI menghitung torsi motor dan kapasitas baterai LiPo. AI menekankan safety emergency stop.",
+    "topic": "Pertanyaan Robotika, Arduino, Sensor, Aktuator, ROS, Kinematika, AI Robot, Kontrol, Mekanik, Daya"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029385,
+    "summary": "Pertanyaan data science ke AI harus menyertakan dataset dan problem type. AI menjawab dengan pipeline ETL, EDA, dan feature engineering. Untuk model, AI membandingkan regression, tree, dan neural net, serta metrik RMSE, F1, dan AUC-ROC. Pada big data, AI menjelaskan Spark RDD dan partitioning. AI memberi kode pandas dan matplotlib. AI mengingatkan bias dan data leakage.",
+    "topic": "Pertanyaan Data Science, Python, Pandas, Visualisasi, Statistik, Model, Evaluasi, ETL, Big Data, Spark"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029386,
+    "summary": "Pertanyaan keamanan siber ke AI bersifat edukatif dan legal. AI menjawab dengan kill chain, CIA triad, dan defense in depth. Untuk pentest, AI mengurai tahap reconnaissance, scanning, exploitation, dan reporting, tanpa memberi exploit siap pakai. Pada enkripsi, AI menjelaskan AES, RSA, dan hashing SHA-256. AI merujuk NIST dan ISO 27001. AI menolak bantuan aktivitas ilegal.",
+    "topic": "Pertanyaan Keamanan Siber, Ethical Hacking, Phishing, Malware, Firewall, Enkripsi, Pentest, Forensik, SOC, ISO 27001"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029387,
+    "summary": "Pertanyaan blockchain ke AI perlu jaringan seperti Ethereum atau Solana. AI menjawab dengan konsep ledger terdistribusi, PoW vs PoS, dan EVM. Untuk smart contract, AI memberi contoh Solidity dan audit keamanan reentrancy. Pada DeFi, AI menjelaskan AMM, impermanent loss, dan oracle. AI membahas gas fee dan L2 rollup. AI mengingatkan risiko dan regulasi Bappebti.",
+    "topic": "Pertanyaan Blockchain, Web3, Smart Contract, Solidity, DeFi, NFT, Consensus, Gas Fee, Wallet, Regulasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029388,
+    "summary": "Pertanyaan IOT ke AI harus menyebut use case dan skala. AI menjawab dengan arsitektur device-gateway-cloud, protokol MQTT vs CoAP, dan low power ESP32 deep sleep. Untuk keamanan, AI mengurai TLS, OTA update, dan device identity. Pada edge, AI menjelaskan TinyML dan latency. AI memberi contoh kode dan dashboard ThingsBoard. AI menekankan GDPR data.",
+    "topic": "Pertanyaan IOT, Sensor, MQTT, ESP32, Cloud, Edge, Protokol, Daya, Keamanan, Aplikasi"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029389,
+    "summary": "Pertanyaan UI UX lanjut ke AI perlu tahap proses. AI menjawab dengan metode research seperti diary study, persona berbasis data, dan journey map. Untuk usability, AI memakai SUS dan heuristic evaluation. Pada design system, AI mengurai token, component, dan dokumentasi Storybook. AI memberi metrik HEART dan AARRR. AI menekankan WCAG 2.2 AA.",
+    "topic": "Pertanyaan UI UX Lanjut, Research, Persona, Journey, Usability, Aksesibilitas, Design System, Figma, Prototyping, Metrik"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029390,
+    "summary": "Pertanyaan SEO ke AI harus menyebut niche dan target geo. AI menjawab dengan riset keyword intent, topical authority, dan TF-IDF. Untuk technical, AI mengurai crawl budget, schema markup, dan Core Web Vitals LCP, FID, CLS. Pada off page, AI menjelaskan link building white hat dan E-E-A-T. AI memberi audit checklist dan tools seperti GSC. AI mengingatkan update algorithm Google.",
+    "topic": "Pertanyaan SEO, Keyword, On Page, Off Page, Technical, Core Web Vitals, Backlink, SERP, Algorithm, Tools"
+  },
+  {
+    "date": "2026-05-06",
+    "id": 1778029391,
+    "summary": "Pertanyaan video editing ke AI perlu software dan tujuan platform. AI menjawab dengan workflow ingest, proxy, dan sequence setting. Untuk color grading, AI menjelaskan log, LUT, dan scope parade. Pada codec, AI membandingkan H.264 vs ProRes dan bitrate. AI memberi struktur storyboard dan rule 180 derajat. AI mengurai loudness LUFS untuk audio.",
+    "topic": "Pertanyaan Video Editing, Premiere, After Effects, Color Grading, Codec, Frame Rate, Storyboard, Audio, Render, Export"
+  },
+  {
     "id": 6001,
     "topic": "Halo, Hai, Hello, P, Assalamualaikum, Hey",
     "summary": "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?",
