@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core Intelligence - Model x Tambang</title>
+    <title>Core Intelligence - Integrated Brain</title>
     <script src="database/otakai.js"></script>
     <style>
         :root {
             --bg: #090b0f;
             --panel: #12151a;
-            --accent: linear-gradient(135deg, #4285f4, #9b51e0, #00d4ff);
-            --text-main: #f0f2f5;
-            --text-dim: #9aa0a6;
+            --accent: linear-gradient(135deg, #4285f4, #9b51e0);
+            --text-primary: #f0f2f5;
             --border: #2d3135;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg); color: var(--text-main);
+            background: var(--bg); color: var(--text-primary);
             margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden;
         }
 
@@ -27,20 +26,20 @@
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        .logo { font-weight: 800; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .status-badge { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-dim); background: #1a1d23; padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); }
+        .brand { font-weight: 800; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .status { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #9aa0a6; }
         .dot { width: 6px; height: 6px; background: #00e676; border-radius: 50%; box-shadow: 0 0 8px #00e676; }
 
         #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
-
-        .msg { max-width: 85%; padding: 12px 16px; border-radius: 20px; font-size: 14.5px; line-height: 1.5; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        .msg { max-width: 85%; padding: 12px 16px; border-radius: 20px; font-size: 14.5px; line-height: 1.5; }
         .user { align-self: flex-end; background: #1a73e8; color: white; border-bottom-right-radius: 4px; }
         .ai { align-self: flex-start; background: var(--panel); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
 
-        .input-area { padding: 20px; background: var(--bg); border-top: 1px solid var(--border); }
+        .input-area { padding: 20px; background: var(--bg); }
         .input-bar { background: #1c1f26; border: 1px solid var(--border); border-radius: 30px; display: flex; padding: 5px 8px 5px 18px; align-items: center; }
-        input { flex: 1; background: transparent; border: none; color: white; padding: 10px 0; outline: none; font-size: 15px; }
+        input { flex: 1; background: transparent; border: none; color: white; padding: 10px 0; outline: none; }
         
         #p-bar-box { height: 2px; background: #1c1f26; width: 100%; }
         #p-bar { height: 100%; width: 0%; background: var(--accent); transition: 0.3s; }
@@ -50,20 +49,20 @@
 <body>
 
 <header>
-    <div class="logo">CORE MODEL × TAMBANG</div>
-    <div class="status-badge"><div class="dot"></div> <span id="st-text">Booting Engine...</span></div>
+    <div class="brand">CORE INTELLIGENCE</div>
+    <div class="status"><div class="dot"></div> <span id="st-text">Syncing Brain...</span></div>
 </header>
 <div id="p-bar-box"><div id="p-bar"></div></div>
 
 <div id="chat-container">
-    <div class="msg ai">Sistem Hybrid Aktif. Model AI siap ngerapiin data dari Tambang Otak Alan.</div>
+    <div class="msg ai">Sistem AI Lokal aktif. Model & Tambang telah menyatu. Silakan bertanya.</div>
 </div>
 
 <div class="input-area">
     <div class="input-bar">
-        <input type="text" id="userInput" placeholder="Tunggu sebentar..." disabled onkeypress="if(event.key === 'Enter') sendChat()">
+        <input type="text" id="userInput" placeholder="Masukkan kueri..." disabled onkeypress="if(event.key === 'Enter') sendChat()">
         <button id="sendBtn" onclick="sendChat()" disabled>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
     </div>
 </div>
@@ -71,21 +70,19 @@
 <script type="module">
     import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
 
+    let brain = null;
     const stText = document.getElementById('st-text');
     const pBar = document.getElementById('p-bar');
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
-    const chatContainer = document.getElementById('chat-container');
 
-    let penterjemah = null;
-
-    // 1. Inisialisasi Model AI (Cuma buat ngerapiin teks, bukan buat mikir berat)
-    async function initAI() {
+    // 1. Load Model 20-30MB (The Brain)
+    async function wakeUp() {
         try {
-            penterjemah = await pipeline('text-generation', 'Xenova/SmolLM-135M-Instruct', {
+            brain = await pipeline('text-generation', 'Xenova/SmolLM-135M-Instruct', {
                 progress_callback: (p) => {
                     if (p.status === 'progress') {
-                        stText.innerText = `Sync: ${p.progress.toFixed(0)}%`;
+                        stText.innerText = `Loading: ${p.progress.toFixed(0)}%`;
                         pBar.style.width = p.progress + '%';
                     }
                 }
@@ -93,28 +90,27 @@
             stText.innerText = "Online";
             pBar.parentElement.style.display = 'none';
         } catch (e) {
-            stText.innerText = "Ready";
+            stText.innerText = "Error Memory";
         }
         userInput.disabled = false; sendBtn.disabled = false;
-        userInput.placeholder = "Tanya database...";
     }
 
-    // 2. Fungsi Ambil Data dari Tambang (Cepat & Ringan)
-    function ambilDariTambang(tanya) {
+    // 2. Fungsi Akses Memori (The Memory)
+    function accessMemory(query) {
         if (typeof otakAI === 'undefined') return "";
-        const q = tanya.toLowerCase();
+        const q = query.toLowerCase();
         let matches = otakAI.map(item => {
-            let skor = 0;
-            const t = (item.topic || "").toLowerCase();
-            const s = (item.summary || "").toLowerCase();
-            if (t.includes(q)) skor += 100;
-            q.split(" ").forEach(w => { if (s.includes(w)) skor += 10; });
-            return { ...item, skor };
-        }).filter(i => i.skor > 0).sort((a,b) => b.skor - a.skor);
-        return matches.length > 0 ? matches[0].summary : "";
+            let score = 0;
+            const t = (item.topic||"").toLowerCase();
+            const s = (item.summary||"").toLowerCase();
+            if (t.includes(q)) score += 50;
+            q.split(" ").forEach(w => { if(s.includes(w)) score += 5; });
+            return { ...item, score };
+        }).filter(i => i.score > 0).sort((a,b) => b.score - a.score);
+        return matches.slice(0, 1).map(m => m.summary).join("");
     }
 
-    // 3. Kolaborasi: Tambang kasih data -> Model AI ngerapiin
+    // 3. Proses Penyatuan (Seamless Hybrid)
     window.sendChat = async () => {
         const text = userInput.value.trim();
         if (!text || sendBtn.disabled) return;
@@ -122,31 +118,24 @@
         appendMsg(text, 'user');
         userInput.value = '';
         
-        // Step 1: Tarik data dari tambang (Instan)
-        const daging = ambilDariTambang(text);
-        if (!daging) {
-            appendMsg("Maaf Lan, data itu gak ada di tambang.", "ai");
-            return;
-        }
+        const context = accessMemory(text);
+        
+        // Model & Tambang nyatu di sini tanpa "Error" buatan
+        const prompt = `<|im_start|>system\nKamu AI Profesional. Gunakan data ini jika relevan: ${context}<|im_end|>\n<|im_start|>user\n${text}<|im_end|>\n<|im_start|>assistant\n`;
 
-        // Step 2: Model AI ngerapiin (Gak berat karena cuma baca satu teks)
-        if (penterjemah) {
-            stText.innerText = "Ngerapiin jawaban...";
+        if (brain) {
             sendBtn.disabled = true;
+            stText.innerText = "Processing...";
             try {
-                // Perintahnya cuma buat ngerapiin/meringkas data tambang
-                const prompt = `<|im_start|>system\nJelaskan data ini secara profesional: ${daging}<|im_end|>\n<|im_start|>user\n${text}<|im_end|>\n<|im_start|>assistant\n`;
-                const out = await penterjemah(prompt, { max_new_tokens: 60, temperature: 0.3 });
+                const out = await brain(prompt, { max_new_tokens: 60, temperature: 0.3 });
                 const res = out[0].generated_text.split('assistant\n')[1];
                 appendMsg(res.trim(), 'ai');
             } catch (err) {
-                appendMsg(daging, 'ai'); // Backup hasil tambang asli kalo HP lagi cape
+                appendMsg(context || "Saya sedang memproses informasi.", "ai");
             } finally {
                 sendBtn.disabled = false;
                 stText.innerText = "Online";
             }
-        } else {
-            appendMsg(daging, 'ai');
         }
     };
 
@@ -154,11 +143,12 @@
         const d = document.createElement('div');
         d.className = `msg ${s}`;
         d.innerText = t;
-        chatContainer.appendChild(d);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+        const c = document.getElementById('chat-container');
+        c.appendChild(d);
+        c.scrollTop = c.scrollHeight;
     }
 
-    initAI();
+    wakeUp();
 </script>
 </body>
 </html>
