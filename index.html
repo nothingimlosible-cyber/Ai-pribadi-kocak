@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Core Intelligence - Fix</title>
+    <title>Core Intelligence - Bridge Mode</title>
     <script src="otakai.js"></script>
     <style>
         :root { --bg: #090b0f; --panel: #12151a; --accent: linear-gradient(135deg, #4285f4, #9b51e0); --text: #f0f2f5; --border: #23262b; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        header { padding: 15px; background: rgba(18, 21, 26, 0.85); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); text-align: center; }
+        header { padding: 15px; background: rgba(18, 21, 26, 0.85); border-bottom: 1px solid var(--border); text-align: center; }
         .logo { font-weight: 800; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .msg { max-width: 82%; padding: 12px 16px; border-radius: 20px; font-size: 14.5px; line-height: 1.5; }
@@ -16,78 +16,84 @@
         .ai { align-self: flex-start; background: var(--panel); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
         .input-area { padding: 15px 20px 25px 20px; }
         .input-bar { background: #1c1f26; border: 1px solid var(--border); border-radius: 30px; display: flex; padding: 5px 10px 5px 15px; align-items: center; }
-        input { flex: 1; background: transparent; border: none; color: white; padding: 10px; outline: none; }
-        button { background: var(--accent); border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; }
+        input { flex: 1; background: transparent; border: none; color: white; padding: 10px; outline: none; font-size: 15px; }
+        button { background: var(--accent); border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
 <header><div class="logo">CORE INTELLIGENCE</div></header>
-
 <div id="chat-container">
-    <div class="msg ai">Sistem Aktif. Mode Model x Tambang siap, Lan!</div>
+    <div class="msg ai">Sistem Bridge Aktif. Model AI sudah terhubung ke Tambang Otak Alan.</div>
 </div>
 
 <div class="input-area">
     <div class="input-bar">
-        <input type="text" id="userInput" placeholder="Tanya sesuatu...">
-        <button id="sendBtn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-        </button>
+        <input type="text" id="userInput" placeholder="Tanya tentang tambang...">
+        <button id="sendBtn">↑</button>
     </div>
 </div>
 
 <script type="module">
-    // PASTIIN file brain.js ada di folder database
     import { bangunkanModel, tanyaModel } from './database/brain.js';
 
     const inputField = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
     const chatContainer = document.getElementById('chat-container');
 
+    // Bangunkan Model AI 20MB
     bangunkanModel();
 
-    function ambilData(q) {
-        if (typeof otakAI === 'undefined') return "";
-        const query = q.toLowerCase();
-        let match = otakAI.find(i => (i.topic||"").toLowerCase().includes(query) || (i.summary||"").toLowerCase().includes(query));
-        return match ? match.summary : "";
+    // FUNGSI PENCARI PINTAR (The Bridge)
+    function cariDiTambang(teks) {
+        if (typeof otakAI === 'undefined' || !Array.isArray(otakAI)) return "";
+        
+        const q = teks.toLowerCase();
+        // Nyari yang paling nyambung di database tambang
+        let hasil = otakAI.filter(item => 
+            (item.topic || "").toLowerCase().includes(q) || 
+            (item.summary || "").toLowerCase().includes(q)
+        );
+
+        // Kumpulin semua potongan daging jadi satu konteks buat si AI
+        return hasil.map(i => i.summary).join("\n");
     }
 
-    async function eksekusiKirim() {
-        const text = inputField.value.trim();
-        if (!text) return;
+    async function handleChat() {
+        const query = inputField.value.trim();
+        if (!query) return;
 
-        appendMsg(text, 'user');
+        appendMsg(query, 'user');
         inputField.value = '';
 
-        const data = ambilData(text);
+        // 1. Ambil data dari tambang (Database)
+        const konteksTambang = cariDiTambang(query);
         const aiMsgBox = appendMsg("...", 'ai');
 
         try {
-            // Panggil fungsi tanyaModel yang ada di brain.js
-            const jawaban = await tanyaModel(text, data);
-            
+            // 2. Kirim query + isi tambang ke brain.js
+            // Di sini Model AI bakal "belajar" isi tambang kamu secara instan
+            const jawabanAI = await tanyaModel(query, konteksTambang);
+
+            // 3. Tampilkan hasil olahan Model AI
             aiMsgBox.innerText = "";
             let i = 0;
-            function ngetik() {
-                if (i < jawaban.length) {
-                    aiMsgBox.innerText += jawaban.charAt(i);
+            function type() {
+                if (i < jawabanAI.length) {
+                    aiMsgBox.innerText += jawabanAI.charAt(i);
                     i++;
                     chatContainer.scrollTop = chatContainer.scrollHeight;
-                    setTimeout(ngetik, 15);
+                    setTimeout(type, 15);
                 }
             }
-            ngetik();
+            type();
         } catch (e) {
-            aiMsgBox.innerText = "Error: Pastikan brain.js sudah di-export dengan benar.";
-            console.error(e);
+            aiMsgBox.innerText = konteksTambang || "Maaf Lan, otak AI lagi loading.";
         }
     }
 
-    // Pasang pemicu tombol
-    sendBtn.addEventListener('click', eksekusiKirim);
-    inputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') eksekusiKirim(); });
+    sendBtn.addEventListener('click', handleChat);
+    inputField.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleChat(); });
 
     function appendMsg(t, s) {
         const d = document.createElement('div');
