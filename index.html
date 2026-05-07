@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Hybrid GPT Brain Correct Architecture</title>
+<title>Hybrid GPT FIX UI</title>
 
 <script src="otakai.js"></script>
 <script src="dataMemori.js"></script>
@@ -13,22 +13,51 @@ body{
   font-family:Arial;
   background:#0b0b0b;
   color:white;
-  display:flex;
   height:100vh;
+  display:flex;
+  overflow:hidden;
 }
 
+/* SIDEBAR */
 #sidebar{
   width:260px;
   background:#111;
   border-right:1px solid #222;
   display:flex;
   flex-direction:column;
+  transition:0.3s;
 }
 
+#sidebar.hidden{
+  margin-left:-260px;
+}
+
+/* MAIN */
+#main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+
+/* TOP BAR */
+#topbar{
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 10px;
+  border-bottom:1px solid #222;
+  background:#0b0b0b;
+  z-index:10;
+}
+
+/* CHAT */
 #chat{
   flex:1;
   overflow:auto;
   padding:15px;
+  z-index:1;
 }
 
 .msg{
@@ -41,6 +70,7 @@ body{
 .user{background:#2a2a2a;margin-left:auto}
 .ai{background:#151515;border:1px solid #333}
 
+/* INPUT */
 #bar{
   display:flex;
   padding:10px;
@@ -65,84 +95,87 @@ button{
   background:white;
   color:black;
   border-radius:10px;
+  cursor:pointer;
 }
+
+/* OVERLAY FIX (biar gak ketutup layer) */
 </style>
 </head>
 
 <body>
 
+<!-- SIDEBAR -->
 <div id="sidebar">
   <div style="padding:10px;font-weight:bold;border-bottom:1px solid #222">
-    🧠 AI Brain System
+    🧠 History
   </div>
+  <div id="history" style="padding:10px;font-size:12px"></div>
 </div>
 
-<div style="flex:1;display:flex;flex-direction:column">
+<!-- MAIN -->
+<div id="main">
 
-<div id="chat"></div>
+  <div id="topbar">
+    <button onclick="toggleSidebar()">☰</button>
+    <div>Hybrid GPT AI</div>
+    <div id="status">online</div>
+  </div>
 
-<div id="bar">
-  <input id="input" placeholder="Tanya AI...">
-  <button onclick="send()">Kirim</button>
-</div>
+  <div id="chat"></div>
+
+  <div id="bar">
+    <input id="input" placeholder="Tanya AI...">
+    <button onclick="send()">Kirim</button>
+  </div>
 
 </div>
 
 <script>
 
 // =========================
-// 🧠 EMOTION ENGINE
+// SIDEBAR TOGGLE FIX
 // =========================
 
-function detectEmotion(t){
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("hidden")
+}
 
+// =========================
+// MEMORY
+// =========================
+
+let memory=[]
+
+// =========================
+// EMOTION
+// =========================
+
+function emotion(t){
   t=t.toLowerCase()
-
-  if(t.includes("sedih")||t.includes("capek")) return "empathetic"
-  if(t.includes("kenapa")||t.includes("jelasin")) return "analytical"
-  if(t.includes("ai")) return "focused"
-
+  if(t.includes("sedih")) return "empathetic"
+  if(t.includes("kenapa")) return "analytical"
   return "neutral"
 }
 
 // =========================
-// 🧠 OTACAI ENGINE (WAJIB UTAMA)
-// =========================
-// ini yang kamu bilang "otakai.js"
-
-function runOtakai(input){
-
-  // fallback kalau AI.think tidak ada hasil
-  try{
-    return AI.think(input)
-  }catch(e){
-    return null
-  }
-}
-
-// =========================
-// 🧠 DATABASE SEARCH (dataMemori.js)
+// DATABASE SEARCH
 // =========================
 
-function searchDB(input){
+function search(q){
 
-  let words = input.toLowerCase().split(" ")
-
-  let best = null
-  let score = 0
+  let best=null
+  let score=0
 
   for(let d of dataMemori){
 
-    let s = 0
+    let s=0
 
-    words.forEach(w=>{
-      if(d.topic.includes(w)) s += 3
-      if(d.summary.includes(w)) s += 1
-    })
+    if(d.topic.includes(q.toLowerCase())) s+=2
+    if(d.summary.includes(q.toLowerCase())) s+=1
 
-    if(s > score){
-      score = s
-      best = d
+    if(s>score){
+      score=s
+      best=d
     }
   }
 
@@ -150,84 +183,26 @@ function searchDB(input){
 }
 
 // =========================
-// 🧠 GPT STYLE RESPONSE ENGINE
+// RESPONSE BUILDER
 // =========================
 
-function buildResponse(input, dbResult, otakaiResult, emotion){
+function build(db,emo){
 
-  let out = ""
+  let out="🧠 proses selesai<br><br>"
 
-  // 1. ACKNOWLEDGE
-  out += "🧠 Aku proses dulu maksud kamu...<br>"
-
-  // 2. DATABASE (dataMemori.js)
-  if(dbResult){
-    out += "📦 Dari database:<br>"
-    out += dbResult.summary + "<br><br>"
+  if(db){
+    out+="📦 "+db.summary+"<br><br>"
   }
 
-  // 3. OTACAI (reasoning engine)
-  if(otakaiResult){
-    out += "⚙️ Analisis otakai.js menemukan pola relevan.<br><br>"
+  if(emo==="empathetic"){
+    out+="Aku ngerti kamu...<br>"
   }
 
-  // 4. EMOTION LAYER
-  if(emotion === "empathetic"){
-    out += "Aku ngerti ini mungkin berat buat kamu...<br>"
+  if(emo==="analytical"){
+    out+="Aku jelasin logis ya...<br>"
   }
-
-  if(emotion === "analytical"){
-    out += "Aku jelasin secara logis ya.<br>"
-  }
-
-  if(emotion === "focused"){
-    out += "Ini topik teknis, aku breakdown pelan.<br>"
-  }
-
-  // 5. FINAL GPT FEELING
-  out += "<br>🤖 Kesimpulan:<br>"
-  out += "Aku menggabungkan database + pola otakai + konteks untuk menjawab secara paling relevan."
 
   return out
-}
-
-// =========================
-// 🧠 MAIN FLOW
-// =========================
-
-function send(){
-
-  let input=document.getElementById("input")
-  let text=input.value
-  if(!text)return
-
-  add(text,"user")
-
-  // STEP 1: emotion
-  let emo = detectEmotion(text)
-
-  // STEP 2: OTACAI ENGINE
-  let otakaiResult = runOtakai(text)
-
-  // STEP 3: DATABASE SEARCH
-  let dbResult = searchDB(text)
-
-  add("🧠 thinking...","ai")
-
-  setTimeout(()=>{
-
-    let response = buildResponse(
-      text,
-      dbResult,
-      otakaiResult,
-      emo
-    )
-
-    add(response,"ai")
-
-  },600)
-
-  input.value=""
 }
 
 // =========================
@@ -240,6 +215,35 @@ function add(t,type){
   d.innerHTML=t
   document.getElementById("chat").appendChild(d)
   document.getElementById("chat").scrollTop=999999
+}
+
+// =========================
+// MAIN FLOW
+// =========================
+
+function send(){
+
+  let input=document.getElementById("input")
+  let text=input.value
+  if(!text)return
+
+  add(text,"user")
+
+  let emo=emotion(text)
+
+  let db=search(text)
+
+  add("thinking...","ai")
+
+  setTimeout(()=>{
+
+    let res=build(db,emo)
+
+    add(res,"ai")
+
+  },400)
+
+  input.value=""
 }
 
 </script>
