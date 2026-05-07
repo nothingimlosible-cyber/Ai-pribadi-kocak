@@ -42,6 +42,600 @@ const dataMemori = [
     "date": "2026-05-07"
   },
   {
+    "id": 1778143690213,
+    "topic": "Asal Usul Nama Indonesia",
+    "summary": "Nama Indonesia berasal dari bahasa Yunani, yaitu Indos (Hindia) dan Nesos (Kepulauan), yang dipopulerkan oleh James Richardson Logan dan George Samuel Windsor Earl.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690215,
+    "topic": "Strategi Alligator Indicator",
+    "summary": "Indikator Alligator membantu trader mengidentifikasi fase pasar: Sleeping (sideways), Waking up (awal tren), dan Eating (tren kuat) untuk menentukan entry trading.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690216,
+    "topic": "Sejarah Runtuhnya Majapahit",
+    "summary": "Kerajaan Majapahit runtuh sekitar tahun 1527 akibat konflik internal (Perang Paregreg) dan menguatnya pengaruh kesultanan Islam seperti Demak di Jawa.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690217,
+    "topic": "Konsep Geopolitik Dunia",
+    "summary": "Geopolitik adalah studi tentang bagaimana lokasi geografis suatu negara mempengaruhi kebijakan politik luar negerinya dan hubungan kekuasaan antar bangsa.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690218,
+    "topic": "Tips Affiliate Fashion Faceless",
+    "summary": "Gunakan pencahayaan alami (matahari) saat merekam hoodie atau jersey, fokus pada tekstur jahitan dan detail logo agar calon pembeli tertarik tanpa perlu muncul wajah.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690219,
+    "topic": "Apa itu Blockchain",
+    "summary": "Blockchain adalah buku besar digital yang terdesentralisasi dan transparan, di mana setiap data transaksi dienkripsi dan dihubungkan secara kronologis agar tidak bisa dimanipulasi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690220,
+    "topic": "Sejarah Perang Diponegoro",
+    "summary": "Perang Diponegoro (1825-1830) dipicu oleh pemasangan patok jalan Belanda di tanah makam leluhur Pangeran Diponegoro, menjadi perang terbesar yang menguras kas Belanda.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690221,
+    "topic": "Cara Kerja Moving Average",
+    "summary": "Moving Average (MA) menghitung rata-rata harga dalam periode tertentu untuk memperhalus fluktuasi harga dan menunjukkan arah tren jangka panjang atau pendek.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690222,
+    "topic": "Fakta Unik Pulau Socotra",
+    "summary": "Pulau Socotra di Yaman dikenal karena flora uniknya seperti Pohon Darah Naga (Dragon Blood Tree) yang tidak ditemukan di tempat lain di Bumi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690223,
+    "topic": "Manajemen Risiko 1 Persen",
+    "summary": "Dalam trading, jangan pernah merisikokan lebih dari 1% saldo akun dalam satu transaksi untuk menjaga psikologi dan kelangsungan akun dari kerugian besar.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690224,
+    "topic": "Sejarah Revolusi Industri",
+    "summary": "Dimulai di Inggris pada abad ke-18 dengan penemuan mesin uap, mengubah sistem produksi manual menjadi mesin massal yang merubah tatanan sosial dunia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690225,
+    "topic": "Pentingnya Niche Konten",
+    "summary": "Memilih niche yang spesifik (misal: hanya hoodie distro) membantu algoritma TikTok mengenali target audiensmu dengan lebih cepat dan meningkatkan konversi affiliate.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690226,
+    "topic": "Dampak Perang Dingin",
+    "summary": "Perang Dingin antara AS dan Uni Soviet memicu perlombaan senjata nuklir, eksplorasi luar angkasa, dan pembagian dunia menjadi blok Barat dan blok Timur.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690227,
+    "topic": "Cara Menanam Kangkung Hidroponik",
+    "summary": "Gunakan sistem wick (sumbu) sederhana dengan nutrisi AB Mix, kangkung bisa dipanen dalam waktu 21-25 hari dengan kualitas yang lebih bersih.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690228,
+    "topic": "Apa itu Analisis Fundamental",
+    "summary": "Analisis fundamental menilai nilai intrinsik aset berdasarkan berita ekonomi, kebijakan suku bunga, laporan keuangan, dan stabilitas politik suatu negara.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690229,
+    "topic": "Misteri Piramida Giza",
+    "summary": "Piramida Agung Giza dibangun sekitar 4.500 tahun lalu dengan presisi matematis luar biasa, menggunakan jutaan blok batu yang beratnya mencapai berton-ton.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690230,
+    "topic": "Keunggulan USB Condenser Mic",
+    "summary": "Microphone USB condenser cocok untuk voice-over dokumentasi karena mudah digunakan (plug and play) dan mampu menangkap detail suara yang warm dan profesional.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690231,
+    "topic": "Konsep Smart AI v10.5",
+    "summary": "Algoritma v10.5 menggunakan Weighted Ranking yang memprioritaskan kecocokan kata kunci pada topik (skor 10.0) dibandingkan pada ringkasan (skor 1.5).",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690232,
+    "topic": "Penyebab Inflasi Ekonomi",
+    "summary": "Inflasi terjadi ketika jumlah uang yang beredar lebih banyak daripada barang yang tersedia, atau karena kenaikan biaya produksi yang memaksa harga naik.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690233,
+    "topic": "Tips Video Dokumenter Ruhi Cenet",
+    "summary": "Fokus pada narasi yang mendalam, visualisasi sinematik, dan topik-topik unik atau lokasi tersembunyi yang jarang dibahas oleh media arus utama.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690234,
+    "topic": "Sifat Karakter Pangeran Diponegoro",
+    "summary": "Beliau dikenal sebagai sosok ulama sekaligus bangsawan yang sangat menjunjung tinggi keadilan dan adat istiadat Jawa melawan penindasan penjajah.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690235,
+    "topic": "Teknik Scalping di Binance",
+    "summary": "Lakukan buy di area support kuat dan sell di resistance terdekat dalam hitungan menit, pastikan volume perdagangan sedang tinggi agar eksekusi cepat.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690236,
+    "topic": "Sejarah Sumpah Pemuda",
+    "summary": "Ditetapkan pada 28 Oktober 1928, menjadi tonggak sejarah persatuan bangsa Indonesia dengan ikrar satu tanah air, satu bangsa, dan satu bahasa.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690237,
+    "topic": "Apa itu DeFi (Decentralized Finance)",
+    "summary": "DeFi adalah sistem keuangan yang menggunakan smart contract di blockchain untuk menjalankan transaksi perbankan tanpa perantara seperti bank konvensional.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690238,
+    "topic": "Tips Editing Video di HP",
+    "summary": "Gunakan aplikasi seperti CapCut atau VN, manfaatkan fitur keyframe untuk gerakan gambar yang dinamis dan tambahkan sound effect untuk kesan profesional.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690239,
+    "topic": "Masa Kejayaan Kerajaan Sriwijaya",
+    "summary": "Sriwijaya menjadi pusat perdagangan maritim dan pembelajaran agama Buddha terbesar di Asia Tenggara pada abad ke-7 hingga ke-11.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690240,
+    "topic": "Cara Membaca Candlestick",
+    "summary": "Candlestick menunjukkan harga pembukaan, penutupan, tertinggi, dan terendah dalam satu periode; pola engulfing atau doji bisa memberi sinyal pembalikan harga.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690241,
+    "topic": "Fakta Geopolitik Selat Malaka",
+    "summary": "Selat Malaka adalah jalur perdagangan laut tersibuk di dunia, menjadi titik strategis yang menghubungkan ekonomi Asia Timur dengan Eropa dan Timur Tengah.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690242,
+    "topic": "Apa itu Smart Contract",
+    "summary": "Smart contract adalah program komputer yang berjalan di atas blockchain yang secara otomatis menjalankan perjanjian ketika syarat-syarat tertentu terpenuhi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690243,
+    "topic": "Strategi Konten TikTok Viral",
+    "summary": "Gunakan hook (kalimat pembuka) yang mengejutkan di 3 detik pertama, pakai lagu yang sedang tren, dan pastikan kualitas video jernih (minimal 1080p).",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690244,
+    "topic": "Perbedaan Bitcoin dan Altcoin",
+    "summary": "Bitcoin adalah cryptocurrency pertama (emas digital), sementara Altcoin (Alternative Coin) seperti Ethereum menawarkan fitur tambahan seperti smart contract.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690245,
+    "topic": "Sejarah Tembok Besar Cina",
+    "summary": "Dibangun selama berabad-abad untuk melindungi kekaisaran Cina dari serangan suku nomaden dari utara, membentang ribuan kilometer melintasi pegunungan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690246,
+    "topic": "Tips Trading Pasangan XAUUSD",
+    "summary": "Emas (XAUUSD) sangat sensitif terhadap berita inflasi AS dan konflik geopolitik; perhatikan data DXY (Dollar Index) sebelum mengambil posisi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690247,
+    "topic": "Pentingnya Portfolio Content Creator",
+    "summary": "Memiliki website atau link katalog produk (affiliate) yang rapi membantu membangun kepercayaan brand dan audiens terhadap kualitas rekomendasi produkmu.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690248,
+    "topic": "Apa itu Web3",
+    "summary": "Web3 adalah visi internet masa depan yang berjalan di atas blockchain, di mana pengguna memiliki kendali penuh atas data dan aset digital mereka sendiri.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690249,
+    "topic": "Cara Pasang Keramik yang Rapi",
+    "summary": "Pastikan lantai dasar sudah rata, gunakan adukan semen yang pas, dan gunakan spacer keramik agar jarak antar nat tetap konsisten dan lurus.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690250,
+    "topic": "Sejarah Penemuan Listrik",
+    "summary": "Pengetahuan tentang listrik berkembang dari eksperimen Benjamin Franklin, Michael Faraday, hingga Thomas Edison yang mematenkan lampu pijar praktis pertama.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690251,
+    "topic": "Tips Memilih Soundcard V8",
+    "summary": "Soundcard V8 sangat terjangkau bagi pemula untuk podcast atau voice-over, karena memiliki fitur noise reduction dan efek suara instan yang cukup lengkap.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690252,
+    "topic": "Dinamika Konflik Timur Tengah",
+    "summary": "Konflik di wilayah ini sering kali dipicu oleh perebutan sumber daya energi, perbedaan ideologi, serta campur tangan kekuatan besar dunia (geopolitik).",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690253,
+    "topic": "Fungsi Indikator RSI",
+    "summary": "Relative Strength Index (RSI) digunakan untuk mengukur kekuatan harga; angka di atas 70 menunjukkan overbought (jenuh beli), di bawah 30 menunjukkan oversold (jenuh jual).",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690254,
+    "topic": "Sejarah Kerajaan Demak",
+    "summary": "Kesultanan Demak adalah kerajaan Islam pertama di Jawa yang didirikan oleh Raden Patah, berperan besar dalam penyebaran Islam melalui Walisongo.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690255,
+    "topic": "Apa itu NFT (Non-Fungible Token)",
+    "summary": "NFT adalah aset digital unik di blockchain yang membuktikan kepemilikan atas karya seni, koleksi, atau item dalam game yang tidak bisa diduplikasi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690256,
+    "topic": "Tips Menulis Script Dokumenter",
+    "summary": "Mulailah dengan riset data yang kuat, buat struktur cerita yang memiliki konflik atau misteri, dan akhiri dengan pesan moral atau fakta yang mengejutkan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690257,
+    "topic": "Pentingnya Backup Data GitHub",
+    "summary": "Selalu simpan salinan lokal folder database dan file otakai.js secara berkala untuk menghindari kehilangan data jika terjadi kesalahan pada repositori cloud.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690258,
+    "topic": "Sejarah Perang Dunia I",
+    "summary": "Dipicu oleh pembunuhan Archduke Franz Ferdinand pada 1914, melibatkan aliansi besar negara-negara Eropa dan berakhir dengan runtuhnya empat kekaisaran besar.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690259,
+    "topic": "Cara Menghitung Profit Affiliate",
+    "summary": "Profit affiliate dihitung dari persentase komisi yang diberikan seller dikalikan jumlah barang yang berhasil terjual melalui link unik milikmu.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690260,
+    "topic": "Keunikan Budaya Sunda",
+    "summary": "Budaya Sunda dikenal dengan nilai kesopanan yang tinggi, filosofi \"Silih Asah, Silih Asih, Silih Asuh\", serta alat musik angklung yang mendunia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690261,
+    "topic": "Apa itu Metaverse",
+    "summary": "Metaverse adalah ruang virtual 3D di mana pengguna bisa berinteraksi, bekerja, dan bermain menggunakan avatar dalam lingkungan yang menyerupai dunia nyata.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690262,
+    "topic": "Tips Memasang Plafon Gypsum",
+    "summary": "Gunakan sekrup khusus gypsum, pastikan sambungan antar papan ditutup dengan compound dan serat kain (tape) agar tidak muncul retakan setelah dicat.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690263,
+    "topic": "Sejarah Kekaisaran Romawi",
+    "summary": "Salah satu kekaisaran terbesar dalam sejarah yang memberikan warisan berupa sistem hukum, arsitektur beton, dan bahasa Latin yang menjadi dasar bahasa Eropa.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690264,
+    "topic": "Cara Riset Produk Terlaris",
+    "summary": "Gunakan fitur \"Top Selling\" di marketplace atau amati tren hashtag di TikTok untuk menemukan produk fashion yang sedang banyak dicari oleh anak muda.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690265,
+    "topic": "Pentingnya Istirahat saat Trading",
+    "summary": "Overtrading atau terlalu banyak transaksi dalam sehari bisa merusak logika; istirahat membantu menjaga mental tetap tenang agar keputusan tetap objektif.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690266,
+    "topic": "Apa itu AI Generatif",
+    "summary": "AI generatif adalah jenis kecerdasan buatan yang mampu menciptakan konten baru seperti teks, gambar, atau musik berdasarkan pola dari data pelatihannya.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690267,
+    "topic": "Sejarah Penjelajahan Samudra",
+    "summary": "Bangsa Eropa mulai menjelajahi dunia pada abad ke-15 mencari rempah-rempah di Nusantara, yang memicu era kolonialisme di berbagai belahan dunia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690268,
+    "topic": "Tips Memilih Laptop untuk Trading",
+    "summary": "Pilih laptop dengan layar jernih, RAM minimal 8GB, dan baterai yang awet agar proses monitoring grafik harga di berbagai platform tidak terhambat.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690269,
+    "topic": "Misteri Benua Atlantis",
+    "summary": "Atlantis adalah pulau legendaris yang pertama kali disebut oleh filsuf Plato; konon merupakan peradaban maju yang tenggelam ke laut dalam satu malam.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690270,
+    "topic": "Pentingnya Optimasi SEO Web",
+    "summary": "SEO (Search Engine Optimization) membantu web kamu muncul di halaman pertama Google, meningkatkan trafik pengunjung tanpa harus membayar iklan (organik).",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690271,
+    "topic": "Cara Mengatasi Burnout Konten",
+    "summary": "Jangan memaksakan diri, cobalah cari inspirasi baru dengan menonton film dokumenter atau jalan-jalan santai untuk menyegarkan kembali kreativitas otak.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690272,
+    "topic": "Sejarah Penemuan Telepon",
+    "summary": "Alexander Graham Bell diakui sebagai penemu telepon pertama pada 1876, mengubah cara manusia berkomunikasi jarak jauh secara instan lewat kabel suara.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690273,
+    "topic": "Apa itu Cryptocurrency Meme",
+    "summary": "Meme coin seperti Dogecoin atau Shiba Inu adalah koin yang dibuat berdasarkan lelucon internet, harganya sangat bergantung pada komunitas dan tren medsos.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690274,
+    "topic": "Tips Pasang Keramik Dinding",
+    "summary": "Rendam keramik dalam air sebelum dipasang agar daya rekat semen lebih kuat, dan gunakan bantuan waterpass agar posisi keramik tetap tegak lurus.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690275,
+    "topic": "Sejarah Kerajaan Kutai",
+    "summary": "Kerajaan Kutai di Kalimantan Timur adalah kerajaan Hindu tertua di Indonesia, dibuktikan dengan penemuan prasasti Yupa peninggalan Raja Mulawarman.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690276,
+    "topic": "Fungsi GPU dalam Content Creation",
+    "summary": "Graphic Processing Unit (GPU) sangat penting untuk mempercepat proses rendering video kualitas tinggi dan menjalankan aplikasi desain grafis yang berat.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690277,
+    "topic": "Apa itu Geopolitik Energi",
+    "summary": "Studi tentang bagaimana cadangan minyak, gas bumi, dan energi terbarukan mempengaruhi kekuatan politik suatu negara serta konflik antar negara produsen.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690278,
+    "topic": "Tips Memilih Mic Condenser Murah",
+    "summary": "Cari mic yang sudah termasuk pop filter dan shock mount untuk meminimalkan gangguan suara napas atau getaran meja saat proses rekaman suara.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690279,
+    "topic": "Sejarah Terbentuknya PBB",
+    "summary": "Perserikatan Bangsa-Bangsa (PBB) didirikan pada 1945 setelah Perang Dunia II berakhir dengan tujuan menjaga perdamaian dunia dan kerjasama internasional.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690280,
+    "topic": "Cara Meningkatkan Conversion Rate",
+    "summary": "Gunakan kalimat \"Call to Action\" yang jelas (seperti: Cek Keranjang Kuning!), serta berikan ulasan jujur tentang kelebihan produk yang kamu promosikan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690281,
+    "topic": "Manfaat Belajar Coding bagi Mahasiswa",
+    "summary": "Coding melatih logika berpikir sistematis dan pemecahan masalah, serta menjadi keterampilan tambahan yang sangat berharga di dunia kerja era digital.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690282,
+    "topic": "Sejarah Revolusi Amerika",
+    "summary": "Perjuangan 13 koloni Amerika untuk merdeka dari kekuasaan Inggris (1775-1783), yang menghasilkan deklarasi kemerdekaan dan sistem demokrasi modern.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690283,
+    "topic": "Apa itu Liquidity Pool di Crypto",
+    "summary": "Wadah dana yang terkunci dalam smart contract untuk memfasilitasi perdagangan aset di bursa desentralisasi (DEX) tanpa membutuhkan broker tradisional.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690284,
+    "topic": "Tips Menata Katalog Affiliate",
+    "summary": "Kelompokkan produk berdasarkan kategori (misal: Hoodie, Jersey, Celana) agar audiens lebih mudah mencari barang yang mereka inginkan di profilmu.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690285,
+    "topic": "Sejarah Peradaban Mesir Kuno",
+    "summary": "Dikenal dengan kemajuan di bidang astronomi, kedokteran, dan arsitektur piramida, serta sistem tulisan hieroglif yang menggunakan simbol gambar.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690286,
+    "topic": "Pentingnya Pencahayaan untuk Video",
+    "summary": "Lighting yang bagus membuat kualitas video HP terlihat seperti kamera profesional; gunakan ring light atau softbox untuk hasil wajah yang lebih cerah.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690287,
+    "topic": "Apa itu Proof of Stake (PoS)",
+    "summary": "Mekanisme konsensus blockchain di mana validasi transaksi dilakukan oleh pemegang koin (stakers), yang lebih hemat energi dibandingkan sistem Proof of Work.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690288,
+    "topic": "Sejarah Terusan Suez",
+    "summary": "Jalur air buatan di Mesir yang menghubungkan Laut Mediterania dengan Laut Merah, menjadi jalur pintas utama kapal dagang dari Eropa ke Asia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690289,
+    "topic": "Cara Mengelola Keuangan Freelancer",
+    "summary": "Pisahkan rekening pribadi dengan rekening hasil affiliate, serta sisihkan minimal 20% untuk tabungan dan modal pengembangan alat konten berikutnya.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690290,
+    "topic": "Fakta Unik Hewan Axolotl",
+    "summary": "Axolotl adalah salamander asal Meksiko yang memiliki kemampuan luar biasa untuk menumbuhkan kembali bagian tubuhnya yang hilang, termasuk jantung.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690291,
+    "topic": "Apa itu API (Application Programming Interface)",
+    "summary": "API adalah jembatan yang memungkinkan dua aplikasi atau sistem yang berbeda untuk saling berkomunikasi dan bertukar data secara otomatis.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690292,
+    "topic": "Tips Memulai Bisnis Affiliate dari Nol",
+    "summary": "Mulai dengan akun media sosial bertema spesifik, upload konten secara konsisten setiap hari, dan pelajari minat audiens melalui fitur statistik/analytics.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690293,
+    "topic": "Sejarah Penaklukan Konstantinopel",
+    "summary": "Jatuhnya Konstantinopel ke tangan Kesultanan Utsmani (1453) dipimpin Sultan Mehmed II, yang mengubah peta perdagangan dunia dan memulai era Renaissance.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690294,
+    "topic": "Apa itu Diversifikasi Portofolio",
+    "summary": "Strategi membagi modal ke beberapa jenis aset berbeda (misal: emas, saham, crypto) untuk meminimalkan risiko jika salah satu aset harganya anjlok.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690295,
+    "topic": "Tips Memasang Rangka Baja Ringan",
+    "summary": "Pastikan perhitungan jarak antar kuda-kuda sudah tepat sesuai beban atap, gunakan baut khusus baja ringan agar struktur atap kokoh dan tahan lama.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690296,
+    "topic": "Sejarah Berdirinya ASEAN",
+    "summary": "Didirikan pada 8 Agustus 1967 lewat Deklarasi Bangkok oleh Indonesia, Malaysia, Filipina, Singapura, dan Thailand untuk kerjasama regional.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690297,
+    "topic": "Apa itu Cloud Computing",
+    "summary": "Layanan penyimpanan dan pengolahan data melalui internet di server jarak jauh, memungkinkan akses data dari mana saja tanpa perlu perangkat fisik besar.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690298,
+    "topic": "Cara Menentukan Harga Jual Produk",
+    "summary": "Hitung total modal awal ditambah biaya operasional (listrik, kuota, packing) dan tambahkan persentase keuntungan yang wajar sesuai harga pasar.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690299,
+    "topic": "Sejarah Revolusi Prancis",
+    "summary": "Pergolakan rakyat Prancis (1789) untuk menggulingkan monarki absolut, yang mempopulerkan semboyan Liberte (Kebebasan), Egalite (Kesetaraan), Fraternite (Persaudaraan).",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690300,
+    "topic": "Pentingnya Mentalitas Pembelajar",
+    "summary": "Dunia digital berkembang sangat cepat; terus belajar hal baru seperti update algoritma AI atau tren marketing terbaru sangat penting agar tetap relevan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690301,
+    "topic": "Apa itu Mining Crypto",
+    "summary": "Proses validasi transaksi di blockchain (seperti Bitcoin) menggunakan kekuatan komputer besar, di mana penambang mendapatkan hadiah berupa koin baru.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690302,
+    "topic": "Tips Membuat Konten Edukasi Unik",
+    "summary": "Gunakan bahasa yang santai dan mudah dimengerti, tambahkan analogi lucu, dan gunakan visual pendukung agar materi yang berat terasa lebih ringan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690303,
+    "topic": "Sejarah Penemuan Kertas",
+    "summary": "Kertas pertama kali ditemukan di Cina oleh Cai Lun sekitar abad ke-2 Masehi, yang kemudian merevolusi cara manusia menyimpan dan menyebarkan ilmu pengetahuan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690304,
+    "topic": "Apa itu Ekonomi Digital",
+    "summary": "Aktivitas ekonomi yang dihasilkan dari miliaran koneksi online setiap hari antar orang, bisnis, perangkat, data, dan proses di seluruh dunia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690305,
+    "topic": "Tips Memasang Instalasi Listrik Rumah",
+    "summary": "Gunakan kabel berstandar SNI dengan ukuran yang sesuai beban arus, serta pasang MCB (Miniature Circuit Breaker) sebagai pengaman jika terjadi korsleting.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690306,
+    "topic": "Sejarah Kerajaan Gowa-Tallo",
+    "summary": "Kerajaan maritim kuat di Sulawesi Selatan dengan tokoh terkenal Sultan Hasanuddin (Ayam Jantan dari Timur) yang gigih melawan penjajahan Belanda.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690307,
+    "topic": "Manfaat Memiliki Website Pribadi",
+    "summary": "Website menjadi identitas digital yang profesional, tempat memamerkan karya (portfolio), sekaligus aset jangka panjang yang bisa dimonetisasi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690308,
+    "topic": "Apa itu Internet of Things (IoT)",
+    "summary": "Teknologi yang menghubungkan berbagai perangkat fisik (seperti lampu, AC, atau kamera) ke internet agar bisa dikendalikan secara jarak jauh lewat HP.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690309,
+    "topic": "Tips Menjaga Kesehatan Mata bagi Trader",
+    "summary": "Gunakan fitur \"Blue Light Filter\" di layar gadget dan terapkan aturan 20-20-20 (tiap 20 menit lihat objek sejauh 20 kaki selama 20 detik).",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690310,
+    "topic": "Sejarah Penemuan Kompas",
+    "summary": "Kompas magnetik pertama kali ditemukan di Cina pada masa Dinasti Han, yang menjadi alat navigasi vital bagi para penjelajah samudra di masa depan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690311,
+    "topic": "Pentingnya Konsistensi dalam Konten",
+    "summary": "Algoritma media sosial lebih menyukai kreator yang aktif secara rutin; konsistensi membantu akunmu lebih sering direkomendasikan ke audiens baru.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778143690312,
+    "topic": "Apa itu Model AI Lokal",
+    "summary": "Model AI lokal adalah sistem kecerdasan buatan yang berjalan langsung di perangkatmu (seperti Smart AI Alan) tanpa perlu terhubung ke server eksternal.",
+    "date": "2026-05-07"
+  },
+  {
     "id": 6001,
     "topic": "Halo, Hai, Hello, P, Assalamualaikum, Hey",
     "summary": "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?",
