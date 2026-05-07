@@ -1,169 +1,163 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART AI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg: #212121;
-            --sidebar: #171717;
-            --input: #2f2f2f;
-            --accent: #10a37f;
-            --text: #ececec;
-        }
+<!DOCTYPE html>  <html lang="id">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Smart AI - Mining Core</title>  
+    <script src="https://cdn.tailwindcss.com"></script>  
+    <style>  
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');  
+        body { background: #0d0d0d; color: #ececec; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; overflow: hidden; }  
+        .sidebar { background: #000000; width: 280px; height: 100vh; position: fixed; left: -280px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100; border-right: 1px solid #1a1a1a; }  
+        .sidebar.active { left: 0; }  
+        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }  
+        .overlay.active { display: block; }  
+        .main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100vh; width: 100%; transition: 0.3s; }  
+        .chat-area { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: none; }  
+        .chat-area::-webkit-scrollbar { display: none; }  
+        .msg-container { max-width: 800px; margin: 0 auto; width: 100%; }  
+        .user-bubble { background: #2f2f2f; border-radius: 20px; padding: 12px 20px; margin-left: auto; width: fit-content; max-width: 85%; margin-bottom: 25px; }  
+        .ai-row { margin-bottom: 40px; display: flex; flex-direction: column; gap: 8px; }  
+        .ai-name { font-size: 14px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }  
+        .ai-text { font-size: 16px; line-height: 1.7; color: #d1d1d1; }  
+        .input-wrapper { padding: 15px 20px 30px; background: #0d0d0d; }  
+        .input-container { background: #212121; border-radius: 30px; padding: 6px 16px; display: flex; align-items: center; gap: 10px; max-width: 800px; margin: 0 auto; border: 1px solid #333; }  
+        input { background: transparent; border: none; outline: none; color: white; flex: 1; height: 45px; font-size: 16px; }  
+        .dot { width: 4px; height: 4px; background: #888; border-radius: 50%; animation: blink 1.4s infinite; }  
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }  
+    </style>  
+</head>  
+<body class="flex">  
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>  
+    
+    <aside id="sidebar" class="sidebar p-4 flex flex-col">  
+        <h2 class="text-xl font-bold mb-8 px-2 text-white">Smart AI</h2>  
+        <div class="space-y-4 flex-1">  
+            <div id="status" class="text-[10px] text-green-500 px-3 font-bold uppercase bg-zinc-900 py-2 rounded-lg">● Mining System Online</div>  
+            <hr class="border-zinc-800">  
+            <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-widest px-3">History Tambang</p>  
+            <div id="historyList" class="space-y-1 text-sm text-zinc-400 overflow-y-auto"></div>  
+        </div>  
+    </aside>  
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); overflow: hidden; }
+    <div class="main-content">  
+        <header class="p-4 flex items-center justify-between bg-[#0d0d0d]/80 backdrop-blur-md sticky top-0 z-50">  
+            <button onclick="toggleSidebar()" class="p-2 hover:bg-zinc-800 rounded-lg text-white">  
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>  
+            </button>  
+            <div class="flex flex-col items-center">  
+                <span class="font-bold text-sm text-white uppercase tracking-widest">Smart AI</span>  
+                <span class="text-[9px] text-zinc-500 uppercase">Database Only Mode</span>  
+            </div>  
+            <div class="w-10"></div>  
+        </header>  
 
-        .app-container { display: flex; height: 100vh; width: 100vw; position: relative; }
+        <main id="chatWindow" class="chat-area">  
+            <div class="msg-container" id="msgBox">  
+                <div class="ai-row">  
+                    <div class="ai-name">  
+                        <div class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center text-[10px] font-bold">S</div>  
+                        Smart AI  
+                    </div>  
+                    <div class="ai-text">Database Tambang (otakai.js) sudah siap, Lan. Mau cari info apa hari ini?</div>  
+                </div>  
+            </div>  
+        </main>  
 
-        /* SIDEBAR SISTEM */
-        .sidebar {
-            width: 260px; height: 100%; background: var(--sidebar);
-            position: fixed; top: 0; transition: transform 0.3s ease; z-index: 1000;
-            display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.1);
-        }
-        #sb-left { left: 0; transform: translateX(-100%); }
-        #sb-right { right: 0; transform: translateX(100%); }
-        .sidebar.open { transform: translateX(0); }
+        <footer class="input-wrapper">  
+            <div class="input-container shadow-2xl">  
+                <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startMining()" placeholder="Tanya Smart AI...">  
+                <button onclick="startMining()" class="p-2 bg-white text-black rounded-full hover:scale-105 transition-all">  
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>  
+                </button>  
+            </div>  
+            <p class="text-[9px] text-center mt-3 text-zinc-600 font-mono italic">SYNC_OK // OTAK_AI_JS // VERCEL_READY</p>  
+        </footer>  
+    </div>  
 
-        /* MAIN CONTENT */
-        .main-content { flex: 1; display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
-        header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .btn-icon { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; }
+    <script src="otakai.js"></script>  
+    <script>  
+        class MiningCore {  
+            constructor() {  
+                this.noise = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang', 'bisa', 'tolong', 'ada'];  
+            }  
+            clean(t) {  
+                return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/)  
+                    .filter(w => w.length > 2 && !this.noise.includes(w));  
+            }  
+            think(query, db) {  
+                const tokens = this.clean(query);  
+                let ranking = [];  
+                db.forEach(entry => {  
+                    let score = 0;  
+                    const topicStr = entry.topic.toLowerCase();  
+                    const summaryStr = entry.summary.toLowerCase();  
+                    tokens.forEach(tok => {  
+                        if (topicStr.includes(tok)) score += 10.0;  
+                        if (summaryStr.includes(tok)) score += 1.5;  
+                    });  
+                    if (score > 0.5) ranking.push({ ...entry, pwr: score });  
+                });  
+                return ranking.sort((a, b) => b.pwr - a.pwr)[0];  
+            }  
+        }  
 
-        /* CHAT CLEAN UI */
-        #chat-window { flex: 1; overflow-y: auto; padding-bottom: 120px; scroll-behavior: smooth; }
-        .msg-row { width: 100%; padding: 25px 15%; display: flex; gap: 20px; }
-        .msg-row.ai { background: rgba(255,255,255,0.02); }
-        .avatar { width: 32px; height: 32px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; }
-        .u-av { background: #5436da; }
-        .a-av { background: var(--accent); }
-        .text { font-size: 16px; line-height: 1.6; color: #d1d1d1; flex: 1; }
+        const Miner = new MiningCore();  
 
-        /* INPUT AREA */
-        .input-wrap {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            background: linear-gradient(transparent, var(--bg) 40%);
-            padding: 20px 15%; z-index: 10;
-        }
-        .input-box {
-            background: var(--input); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px; padding: 12px 15px; display: flex; align-items: center;
-        }
-        textarea { flex: 1; background: none; border: none; color: #fff; outline: none; resize: none; font-size: 16px; max-height: 200px; }
-        #send-btn { background: none; border: none; color: var(--accent); font-size: 20px; cursor: pointer; margin-left: 10px; }
+        function toggleSidebar() {  
+            document.getElementById('sidebar').classList.toggle('active');  
+            document.getElementById('overlay').classList.toggle('active');  
+        }  
 
-        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 900; }
-        .overlay.active { display: block; }
-    </style>
-</head>
-<body>
+        function startMining() {  
+            const el = document.getElementById('userInput');  
+            const q = el.value.trim();  
+            if(!q) return;  
 
-    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+            addMsg(q, 'user');  
+            el.value = '';  
 
-    <div class="app-container">
-        <aside id="sb-left" class="sidebar">
-            <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between;">
-                <span>Histori Chat</span>
-                <i class="fas fa-times" onclick="closeAll()" style="cursor:pointer"></i>
-            </div>
-        </aside>
+            const rid = "ai-" + Date.now();  
+            addMsg(`<div class="flex gap-1 py-2"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', rid);  
 
-        <main class="main-content">
-            <header>
-                <button class="btn-icon" onclick="openSB('sb-left')"><i class="fas fa-bars"></i></button>
-                <div style="font-weight:600">SMART AI</div>
-                <button class="btn-icon" onclick="openSB('sb-right')"><i class="fas fa-cog"></i></button>
-            </header>
+            setTimeout(() => {  
+                const box = document.getElementById(rid);  
+                // Pastikan 'dataMemori' adalah nama array di dalam otakai.js kamu
+                const miningResult = Miner.think(q, typeof dataMemori !== 'undefined' ? dataMemori : []);  
+                  
+                if (miningResult) {  
+                    let out = miningResult.summary;  
+                    // Logika acak kalau ada pilihan jawaban dipisah tanda '/'
+                    if (out.includes('/')) out = out.split('/')[Math.floor(Math.random() * out.split('/').length)].trim();  
+                    box.innerHTML = out;  
+                    addHistory(miningResult.topic);  
+                } else {  
+                    box.innerHTML = "Maaf Lan, data tambang untuk itu belum ada. Coba kata kunci lain.";  
+                }  
+                scrollDown();  
+            }, 600);  
+        }  
 
-            <div id="chat-window">
-                </div>
+        function addMsg(txt, type, id = null) {  
+            const container = document.getElementById('msgBox');  
+            const div = document.createElement('div');  
+            div.className = type === 'user' ? 'user-bubble' : 'ai-row';  
+            div.innerHTML = type === 'user' ? txt : `<div class="ai-name"><div class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center text-[10px] font-bold">S</div>Smart AI</div><div class="ai-text" id="${id}">${txt}</div>`;  
+            container.appendChild(div);  
+            scrollDown();  
+        }  
 
-            <div class="input-wrap">
-                <div class="input-box">
-                    <textarea id="user-input" placeholder="Tulis sesuatu..." rows="1"></textarea>
-                    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
-                </div>
-            </div>
-        </main>
+        function addHistory(topic) {  
+            const list = document.getElementById('historyList');  
+            const item = document.createElement('div');  
+            item.className = "p-2 hover:bg-zinc-800 rounded-lg truncate text-zinc-400 text-[11px] cursor-pointer";  
+            item.innerText = topic;  
+            list.prepend(item);  
+        }  
 
-        <aside id="sb-right" class="sidebar">
-            <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between;">
-                <span>Database Info</span>
-                <i class="fas fa-times" onclick="closeAll()" style="cursor:pointer"></i>
-            </div>
-            <div style="padding:20px; font-size:14px; color:#888;">
-                Connected to: <b>otakai.js</b>
-            </div>
-        </aside>
-    </div>
-
-    <script src="otakai.js"></script>
-
-    <script>
-        const chatWindow = document.getElementById('chat-window');
-        const userInput = document.getElementById('user-input');
-        const overlay = document.getElementById('overlay');
-
-        function openSB(id) { document.getElementById(id).classList.add('open'); overlay.classList.add('active'); }
-        function closeAll() { document.querySelectorAll('.sidebar').forEach(s => s.classList.remove('open')); overlay.classList.remove('active'); }
-
-        userInput.oninput = function() {
-            this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
-        };
-
-        async function startChat() {
-            const prompt = userInput.value.trim();
-            if(!prompt) return;
-
-            // 1. Munculkan Chat User
-            appendMsg('user', prompt);
-            userInput.value = '';
-            userInput.style.height = 'auto';
-
-            // 2. Munculkan Loading AI (Cuma titik atau icon kecil agar bersih)
-            const aiRow = appendMsg('ai', '<i class="fas fa-circle-notch fa-spin"></i>');
-            const textDiv = aiRow.querySelector('.text');
-
-            try {
-                /* PROSES DI BALIK LAYAR (DATABASE):
-                   - Pahami maksud
-                   - Ubah jadi konsep
-                   - Nilai jawaban
-                   - Pilih terbaik
-                */
-                
-                // PANGGIL FUNGSI DARI otakai.js DISINI
-                // let response = await otakai.ask(prompt); // <--- Hubungkan fungsi database di sini
-                
-                await new Promise(r => setTimeout(r, 1500)); // Simulasi proses 
-                
-                const finalResult = "Ini adalah jawaban natural dari SMART AI."; 
-                textDiv.innerText = finalResult;
-
-            } catch (err) {
-                textDiv.innerText = "Error: Database otakai.js tidak merespon.";
-            }
-        }
-
-        function appendMsg(role, content) {
-            const row = document.createElement('div');
-            row.className = `msg-row ${role === 'ai' ? 'ai' : ''}`;
-            row.innerHTML = `
-                <div class="avatar ${role === 'user' ? 'u-av' : 'a-av'}">${role === 'user' ? 'A' : 'S'}</div>
-                <div class="text">${content}</div>
-            `;
-            chatWindow.appendChild(row);
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-            return row;
-        }
-
-        document.getElementById('send-btn').onclick = startChat;
-        userInput.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); startChat(); } };
+        function scrollDown() {  
+            const area = document.getElementById('chatWindow');  
+            area.scrollTop = area.scrollHeight;  
+        }  
     </script>
-</body>
+</body>  
 </html>
