@@ -1,9 +1,9 @@
-name: Kuli Tambang Brutal v3 - Final Indonesia
+name: Kuli Tambang Brutal v3 - Fix Logic
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Jalan tiap 6 jam otomatis
-  workflow_dispatch: # Bisa diklik manual
+    - cron: '0 */6 * * *' 
+  workflow_dispatch: 
 
 permissions:
   contents: write
@@ -36,71 +36,72 @@ jobs:
           
           path_data = 'database/data.yml'
           path_sapaan = 'database/sapaan.yml'
-          path_otak_js = 'otakai.js' # File di ROOT
+          path_otak_js = 'otakai.js'
 
-          hasil_baru = []
-
-          # 1. PROSES NAMBANG
-          print("⛏️ Memulai penambangan Indonesia...")
+          # --- 1. PROSES NAMBANG INFO BARU ---
+          print("⛏️ Nambang Info (Wikipedia & Detik)...")
+          hasil_nambang_baru = []
           try:
-              # Wikipedia id
-              random_titles = wikipedia.random(pages=25)
-              for title in random_titles:
+              # Wikipedia
+              titles = wikipedia.random(pages=15)
+              for t in titles:
                   try:
-                      p = wikipedia.page(title)
-                      hasil_baru.append({"t": p.title, "s": p.summary.split('\n')[0][:250]})
+                      p = wikipedia.page(t)
+                      hasil_nambang_baru.append({
+                          "id": int(time.time() * 1000) + random.randint(1, 999),
+                          "topic": p.title,
+                          "summary": p.summary.split('\n')[0][:250],
+                          "date": tgl_sekarang
+                      })
                   except: pass
-              
-              # Detik Terpopuler
+              # Detik
               r = requests.get('https://www.detik.com/terpopuler', timeout=10)
               soup = BeautifulSoup(r.text, 'html.parser')
-              for link in soup.select('.media__title a')[:20]:
-                  hasil_baru.append({"t": "Berita Terkini", "s": link.get_text().strip()})
+              for link in soup.select('.media__title a')[:10]:
+                  hasil_nambang_baru.append({
+                      "id": int(time.time() * 1000) + random.randint(1, 999),
+                      "topic": "Berita Terkini",
+                      "summary": link.get_text().strip(),
+                      "date": tgl_sekarang
+                  })
           except Exception as e:
-              print(f"⚠️ Skip nambang karena: {e}")
+              print(f"⚠️ Gagal nambang: {e}")
 
-          # 2. BACA DATABASE LAMA (Gudang)
+          # --- 2. BACA DATABASE LAMA (Gudang Data) ---
           def load_yml(path):
               if os.path.exists(path):
                   with open(path, 'r', encoding='utf-8') as f:
                       try:
-                          return yaml.safe_load(f) or []
+                          res = yaml.safe_load(f)
+                          return res if isinstance(res, list) else []
                       except: return []
               return []
 
-          data_lama = load_yml(path_data)
-          sapaan_lama = load_yml(path_sapaan)
+          gudang_data_lama = load_yml(path_data)
+          sapaan_static = load_yml(path_sapaan)
 
-          # 3. KONVERSI HASIL BARU KE FORMAT YAML
-          for item in hasil_baru:
-              data_lama.append({
-                  "id": int(time.time() * 1000) + random.randint(1, 9999),
-                  "topic": item["t"],
-                  "summary": item["s"],
-                  "date": tgl_sekarang
-              })
+          # Gabung data lama + hasil nambang baru (Hanya untuk data.yml)
+          update_gudang = gudang_data_lama + hasil_nambang_baru
+          # Simpan 500 data terbaru di gudang
+          update_gudang = update_gudang[-500:]
 
-          # Simpan kembali ke database/data.yml (Limit 500 baris agar file gudang gak meledak)
-          data_gudang = data_lama[-500:]
           with open(path_data, 'w', encoding='utf-8') as f:
-              yaml.dump(data_gudang, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+              yaml.dump(update_gudang, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
-          # 4. MERACIK OTAKAI.JS (Sapaan + Data Terbaru)
-          # Ambil semua sapaan + 100 data hasil tambang terbaru
-          gabungan_final = sapaan_lama + data_gudang[-100:]
+          # --- 3. MERACIK OTAKAI.JS (Sapaan + 100 Info Terbaru) ---
+          # Di sini kuncinya: Sapaan diambil dari sapaan.yml, Info diambil dari data.yml
+          gabungan_final = sapaan_static + update_gudang[-100:]
           
-          # Tulis ke ROOT sebagai otakai.js
-          js_output = "const dataMemori = " + json.dumps(gabungan_final, indent=2, ensure_ascii=False) + ";"
+          js_content = "const dataMemori = " + json.dumps(gabungan_final, indent=2, ensure_ascii=False) + ";"
           with open(path_otak_js, 'w', encoding='utf-8') as f:
-              f.write(js_output)
+              f.write(js_content)
 
-          print(f"✅ SUKSES: {len(hasil_baru)} data ditambang. otakai.js diupdate di root!")
+          print(f"✅ SUKSES! Tambang berhasil. Otak berisi {len(sapaan_static)} sapaan & 100 info baru.")
           EOF
 
       - name: Simpan ke GitHub
         run: |
           git config --local user.name "Kuli Tambang Robot"
           git config --local user.email "robot@smartai.alan"
-          # Git add spesifik ke file-file penting
-          git add database/data.yml database/sapaan.yml otakai.js
-          git diff --staged --quiet || (git commit -m "Robot Brutal: Sinkronisasi Gudang & Otak AI" && git push)
+          git add database/data.yml otakai.js
+          git diff --staged --quiet || (git commit -m "Fix Logic: Nambang Info & Sync Sapaan" && git push)
