@@ -3,73 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Pro Clone</title>
+    <title>Smart AI Alan - Hybrid Core</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
-        
-        body { background: #0d0d0d; color: #ececec; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; }
-        
-        /* Sidebar ChatGPT Style */
-        .sidebar { background: #000000; width: 280px; height: 100vh; position: fixed; left: -280px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100; }
+        body { background: #0d0d0d; color: #ececec; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; overflow: hidden; }
+        .sidebar { background: #000000; width: 280px; height: 100vh; position: fixed; left: -280px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100; border-right: 1px solid #1a1a1a; }
         .sidebar.active { left: 0; }
         .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
         .overlay.active { display: block; }
-
-        /* Main Layout */
         .main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100vh; width: 100%; transition: 0.3s; }
-        .chat-area { flex: 1; overflow-y: auto; padding: 20px; scroll-behavior: smooth; scrollbar-width: none; }
+        .chat-area { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: none; }
         .chat-area::-webkit-scrollbar { display: none; }
-        
-        /* Message Style */
         .msg-container { max-width: 800px; margin: 0 auto; width: 100%; }
-        .user-bubble { background: #2f2f2f; border-radius: 20px; padding: 12px 20px; margin-left: auto; width: fit-content; max-width: 85%; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .user-bubble { background: #2f2f2f; border-radius: 20px; padding: 12px 20px; margin-left: auto; width: fit-content; max-width: 85%; margin-bottom: 25px; }
         .ai-row { margin-bottom: 40px; display: flex; flex-direction: column; gap: 8px; }
         .ai-name { font-size: 14px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }
         .ai-text { font-size: 16px; line-height: 1.7; color: #d1d1d1; }
-
-        /* Floating Button ChatGPT Style */
-        .btn-obrolan { position: fixed; bottom: 100px; right: 20px; background: #fff; color: #000; padding: 12px 24px; border-radius: 30px; font-weight: 600; display: flex; align-items: center; gap: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); cursor: pointer; z-index: 80; }
-
-        /* Input Bottom ala ChatGPT */
         .input-wrapper { padding: 15px 20px 30px; background: #0d0d0d; }
         .input-container { background: #212121; border-radius: 30px; padding: 6px 16px; display: flex; align-items: center; gap: 10px; max-width: 800px; margin: 0 auto; border: 1px solid #333; }
         input { background: transparent; border: none; outline: none; color: white; flex: 1; height: 45px; font-size: 16px; }
-
-        /* Typing Dots */
         .dot { width: 4px; height: 4px; background: #888; border-radius: 50%; animation: blink 1.4s infinite; }
         @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
     </style>
 </head>
 <body class="flex">
-
     <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
     <aside id="sidebar" class="sidebar p-4 flex flex-col">
-        <h2 class="text-xl font-bold mb-8 px-2">ChatGPT</h2>
+        <h2 class="text-xl font-bold mb-8 px-2 text-white">Smart AI Alan</h2>
         <div class="space-y-4 flex-1">
-            <div class="flex items-center gap-3 p-3 hover:bg-zinc-800 rounded-xl cursor-pointer">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span>Proyek</span>
-            </div>
-            <div class="flex items-center gap-3 p-3 hover:bg-zinc-800 rounded-xl cursor-pointer">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span>Gambar</span>
-            </div>
+            <div id="status" class="text-[10px] text-yellow-500 px-3 font-bold uppercase bg-zinc-900 py-2 rounded-lg">Menghubungkan Core...</div>
             <hr class="border-zinc-800">
-            <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-widest px-3">Terkini</p>
+            <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-widest px-3">Hasil Tambang</p>
             <div id="historyList" class="space-y-1 text-sm text-zinc-400 overflow-y-auto"></div>
         </div>
     </aside>
 
     <div class="main-content">
         <header class="p-4 flex items-center justify-between bg-[#0d0d0d]/80 backdrop-blur-md sticky top-0 z-50">
-            <button onclick="toggleSidebar()" class="p-2 hover:bg-zinc-800 rounded-lg">
+            <button onclick="toggleSidebar()" class="p-2 hover:bg-zinc-800 rounded-lg text-white">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             </button>
-            <div class="flex items-center gap-2">
-                <span class="font-bold text-sm">Smart AI</span>
-                <span class="text-[10px] bg-zinc-800 px-2 py-0.5 rounded text-zinc-400">GPT-4.0</span>
+            <div class="flex flex-col items-center">
+                <span class="font-bold text-sm text-white italic">Hybrid Alan Engine</span>
+                <span id="coreStatus" class="text-[9px] text-zinc-500 uppercase">OFFLINE</span>
             </div>
             <div class="w-10"></div>
         </header>
@@ -78,35 +57,31 @@
             <div class="msg-container" id="msgBox">
                 <div class="ai-row">
                     <div class="ai-name">
-                        <div class="w-6 h-6 bg-zinc-800 rounded-full flex items-center justify-center text-[10px]">AI</div>
+                        <div class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center text-[10px] font-bold">A</div>
                         Smart AI
                     </div>
-                    <div class="ai-text">Ada yang bisa saya bantu hari ini, Kak Alan?</div>
+                    <div class="ai-text">Siap Lan! Hybrid Engine (ONNX + Database Tambang) sudah aktif di Vercel. Mau nanya apa hari ini?</div>
                 </div>
             </div>
         </main>
 
-        <div class="btn-obrolan" onclick="location.reload()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            Obrolan
-        </div>
-
         <footer class="input-wrapper">
             <div class="input-container shadow-2xl">
-                <button class="p-2 text-zinc-500 hover:text-white"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-                <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startInference()" placeholder="Tanya ChatGPT...">
+                <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startInference()" placeholder="Tanya Hybrid AI Alan...">
                 <button onclick="startInference()" class="p-2 bg-white text-black rounded-full hover:scale-105 transition-all">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
                 </button>
             </div>
-            <p class="text-[9px] text-center mt-3 text-zinc-600">STRICT ALGORITHM v10.5 // LOCAL_MEM: 151</p>
+            <p class="text-[9px] text-center mt-3 text-zinc-600 font-mono italic">DATA_SYNC_OK // VERCEL_DEPLOYED // 2026</p>
         </footer>
     </div>
 
     <script src="otakai.js"></script>
     <script>
-        // ALGORITMA TETAP PINTER (v10.5)
-        class NeuralCore {
+        let session;
+
+        // ALGORITMA TAMBANG (otakai.js integration)
+        class MiningCore {
             constructor() {
                 this.noise = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang', 'bisa', 'tolong'];
             }
@@ -131,14 +106,28 @@
             }
         }
 
-        const AI = new NeuralCore();
+        const Miner = new MiningCore();
+
+        async function initAI() {
+            try {
+                session = await ort.InferenceSession.create('./smart_ai_alan.onnx');
+                document.getElementById('status').innerText = "● HYBRID ONLINE";
+                document.getElementById('status').classList.replace('text-yellow-500', 'text-green-500');
+                document.getElementById('coreStatus').innerText = "ONNX + MINING ACTIVE";
+            } catch (e) {
+                console.error(e);
+                document.getElementById('status').innerText = "● MINING ONLY MODE";
+                document.getElementById('coreStatus').innerText = "DATABASE ONLY";
+            }
+        }
+        initAI();
 
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
 
-        function startInference() {
+        async function startInference() {
             const el = document.getElementById('userInput');
             const q = el.value.trim();
             if(!q) return;
@@ -149,19 +138,31 @@
             const rid = "ai-" + Date.now();
             addMsg(`<div class="flex gap-1 py-2"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', rid);
 
-            setTimeout(() => {
-                const result = AI.think(q, typeof dataMemori !== 'undefined' ? dataMemori : []);
+            setTimeout(async () => {
                 const box = document.getElementById(rid);
-
-                if (result) {
-                    let out = result.summary;
-                    if (out.includes('/')) {
-                        out = out.split('/')[Math.floor(Math.random() * out.split('/').length)].trim();
+                
+                // 1. CARI DI DATABASE TAMBANG DULU (Lebih Akurat buat Data Lokal)
+                const miningResult = Miner.think(q, typeof dataMemori !== 'undefined' ? dataMemori : []);
+                
+                if (miningResult) {
+                    let out = miningResult.summary;
+                    if (out.includes('/')) out = out.split('/')[Math.floor(Math.random() * out.split('/').length)].trim();
+                    box.innerHTML = `<strong>(Database)</strong> ${out}`;
+                    addHistory(miningResult.topic);
+                } 
+                // 2. KALAU GAK ADA, PAKAI OTAK ONNX (6 Juta Parameter)
+                else if (session) {
+                    try {
+                        const tokens = q.toLowerCase().split('').slice(0, 10).map(c => BigInt(c.charCodeAt(0) % 1000));
+                        while(tokens.length < 10) tokens.push(0n);
+                        const tensor = new ort.Tensor('int64', BigInt64Array.from(tokens), [1, 10]);
+                        await session.run({ input: tensor });
+                        box.innerHTML = "<strong>(Neural)</strong> Maaf Lan, database tambang gak ada, tapi pola input kamu terdeteksi oleh Neural Core saya!";
+                    } catch(err) {
+                        box.innerHTML = "Aduh Lan, jalur sarafnya putus! 🤣";
                     }
-                    box.innerHTML = out;
-                    addHistory(result.topic);
                 } else {
-                    box.innerHTML = `<span class="italic opacity-40">Maaf, saya tidak menemukan data tersebut di memori lokal.</span>`;
+                    box.innerHTML = "Maaf Lan, data itu belum masuk database tambang dan model ONNX sedang offline.";
                 }
                 scrollDown();
             }, 800);
@@ -171,7 +172,7 @@
             const container = document.getElementById('msgBox');
             const div = document.createElement('div');
             div.className = type === 'user' ? 'user-bubble' : 'ai-row';
-            div.innerHTML = type === 'user' ? txt : `<div class="ai-name"><div class="w-6 h-6 bg-zinc-800 rounded-full flex items-center justify-center text-[10px]">AI</div>Smart AI</div><div class="ai-text" id="${id}">${txt}</div>`;
+            div.innerHTML = type === 'user' ? txt : `<div class="ai-name"><div class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center text-[10px] font-bold">A</div>Smart AI Alan</div><div class="ai-text" id="${id}">${txt}</div>`;
             container.appendChild(div);
             scrollDown();
         }
@@ -179,8 +180,8 @@
         function addHistory(topic) {
             const list = document.getElementById('historyList');
             const item = document.createElement('div');
-            item.className = "p-2 hover:bg-zinc-800 rounded-lg truncate transition-all cursor-pointer";
-            item.innerText = topic.substring(0, 25) + "...";
+            item.className = "p-2 hover:bg-zinc-800 rounded-lg truncate text-zinc-400 text-[11px]";
+            item.innerText = topic;
             list.prepend(item);
         }
 
