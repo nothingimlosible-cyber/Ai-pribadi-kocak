@@ -1,0 +1,22 @@
+name: Bot Polling Alan
+on:
+  schedule:
+    - cron: '*/1 * * * *' # Jalan tiap 1 menit
+  workflow_dispatch: # Bisa dijalankan manual
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Axios
+        run: npm install axios
+      - name: Run Bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: node bot_polling.js
+
