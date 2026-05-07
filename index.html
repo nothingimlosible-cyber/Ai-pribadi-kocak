@@ -3,140 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXON-1 | NEURAL INTERFACE</title>
+    <title>AXON-X | NEURAL CORE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap');
-        
-        body { background: #000; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
-        .neural-bg { background: radial-gradient(circle at 50% -20%, #1e293b 0%, #000 80%); }
-        .chat-area { height: calc(100vh - 160px); scrollbar-width: none; }
-        .chat-area::-webkit-scrollbar { display: none; }
-        
-        .ai-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; }
-        .user-msg { background: #1e293b; border-radius: 20px 20px 0 20px; }
-        
-        .code-font { font-family: 'JetBrains Mono', monospace; }
-        .glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
-        
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-        .float-anim { animation: float 3s ease-in-out infinite; }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400&display=swap');
+        body { background: #000; color: #fff; font-family: 'Space Grotesk', sans-serif; overflow: hidden; }
+        .neuron-line { background: linear-gradient(90deg, transparent, #3b82f6, transparent); height: 1px; width: 100%; opacity: 0.2; }
+        .chat-area { height: calc(100vh - 180px); scrollbar-width: none; }
+        .ai-bubble { border-left: 2px solid #3b82f6; background: rgba(59, 130, 246, 0.03); padding-left: 20px; }
+        .code-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #60a5fa; opacity: 0.7; }
+        input:focus { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
     </style>
 </head>
-<body class="neural-bg h-screen flex flex-col items-center">
+<body class="flex flex-col items-center min-h-screen">
 
-    <header class="w-full max-w-4xl p-6 flex justify-between items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50">
-        <div class="flex items-center gap-3">
-            <div class="w-2.5 h-2.5 bg-blue-500 rounded-full shadow-[0_0_15px_#3b82f6] animate-pulse"></div>
-            <h1 class="text-[10px] font-bold tracking-[0.5em] uppercase opacity-60">Axon-1 Neural Core</h1>
+    <header class="w-full max-w-4xl p-6 flex justify-between items-center border-b border-white/5">
+        <div class="flex items-center gap-4">
+            <div class="relative"><div class="w-2 h-2 bg-blue-500 rounded-full animate-ping absolute"></div><div class="w-2 h-2 bg-blue-500 rounded-full relative"></div></div>
+            <h1 class="text-[10px] font-bold tracking-[0.6em] uppercase text-blue-400">AXON-X NEURAL CORE</h1>
         </div>
-        <div class="code-font text-[9px] text-blue-400/50">LOCAL_MODEL_ACTIVE</div>
+        <div class="code-text uppercase">Module: Active // Data: 7B-Lite</div>
     </header>
 
-    <main id="chatBox" class="chat-area w-full max-w-3xl p-6 space-y-10 overflow-y-auto"></main>
+    <main id="chatArea" class="chat-area w-full max-w-3xl p-6 space-y-12 overflow-y-auto"></main>
 
-    <footer class="w-full max-w-3xl p-6 bg-black/50 backdrop-blur-xl">
+    <footer class="w-full max-w-3xl p-6 pb-10">
         <div class="relative group">
-            <div class="absolute -top-12 left-0 right-0 flex justify-center opacity-0 group-focus-within:opacity-100 transition-opacity">
-                <span class="code-font text-[9px] text-gray-500 italic">Processing text-based synaptic connections...</span>
-            </div>
-            <div class="ai-card glow-blue flex items-center p-2 px-4 transition-all focus-within:border-blue-500/30">
-                <input type="text" id="userInput" onkeypress="if(event.key==='Enter') executeNeuralProcess()" 
-                    placeholder="Masukkan instruksi..." 
-                    class="w-full bg-transparent p-3 outline-none text-sm placeholder:opacity-20">
-                <button onclick="executeNeuralProcess()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-2xl text-[10px] font-bold tracking-widest transition-all active:scale-95">
-                    EXECUTE
-                </button>
-            </div>
+            <div class="absolute -top-10 left-0 text-[9px] code-text italic transition-all group-focus-within:opacity-100 opacity-30">Waiting for prompt input sequence...</div>
+            <input type="text" id="userInput" onkeypress="if(event.key==='Enter') executeNeural()" 
+                placeholder="Berikan instruksi..." 
+                class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl p-5 px-8 outline-none focus:border-blue-500 transition-all text-sm shadow-2xl">
+            <button onclick="executeNeural()" class="absolute right-3 top-2 bottom-2 px-6 bg-blue-600 text-white rounded-xl font-bold text-[10px] uppercase hover:bg-blue-400 transition-all">PROCESS</button>
         </div>
-        <p class="text-[8px] text-center mt-4 opacity-20 tracking-[0.3em] font-bold">DEVICE_RAM_OPTIMIZED // NO_SERVER_REQUIRED</p>
     </footer>
 
     <script src="otakai.js"></script>
     <script>
-        class AxonEngine {
+        /**
+         * AXON-X NEURAL ENGINE v2.0
+         * Fokus: Deep Scanning & Semantic Association
+         */
+        class AxonX {
             constructor() {
-                this.threshold = 0.12;
+                this.history = [];
+                this.weights = { topic: 3.5, body: 0.8 }; // Pembobotan Saraf
             }
 
-            tokenize(t) {
-                return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2);
+            tokenize(text) {
+                return text.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2);
             }
 
-            process(prompt, database) {
-                const query = this.tokenize(prompt);
+            // MODUL THINKING (Attention Mechanism KW)
+            process(query, database) {
+                const tokens = this.tokenize(query);
                 let ranking = [];
 
-                database.forEach(mem => {
-                    let weight = 0;
-                    const content = (mem.topic + " " + mem.summary).toLowerCase();
+                database.forEach(memory => {
+                    let fireRate = 0; // Kekuatan sinyal saraf
+                    const content = (memory.topic + " " + memory.summary).toLowerCase();
 
-                    query.forEach(token => {
-                        if (content.includes(token)) {
-                            // Logic: Judul bobot 2.0, Isi bobot 0.5 + bonus frekuensi
-                            const isHeading = mem.topic.toLowerCase().includes(token);
-                            const frequency = content.split(token).length - 1;
-                            weight += isHeading ? 2.0 : (0.5 + (frequency * 0.1));
+                    tokens.forEach(t => {
+                        if (content.includes(t)) {
+                            const isTopic = memory.topic.toLowerCase().includes(t);
+                            // Sinyal lebih kuat kalau kata kunci ada di Judul
+                            fireRate += isTopic ? this.weights.topic : this.weights.body;
+                            
+                            // Tambahan skor jika ada kecocokan frase unik
+                            const occurrences = content.split(t).length - 1;
+                            fireRate += (occurrences * 0.2);
                         }
                     });
 
-                    if (weight > this.threshold) {
-                        ranking.push({ ...mem, pwr: weight.toFixed(2) });
-                    }
+                    if (fireRate > 0) ranking.push({ ...memory, power: fireRate.toFixed(2) });
                 });
 
-                return ranking.sort((a, b) => b.pwr - a.pwr)[0];
+                return ranking.sort((a, b) => b.power - a.power)[0];
             }
         }
 
-        const AXON = new AxonEngine();
+        const AI = new AxonX();
 
-        function executeNeuralProcess() {
+        function executeNeural() {
             const input = document.getElementById('userInput');
-            const prompt = input.value.trim();
-            if (!prompt) return;
+            const q = input.value.trim();
+            if (!q) return;
 
-            render(prompt, 'user');
+            render(q, 'user');
             input.value = '';
 
             const nid = "axon-" + Date.now();
-            render(`<div class="flex gap-2 items-center"><div class="w-1 h-1 bg-blue-500 rounded-full animate-ping"></div><span class="code-font text-[9px] opacity-40">INFERENCING_CORE...</span></div>`, 'ai', nid);
+            render(`<div class="flex flex-col gap-2"><div class="code-text animate-pulse">ANALYZING_SYNAPSE_CONNECTION...</div><div class="neuron-line"></div></div>`, 'ai', nid);
 
             setTimeout(() => {
-                const output = AXON.process(prompt, typeof dataMemori !== 'undefined' ? dataMemori : []);
+                const res = AI.process(q, typeof dataMemori !== 'undefined' ? dataMemori : []);
                 const box = document.getElementById(nid);
 
-                if (output) {
-                    const variants = output.summary.split(' / ');
-                    const result = variants[Math.floor(Math.random() * variants.length)];
+                if (res) {
+                    const variants = res.summary.split(' / ');
+                    const final = variants[Math.floor(Math.random() * variants.length)];
                     box.innerHTML = `
                         <div class="flex flex-col gap-4">
-                            <div class="flex items-center gap-3">
-                                <span class="code-font text-[9px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">MEM_ID: ${output.topic}</span>
-                                <span class="code-font text-[8px] opacity-30">STRENGTH: ${output.pwr}</span>
+                            <div class="flex justify-between items-center opacity-40">
+                                <span class="code-text">#${res.topic}</span>
+                                <span class="code-text">PWR_${res.power}</span>
                             </div>
-                            <div class="text-[15px] leading-[1.7] text-gray-300 font-light tracking-wide">${result}</div>
+                            <div class="text-lg leading-relaxed font-light text-gray-200">${final}</div>
                         </div>
                     `;
                 } else {
-                    box.innerHTML = `<div class="text-sm opacity-30 italic">No synaptic connection found. Please update knowledge base in tambang.txt.</div>`;
+                    box.innerHTML = `<div class="opacity-40 italic text-sm">Signal lost. Input tidak terdeteksi dalam sirkuit memori. Tambahkan data di tambang.txt.</div>`;
                 }
-            }, 700);
+            }, 800);
         }
 
         function render(text, type, id = null) {
-            const chatBox = document.getElementById('chatBox');
-            const div = document.createElement('div');
-            div.className = type === 'user' ? 'flex flex-col items-end' : 'flex flex-col items-start float-anim';
+            const area = document.getElementById('chatArea');
+            const wrap = document.createElement('div');
+            wrap.className = type === 'user' ? 'flex justify-end' : 'flex justify-start';
             
-            const content = document.createElement('div');
-            content.className = type === 'user' ? 'user-msg p-4 px-6 text-sm max-w-[85%] shadow-xl' : 'w-full';
-            if (id) content.id = id;
-            content.innerHTML = text;
+            const div = document.createElement('div');
+            div.className = type === 'user' ? 'bg-[#111] p-4 px-6 rounded-2xl border border-white/5 text-sm max-w-[80%]' : 'ai-bubble w-full';
+            if (id) div.id = id;
+            div.innerHTML = text;
 
-            div.appendChild(content);
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            wrap.appendChild(div);
+            area.appendChild(wrap);
+            area.scrollTop = area.scrollHeight;
         }
     </script>
 </body>
