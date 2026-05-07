@@ -3,131 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXON-X | NEURAL CORE</title>
+    <title>AXON-X</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400&display=swap');
-        body { background: #000; color: #fff; font-family: 'Space Grotesk', sans-serif; overflow: hidden; }
-        .neuron-line { background: linear-gradient(90deg, transparent, #3b82f6, transparent); height: 1px; width: 100%; opacity: 0.2; }
-        .chat-area { height: calc(100vh - 180px); scrollbar-width: none; }
-        .ai-bubble { border-left: 2px solid #3b82f6; background: rgba(59, 130, 246, 0.03); padding-left: 20px; }
-        .code-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #60a5fa; opacity: 0.7; }
-        input:focus { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        body { background: #212121; color: #ececec; font-family: 'Inter', sans-serif; }
+        .chat-container { max-width: 768px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; }
+        .scroll-area { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: none; }
+        .scroll-area::-webkit-scrollbar { display: none; }
+        
+        /* Gaya Baris Chat */
+        .user-row { display: flex; justify-content: flex-end; margin-bottom: 24px; animation: fadeIn 0.3s ease; }
+        .ai-row { display: flex; justify-content: flex-start; margin-bottom: 32px; animation: fadeIn 0.5s ease; }
+        
+        /* Bubble Chat */
+        .user-bubble { background: #303030; padding: 12px 20px; border-radius: 24px; max-width: 85%; font-size: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .ai-content { max-width: 90%; font-size: 16px; line-height: 1.7; color: #d1d1d1; }
+        
+        /* Input Area */
+        .input-wrapper { padding: 16px; background: #212121; }
+        .input-box { 
+            background: #2f2f2f; border-radius: 32px; padding: 12px 20px; 
+            display: flex; items-center; gap: 12px; transition: 0.2s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .input-box:focus-within { border-color: rgba(255,255,255,0.2); }
+        input { background: transparent; border: none; color: white; width: 100%; outline: none; font-size: 15px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .typing { display: flex; gap: 4px; padding: 10px 0; }
+        .dot { width: 4px; height: 4px; background: #888; border-radius: 50%; animation: blink 1.4s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
     </style>
 </head>
-<body class="flex flex-col items-center min-h-screen">
+<body>
 
-    <header class="w-full max-w-4xl p-6 flex justify-between items-center border-b border-white/5">
-        <div class="flex items-center gap-4">
-            <div class="relative"><div class="w-2 h-2 bg-blue-500 rounded-full animate-ping absolute"></div><div class="w-2 h-2 bg-blue-500 rounded-full relative"></div></div>
-            <h1 class="text-[10px] font-bold tracking-[0.6em] uppercase text-blue-400">AXON-X NEURAL CORE</h1>
-        </div>
-        <div class="code-text uppercase">Module: Active // Data: 7B-Lite</div>
-    </header>
+    <div class="chat-container">
+        <main id="chatArea" class="scroll-area">
+            <div class="ai-row">
+                <div class="ai-content">
+                    <p class="font-medium text-white mb-2">AXON-X v6.0</p>
+                    Apa yang bisa saya bantu hari ini, Kak Alan?
+                </div>
+            </div>
+        </main>
 
-    <main id="chatArea" class="chat-area w-full max-w-3xl p-6 space-y-12 overflow-y-auto"></main>
-
-    <footer class="w-full max-w-3xl p-6 pb-10">
-        <div class="relative group">
-            <div class="absolute -top-10 left-0 text-[9px] code-text italic transition-all group-focus-within:opacity-100 opacity-30">Waiting for prompt input sequence...</div>
-            <input type="text" id="userInput" onkeypress="if(event.key==='Enter') executeNeural()" 
-                placeholder="Berikan instruksi..." 
-                class="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl p-5 px-8 outline-none focus:border-blue-500 transition-all text-sm shadow-2xl">
-            <button onclick="executeNeural()" class="absolute right-3 top-2 bottom-2 px-6 bg-blue-600 text-white rounded-xl font-bold text-[10px] uppercase hover:bg-blue-400 transition-all">PROCESS</button>
-        </div>
-    </footer>
+        <footer class="input-wrapper">
+            <div class="input-box">
+                <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startInference()" placeholder="Ketik pesan...">
+                <button onclick="startInference()" class="text-white opacity-40 hover:opacity-100 transition-all">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                </button>
+            </div>
+            <p class="text-[10px] text-center mt-3 text-gray-500">Alan Neural Core • Eksperimen AI Lokal</p>
+        </footer>
+    </div>
 
     <script src="otakai.js"></script>
     <script>
-        /**
-         * AXON-X NEURAL ENGINE v2.0
-         * Fokus: Deep Scanning & Semantic Association
+        /** * AXON-X ENGINE (SILENT MODE) 
+         * Semua kode berat & skor dijalankan di belakang layar.
          */
-        class AxonX {
+        class NeuralEngine {
             constructor() {
-                this.history = [];
-                this.weights = { topic: 3.5, body: 0.8 }; // Pembobotan Saraf
+                this.threshold = 0.15;
             }
 
-            tokenize(text) {
-                return text.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2);
+            tokenize(t) {
+                return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2);
             }
 
-            // MODUL THINKING (Attention Mechanism KW)
-            process(query, database) {
-                const tokens = this.tokenize(query);
+            // Proses "Mikir" tersembunyi
+            think(prompt, database) {
+                // Background Encoding: Ubah input jadi tag secara otomatis
+                let encodedPrompt = prompt.toLowerCase();
+                if(encodedPrompt.includes("halo") || encodedPrompt.includes("hai")) encodedPrompt += " TAG_GREET";
+                if(encodedPrompt.includes("indonesia")) encodedPrompt += " TAG_HISTORY";
+
+                const tokens = this.tokenize(encodedPrompt);
                 let ranking = [];
 
-                database.forEach(memory => {
-                    let fireRate = 0; // Kekuatan sinyal saraf
-                    const content = (memory.topic + " " + memory.summary).toLowerCase();
-
-                    tokens.forEach(t => {
-                        if (content.includes(t)) {
-                            const isTopic = memory.topic.toLowerCase().includes(t);
-                            // Sinyal lebih kuat kalau kata kunci ada di Judul
-                            fireRate += isTopic ? this.weights.topic : this.weights.body;
-                            
-                            // Tambahan skor jika ada kecocokan frase unik
-                            const occurrences = content.split(t).length - 1;
-                            fireRate += (occurrences * 0.2);
+                database.forEach(mem => {
+                    let score = 0;
+                    const fullText = (mem.topic + " " + mem.summary).toLowerCase();
+                    
+                    tokens.forEach(tok => {
+                        if (fullText.includes(tok)) {
+                            const isHeading = mem.topic.toLowerCase().includes(tok);
+                            score += isHeading ? 3.0 : 0.7;
                         }
                     });
-
-                    if (fireRate > 0) ranking.push({ ...memory, power: fireRate.toFixed(2) });
+                    if (score > this.threshold) ranking.push({ ...mem, power: score });
                 });
 
                 return ranking.sort((a, b) => b.power - a.power)[0];
             }
         }
 
-        const AI = new AxonX();
+        const AXON = new NeuralEngine();
 
-        function executeNeural() {
-            const input = document.getElementById('userInput');
-            const q = input.value.trim();
-            if (!q) return;
+        function startInference() {
+            const el = document.getElementById('userInput');
+            const prompt = el.value.trim();
+            if (!prompt) return;
 
-            render(q, 'user');
-            input.value = '';
+            // Tampilkan Pesan User
+            addChat(prompt, 'user');
+            el.value = '';
 
-            const nid = "axon-" + Date.now();
-            render(`<div class="flex flex-col gap-2"><div class="code-text animate-pulse">ANALYZING_SYNAPSE_CONNECTION...</div><div class="neuron-line"></div></div>`, 'ai', nid);
+            // Animasi Mengetik
+            const tid = "ai-" + Date.now();
+            addChat(`<div class="typing"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', tid);
 
             setTimeout(() => {
-                const res = AI.process(q, typeof dataMemori !== 'undefined' ? dataMemori : []);
-                const box = document.getElementById(nid);
+                const result = AXON.think(prompt, typeof dataMemori !== 'undefined' ? dataMemori : []);
+                const box = document.getElementById(tid);
 
-                if (res) {
-                    const variants = res.summary.split(' / ');
-                    const final = variants[Math.floor(Math.random() * variants.length)];
-                    box.innerHTML = `
-                        <div class="flex flex-col gap-4">
-                            <div class="flex justify-between items-center opacity-40">
-                                <span class="code-text">#${res.topic}</span>
-                                <span class="code-text">PWR_${res.power}</span>
-                            </div>
-                            <div class="text-lg leading-relaxed font-light text-gray-200">${final}</div>
-                        </div>
-                    `;
+                if (result) {
+                    const variants = result.summary.split(' / ');
+                    const finalResponse = variants[Math.floor(Math.random() * variants.length)];
+                    box.innerHTML = finalResponse;
                 } else {
-                    box.innerHTML = `<div class="opacity-40 italic text-sm">Signal lost. Input tidak terdeteksi dalam sirkuit memori. Tambahkan data di tambang.txt.</div>`;
+                    box.innerHTML = "Maaf Kak, saya tidak menemukan data yang relevan di database lokal.";
                 }
+                // Auto scroll
+                const area = document.getElementById('chatArea');
+                area.scrollTop = area.scrollHeight;
             }, 800);
         }
 
-        function render(text, type, id = null) {
+        function addChat(text, sender, id = null) {
             const area = document.getElementById('chatArea');
-            const wrap = document.createElement('div');
-            wrap.className = type === 'user' ? 'flex justify-end' : 'flex justify-start';
+            const row = document.createElement('div');
+            row.className = sender === 'user' ? 'user-row' : 'ai-row';
             
-            const div = document.createElement('div');
-            div.className = type === 'user' ? 'bg-[#111] p-4 px-6 rounded-2xl border border-white/5 text-sm max-w-[80%]' : 'ai-bubble w-full';
-            if (id) div.id = id;
-            div.innerHTML = text;
+            const content = document.createElement('div');
+            content.className = sender === 'user' ? 'user-bubble' : 'ai-content';
+            if (id) content.id = id;
+            content.innerHTML = text;
 
-            wrap.appendChild(div);
-            area.appendChild(wrap);
+            row.appendChild(content);
+            area.appendChild(row);
             area.scrollTop = area.scrollHeight;
         }
     </script>
