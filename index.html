@@ -12,13 +12,13 @@
         .chat-container { height: calc(100vh - 140px); scrollbar-width: none; }
         .chat-container::-webkit-scrollbar { display: none; }
         
-        .user-bubble { background: #2b2d31; border-radius: 20px; padding: 12px 20px; max-width: 85%; align-self: flex-end; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .ai-wrapper { width: 100%; display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
-        .ai-name { font-size: 12px; font-weight: 600; color: #8ab4f8; letter-spacing: 0.5px; }
-        .ai-text { font-size: 16px; line-height: 1.6; color: #e3e3e3; max-width: 95%; white-space: pre-line; }
+        .user-bubble { background: #2b2d31; border-radius: 22px; padding: 12px 20px; max-width: 80%; align-self: flex-end; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .ai-wrapper { width: 100%; display: flex; flex-direction: column; gap: 6px; margin-bottom: 30px; }
+        .ai-name { font-size: 12px; font-weight: 600; color: #8ab4f8; letter-spacing: 1px; text-transform: uppercase; }
+        .ai-text { font-size: 16px; line-height: 1.7; color: #e3e3e3; max-width: 95%; white-space: pre-line; }
         
-        .input-container { background: #131314; padding: 15px 20px; border-top: 1px solid #333; }
-        .input-bar { background: #1e1f20; border-radius: 30px; padding: 8px 24px; display: flex; align-items: center; gap: 12px; transition: 0.3s; border: 1px solid transparent; }
+        .input-area { background: #131314; padding: 15px 20px; border-top: 1px solid #333; }
+        .input-bar { background: #1e1f20; border-radius: 32px; padding: 8px 24px; display: flex; align-items: center; gap: 12px; transition: 0.3s; border: 1px solid transparent; }
         .input-bar:focus-within { background: #282a2c; border-color: #8ab4f8; }
         input { background: transparent; border: none; outline: none; color: white; width: 100%; height: 48px; font-size: 16px; }
         
@@ -29,115 +29,114 @@
 </head>
 <body class="flex flex-col h-screen">
 
-    <header class="p-5 flex justify-between items-center border-b border-white/5 bg-[#131314]/80 backdrop-blur-md">
-        <h1 class="text-sm font-bold tracking-[2px] text-white uppercase">Smart <span class="text-[#8ab4f8]">AI</span></h1>
-        <div id="mem-status" class="text-[10px] font-mono text-gray-500 italic">MEMORY_SYNCING...</div>
+    <header class="p-5 flex justify-between items-center border-b border-white/5 bg-[#131314]/90 backdrop-blur-md z-50">
+        <h1 class="text-sm font-bold tracking-[3px] text-white">SMART <span class="text-[#8ab4f8]">AI</span></h1>
+        <div id="status-memori" class="text-[9px] font-mono text-gray-500 uppercase tracking-tighter">Syncing...</div>
     </header>
 
-    <main id="chatBox" class="chat-container p-5 flex flex-col space-y-6 overflow-y-auto">
+    <main id="chatArea" class="chat-container p-5 flex flex-col overflow-y-auto">
         <div class="ai-wrapper">
             <div class="ai-name">Smart AI</div>
-            <div class="ai-text">Halo Kak Alan! Saya siap membantu mencari informasi dari ribuan database kita. Apa yang ingin Kakak tanyakan?</div>
+            <div class="ai-text">Sistem diaktifkan. Ribuan data memori telah dipetakan. Silakan bertanya, Kak Alan.</div>
         </div>
     </main>
 
-    <footer class="input-container">
+    <footer class="input-area">
         <div class="input-bar shadow-2xl">
-            <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startNeuralProcess()" placeholder="Ketik pertanyaan...">
-            <button onclick="startNeuralProcess()" class="text-[#8ab4f8] font-bold p-2 hover:scale-110 transition-transform">
+            <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startInference()" placeholder="Tanya sesuatu ke Smart AI...">
+            <button onclick="startInference()" class="text-[#8ab4f8] hover:scale-110 transition-transform">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
             </button>
         </div>
-        <p class="text-[9px] text-center mt-3 text-gray-600 uppercase tracking-[2px]">Neural Core v9.0 • On-Device</p>
+        <p class="text-[8px] text-center mt-3 text-gray-600 uppercase tracking-[3px]">Local Neural Processor // GPT-Logic v10.0</p>
     </footer>
 
     <script src="otakai.js"></script>
     <script>
         class SmartEngine {
             constructor() {
-                this.noiseWords = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang', 'bisa', 'tolong'];
+                this.stopWords = ['apakah', 'bagaimana', 'bisa', 'tolong', 'jelasin', 'apa', 'itu', 'saya', 'kak', 'dong'];
                 this.threshold = 1.0;
             }
 
-            // Membersihkan input agar fokus ke kata kunci
             clean(t) {
                 return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/)
-                    .filter(w => w.length > 2 && !this.noiseWords.includes(w));
+                    .filter(w => w.length > 2 && !this.stopWords.includes(w));
             }
 
-            // Proses Berpikir Deep-Scan
             think(query, db) {
                 const tokens = this.clean(query);
-                let candidates = [];
+                let ranking = [];
 
                 db.forEach(entry => {
                     let score = 0;
-                    const topicClean = this.clean(entry.topic);
-                    const summaryClean = entry.summary.toLowerCase();
+                    const topicStr = entry.topic.toLowerCase();
+                    const summaryStr = entry.summary.toLowerCase();
 
                     tokens.forEach(tok => {
-                        // Skor 10 jika ada di Judul (Topic)
-                        if (topicClean.some(t => t.includes(tok))) score += 10.0;
-                        // Skor 1.5 jika ada di Isi (Summary)
-                        if (summaryClean.includes(tok)) score += 1.5;
+                        if (topicStr.includes(tok)) score += 10.0; // Bobot utama di Topic
+                        if (summaryStr.includes(tok)) score += 1.5; // Bobot pendukung di Summary
                     });
 
                     if (score > this.threshold) {
-                        candidates.push({ ...entry, pwr: score });
+                        ranking.push({ ...entry, pwr: score });
                     }
                 });
 
-                // Urutkan dan ambil yang paling akurat
-                return candidates.sort((a, b) => b.pwr - a.pwr)[0];
+                return ranking.sort((a, b) => b.pwr - a.pwr)[0];
             }
         }
 
-        const Engine = new SmartEngine();
+        const AI = new SmartEngine();
 
-        // Update status memori
+        // Tampilkan jumlah memori
         window.onload = () => {
             const count = typeof dataMemori !== 'undefined' ? dataMemori.length : 0;
-            document.getElementById('mem-status').innerText = `LOCAL_MEM: ${count}`;
+            document.getElementById('status-memori').innerText = `MEMORIES: ${count}`;
         };
 
-        function startNeuralProcess() {
+        function startInference() {
             const input = document.getElementById('userInput');
             const prompt = input.value.trim();
             if (!prompt) return;
 
-            render(prompt, 'user');
+            renderChat(prompt, 'user');
             input.value = '';
 
             const rid = "ai-" + Date.now();
-            render(`<div class="typing-anim"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', rid);
+            renderChat(`<div class="typing-anim"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', rid);
 
             setTimeout(() => {
-                const result = Engine.think(prompt, typeof dataMemori !== 'undefined' ? dataMemori : []);
+                const result = AI.think(prompt, typeof dataMemori !== 'undefined' ? dataMemori : []);
                 const box = document.getElementById(rid);
 
                 if (result) {
-                    // Logic Slicer: Ambil jawaban variasi atau potong jika kepanjangan
-                    let output = result.summary;
-                    if (output.includes(' / ')) {
-                        const parts = output.split(' / ');
-                        output = parts[Math.floor(Math.random() * parts.length)];
-                    } else if (output.length > 400) {
-                        output = output.split('. ').slice(0, 4).join('. ') + '.';
+                    let finalAnswer = result.summary;
+
+                    // --- FIX SMART SLICER (PILIH SATU JAWABAN) ---
+                    if (finalAnswer.includes('/')) {
+                        const parts = finalAnswer.split('/');
+                        const randomIndex = Math.floor(Math.random() * parts.length);
+                        finalAnswer = parts[randomIndex].trim();
+                    } else if (finalAnswer.length > 500) {
+                        // Jika gak ada / tapi kepanjangan, ambil 4 kalimat pertama
+                        finalAnswer = finalAnswer.split('. ').slice(0, 4).join('. ') + '.';
                     }
 
                     box.innerHTML = `
-                        <div class="ai-name uppercase tracking-tighter">${result.topic}</div>
-                        <div class="ai-text">${output}</div>
+                        <div class="ai-name">RELEVANCE: ${result.topic}</div>
+                        <div class="ai-text">${finalAnswer}</div>
                     `;
                 } else {
-                    box.innerHTML = `<div class="ai-text italic opacity-40">Maaf Kak, pola saraf Smart AI tidak menemukan data yang cocok untuk "${prompt}".</div>`;
+                    box.innerHTML = `<div class="ai-text italic opacity-40">Maaf Kak, sirkuit Smart AI tidak menemukan data yang cocok untuk "${prompt}".</div>`;
                 }
-                document.getElementById('chatBox').scrollTop = document.getElementById('chatBox').scrollHeight;
+                const area = document.getElementById('chatArea');
+                area.scrollTop = area.scrollHeight;
             }, 800);
         }
 
-        function render(text, type, id = null) {
-            const area = document.getElementById('chatBox');
+        function renderChat(text, type, id = null) {
+            const area = document.getElementById('chatArea');
             const div = document.createElement('div');
             div.className = type === 'user' ? 'user-bubble' : 'ai-wrapper';
             if (id) div.id = id;
