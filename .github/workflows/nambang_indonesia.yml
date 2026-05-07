@@ -1,9 +1,9 @@
-name: Kuli Tambang Brutal v3 - Full Keyword Sync
+name: Kuli Tambang Brutal v3 - Murni Tambah Terus
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Jalan otomatis tiap 6 jam
-  workflow_dispatch: # Tombol manual di tab Actions
+    - cron: '0 */6 * * *' 
+  workflow_dispatch: 
 
 permissions:
   contents: write
@@ -21,18 +21,16 @@ jobs:
           python-version: '3.11'
 
       - name: Install Tools
-        run: pip install requests beautifulsoup4 wikipedia pyyaml
+        run: pip install wikipedia pyyaml
 
-      - name: Eksekusi Robot Tambang
+      - name: Eksekusi Tambah Data
         run: |
           python << 'EOF'
-          import wikipedia, requests, os, time, random, yaml, json
+          import wikipedia, os, time, random, yaml, json
 
-          # Konfigurasi Awal
           wikipedia.set_lang("id")
           tgl_sekarang = time.strftime('%Y-%m-%d')
           
-          # Path File (Sesuai foto GitHub Alan)
           path_data = 'data.yml'
           path_keys = 'keywords.yml'
           path_otak_js = 'otakai.js'
@@ -42,79 +40,65 @@ jobs:
                   with open(path, 'r', encoding='utf-8') as f:
                       try:
                           res = yaml.safe_load(f)
-                          # Pastikan hasil load adalah list, kalau bukan balikin list kosong
                           return res if isinstance(res, list) else []
                       except: return []
               return []
 
-          # 1. AMBIL KATA KUNCI & PILIH ACAK (Biar gak ngulang)
+          # 1. BACA KEYWORDS & PILIH ACAK
           all_keywords = load_yml(path_keys)
           if not all_keywords:
-              # Backup kalau keywords.yml kosong
-              all_keywords = ["HTML Dasar", "Sejarah Dunia", "Kisah Nabi"]
-
-          # Pilih 2 kata kunci acak dari daftar yang banyak tadi
+              all_keywords = ["HTML", "Sejarah", "Fakta Unik"]
+          
+          # Robot pilih 2 topik acak tiap sesi biar gak bosan
           selected_keys = random.sample(all_keywords, min(len(all_keywords), 2))
-          print(f"🎯 Sesi ini fokus nambang topik: {selected_keys}")
+          print(f"🎯 Sesi ini nambang topik: {selected_keys}")
 
           hasil_nambang_baru = []
 
-          # 2. PROSES SEARCH & MINING
+          # 2. PROSES SEARCH
           for key in selected_keys:
               try:
-                  # Cari 5 judul terkait, lalu acak ambil 2 biar variatif
                   search_results = wikipedia.search(key, results=5)
                   random.shuffle(search_results)
-                  
                   for title in search_results[:2]:
                       try:
                           p = wikipedia.page(title)
-                          sumry = p.summary.split('\n')[0][:250]
-                          if len(sumry) > 30:
-                              hasil_nambang_baru.append({
-                                  "id": int(time.time() * 1000) + random.randint(1, 9999),
-                                  "topic": p.title,
-                                  "summary": sumry,
-                                  "date": tgl_sekarang
-                              })
+                          hasil_nambang_baru.append({
+                              "id": int(time.time() * 1000) + random.randint(1, 9999),
+                              "topic": p.title,
+                              "summary": p.summary.split('\n')[0][:250],
+                              "date": tgl_sekarang
+                          })
                       except: continue
               except: continue
 
-          # 3. UPDATE GUDANG (data.yml) - HARAM HAPUS DATA LAMA
+          # 3. UPDATE GUDANG (data.yml) - MURNI TAMBAH (APPEND)
           gudang_lama = load_yml(path_data)
+          topik_lama = [item.get('topic') for item in gudang_lama if isinstance(item, dict)]
           
-          # List judul yang sudah ada di data.yml biar gak duplikat
-          topik_pernah_ada = [item.get('topic') for item in gudang_lama if isinstance(item, dict)]
+          # Cek duplikat biar gak ada yang kembar
+          data_fix_masuk = [n for n in hasil_nambang_baru if n['topic'] not in topik_lama]
           
-          data_fix_masuk = []
-          for baru in hasil_nambang_baru:
-              if baru['topic'] not in topik_pernah_ada:
-                  data_fix_masuk.append(baru)
-                  print(f"✅ Menambahkan: {baru['topic']}")
-              else:
-                  print(f"⚠️ Melewati: {baru['topic']} (Sudah ada di database)")
-
-          # GABUNGKAN DATA LAMA + DATA BARU (Data 4000 kamu aman & bertambah)
-          data_final_gudang = gudang_lama + data_fix_masuk
+          # LOGIKA BARU: Gabungkan tanpa batas sama sekali (Murni nambah ke bawah)
+          data_total_final = gudang_lama + data_fix_masuk
 
           with open(path_data, 'w', encoding='utf-8') as f:
-              yaml.dump(data_final_gudang, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+              yaml.dump(data_total_final, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
-          # 4. UPDATE OTAK KECIL (otakai.js)
-          # Ambil 100 data TERBARU saja supaya file JS enteng di browser
-          data_otak_js = data_final_gudang[-100:]
-          
-          js_content = "const dataMemori = " + json.dumps(data_otak_js, indent=2, ensure_ascii=False) + ";"
+          # 4. UPDATE OTAK (otakai.js)
+          # Tetap ambil 100 terbaru buat JS biar Web Alan gak berat pas dibuka di HP
+          # Tapi di data.yml semua data lama tetep ada ribuan baris
+          memori_web = data_total_final[-100:]
+          js_content = "const dataMemori = " + json.dumps(memori_web, indent=2, ensure_ascii=False) + ";"
           with open(path_otak_js, 'w', encoding='utf-8') as f:
               f.write(js_content)
 
-          print(f"🚀 SELESAI! Total database sekarang: {len(data_final_gudang)} data.")
+          print(f"✅ BERHASIL! Gudang nambah jadi {len(data_total_final)} data.")
           EOF
 
-      - name: Push Perubahan ke GitHub
+      - name: Push ke GitHub
         run: |
           git config --local user.name "Kuli Tambang Robot"
           git config --local user.email "robot@smartai.alan"
-          # Tambahkan semua file yang berubah
           git add data.yml otakai.js
-          git diff --staged --quiet || (git commit -m "Mining: Update Data & Otak AI" && git push)
+          git diff --staged --quiet || (git commit -m "Mining: Update data baru tanpa batas" && git push)
