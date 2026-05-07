@@ -3,146 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALAN NEURAL AI v2.0</title>
+    <title>ALAN GPT-LITE v4.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
-        .chat-container { height: calc(100vh - 160px); overflow-y: auto; scroll-behavior: smooth; }
-        .chat-container::-webkit-scrollbar { width: 5px; }
-        .chat-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
-        
-        .msg-user { background: #21262d; border: 1px solid #30363d; border-radius: 15px 15px 0 15px; }
-        .msg-ai { background: #161b22; border: 1px solid #30363d; border-radius: 15px 15px 15px 0; position: relative; }
-        .msg-ai::before { content: 'AI'; position: absolute; top: -18px; left: 0; font-size: 10px; color: #58a6ff; font-weight: bold; }
-        
-        input:focus { outline: none; border-color: #58a6ff !important; box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2); }
-        .glow { box-shadow: 0 0 15px rgba(88, 166, 255, 0.1); }
+        body { background: #05070a; color: #ced4da; font-family: 'Inter', sans-serif; }
+        .ai-brain { border: 1px solid #1f242c; background: #0d1117; border-radius: 20px; }
+        .token { color: #58a6ff; font-weight: bold; }
     </style>
 </head>
-<body class="flex flex-col items-center min-h-screen">
+<body class="p-4 flex flex-col items-center">
 
-    <header class="w-full max-w-2xl p-6 flex justify-between items-center border-b border-[#30363d] sticky top-0 bg-[#0d1117]/80 backdrop-blur-md z-10">
-        <div class="flex items-center gap-3">
-            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <h1 class="text-sm font-bold tracking-tighter uppercase text-white">Alan Neural Engine <span class="text-blue-500">v2.0</span></h1>
-        </div>
-        <button onclick="location.reload()" class="text-[10px] text-gray-500 hover:text-white transition-all">SYNC DATABASE</button>
+    <header class="w-full max-w-xl py-6 text-center">
+        <h1 class="text-xl font-black tracking-widest text-white italic">ALAN <span class="text-blue-500 text-2xl">CORE</span> AI</h1>
+        <p class="text-[9px] text-gray-500 uppercase mt-1">Multi-Layer Transformer Architecture (Mobile Optimized)</p>
     </header>
 
-    <main id="chatBox" class="chat-container w-full max-w-2xl p-4 space-y-6">
-        <div class="msg-ai p-4 text-sm max-w-[85%] self-start mt-4">
-            Halo Kak! Saya adalah AI pribadi Kak Alan yang sudah dilengkapi sistem Neural Engine. Mau bahas Trading, Sejarah, atau Geopolitik hari ini? ⛏️🚀
-        </div>
-    </main>
+    <main id="display" class="w-full max-w-xl h-[60vh] overflow-y-auto space-y-4 p-4 ai-brain mb-4"></main>
 
-    <footer class="w-full max-w-2xl p-4 sticky bottom-0 bg-[#0d1117]">
-        <div class="relative flex items-center">
-            <input type="text" id="userInput" onkeypress="handleKey(event)" 
-                placeholder="Tanyakan sesuatu..." 
-                class="w-full bg-[#161b22] border border-[#30363d] text-white p-4 pr-16 rounded-2xl text-sm transition-all shadow-inner">
-            <button onclick="prosesChat()" class="absolute right-2 bg-blue-600 hover:bg-blue-500 text-white p-2 px-4 rounded-xl text-xs font-bold transition-all">
-                KIRIM
-            </button>
+    <footer class="w-full max-w-xl sticky bottom-4">
+        <div class="relative">
+            <input type="text" id="input" onkeypress="if(event.key==='Enter') eksekusi()" placeholder="Coba tanya: 15 + 25 atau Sejarah..." 
+                class="w-full p-5 bg-[#161b22] border border-[#30363d] rounded-2xl outline-none focus:border-blue-500 transition-all text-sm">
+            <button onclick="eksekusi()" class="absolute right-3 top-3 bg-white text-black px-4 py-2 rounded-xl font-bold text-xs">THINK</button>
         </div>
-        <p class="text-[9px] text-center text-gray-600 mt-2 tracking-widest uppercase">Powered by Alan Neural Logic • Offline Database</p>
     </footer>
 
     <script src="otakai.js"></script>
     <script>
-        /** * SISTEM INTELEGENSI NEURAL v2.0
-         * Dibuat khusus untuk performa tinggi di HP 4GB
+        /**
+         * ALAN TRANSFORMER-LITE ENGINE
+         * Konsep: Membagi input ke dalam "Emosi", "Logika", dan "Data"
          */
-        class NeuralEngine {
+        class AlanGPT {
             constructor() {
-                this.weights = {};
+                this.history = [];
             }
 
-            // Vektorisasi: Mengubah teks menjadi nilai matematika
-            vektor(t) {
-                let s = 0;
-                const txt = t.toLowerCase();
-                for (let i = 0; i < txt.length; i++) {
-                    s += txt.charCodeAt(i) * (i + 1);
-                }
-                return (s % 1000) / 1000;
-            }
-
-            // Fuzzy Logic: Menghitung kemiripan karakter
-            fuzzy(s1, s2) {
-                const a = s1.toLowerCase();
-                const b = s2.toLowerCase();
-                let match = 0;
-                for (let char of a) { if (b.includes(char)) match++; }
-                return match / Math.max(a.length, b.length);
-            }
-
-            // Engine Utama: Menggabungkan Neural & Fuzzy
-            pikirkan(input, db) {
-                let topScore = -1;
-                let topIndex = -1;
-                const inputV = this.vektor(input);
-
-                db.forEach((item, i) => {
-                    const topicV = this.vektor(item.topic);
-                    const fuzzyS = this.fuzzy(input, item.topic);
-                    
-                    // Skor Neural (40%) + Skor Fuzzy (60%)
-                    const neuralS = (1 - Math.abs(inputV - topicV)) * 0.4;
-                    const totalS = (fuzzyS * 0.6) + neuralS;
-
-                    if (totalS > topScore) {
-                        topScore = totalS;
-                        topIndex = i;
+            // 1. Layer Matematika (Tanpa Database)
+            hitung(t) {
+                try {
+                    const mathMatch = t.match(/[0-9+\-*/().\s]+/g);
+                    if (mathMatch && t.includes('+') || t.includes('-') || t.includes('*')) {
+                        return "Hasil perhitungan logika saya adalah: " + eval(mathMatch[0]);
                     }
-                });
+                } catch(e) { return null; }
+                return null;
+            }
 
-                return topScore > 0.25 ? db[topIndex] : null;
+            // 2. Layer Bahasa (Inggris - Indonesia Sederhana)
+            translate(t) {
+                const dict = {"hello": "Halo", "what": "Apa", "name": "Nama", "is": "adalah"};
+                let words = t.toLowerCase().split(" ");
+                let hasEnglish = words.some(w => dict[w]);
+                if (hasEnglish) {
+                    return "Saya mendeteksi bahasa Inggris. Inti pertanyaan Kakak adalah tentang: " + 
+                           words.map(w => dict[w] || w).join(" ");
+                }
+                return null;
+            }
+
+            // 3. Layer Memori (Narik dari otakai.js)
+            ambilMemori(t) {
+                if (typeof dataMemori === 'undefined') return null;
+                const match = dataMemori.find(i => t.toLowerCase().includes(i.topic.toLowerCase()));
+                return match ? match.summary : null;
+            }
+
+            // MIKIR UTAMA (Brain Router)
+            mikir(input) {
+                // GPT bekerja dengan memprioritaskan "Task"
+                const mathResult = this.hitung(input);
+                if (mathResult) return mathResult;
+
+                const transResult = this.translate(input);
+                if (transResult) return transResult;
+
+                const memResult = this.ambilMemori(input);
+                if (memResult) return "Berdasarkan memori saya: " + memResult;
+
+                return "Maaf Kak, pola input ini belum terpetakan di sirkuit saya. Coba kasih data baru ke tambang.txt!";
             }
         }
 
-        const Engine = new NeuralEngine();
+        const AI = new AlanGPT();
 
-        function handleKey(e) { if (e.key === 'Enter') prosesChat(); }
+        function eksekusi() {
+            const box = document.getElementById('input');
+            const txt = box.value.trim();
+            if(!txt) return;
 
-        function tampilkanChat(teks, sender, id = null) {
-            const box = document.getElementById('chatBox');
-            const wrap = document.createElement('div');
-            wrap.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
-            
-            const div = document.createElement('div');
-            div.className = `p-4 text-sm max-w-[85%] ${sender === 'user' ? 'msg-user' : 'msg-ai'}`;
-            if (id) div.id = id;
-            div.innerHTML = teks;
-            
-            wrap.appendChild(div);
-            box.appendChild(wrap);
-            box.scrollTop = box.scrollHeight;
-        }
-
-        function prosesChat() {
-            const input = document.getElementById('userInput');
-            const userText = input.value.trim();
-            if (!userText) return;
-
-            tampilkanChat(userText, 'user');
-            input.value = '';
-
-            const loadId = "ai-" + Date.now();
-            tampilkanChat("<span class='animate-pulse text-blue-400'>Memproses memori...</span>", 'ai', loadId);
+            render(txt, 'user');
+            box.value = '';
 
             setTimeout(() => {
-                const hasil = Engine.pikirkan(userText, typeof dataMemori !== 'undefined' ? dataMemori : []);
-                const aiDiv = document.getElementById(loadId);
+                const reply = AI.mikir(txt);
+                render(reply, 'ai');
+            }, 600);
+        }
 
-                if (hasil) {
-                    const variasi = hasil.summary.split(' / ');
-                    const final = variasi[Math.floor(Math.random() * variasi.length)];
-                    aiDiv.innerHTML = `<b class="text-blue-400"># ${hasil.topic}</b><br>${final}`;
-                } else {
-                    aiDiv.innerHTML = "Maaf Kak, data tersebut tidak ditemukan di memori saya. Silakan tambahkan materinya ke database GitHub dulu ya! ⛏️";
-                }
-            }, 800);
+        function render(t, s) {
+            const d = document.getElementById('display');
+            const m = document.createElement('div');
+            m.className = s === 'user' ? 'text-right text-blue-400 text-sm' : 'text-left bg-[#1c2128] p-4 rounded-xl text-sm border border-[#30363d]';
+            m.innerHTML = (s === 'ai' ? '<span class="token">●</span> ' : '') + t;
+            d.appendChild(m);
+            d.scrollTop = d.scrollHeight;
         }
     </script>
 </body>
