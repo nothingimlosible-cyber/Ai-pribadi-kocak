@@ -1,194 +1,248 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart AI Alan - Hybrid Core</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
-        body { background: #0d0d0d; color: #ececec; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; overflow: hidden; }
-        .sidebar { background: #000000; width: 280px; height: 100vh; position: fixed; left: -280px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100; border-right: 1px solid #1a1a1a; }
-        .sidebar.active { left: 0; }
-        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
-        .overlay.active { display: block; }
-        .main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100vh; width: 100%; transition: 0.3s; }
-        .chat-area { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: none; }
-        .chat-area::-webkit-scrollbar { display: none; }
-        .msg-container { max-width: 800px; margin: 0 auto; width: 100%; }
-        .user-bubble { background: #2f2f2f; border-radius: 20px; padding: 12px 20px; margin-left: auto; width: fit-content; max-width: 85%; margin-bottom: 25px; }
-        .ai-row { margin-bottom: 40px; display: flex; flex-direction: column; gap: 8px; }
-        .ai-name { font-size: 14px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }
-        .ai-text { font-size: 16px; line-height: 1.7; color: #d1d1d1; }
-        .input-wrapper { padding: 15px 20px 30px; background: #0d0d0d; }
-        .input-container { background: #212121; border-radius: 30px; padding: 6px 16px; display: flex; align-items: center; gap: 10px; max-width: 800px; margin: 0 auto; border: 1px solid #333; }
-        input { background: transparent; border: none; outline: none; color: white; flex: 1; height: 45px; font-size: 16px; }
-        .dot { width: 4px; height: 4px; background: #888; border-radius: 50%; animation: blink 1.4s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-    </style>
+<meta charset="UTF-8">
+<title>Hybrid GPT Brain Correct Architecture</title>
+
+<script src="otakai.js"></script>
+<script src="dataMemori.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0b0b;
+  color:white;
+  display:flex;
+  height:100vh;
+}
+
+#sidebar{
+  width:260px;
+  background:#111;
+  border-right:1px solid #222;
+  display:flex;
+  flex-direction:column;
+}
+
+#chat{
+  flex:1;
+  overflow:auto;
+  padding:15px;
+}
+
+.msg{
+  margin:10px 0;
+  padding:10px 14px;
+  border-radius:12px;
+  max-width:80%;
+}
+
+.user{background:#2a2a2a;margin-left:auto}
+.ai{background:#151515;border:1px solid #333}
+
+#bar{
+  display:flex;
+  padding:10px;
+  background:#111;
+  border-top:1px solid #222;
+  gap:10px;
+}
+
+input{
+  flex:1;
+  padding:12px;
+  border:none;
+  outline:none;
+  background:#222;
+  color:white;
+  border-radius:10px;
+}
+
+button{
+  padding:12px 16px;
+  border:none;
+  background:white;
+  color:black;
+  border-radius:10px;
+}
+</style>
 </head>
-<body class="flex">
-    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
-    <aside id="sidebar" class="sidebar p-4 flex flex-col">
-        <h2 class="text-xl font-bold mb-8 px-2 text-white">Smart AI Alan</h2>
-        <div class="space-y-4 flex-1">
-            <div id="status" class="text-[10px] text-yellow-500 px-3 font-bold uppercase bg-zinc-900 py-2 rounded-lg">Menghubungkan Core...</div>
-            <hr class="border-zinc-800">
-            <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-widest px-3">Hasil Tambang</p>
-            <div id="historyList" class="space-y-1 text-sm text-zinc-400 overflow-y-auto"></div>
-        </div>
-    </aside>
+<body>
 
-    <div class="main-content">
-        <header class="p-4 flex items-center justify-between bg-[#0d0d0d]/80 backdrop-blur-md sticky top-0 z-50">
-            <button onclick="toggleSidebar()" class="p-2 hover:bg-zinc-800 rounded-lg text-white">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </button>
-            <div class="flex flex-col items-center">
-                <span class="font-bold text-sm text-white italic">Hybrid Alan Engine</span>
-                <span id="coreStatus" class="text-[9px] text-zinc-500 uppercase">OFFLINE</span>
-            </div>
-            <div class="w-10"></div>
-        </header>
+<div id="sidebar">
+  <div style="padding:10px;font-weight:bold;border-bottom:1px solid #222">
+    🧠 AI Brain System
+  </div>
+</div>
 
-        <main id="chatWindow" class="chat-area">
-            <div class="msg-container" id="msgBox">
-                <div class="ai-row">
-                    <div class="ai-name">
-                        <div class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center text-[10px] font-bold">A</div>
-                        Smart AI
-                    </div>
-                    <div class="ai-text">Siap Lan! Hybrid Engine (ONNX + Database Tambang) sudah aktif di Vercel. Mau nanya apa hari ini?</div>
-                </div>
-            </div>
-        </main>
+<div style="flex:1;display:flex;flex-direction:column">
 
-        <footer class="input-wrapper">
-            <div class="input-container shadow-2xl">
-                <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startInference()" placeholder="Tanya Hybrid AI Alan...">
-                <button onclick="startInference()" class="p-2 bg-white text-black rounded-full hover:scale-105 transition-all">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
-                </button>
-            </div>
-            <p class="text-[9px] text-center mt-3 text-zinc-600 font-mono italic">DATA_SYNC_OK // VERCEL_DEPLOYED // 2026</p>
-        </footer>
-    </div>
+<div id="chat"></div>
 
-    <script src="otakai.js"></script>
-    <script>
-        let session;
+<div id="bar">
+  <input id="input" placeholder="Tanya AI...">
+  <button onclick="send()">Kirim</button>
+</div>
 
-        // ALGORITMA TAMBANG (otakai.js integration)
-        class MiningCore {
-            constructor() {
-                this.noise = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang', 'bisa', 'tolong'];
-            }
-            clean(t) {
-                return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/)
-                    .filter(w => w.length > 2 && !this.noise.includes(w));
-            }
-            think(query, db) {
-                const tokens = this.clean(query);
-                let ranking = [];
-                db.forEach(entry => {
-                    let score = 0;
-                    const topicStr = entry.topic.toLowerCase();
-                    const summaryStr = entry.summary.toLowerCase();
-                    tokens.forEach(tok => {
-                        if (topicStr.includes(tok)) score += 10.0;
-                        if (summaryStr.includes(tok)) score += 1.5;
-                    });
-                    if (score > 1.2) ranking.push({ ...entry, pwr: score });
-                });
-                return ranking.sort((a, b) => b.pwr - a.pwr)[0];
-            }
-        }
+</div>
 
-        const Miner = new MiningCore();
+<script>
 
-        async function initAI() {
-            try {
-                session = await ort.InferenceSession.create('./smart_ai_alan.onnx');
-                document.getElementById('status').innerText = "● HYBRID ONLINE";
-                document.getElementById('status').classList.replace('text-yellow-500', 'text-green-500');
-                document.getElementById('coreStatus').innerText = "ONNX + MINING ACTIVE";
-            } catch (e) {
-                console.error(e);
-                document.getElementById('status').innerText = "● MINING ONLY MODE";
-                document.getElementById('coreStatus').innerText = "DATABASE ONLY";
-            }
-        }
-        initAI();
+// =========================
+// 🧠 EMOTION ENGINE
+// =========================
 
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
-        }
+function detectEmotion(t){
 
-        async function startInference() {
-            const el = document.getElementById('userInput');
-            const q = el.value.trim();
-            if(!q) return;
+  t=t.toLowerCase()
 
-            addMsg(q, 'user');
-            el.value = '';
+  if(t.includes("sedih")||t.includes("capek")) return "empathetic"
+  if(t.includes("kenapa")||t.includes("jelasin")) return "analytical"
+  if(t.includes("ai")) return "focused"
 
-            const rid = "ai-" + Date.now();
-            addMsg(`<div class="flex gap-1 py-2"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', rid);
+  return "neutral"
+}
 
-            setTimeout(async () => {
-                const box = document.getElementById(rid);
-                
-                // 1. CARI DI DATABASE TAMBANG DULU (Lebih Akurat buat Data Lokal)
-                const miningResult = Miner.think(q, typeof dataMemori !== 'undefined' ? dataMemori : []);
-                
-                if (miningResult) {
-                    let out = miningResult.summary;
-                    if (out.includes('/')) out = out.split('/')[Math.floor(Math.random() * out.split('/').length)].trim();
-                    box.innerHTML = `<strong>(Database)</strong> ${out}`;
-                    addHistory(miningResult.topic);
-                } 
-                // 2. KALAU GAK ADA, PAKAI OTAK ONNX (6 Juta Parameter)
-                else if (session) {
-                    try {
-                        const tokens = q.toLowerCase().split('').slice(0, 10).map(c => BigInt(c.charCodeAt(0) % 1000));
-                        while(tokens.length < 10) tokens.push(0n);
-                        const tensor = new ort.Tensor('int64', BigInt64Array.from(tokens), [1, 10]);
-                        await session.run({ input: tensor });
-                        box.innerHTML = "<strong>(Neural)</strong> Maaf Lan, database tambang gak ada, tapi pola input kamu terdeteksi oleh Neural Core saya!";
-                    } catch(err) {
-                        box.innerHTML = "Aduh Lan, jalur sarafnya putus! 🤣";
-                    }
-                } else {
-                    box.innerHTML = "Maaf Lan, data itu belum masuk database tambang dan model ONNX sedang offline.";
-                }
-                scrollDown();
-            }, 800);
-        }
+// =========================
+// 🧠 OTACAI ENGINE (WAJIB UTAMA)
+// =========================
+// ini yang kamu bilang "otakai.js"
 
-        function addMsg(txt, type, id = null) {
-            const container = document.getElementById('msgBox');
-            const div = document.createElement('div');
-            div.className = type === 'user' ? 'user-bubble' : 'ai-row';
-            div.innerHTML = type === 'user' ? txt : `<div class="ai-name"><div class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center text-[10px] font-bold">A</div>Smart AI Alan</div><div class="ai-text" id="${id}">${txt}</div>`;
-            container.appendChild(div);
-            scrollDown();
-        }
+function runOtakai(input){
 
-        function addHistory(topic) {
-            const list = document.getElementById('historyList');
-            const item = document.createElement('div');
-            item.className = "p-2 hover:bg-zinc-800 rounded-lg truncate text-zinc-400 text-[11px]";
-            item.innerText = topic;
-            list.prepend(item);
-        }
+  // fallback kalau AI.think tidak ada hasil
+  try{
+    return AI.think(input)
+  }catch(e){
+    return null
+  }
+}
 
-        function scrollDown() {
-            const area = document.getElementById('chatWindow');
-            area.scrollTop = area.scrollHeight;
-        }
-    </script>
+// =========================
+// 🧠 DATABASE SEARCH (dataMemori.js)
+// =========================
+
+function searchDB(input){
+
+  let words = input.toLowerCase().split(" ")
+
+  let best = null
+  let score = 0
+
+  for(let d of dataMemori){
+
+    let s = 0
+
+    words.forEach(w=>{
+      if(d.topic.includes(w)) s += 3
+      if(d.summary.includes(w)) s += 1
+    })
+
+    if(s > score){
+      score = s
+      best = d
+    }
+  }
+
+  return best
+}
+
+// =========================
+// 🧠 GPT STYLE RESPONSE ENGINE
+// =========================
+
+function buildResponse(input, dbResult, otakaiResult, emotion){
+
+  let out = ""
+
+  // 1. ACKNOWLEDGE
+  out += "🧠 Aku proses dulu maksud kamu...<br>"
+
+  // 2. DATABASE (dataMemori.js)
+  if(dbResult){
+    out += "📦 Dari database:<br>"
+    out += dbResult.summary + "<br><br>"
+  }
+
+  // 3. OTACAI (reasoning engine)
+  if(otakaiResult){
+    out += "⚙️ Analisis otakai.js menemukan pola relevan.<br><br>"
+  }
+
+  // 4. EMOTION LAYER
+  if(emotion === "empathetic"){
+    out += "Aku ngerti ini mungkin berat buat kamu...<br>"
+  }
+
+  if(emotion === "analytical"){
+    out += "Aku jelasin secara logis ya.<br>"
+  }
+
+  if(emotion === "focused"){
+    out += "Ini topik teknis, aku breakdown pelan.<br>"
+  }
+
+  // 5. FINAL GPT FEELING
+  out += "<br>🤖 Kesimpulan:<br>"
+  out += "Aku menggabungkan database + pola otakai + konteks untuk menjawab secara paling relevan."
+
+  return out
+}
+
+// =========================
+// 🧠 MAIN FLOW
+// =========================
+
+function send(){
+
+  let input=document.getElementById("input")
+  let text=input.value
+  if(!text)return
+
+  add(text,"user")
+
+  // STEP 1: emotion
+  let emo = detectEmotion(text)
+
+  // STEP 2: OTACAI ENGINE
+  let otakaiResult = runOtakai(text)
+
+  // STEP 3: DATABASE SEARCH
+  let dbResult = searchDB(text)
+
+  add("🧠 thinking...","ai")
+
+  setTimeout(()=>{
+
+    let response = buildResponse(
+      text,
+      dbResult,
+      otakaiResult,
+      emo
+    )
+
+    add(response,"ai")
+
+  },600)
+
+  input.value=""
+}
+
+// =========================
+// UI
+// =========================
+
+function add(t,type){
+  let d=document.createElement("div")
+  d.className="msg "+type
+  d.innerHTML=t
+  document.getElementById("chat").appendChild(d)
+  document.getElementById("chat").scrollTop=999999
+}
+
+</script>
+
 </body>
 </html>
