@@ -8,16 +8,22 @@ module.exports = async (req, res) => {
       const chatId = message.chat.id;
       const userMsg = message.text;
       
-      // Ambil Token dari Environment Variable Vercel Kakak
+      // Token bot Kakak (Pastikan sudah diisi di Environment Variable Vercel)
       const BOT_TOKEN = process.env.BOT_TOKEN; 
       
-      // GANTI URL INI dengan link RAW otakai.js punya Kakak di GitHub
-      const GITHUB_RAW_URL = "https://raw.githubusercontent.com/username/repo/main/otakai.js";
+      // LINK RAW GITHUB KAK ALAN (Sudah Fix)
+      const GITHUB_RAW_URL = "https://raw.githubusercontent.com/nothingimlosible-cyber/Ai-pribadi-kocak/main/otakai.js";
 
       try {
         // 1. Ambil Data Memori dari GitHub
         const response = await axios.get(GITHUB_RAW_URL);
-        const rawContent = response.data.replace('const dataMemori = ', '').replace(';', '').trim();
+        
+        // Pembersihan Saraf: Hapus 'const dataMemori =' agar jadi JSON murni
+        const rawContent = response.data
+          .replace(/const\s+dataMemori\s*=\s*/, '')
+          .replace(/;$/, '')
+          .trim();
+        
         const dataMemori = JSON.parse(rawContent);
 
         // 2. JEROAN ALGORITMA v10.5 (STRICT HEURISTIC)
@@ -48,7 +54,7 @@ module.exports = async (req, res) => {
         let finalAnswer = "Maaf Kak Alan, data saraf saya belum sinkron untuk itu. 😭";
         if (bestMatch && maxScore > 1.2) {
           finalAnswer = bestMatch.summary;
-          // Smart Slicer /
+          // Smart Slicer (Acak kalau ada '/')
           if (finalAnswer.includes('/')) {
             const parts = finalAnswer.split('/');
             finalAnswer = parts[Math.floor(Math.random() * parts.length)].trim();
@@ -62,7 +68,11 @@ module.exports = async (req, res) => {
         });
 
       } catch (error) {
-        console.error("Error Saraf AI:", error);
+        // Laporkan error ke Telegram Kakak kalau ada masalah
+        await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          chat_id: chatId,
+          text: "⚠️ Laporan Error: " + error.message
+        });
       }
     }
     res.status(200).send('ok');
