@@ -454,5 +454,59 @@ const dataMemori = [
     "topic": "Komunikasi",
     "summary": "Komunikasi secara umum didefinisikan sebagai proses penyampaian informasi. Namun, batasan makna yang tepat mengenai komunikasi sering kali diperdebatkan; para ahli berbeda pandangan mengenai apakah tindakan tanpa sengaja atau penyampaian yang gagal t",
     "date": "2026-05-07"
+  },
+  {
+    "id": 1778185998843,
+    "topic": "Teknologi",
+    "summary": "Teknologi adalah penerapan pengetahuan konseptual untuk mencapai tujuan praktis, terutama dengan cara yang dapat direproduksi. Kata teknologi juga dapat bermakna produk yang dihasilkan dari usaha tersebut, mencakup baik alat yang berwujud seperti per",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778185999681,
+    "topic": "Halaman Utama",
+    "summary": "",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778185999775,
+    "topic": "YouTube",
+    "summary": "YouTube adalah sebuah situs web berbagi video asal Amerika Serikat yang dibuat oleh tiga mantan karyawan PayPal pada Februari 2005. Situs web ini memungkinkan pengguna mengunggah, menonton, dan berbagi video. Perusahaan ini berkantor pusat di San Bru",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778186001060,
+    "topic": "Sejarah",
+    "summary": "Sejarah adalah kajian sistematis mengenai masa lalu, dengan fokus utama pada masa lalu umat manusia. Sebagai sebuah disiplin akademik, sejarah menganalisis dan menafsirkan berbagai bukti untuk membangun naratif tentang apa yang telah terjadi serta me",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778186001469,
+    "topic": "Sejarah Indonesia",
+    "summary": "Sejarah Indonesia meliputi suatu rentang waktu yang sangat panjang yang dimulai sejak zaman prasejarah berdasarkan penemuan \"Manusia Jawa\" yang berusia 1,7 juta tahun yang lalu. Indonesia memiliki banyak suku salah satunya adalah suku Batak. Periode ",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778186001862,
+    "topic": "Halaman Utama",
+    "summary": "",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778185999428,
+    "topic": "Bisnis",
+    "summary": "Bisnis atau usaha, adalah kegiatan memperjualbelikan barang atau jasa dengan tujuan memperoleh laba. Dalam ilmu ekonomi, bisnis adalah suatu organisasi yang menjual barang atau jasa kepada konsumen atau bisnis lainnya, untuk mendapatkan laba. Secara ",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778186001105,
+    "topic": "Bisnis",
+    "summary": "Bisnis atau usaha, adalah kegiatan memperjualbelikan barang atau jasa dengan tujuan memperoleh laba. Dalam ilmu ekonomi, bisnis adalah suatu organisasi yang menjual barang atau jasa kepada konsumen atau bisnis lainnya, untuk mendapatkan laba. Secara ",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778185999738,
+    "topic": "Komunikasi",
+    "summary": "Komunikasi secara umum didefinisikan sebagai proses penyampaian informasi. Namun, batasan makna yang tepat mengenai komunikasi sering kali diperdebatkan; para ahli berbeda pandangan mengenai apakah tindakan tanpa sengaja atau penyampaian yang gagal t",
+    "date": "2026-05-07"
   }
 ];
