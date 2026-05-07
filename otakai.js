@@ -102,6 +102,30 @@ const dataMemori = [
     "date": "2026-05-07"
   },
   {
+    "id": 1778124227413,
+    "topic": "Sarapan Sehat",
+    "summary": "Sarapan sehat memberi energi untuk memulai aktivitas dan menjaga fokus sampai siang hari.  / Menu ideal mengandung karbohidrat kompleks, protein, dan serat seperti oatmeal, telur, atau buah potong.  / Melewatkan sarapan justru bikin gampang lemas, susah konsentrasi, dan ujungnya ngemil berlebih.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778124227414,
+    "topic": "Memasak Nasi yang Pulen",
+    "summary": "Cuci beras 2-3 kali sampai air agak bening supaya nasi tidak terlalu bergetah dan lengket.  / Takaran air umum 1:1. 5 untuk beras biasa, tapi sesuaikan jenis beras karena beras pulen butuh air lebih sedikit.  / Diamkan nasi 10 menit setelah matang dengan mode warm agar uapnya merata dan tekstur jadi pas.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778124227415,
+    "topic": "Assalamu'alaikum",
+    "summary": "Assalamu'alaikum artinya \"semoga keselamatan tercurah untukmu\" dan jadi salam khas umat Islam.  / Dijawab dengan \"Wa'alaikumsalam warahmatullahi wabarakatuh\" sebagai balasan yang lebih lengkap.  / Salam ini dipakai saat bertemu, masuk rumah, atau memulai chat agar ada doa kebaikan di dalamnya.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778124227416,
+    "topic": "Selamat Siang",
+    "summary": "Selamat siang dipakai sekitar jam 11 sampai jam 15 untuk menyapa orang secara formal.  / Sapaan ini umum di kantor, sekolah, atau saat memulai telepon di jam kerja.  / Jawab dengan \"selamat siang juga\" biar percakapan terasa ramah dan seimbang.",
+    "date": "2026-05-07"
+  },
+  {
     "date": "2026-05-05",
     "id": 1778018809,
     "summary": "Langkah pertama adalah bikin struktur folder di GitHub, terus pake GitHub Actions buat ngerakit data otomatis. Kita pake format YAML biar enteng dan Vercel buat hostingnya biar kenceng diakses lewat HP.",
