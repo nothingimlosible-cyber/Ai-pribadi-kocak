@@ -1,252 +1,407 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Hybrid GPT FIX UI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART AI - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #212121;
+            --sidebar-bg: #171717;
+            --text-main: #ececec;
+            --input-bg: #2f2f2f;
+            --accent: #10a37f;
+            --border-color: #4d4d4d;
+        }
 
-<script src="otakai.js"></script>
-<script src="dataMemori.js"></script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
 
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0b0b0b;
-  color:white;
-  height:100vh;
-  display:flex;
-  overflow:hidden;
-}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+        }
 
-/* SIDEBAR */
-#sidebar{
-  width:260px;
-  background:#111;
-  border-right:1px solid #222;
-  display:flex;
-  flex-direction:column;
-  transition:0.3s;
-}
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
 
-#sidebar.hidden{
-  margin-left:-260px;
-}
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar-bg);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 100;
+        }
 
-/* MAIN */
-#main{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-}
+        .sidebar.closed {
+            width: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
 
-/* TOP BAR */
-#topbar{
-  height:50px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 10px;
-  border-bottom:1px solid #222;
-  background:#0b0b0b;
-  z-index:10;
-}
+        .sidebar-header {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* CHAT */
-#chat{
-  flex:1;
-  overflow:auto;
-  padding:15px;
-  z-index:1;
-}
+        .new-chat-btn {
+            flex-grow: 1;
+            margin-right: 8px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.msg{
-  margin:10px 0;
-  padding:10px 14px;
-  border-radius:12px;
-  max-width:80%;
-}
+        .new-chat-btn:hover { background: #2b2b2b; }
 
-.user{background:#2a2a2a;margin-left:auto}
-.ai{background:#151515;border:1px solid #333}
+        .history-list {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
 
-/* INPUT */
-#bar{
-  display:flex;
-  padding:10px;
-  background:#111;
-  border-top:1px solid #222;
-  gap:10px;
-}
+        .history-item {
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 13px;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
 
-input{
-  flex:1;
-  padding:12px;
-  border:none;
-  outline:none;
-  background:#222;
-  color:white;
-  border-radius:10px;
-}
+        .history-item:hover { background: #2b2b2b; color: white; }
 
-button{
-  padding:12px 16px;
-  border:none;
-  background:white;
-  color:black;
-  border-radius:10px;
-  cursor:pointer;
-}
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            background-color: var(--bg-dark);
+        }
 
-/* OVERLAY FIX (biar gak ketutup layer) */
-</style>
+        header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .model-name { font-weight: 600; font-size: 16px; letter-spacing: 0.5px; }
+
+        /* CHAT AREA */
+        #chat-window {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-row {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 24px 20px;
+        }
+
+        .user-row { background-color: transparent; }
+        .ai-row { background-color: #343541; }
+
+        .message-content {
+            max-width: 768px;
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .user-avatar { background-color: #5436da; color: white; }
+        .ai-avatar { background-color: #10a37f; color: white; }
+
+        /* ALUR LOGIKA STEP-BY-STEP */
+        .logic-container {
+            margin-top: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logic-step {
+            font-size: 12px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .logic-step i { font-size: 10px; color: var(--accent); }
+
+        /* INPUT AREA */
+        .input-container {
+            width: 100%;
+            padding: 20px;
+            padding-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(transparent, var(--bg-dark) 40%);
+        }
+
+        .input-box {
+            max-width: 768px;
+            width: 100%;
+            background-color: var(--input-bg);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            padding: 10px 15px;
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid var(--border-color);
+        }
+
+        #user-input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            resize: none;
+            outline: none;
+            padding: 8px 0;
+            max-height: 200px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #send-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s;
+        }
+
+        #send-btn:active { transform: scale(0.9); }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+    </style>
 </head>
-
 <body>
 
-<!-- SIDEBAR -->
-<div id="sidebar">
-  <div style="padding:10px;font-weight:bold;border-bottom:1px solid #222">
-    🧠 History
-  </div>
-  <div id="history" style="padding:10px;font-size:12px"></div>
-</div>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn"><i class="fas fa-plus"></i> Chat Baru</button>
+                <button class="toggle-btn" id="close-sidebar"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="history-list">
+                <div class="history-item"><i class="far fa-comment-alt"></i> Ide Konten Affiliate</div>
+                <div class="history-item"><i class="far fa-comment-alt"></i> Script Dokumenter</div>
+                <div class="history-item"><i class="far fa-comment-alt"></i> Analisis Crypto</div>
+            </div>
+        </aside>
 
-<!-- MAIN -->
-<div id="main">
+        <!-- Main -->
+        <main class="main-content">
+            <header>
+                <button class="toggle-btn" id="open-sidebar" style="display:none;"><i class="fas fa-bars"></i></button>
+                <div class="model-name">SMART AI</div>
+                <div style="width: 40px;"></div>
+            </header>
 
-  <div id="topbar">
-    <button onclick="toggleSidebar()">☰</button>
-    <div>Hybrid GPT AI</div>
-    <div id="status">online</div>
-  </div>
+            <div id="chat-window">
+                <!-- Welcome -->
+                <div class="message-row ai-row">
+                    <div class="message-content">
+                        <div class="avatar ai-avatar">S</div>
+                        <div class="text">Halo! Saya SMART AI. Bagaimana saya bisa membantu Anda hari ini?</div>
+                    </div>
+                </div>
+            </div>
 
-  <div id="chat"></div>
+            <div class="input-container">
+                <div class="input-box">
+                    <textarea id="user-input" placeholder="Tulis pesan..." rows="1"></textarea>
+                    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
 
-  <div id="bar">
-    <input id="input" placeholder="Tanya AI...">
-    <button onclick="send()">Kirim</button>
-  </div>
+    <!-- Integrasi dengan otakai.js -->
+    <script src="otakai.js"></script>
 
-</div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const openBtn = document.getElementById('open-sidebar');
+        const closeBtn = document.getElementById('close-sidebar');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const chatWindow = document.getElementById('chat-window');
 
-<script>
+        // Sidebar Toggle
+        closeBtn.onclick = () => {
+            sidebar.classList.add('closed');
+            setTimeout(() => { openBtn.style.display = 'block'; }, 100);
+        };
 
-// =========================
-// SIDEBAR TOGGLE FIX
-// =========================
+        openBtn.onclick = () => {
+            sidebar.classList.remove('closed');
+            openBtn.style.display = 'none';
+        };
 
-function toggleSidebar(){
-  document.getElementById("sidebar").classList.toggle("hidden")
-}
+        // Auto-expand textarea
+        userInput.oninput = function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        };
 
-// =========================
-// MEMORY
-// =========================
+        // Alur Proses SMART AI
+        async function runSMARTLogic(query) {
+            appendMessage('user', query);
+            userInput.value = '';
+            userInput.style.height = 'auto';
 
-let memory=[]
+            const aiRow = appendMessage('ai', '');
+            const textElement = aiRow.querySelector('.text');
+            
+            // UI untuk proses berpikir
+            const logicContainer = document.createElement('div');
+            logicContainer.className = 'logic-container';
+            textElement.appendChild(logicContainer);
 
-// =========================
-// EMOTION
-// =========================
+            const steps = [
+                "Menganalisis input...",
+                "Pahami maksud & konteks...",
+                "Mengubah jadi konsep dasar...",
+                "Generate beberapa opsi jawaban...",
+                "Menilai semua jawaban...",
+                "Memilih yang terbaik...",
+                "Menyusun kalimat natural..."
+            ];
 
-function emotion(t){
-  t=t.toLowerCase()
-  if(t.includes("sedih")) return "empathetic"
-  if(t.includes("kenapa")) return "analytical"
-  return "neutral"
-}
+            for (let step of steps) {
+                const stepEl = document.createElement('div');
+                stepEl.className = 'logic-step';
+                stepEl.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> ${step}`;
+                logicContainer.appendChild(stepEl);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+                
+                await new Promise(r => setTimeout(r, 500)); 
+                stepEl.querySelector('i').className = 'fas fa-check';
+                stepEl.style.color = '#10a37f';
+            }
 
-// =========================
-// DATABASE SEARCH
-// =========================
+            // Output Akhir (Hubungkan ke otakai.js di sini)
+            setTimeout(() => {
+                logicContainer.style.opacity = '0.5';
+                const finalResponse = document.createElement('div');
+                finalResponse.style.marginTop = '15px';
+                finalResponse.innerText = "Ini adalah jawaban terbaik yang telah disusun berdasarkan sistem SMART AI.";
+                // let response = await Otakai.query(query); // Ganti dengan fungsi asli otakai.js
+                textElement.appendChild(finalResponse);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 300);
+        }
 
-function search(q){
+        function appendMessage(role, text) {
+            const row = document.createElement('div');
+            row.className = `message-row ${role}-row`;
 
-  let best=null
-  let score=0
+            const content = document.createElement('div');
+            content.className = 'message-content';
 
-  for(let d of dataMemori){
+            const avatar = document.createElement('div');
+            avatar.className = `avatar ${role}-avatar`;
+            avatar.innerText = role === 'user' ? 'A' : 'S';
 
-    let s=0
+            const textDiv = document.createElement('div');
+            textDiv.className = 'text';
+            textDiv.innerText = text;
 
-    if(d.topic.includes(q.toLowerCase())) s+=2
-    if(d.summary.includes(q.toLowerCase())) s+=1
+            content.appendChild(avatar);
+            content.appendChild(textDiv);
+            row.appendChild(content);
+            chatWindow.appendChild(row);
+            
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            return row;
+        }
 
-    if(s>score){
-      score=s
-      best=d
-    }
-  }
+        sendBtn.onclick = () => {
+            const val = userInput.value.trim();
+            if(val) runSMARTLogic(val);
+        };
 
-  return best
-}
-
-// =========================
-// RESPONSE BUILDER
-// =========================
-
-function build(db,emo){
-
-  let out="🧠 proses selesai<br><br>"
-
-  if(db){
-    out+="📦 "+db.summary+"<br><br>"
-  }
-
-  if(emo==="empathetic"){
-    out+="Aku ngerti kamu...<br>"
-  }
-
-  if(emo==="analytical"){
-    out+="Aku jelasin logis ya...<br>"
-  }
-
-  return out
-}
-
-// =========================
-// UI
-// =========================
-
-function add(t,type){
-  let d=document.createElement("div")
-  d.className="msg "+type
-  d.innerHTML=t
-  document.getElementById("chat").appendChild(d)
-  document.getElementById("chat").scrollTop=999999
-}
-
-// =========================
-// MAIN FLOW
-// =========================
-
-function send(){
-
-  let input=document.getElementById("input")
-  let text=input.value
-  if(!text)return
-
-  add(text,"user")
-
-  let emo=emotion(text)
-
-  let db=search(text)
-
-  add("thinking...","ai")
-
-  setTimeout(()=>{
-
-    let res=build(db,emo)
-
-    add(res,"ai")
-
-  },400)
-
-  input.value=""
-}
-
-</script>
-
+        userInput.onkeydown = (e) => {
+            if(e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendBtn.click();
+            }
+        };
+    </script>
 </body>
 </html>
