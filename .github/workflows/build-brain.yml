@@ -1,76 +1,33 @@
-name: Auto Build & Mine Brain
-on:
-  push:
-    paths:
-      - 'database/**'
-      - 'tambang.txt'
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      - name: Install PyYAML
-        run: pip install pyyaml
-
-      - name: Auto Mining & Merging
-        run: |
-          python -c "
-          import yaml, json, os, time
-          db_path = 'database'
-          if not os.path.exists(db_path): os.makedirs(db_path)
-          
-          # PROSES MINING BANYAK DATA SEKALIGUS
-          if os.path.exists('tambang.txt'):
-              with open('tambang.txt', 'r', encoding='utf-8') as f:
-                  raw_content = f.read().strip()
-              
-              if raw_content:
-                  # Pisah per blok materi pake tanda ---
-                  blocks = raw_content.split('---')
-                  new_entries = []
-                  
-                  for block in blocks:
-                      lines = block.strip().split('\n')
-                      if len(lines) >= 2:
-                          topic = lines[0].strip() # Baris pertama tiap blok jadi TOPIK
-                          summary = ' '.join(lines[1:]).replace('\"', '\'')
-                          new_entries.append({
-                              'id': int(time.time()) + len(new_entries),
-                              'topic': topic,
-                              'summary': summary,
-                              'date': time.strftime('%Y-%m-%d')
-                          })
-                  
-                  if new_entries:
-                      filename = f'mine_bulk_{int(time.time())}.yml'
-                      with open(os.path.join(db_path, filename), 'w', encoding='utf-8') as f:
-                          yaml.dump(new_entries, f)
-                  
-                  # Kosongkan tambang setelah sukses
-                  open('tambang.txt', 'w').close()
-
-          # PROSES GABUNGIN SEMUA
+          # PROSES GABUNGIN SEMUA & BIKIN LOGIKA PINTER
           merged_data = []
-          for filename in sorted(os.listdir(db_path)):
-              if filename.endswith(('.yml', '.yaml')):
-                  with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
-                      content = yaml.safe_load(f)
-                      if isinstance(content, list): merged_data.extend(content)
+          if os.path.exists(db_path):
+              for filename in sorted(os.listdir(db_path)):
+                  if filename.endswith(('.yml', '.yaml')):
+                      with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
+                          content = yaml.safe_load(f)
+                          if isinstance(content, list): merged_data.extend(content)
           
+          # BIKIN OTAKAI.JS DENGAN LOGIKA "BALAS"
+          # Kita pakai teknik pencarian kata kunci (keyword matching)
+          js_brain = f"""
+const memoriAlan = {json.dumps(merged_data, indent=2, ensure_ascii=False)};
+
+const tanyaRobot = (pesan) => {{
+    const input = pesan.toLowerCase();
+    // Cari data yang paling nyambung sama topik atau ringkasan
+    const temuan = memoriAlan.find(item => 
+        input.includes(item.topic.toLowerCase()) || 
+        item.summary.toLowerCase().includes(input)
+    );
+
+    if (temuan) {{
+        return `[INFO TAMBANG] Bos Alan, soal ${{temuan.topic}}: ${{temuan.summary}} (Data tgl: ${{temuan.date}})`;
+    } else {{
+        return "Aduh Bos, data itu belum ada di tambang. Coba isi tambang.txt dulu!";
+    }}
+}};
+
+module.exports = {{ tanyaRobot, memoriAlan }};
+"""
           with open('otakai.js', 'w', encoding='utf-8') as f:
-              f.write('const otakAI = ' + json.dumps(merged_data, indent=2, ensure_ascii=False) + ';')
-          "
-      
-      - name: Save Changes
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Robot nambang borongan ⛏️📦" && git push)
+              f.write(js_brain)
