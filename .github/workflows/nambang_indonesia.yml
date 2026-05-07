@@ -1,4 +1,4 @@
-name: Kuli Tambang Brutal v3 - Jalur Folder Benar
+name: Kuli Tambang Brutal v3 - Folder Database Fix
 
 on:
   schedule:
@@ -31,9 +31,9 @@ jobs:
           wikipedia.set_lang("id")
           tgl_sekarang = time.strftime('%Y-%m-%d')
           
-          # PATH DISESUAIKAN DENGAN FOLDER KAMU
+          # SESUAIKAN DENGAN NAMA FOLDER KAMU
           path_data = 'data.yml'
-          path_keys = 'basis data/keywords.yml' # <--- Ini kuncinya, Lan!
+          path_keys = 'database/keywords.yml' 
           path_otak_js = 'otakai.js'
 
           def load_yml(path):
@@ -45,12 +45,12 @@ jobs:
                       except: return []
               return []
 
-          # 1. BACA KEYWORDS DARI FOLDER 'basis data'
+          # 1. BACA KEYWORDS DARI FOLDER DATABASE
           all_keywords = load_yml(path_keys)
           
           if not all_keywords:
-              print("❌ ERROR: File keywords.yml di folder 'basis data' kosong atau gak ketemu!")
-              all_keywords = ["HTML", "Sejarah", "Fakta Unik"]
+              print(f"❌ ERROR: File {path_keys} gak ketemu!")
+              all_keywords = ["HTML", "Nabi", "Sejarah"]
           
           selected_keys = random.sample(all_keywords, min(len(all_keywords), 2))
           print(f"🎯 Sesi ini nambang topik: {selected_keys}")
@@ -97,7 +97,7 @@ jobs:
         run: |
           git config --local user.name "Kuli Tambang Robot"
           git config --local user.email "robot@smartai.alan"
-          # Kita hapus keywords.yml yang nyasar di root kalau ada
+          # Bersihkan file nyasar kalau ada
           rm -f keywords.yml 
           git add data.yml otakai.js
-          git diff --staged --quiet || (git commit -m "Mining: Pakai keyword dari folder basis data" && git push)
+          git diff --staged --quiet || (git commit -m "Mining: Update data via folder database" && git push)
