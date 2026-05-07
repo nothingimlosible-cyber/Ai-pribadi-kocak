@@ -1,4 +1,4 @@
-name: Kuli Tambang Brutal v3 - Folder Database Fix
+name: Kuli Tambang Brutal v3 - Fix Jalur Database
 
 on:
   schedule:
@@ -31,10 +31,10 @@ jobs:
           wikipedia.set_lang("id")
           tgl_sekarang = time.strftime('%Y-%m-%d')
           
-          # SESUAIKAN DENGAN NAMA FOLDER KAMU
-          path_data = 'data.yml'
-          path_keys = 'database/keywords.yml' 
-          path_otak_js = 'otakai.js'
+          # DISINI KUNCINYA: Folder harus disebut (database/)
+          path_data = 'database/data.yml'
+          path_keys = 'database/keywords.yml'
+          path_otak_js = 'otakai.js' # Otak tetep di luar sesuai request
 
           def load_yml(path):
               if os.path.exists(path):
@@ -45,19 +45,17 @@ jobs:
                       except: return []
               return []
 
-          # 1. BACA KEYWORDS DARI FOLDER DATABASE
+          # 1. Baca Keyword dari folder database
           all_keywords = load_yml(path_keys)
-          
           if not all_keywords:
-              print(f"❌ ERROR: File {path_keys} gak ketemu!")
-              all_keywords = ["HTML", "Nabi", "Sejarah"]
+              all_keywords = ["HTML", "Sejarah", "Fakta Unik"]
           
           selected_keys = random.sample(all_keywords, min(len(all_keywords), 2))
-          print(f"🎯 Sesi ini nambang topik: {selected_keys}")
+          print(f"🎯 Robot masuk ke folder database, ambil topik: {selected_keys}")
 
           hasil_nambang_baru = []
 
-          # 2. PROSES SEARCH
+          # 2. Proses Search
           for key in selected_keys:
               try:
                   search_results = wikipedia.search(key, results=5)
@@ -74,30 +72,32 @@ jobs:
                       except: continue
               except: continue
 
-          # 3. UPDATE GUDANG (data.yml) - MURNI TAMBAH
+          # 3. Update Gudang (database/data.yml)
           gudang_lama = load_yml(path_data)
           topik_lama = [item.get('topic') for item in gudang_lama if isinstance(item, dict)]
           
           data_fix_masuk = [n for n in hasil_nambang_baru if n['topic'] not in topik_lama]
           data_total_final = gudang_lama + data_fix_masuk
 
+          # Pastikan foldernya ada sebelum nulis
+          os.makedirs('database', exist_ok=True)
+
           with open(path_data, 'w', encoding='utf-8') as f:
               yaml.dump(data_total_final, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
-          # 4. UPDATE OTAK (otakai.js)
+          # 4. Update Otak (otakai.js di luar)
           memori_web = data_total_final[-100:]
           js_content = "const dataMemori = " + json.dumps(memori_web, indent=2, ensure_ascii=False) + ";"
           with open(path_otak_js, 'w', encoding='utf-8') as f:
               f.write(js_content)
 
-          print(f"✅ BERHASIL! Database nambah jadi {len(data_total_final)} data.")
+          print(f"✅ Database nambah jadi {len(data_total_final)} data.")
           EOF
 
       - name: Push ke GitHub
         run: |
           git config --local user.name "Kuli Tambang Robot"
           git config --local user.email "robot@smartai.alan"
-          # Bersihkan file nyasar kalau ada
-          rm -f keywords.yml 
-          git add data.yml otakai.js
-          git diff --staged --quiet || (git commit -m "Mining: Update data via folder database" && git push)
+          # KUNCI TERAKHIR: Tambahin database/*.yml biar file di dalem folder ikut
+          git add database/*.yml otakai.js
+          git diff --staged --quiet || (git commit -m "Mining: Update database dan otak js" && git push)
