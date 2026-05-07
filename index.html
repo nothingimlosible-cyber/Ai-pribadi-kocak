@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART AI - Dashboard</title>
+    <title>SMART AI - Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -13,395 +12,197 @@
             --text-main: #ececec;
             --input-bg: #2f2f2f;
             --accent: #10a37f;
-            --border-color: #4d4d4d;
+            --border: rgba(255,255,255,0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); overflow: hidden; }
+
+        .app-container { display: flex; height: 100vh; width: 100vw; position: relative; }
+
+        /* SIDEBAR KIRI (History) */
+        .sidebar-left {
+            width: 260px; background: var(--sidebar-bg);
+            transition: all 0.3s ease; display: flex; flex-direction: column;
+            border-right: 1px solid var(--border); z-index: 100;
         }
+        .sidebar-left.closed { margin-left: -260px; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow: hidden;
+        /* SIDEBAR KANAN (Settings/Info) */
+        .sidebar-right {
+            width: 260px; background: var(--sidebar-bg);
+            transition: all 0.3s ease; display: flex; flex-direction: column;
+            border-left: 1px solid var(--border); z-index: 100;
         }
+        .sidebar-right.closed { margin-right: -260px; }
 
-        .app-container {
-            display: flex;
-            height: 100vh;
-            width: 100vw;
+        .sidebar-content { padding: 15px; flex: 1; }
+        .sidebar-item {
+            padding: 10px; border-radius: 8px; margin-bottom: 5px;
+            cursor: pointer; font-size: 14px; transition: 0.2s;
         }
+        .sidebar-item:hover { background: #2b2b2b; }
 
-        /* SIDEBAR */
-        .sidebar {
-            width: 260px;
-            background-color: var(--sidebar-bg);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            z-index: 100;
-        }
-
-        .sidebar.closed {
-            width: 0;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .sidebar-header {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .new-chat-btn {
-            flex-grow: 1;
-            margin-right: 8px;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            background: transparent;
-            color: white;
-            text-align: left;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .new-chat-btn:hover { background: #2b2b2b; }
-
-        .history-list {
-            flex-grow: 1;
-            padding: 10px;
-            overflow-y: auto;
-        }
-
-        .history-item {
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 13px;
-            cursor: pointer;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 5px;
-            color: #ccc;
-        }
-
-        .history-item:hover { background: #2b2b2b; color: white; }
-
-        /* MAIN CONTENT */
-        .main-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-            background-color: var(--bg-dark);
-        }
-
+        /* MAIN AREA */
+        .main-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        
         header {
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 10px 20px; display: flex; align-items: center; 
+            justify-content: space-between; border-bottom: 1px solid var(--border);
         }
 
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px 10px;
+        .btn-icon {
+            background: none; border: none; color: white; 
+            font-size: 18px; cursor: pointer; padding: 8px;
         }
 
-        .model-name { font-weight: 600; font-size: 16px; letter-spacing: 0.5px; }
-
-        /* CHAT AREA */
-        #chat-window {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .message-row {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 24px 20px;
-        }
-
-        .user-row { background-color: transparent; }
+        /* CHAT WINDOW */
+        #chat-window { flex: 1; overflow-y: auto; padding-bottom: 100px; }
+        .message-row { width: 100%; display: flex; justify-content: center; padding: 24px 20px; }
         .ai-row { background-color: #343541; }
-
-        .message-content {
-            max-width: 768px;
-            width: 100%;
-            display: flex;
-            gap: 20px;
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
-        .avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .user-avatar { background-color: #5436da; color: white; }
-        .ai-avatar { background-color: #10a37f; color: white; }
-
-        /* ALUR LOGIKA STEP-BY-STEP */
-        .logic-container {
-            margin-top: 10px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-            padding: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .logic-step {
-            font-size: 12px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 4px;
-        }
-
-        .logic-step i { font-size: 10px; color: var(--accent); }
+        .message-content { max-width: 768px; width: 100%; display: flex; gap: 20px; }
+        .avatar { width: 30px; height: 30px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; }
+        .u-av { background: #5436da; }
+        .a-av { background: #10a37f; }
 
         /* INPUT AREA */
         .input-container {
-            width: 100%;
-            padding: 20px;
-            padding-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            background: linear-gradient(transparent, var(--bg-dark) 40%);
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, var(--bg-dark) 50%);
+            padding: 20px; display: flex; justify-content: center;
         }
-
         .input-box {
-            max-width: 768px;
-            width: 100%;
-            background-color: var(--input-bg);
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            padding: 10px 15px;
-            display: flex;
-            align-items: flex-end;
-            border: 1px solid var(--border-color);
+            max-width: 768px; width: 100%; background: var(--input-bg);
+            border-radius: 15px; border: 1px solid var(--border); 
+            padding: 12px 18px; display: flex; align-items: flex-end;
         }
-
-        #user-input {
-            flex-grow: 1;
-            background: transparent;
-            border: none;
-            color: white;
-            resize: none;
-            outline: none;
-            padding: 8px 0;
-            max-height: 200px;
-            font-size: 16px;
-            line-height: 1.5;
+        textarea {
+            flex: 1; background: none; border: none; color: white;
+            outline: none; resize: none; font-size: 16px; max-height: 200px;
         }
-
-        #send-btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.1s;
-        }
-
-        #send-btn:active { transform: scale(0.9); }
+        #send-btn { color: var(--accent); background: none; border: none; font-size: 20px; cursor: pointer; margin-left: 10px; }
 
         /* SCROLLBAR */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <div class="app-container">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar">
-            <div class="sidebar-header">
-                <button class="new-chat-btn"><i class="fas fa-plus"></i> Chat Baru</button>
-                <button class="toggle-btn" id="close-sidebar"><i class="fas fa-bars"></i></button>
-            </div>
-            <div class="history-list">
-                <div class="history-item"><i class="far fa-comment-alt"></i> Ide Konten Affiliate</div>
-                <div class="history-item"><i class="far fa-comment-alt"></i> Script Dokumenter</div>
-                <div class="history-item"><i class="far fa-comment-alt"></i> Analisis Crypto</div>
+        <aside id="sb-left" class="sidebar-left">
+            <div class="sidebar-content">
+                <button class="sidebar-item" style="width:100%; border:1px solid var(--border); background:none; color:white; text-align:left;">
+                    <i class="fas fa-plus"></i> Chat Baru
+                </button>
+                <div style="margin-top:20px; color:#888; font-size:12px;">Riwayat</div>
+                <div class="sidebar-item">Ide Konten</div>
+                <div class="sidebar-item">Script Dokumenter</div>
             </div>
         </aside>
 
-        <!-- Main -->
         <main class="main-content">
             <header>
-                <button class="toggle-btn" id="open-sidebar" style="display:none;"><i class="fas fa-bars"></i></button>
-                <div class="model-name">SMART AI</div>
-                <div style="width: 40px;"></div>
+                <button class="btn-icon" onclick="toggleLeft()"><i class="fas fa-bars"></i></button>
+                <div style="font-weight:600; font-size:18px;">SMART AI</div>
+                <button class="btn-icon" onclick="toggleRight()"><i class="fas fa-cog"></i></button>
             </header>
 
             <div id="chat-window">
-                <!-- Welcome -->
                 <div class="message-row ai-row">
                     <div class="message-content">
-                        <div class="avatar ai-avatar">S</div>
-                        <div class="text">Halo! Saya SMART AI. Bagaimana saya bisa membantu Anda hari ini?</div>
+                        <div class="avatar a-av">S</div>
+                        <div class="text">Selamat datang, Alan. Ada yang bisa SMART AI bantu hari ini?</div>
                     </div>
                 </div>
             </div>
 
             <div class="input-container">
                 <div class="input-box">
-                    <textarea id="user-input" placeholder="Tulis pesan..." rows="1"></textarea>
+                    <textarea id="user-input" placeholder="Tanyakan sesuatu..." rows="1"></textarea>
                     <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </main>
+
+        <aside id="sb-right" class="sidebar-right">
+            <div class="sidebar-content">
+                <h3 style="font-size:16px; margin-bottom:15px;">Pengaturan AI</h3>
+                <div class="sidebar-item">Model: GPT-4 Turbo</div>
+                <div class="sidebar-item">Kreativitas: Tinggi</div>
+                <hr style="border:0; border-top:1px solid var(--border); margin:15px 0;">
+                <div style="font-size:12px; color:#888;">DATABASE: connected to otakai.js</div>
+            </div>
+        </aside>
     </div>
 
-    <!-- Integrasi dengan otakai.js -->
     <script src="otakai.js"></script>
 
     <script>
-        const sidebar = document.getElementById('sidebar');
-        const openBtn = document.getElementById('open-sidebar');
-        const closeBtn = document.getElementById('close-sidebar');
+        const chatWindow = document.getElementById('chat-window');
         const userInput = document.getElementById('user-input');
         const sendBtn = document.getElementById('send-btn');
-        const chatWindow = document.getElementById('chat-window');
 
-        // Sidebar Toggle
-        closeBtn.onclick = () => {
-            sidebar.classList.add('closed');
-            setTimeout(() => { openBtn.style.display = 'block'; }, 100);
-        };
+        // Toggle Functions
+        function toggleLeft() { document.getElementById('sb-left').classList.toggle('closed'); }
+        function toggleRight() { document.getElementById('sb-right').classList.toggle('closed'); }
 
-        openBtn.onclick = () => {
-            sidebar.classList.remove('closed');
-            openBtn.style.display = 'none';
-        };
-
-        // Auto-expand textarea
+        // Auto-size textarea
         userInput.oninput = function() {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
         };
 
-        // Alur Proses SMART AI
-        async function runSMARTLogic(query) {
-            appendMessage('user', query);
+        async function processChat() {
+            const val = userInput.value.trim();
+            if(!val) return;
+
+            // Tampilkan user chat
+            appendMessage('user', val);
             userInput.value = '';
             userInput.style.height = 'auto';
 
-            const aiRow = appendMessage('ai', '');
+            // AI Berpikir di balik layar
+            const aiRow = appendMessage('ai', '...');
             const textElement = aiRow.querySelector('.text');
-            
-            // UI untuk proses berpikir
-            const logicContainer = document.createElement('div');
-            logicContainer.className = 'logic-container';
-            textElement.appendChild(logicContainer);
+            textElement.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
 
-            const steps = [
-                "Menganalisis input...",
-                "Pahami maksud & konteks...",
-                "Mengubah jadi konsep dasar...",
-                "Generate beberapa opsi jawaban...",
-                "Menilai semua jawaban...",
-                "Memilih yang terbaik...",
-                "Menyusun kalimat natural..."
-            ];
-
-            for (let step of steps) {
-                const stepEl = document.createElement('div');
-                stepEl.className = 'logic-step';
-                stepEl.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> ${step}`;
-                logicContainer.appendChild(stepEl);
-                chatWindow.scrollTop = chatWindow.scrollHeight;
+            /* LOGIKA PROSES (IN BACKGROUND):
+               1. Pahami Maksud
+               2. Ubah Jadi Konsep
+               3. Generate & Nilai Jawaban (Otakai.js)
+               4. Pilih Terbaik & Susun Natural
+            */
+            try {
+                // Simulasi pemanggilan database otakai.js
+                // let response = await Otakai.query(val); 
                 
-                await new Promise(r => setTimeout(r, 500)); 
-                stepEl.querySelector('i').className = 'fas fa-check';
-                stepEl.style.color = '#10a37f';
-            }
+                await new Promise(r => setTimeout(r, 1500)); // Delay agar terasa natural
 
-            // Output Akhir (Hubungkan ke otakai.js di sini)
-            setTimeout(() => {
-                logicContainer.style.opacity = '0.5';
-                const finalResponse = document.createElement('div');
-                finalResponse.style.marginTop = '15px';
-                finalResponse.innerText = "Ini adalah jawaban terbaik yang telah disusun berdasarkan sistem SMART AI.";
-                // let response = await Otakai.query(query); // Ganti dengan fungsi asli otakai.js
-                textElement.appendChild(finalResponse);
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }, 300);
+                textElement.innerText = "Selesai diproses secara internal. Ini adalah jawaban terbaik untuk Anda.";
+            } catch (e) {
+                textElement.innerText = "Error menyambungkan ke database.";
+            }
+            
+            chatWindow.scrollTop = chatWindow.scrollHeight;
         }
 
         function appendMessage(role, text) {
             const row = document.createElement('div');
-            row.className = `message-row ${role}-row`;
-
-            const content = document.createElement('div');
-            content.className = 'message-content';
-
-            const avatar = document.createElement('div');
-            avatar.className = `avatar ${role}-avatar`;
-            avatar.innerText = role === 'user' ? 'A' : 'S';
-
-            const textDiv = document.createElement('div');
-            textDiv.className = 'text';
-            textDiv.innerText = text;
-
-            content.appendChild(avatar);
-            content.appendChild(textDiv);
-            row.appendChild(content);
+            row.className = `message-row ${role === 'ai' ? 'ai-row' : 'user-row'}`;
+            row.innerHTML = `
+                <div class="message-content">
+                    <div class="avatar ${role === 'user' ? 'u-av' : 'a-av'}">${role === 'user' ? 'A' : 'S'}</div>
+                    <div class="text">${text}</div>
+                </div>
+            `;
             chatWindow.appendChild(row);
-            
             chatWindow.scrollTop = chatWindow.scrollHeight;
             return row;
         }
 
-        sendBtn.onclick = () => {
-            const val = userInput.value.trim();
-            if(val) runSMARTLogic(val);
-        };
-
-        userInput.onkeydown = (e) => {
-            if(e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendBtn.click();
-            }
-        };
+        sendBtn.onclick = processChat;
+        userInput.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); processChat(); } };
     </script>
 </body>
 </html>
