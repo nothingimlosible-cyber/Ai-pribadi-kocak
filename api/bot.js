@@ -11,7 +11,16 @@ module.exports = async (req, res) => {
 
       try {
         const response = await axios.get(GITHUB_RAW_URL);
-        const dataMemori = response.data;
+        let rawData = response.data.toString();
+
+        // --- MESIN PENCERNA OTOMATIS ---
+        const start = rawData.indexOf('[');
+        const end = rawData.lastIndexOf(']');
+        let jsonString = rawData.substring(start, end + 1);
+        
+        // Hapus koma liar di akhir list
+        jsonString = jsonString.replace(/,\s*\]/g, ']'); 
+        const dataMemori = JSON.parse(jsonString);
 
         let bestMatch = null;
         dataMemori.forEach(entry => {
@@ -21,7 +30,7 @@ module.exports = async (req, res) => {
           });
         });
 
-        let reply = bestMatch ? bestMatch.summary : "Duh, belum nangkep nih Kak Alan. 😭";
+        let reply = bestMatch ? bestMatch.summary : "Duh, belum nangkep nih Kak Alan. Coba nambang kata kunci lain! 😭";
         if (reply.includes('/')) {
           const parts = reply.split('/');
           reply = parts[Math.floor(Math.random() * parts.length)].trim();
@@ -32,9 +41,10 @@ module.exports = async (req, res) => {
           text: reply
         });
       } catch (e) {
+        // Biar ketahuan rusaknya di mana
         await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           chat_id: chatId,
-          text: "Saraf Error: " + e.message
+          text: "⚠️ Laporan Saraf: " + e.message
         });
       }
     }
