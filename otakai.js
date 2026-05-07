@@ -36,6 +36,12 @@ const dataMemori = [
     "date": "2026-05-07"
   },
   {
+    "id": 1778122932945,
+    "topic": "Sapaan dalam Bahasa Indonesia",
+    "summary": "Assalamu'alaikum adalah salam Islami yang berarti \"semoga keselamatan tercurah kepada kalian\" dan biasa digunakan untuk menyapa sesama Muslim. / Kata \"Hai\" merupakan sapaan informal yang umum dipakai dalam percakapan sehari-hari untuk memulai obrolan secara santai. / Sapaan seperti \"Halo\", \"Selamat pagi\", atau \"Permisi\" juga sering digunakan tergantung situasi formal atau nonformal dan siapa lawan bicaranya.",
+    "date": "2026-05-07"
+  },
+  {
     "date": "2026-05-05",
     "id": 1778018809,
     "summary": "Langkah pertama adalah bikin struktur folder di GitHub, terus pake GitHub Actions buat ngerakit data otomatis. Kita pake format YAML biar enteng dan Vercel buat hostingnya biar kenceng diakses lewat HP.",
