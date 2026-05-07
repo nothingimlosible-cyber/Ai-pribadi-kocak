@@ -5,47 +5,52 @@
           db_path = 'database'
           if not os.path.exists(db_path): os.makedirs(db_path)
           
-          # 1. PROSES PENAMBANGAN DATA BARU
+          # 1. PROSES DATA BARU
           if os.path.exists('tambang.txt'):
               with open('tambang.txt', 'r', encoding='utf-8') as f:
                   raw_content = f.read().strip()
               
               if raw_content:
+                  # Pakai split yang lebih aman
                   blocks = [b.strip() for b in raw_content.split('---') if b.strip()]
                   new_entries = []
                   for block in blocks:
-                      lines = block.split('\n')
+                      lines = [l.strip() for l in block.split('\n') if l.strip()]
                       if len(lines) >= 2:
-                          topic = lines[0].strip()
-                          body = ' '.join([l.strip() for l in lines[1:] if l.strip()])
+                          topic = lines[0]
+                          # Gabungin sisa baris dengan spasi tunggal agar rapi
+                          summary = ' '.join(lines[1:])
                           new_entries.append({
-                              'id': int(time.time()) + len(new_entries),
+                              'id': int(time.time() * 1000) + len(new_entries),
                               'topic': topic,
-                              'summary': body,
+                              'summary': summary,
                               'date': time.strftime('%Y-%m-%d')
                           })
                   
                   if new_entries:
-                      filename = f'mine_{int(time.time())}.yml'
-                      with open(os.path.join(db_path, filename), 'w', encoding='utf-8') as f:
-                          yaml.dump(new_entries, f, allow_unicode=True)
-                      print(f'Sukses nambang {len(new_entries)} data.')
+                      f_name = f'mine_{int(time.time())}.yml'
+                      with open(os.path.join(db_path, f_name), 'w', encoding='utf-8') as f:
+                          yaml.dump(new_entries, f, allow_unicode=True, sort_keys=False)
               
-              # Kosongkan file tambang.txt setelah diproses
-              open('tambang.txt', 'w').close()
+              # Kosongkan file tambang.txt (Penting!)
+              with open('tambang.txt', 'w', encoding='utf-8') as f:
+                  f.write('')
 
-          # 2. PENGGABUNGAN SEMUA DATA KE OTAKAI.JS
+          # 2. MERGE KE OTAKAI.JS (Sistem Pengaman JSON)
           merged_data = []
           if os.path.exists(db_path):
-              for f_name in sorted(os.listdir(db_path)):
-                  if f_name.endswith(('.yml', '.yaml')):
+              all_files = sorted([f for f in os.listdir(db_path) if f.endswith(('.yml', '.yaml'))])
+              for f_name in all_files:
+                  try:
                       with open(os.path.join(db_path, f_name), 'r', encoding='utf-8') as f:
-                          data = yaml.safe_load(f)
-                          if isinstance(data, list):
-                              merged_data.extend(data)
+                          content = yaml.safe_load(f)
+                          if isinstance(content, list):
+                              merged_data.extend(content)
+                  except Exception as e:
+                      print(f'Gagal baca file {f_name}: {e}')
           
-          # Tulis hasil akhir ke otakai.js
+          # Gunakan dumps dengan pengaman karakter non-ascii
           with open('otakai.js', 'w', encoding='utf-8') as f:
-              json_str = json.dumps(merged_data, indent=2, ensure_ascii=False)
-              f.write(f'const dataMemori = {json_str};')
+              json_data = json.dumps(merged_data, ensure_ascii=False, indent=2)
+              f.write(f'const dataMemori = {json_data};')
           "
