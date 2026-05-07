@@ -46,5 +46,29 @@ const dataMemori = [
     "topic": "Muzammil Hasballah",
     "summary": "Muzammil Hasballah, S.T. (lahir 21 September 1993) adalah seorang arsitek, muazin, qari, dan pengusaha asal Indonesia.",
     "date": "2026-05-07"
+  },
+  {
+    "id": 1778187985520,
+    "topic": "Saum",
+    "summary": "Saum (bahasa Arab: صومcode: ar is deprecated , translit. ṣawm) atau puasa adalah menahan diri dari makan dan minum serta segala perbuatan yang bisa membatalkannya, mulai dari terbit fajar hingga terbenam matahari, dengan syarat tertentu, untuk mening",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778187976621,
+    "topic": "Qadar",
+    "summary": "Qadar (bahasa Arab: قدرcode: ar is deprecated , secara harfiah berarti \"kekuatan\") adalah konsep takdir ilahi dalam Islam. Karena Tuhan Maha Tahu dan Maha Kuasa, segala sesuatu yang telah terjadi dan akan terjadi di alam semesta, termasuk perilaku ma",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778187982467,
+    "topic": "Percandian Batujaya",
+    "summary": "Kompleks Percandian Batujaya adalah sebuah kompleks percandian Buddha kuno yang terletak di Kecamatan Batujaya dan Kecamatan Pakisjaya, Kabupaten Karawang, Provinsi Jawa Barat. Situs ini disebut percandian karena terdiri dari sekumpulan candi yang te",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778187983299,
+    "topic": "Aleksander Agung",
+    "summary": "Aleksander III dari Makedonia (bahasa Yunani Kuno: Ἀλέξανδροςcode: grc is deprecated  Aléxandros; 20/21 Juli 356 SM – 10/11 Juni 323 SM), lebih dikenal sebagai Aleksander Agung, adalah seorang raja dari Kerajaan Yunani kuno dari Makedonia. Pada usia ",
+    "date": "2026-05-07"
   }
 ];
