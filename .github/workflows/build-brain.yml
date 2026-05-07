@@ -1,3 +1,28 @@
+name: Build AI Memory
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tambang.txt'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
       - name: Smart Mining v2.0
         run: |
           python3 -c "
@@ -5,20 +30,17 @@
           db_path = 'database'
           if not os.path.exists(db_path): os.makedirs(db_path)
           
-          # 1. PROSES DATA BARU
           if os.path.exists('tambang.txt'):
               with open('tambang.txt', 'r', encoding='utf-8') as f:
                   raw_content = f.read().strip()
               
               if raw_content:
-                  # Pakai split yang lebih aman
                   blocks = [b.strip() for b in raw_content.split('---') if b.strip()]
                   new_entries = []
                   for block in blocks:
                       lines = [l.strip() for l in block.split('\n') if l.strip()]
                       if len(lines) >= 2:
                           topic = lines[0]
-                          # Gabungin sisa baris dengan spasi tunggal agar rapi
                           summary = ' '.join(lines[1:])
                           new_entries.append({
                               'id': int(time.time() * 1000) + len(new_entries),
@@ -32,11 +54,9 @@
                       with open(os.path.join(db_path, f_name), 'w', encoding='utf-8') as f:
                           yaml.dump(new_entries, f, allow_unicode=True, sort_keys=False)
               
-              # Kosongkan file tambang.txt (Penting!)
               with open('tambang.txt', 'w', encoding='utf-8') as f:
                   f.write('')
 
-          # 2. MERGE KE OTAKAI.JS (Sistem Pengaman JSON)
           merged_data = []
           if os.path.exists(db_path):
               all_files = sorted([f for f in os.listdir(db_path) if f.endswith(('.yml', '.yaml'))])
@@ -49,8 +69,15 @@
                   except Exception as e:
                       print(f'Gagal baca file {f_name}: {e}')
           
-          # Gunakan dumps dengan pengaman karakter non-ascii
           with open('otakai.js', 'w', encoding='utf-8') as f:
               json_data = json.dumps(merged_data, ensure_ascii=False, indent=2)
               f.write(f'const dataMemori = {json_data};')
           "
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add database/ otakai.js tambang.txt
+          git commit -m "Perbarui memori AI: $(date)" || echo "Tidak ada perubahan"
+          git push
