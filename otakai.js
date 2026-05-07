@@ -22,5 +22,29 @@ const dataMemori = [
     "topic": "Mojito",
     "summary": "Mojito (IPA: /moʊˈhiːtoʊ/; pelafalan Spanyol: [moˈxito]) adalah sebuah minuman beralkohol khas Kuba.",
     "date": "2026-05-07"
+  },
+  {
+    "id": 1778187752945,
+    "topic": "Pelengkap Kidung Jemaat",
+    "summary": "Pelengkap Kidung Jemaat (disingkat PKJ) adalah buku nyanyian rohani (himne) yang dibuat untuk melengkapi Kidung Jemaat. Lagu-lagu dalam Pelengkap Kidung Jemaat biasa digunakan dalam perayaan ibadah di berbagai gereja Kristen. Buku ini terdiri dari 30",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778187758635,
+    "topic": "Tuhan",
+    "summary": "Dalam pemikiran monoteistik, Tuhan biasanya dipandang sebagai wujud tertinggi, pencipta, dan objek utama dari iman. Tidak ada kesepakatan bersama mengenai konsep ketuhanan, sehingga ada berbagai konsep ketuhanan meliputi teisme, deisme, panteisme, da",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778187759072,
+    "topic": "Retorika",
+    "summary": "Retorika (bahasa Belanda: retoricacode: nl is deprecated , bahasa Inggris: rhetoriccode: en is deprecated ) atau keterampilan berbicara adalah cabang dari ilmu dialektika yang membahas mengenai kemampuan dalam membuat argumen dalam bahasa sebagai ala",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778187756324,
+    "topic": "Muzammil Hasballah",
+    "summary": "Muzammil Hasballah, S.T. (lahir 21 September 1993) adalah seorang arsitek, muazin, qari, dan pengusaha asal Indonesia.",
+    "date": "2026-05-07"
   }
 ];
