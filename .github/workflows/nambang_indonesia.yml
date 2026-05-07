@@ -1,110 +1,99 @@
-name: Kuli Tambang Indonesia v2
+name: Kuli Tambang Brutal v2 - Hybrid DB
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Nambang tiap 6 jam otomatis
-  workflow_dispatch: # Tombol manual di tab Actions
+    - cron: '0 */6 * * *' # Jalan otomatis tiap 6 jam
+  workflow_dispatch: 
 
 permissions:
   contents: write
 
 jobs:
-  nambang-nasional:
+  nambang:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Perbaikan sedikit di sini (ambassadors -> actions)
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install alat tambang
-        run: pip install requests beautifulsoup4 wikipedia
+      - name: Install Alat Tambang
+        run: pip install requests beautifulsoup4 wikipedia pyyaml
 
-      - name: Eksekusi Tambang Nasional
+      - name: Eksekusi Robot Tambang
         run: |
           python << 'EOF'
-          import wikipedia, requests, json, os, random
+          import wikipedia, requests, os, time, random, yaml, json
           from bs4 import BeautifulSoup
 
-          # Set bahasa ke Indonesia
           wikipedia.set_lang("id")
-          database_tambang = []
+          hasil_tambang = []
+          tgl = time.strftime('%Y-%m-%d')
 
-          def bersihkan(teks):
-              return teks.replace('"', '\\"').replace('\n', ' ').strip()
-
-          # 1. TAMBANG WIKIPEDIA (Ensiklopedia)
-          print("⛏️ Nambang Wikipedia Indonesia...")
-          for i in range(50): # Ambil 50 artikel random tiap run (biar gak kena limit)
-              try:
-                  pilih = wikipedia.random()
-                  page = wikipedia.page(pilih)
-                  summary = page.summary.split('\n')[0]
-                  if len(summary) > 50:
-                      database_tambang.append({"t": page.title, "s": summary})
-              except: pass
-
-          # 2. TAMBANG DETIK (Berita Populer)
-          print("⛏️ Nambang Detik.com...")
+          # --- TAHAP 1: NAMBANG DATA ---
+          print("⛏️ Nambang Wikipedia...")
           try:
-              r = requests.get('https://www.detik.com/terpopuler', timeout=15)
-              soup = BeautifulSoup(r.text, 'html.parser')
-              for item in soup.select('.media__title a'):
-                  judul = item.get_text()
-                  if judul:
-                      database_tambang.append({"t": "Berita Terkini", "s": judul})
+              random_pages = wikipedia.random(pages=20) # Kurangi dikit biar gak limit
+              for p in random_pages:
+                  try:
+                      pg = wikipedia.page(p)
+                      sumry = pg.summary.split('\n')[0]
+                      if len(sumry) > 50:
+                          hasil_tambang.append({"topic": pg.title, "summary": sumry[:250]})
+                  except: pass
           except: pass
 
-          # 3. TAMBANG ANTARA NEWS (Sumber Bebas/RSS Feed)
-          print("⛏️ Nambang Antara News...")
-          rss_urls = [
-              'https://www.antaranews.com/rss/top-news.xml',
-              'https://www.antaranews.com/rss/tekno.xml'
-          ]
-          for url in rss_urls:
-              try:
-                  r = requests.get(url, timeout=15)
-                  soup = BeautifulSoup(r.content, 'xml')
-                  for item in soup.find_all('item'):
-                      judul = item.title.get_text()
-                      desc = item.description.get_text() if item.description else "Klik untuk detail"
-                      database_tambang.append({"t": judul, "s": desc[:200]})
-              except: pass
+          print("⛏️ Nambang Berita Terkini...")
+          try:
+              r = requests.get('https://www.detik.com/terpopuler', timeout=10)
+              soup = BeautifulSoup(r.text, 'html.parser')
+              for jdl in soup.select('.media__title a')[:20]:
+                  teks = jdl.get_text().strip()
+                  if teks:
+                      hasil_tambang.append({"topic": "Berita Terkini", "summary": teks})
+          except: pass
 
-          # 4. SIMPAN KE TXT (Backup Data Mentah)
-          with open('tambang.txt', 'a', encoding='utf-8') as f:
-              for data in database_tambang:
-                  f.write(f"{data['t']}: {data['s']}\n")
+          # --- TAHAP 2: SIMPAN KE GUDANG (YAML) ---
+          file_yml = 'database/otakai.yml'
+          os.makedirs('database', exist_ok=True)
+          
+          data_lama = []
+          if os.path.exists(file_yml):
+              with open(file_yml, 'r', encoding='utf-8') as f:
+                  data_lama = yaml.safe_load(f) or []
 
-          # 5. CONVERT KE dataMemori.js (Otak AI)
-          print("⚙️ Mengonversi ke Otak AI...")
-          # Baca ulang file txt untuk ambil data terbaru (limit 5000 baris agar ringan di web)
-          if os.path.exists('tambang.txt'):
-              with open('tambang.txt', 'r', encoding='utf-8') as f:
-                  baris_akhir = f.readlines()[-5000:]
-              
-              js_content = "const dataMemori = [\n"
-              for line in baris_akhir:
-                  if ':' in line:
-                      parts = line.split(':', 1)
-                      topic = bersihkan(parts[0])
-                      summary = bersihkan(parts[1])
-                      js_content += f'  {{topic: "{topic}", summary: "{summary}"}},\n'
-              js_content += "];"
+          new_entries = []
+          for item in hasil_tambang:
+              new_entries.append({
+                  "id": int(time.time() * 1000) + random.randint(1, 9999),
+                  "topic": item["topic"],
+                  "summary": item["summary"],
+                  "date": tgl
+              })
 
-              os.makedirs('database', exist_ok=True)
-              with open('database/dataMemori.js', 'w', encoding='utf-8') as f:
-                  f.write(js_content)
+          data_total = data_lama + new_entries
+          # UBAH LIMIT KE 100 BIAR RINGAN
+          data_final = data_total[-100:] 
 
-          print(f"✅ Berhasil nambang {len(database_tambang)} data baru!")
+          with open(file_yml, 'w', encoding='utf-8') as f:
+              yaml.dump(data_final, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+
+          # --- TAHAP 3: BAGI KE OTAK (JS) ---
+          file_js = 'database/otakai.js'
+          js_content = "const dataMemori = " + json.dumps(data_final, indent=2, ensure_ascii=False) + ";"
+          
+          with open(file_js, 'w', encoding='utf-8') as f:
+              f.write(js_content)
+
+          print(f"✅ Selesai! {len(new_entries)} data baru masuk. Total database: {len(data_final)} baris.")
           EOF
 
-      - name: Commit & Push ke Repo
+      - name: Push Perubahan ke Repo
         run: |
-          git config --local user.name "Kuli Tambang AI"
-          git config --local user.email "kuli@ai.indonesia"
-          git add tambang.txt database/dataMemori.js
-          git diff --staged --quiet || (git commit -m "Nambang Otomatis: +Data Indonesia Terkini" && git push)
+          git config --local user.name "Kuli Tambang Robot"
+          git config --local user.email "robot@smartai.alan"
+          git add database/otakai.yml database/otakai.js
+          git diff --staged --quiet || (git commit -m "Robot Update: Database 100 baris terbaru" && git push)
