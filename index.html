@@ -3,130 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI ASSISTANT PRO</title>
+    <title>ALAN NEURAL AI v2.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Inter', -apple-system, sans-serif; }
-        .glass { background: rgba(22, 27, 34, 0.95); backdrop-filter: blur(10px); border-top: 1px solid #30363d; }
-        .chat-area { height: calc(100vh - 160px); scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
+        .chat-container { height: calc(100vh - 160px); overflow-y: auto; scroll-behavior: smooth; }
+        .chat-container::-webkit-scrollbar { width: 5px; }
+        .chat-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
         
-        .user-bubble { 
-            background: #21262d; 
-            border: 1px solid #30363d; 
-            align-self: flex-end; 
-            border-radius: 15px 15px 2px 15px; 
-            max-width: 85%;
-        }
-        .ai-bubble { 
-            background: rgba(35, 134, 54, 0.05); 
-            border: 1px solid rgba(35, 134, 54, 0.2); 
-            align-self: flex-start; 
-            border-radius: 15px 15px 15px 2px; 
-            max-width: 85%;
-        }
+        .msg-user { background: #21262d; border: 1px solid #30363d; border-radius: 15px 15px 0 15px; }
+        .msg-ai { background: #161b22; border: 1px solid #30363d; border-radius: 15px 15px 15px 0; position: relative; }
+        .msg-ai::before { content: 'AI'; position: absolute; top: -18px; left: 0; font-size: 10px; color: #58a6ff; font-weight: bold; }
         
-        .typing { font-size: 11px; color: #8b949e; display: flex; align-items: center; gap: 4px; margin-bottom: 10px; }
-        .dot { width: 4px; height: 4px; background: #8b949e; border-radius: 50%; animation: blink 1.4s infinite; }
-        .dot:nth-child(2) { animation-delay: 0.2s; }
-        .dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+        input:focus { outline: none; border-color: #58a6ff !important; box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2); }
+        .glow { box-shadow: 0 0 15px rgba(88, 166, 255, 0.1); }
     </style>
 </head>
-<body class="flex flex-col items-center h-screen overflow-hidden">
+<body class="flex flex-col items-center min-h-screen">
 
-    <nav class="w-full max-w-3xl p-4 flex justify-between items-center border-b border-[#30363d] bg-[#0d1117] sticky top-0 z-20">
+    <header class="w-full max-w-2xl p-6 flex justify-between items-center border-b border-[#30363d] sticky top-0 bg-[#0d1117]/80 backdrop-blur-md z-10">
         <div class="flex items-center gap-3">
-            <div class="w-2.5 h-2.5 bg-blue-500 rounded-full shadow-[0_0_10px_#1f6feb]"></div>
-            <span class="font-semibold tracking-tight text-gray-100 uppercase text-xs">AI Assistant <span class="text-blue-400">v2.6</span></span>
+            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+            <h1 class="text-sm font-bold tracking-tighter uppercase text-white">Alan Neural Engine <span class="text-blue-500">v2.0</span></h1>
         </div>
-        <button onclick="location.reload()" class="text-[10px] text-gray-500 hover:text-white transition uppercase tracking-tighter">Sync Database</button>
-    </nav>
+        <button onclick="location.reload()" class="text-[10px] text-gray-500 hover:text-white transition-all">SYNC DATABASE</button>
+    </header>
 
-    <div id="chatBox" class="w-full max-w-3xl chat-area overflow-y-auto p-5 flex flex-col gap-6">
-        <div class="ai-bubble p-4 text-sm leading-relaxed">
-            Halo Kak. Sistem telah aktif dan seluruh basis data memori sudah dimuat. Ada yang bisa saya bantu hari ini?
+    <main id="chatBox" class="chat-container w-full max-w-2xl p-4 space-y-6">
+        <div class="msg-ai p-4 text-sm max-w-[85%] self-start mt-4">
+            Halo Kak! Saya adalah AI pribadi Kak Alan yang sudah dilengkapi sistem Neural Engine. Mau bahas Trading, Sejarah, atau Geopolitik hari ini? ⛏️🚀
         </div>
-    </div>
+    </main>
 
-    <div class="w-full max-w-3xl p-4 glass absolute bottom-0">
-        <div class="flex gap-2 items-center bg-[#161b22] border border-[#30363d] rounded-xl p-1 focus-within:border-[#58a6ff] transition-all">
-            <input type="text" id="userInput" autocomplete="off" placeholder="Tanyakan sesuatu..." 
-                class="flex-1 bg-transparent border-none outline-none px-4 py-2.5 text-sm text-white">
-            <button onclick="prosesChat()" class="bg-[#238636] hover:bg-[#2ea043] text-white w-10 h-10 rounded-lg flex items-center justify-center transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338L4.21 7.39l7.992-5.993-.001-.001ZM14.17 1.174 6.757 8.587 5.01 7.5l7.992-5.993-1.832 1.89-2.99 3.987L14.17 1.174Z"/>
-                </svg>
+    <footer class="w-full max-w-2xl p-4 sticky bottom-0 bg-[#0d1117]">
+        <div class="relative flex items-center">
+            <input type="text" id="userInput" onkeypress="handleKey(event)" 
+                placeholder="Tanyakan sesuatu..." 
+                class="w-full bg-[#161b22] border border-[#30363d] text-white p-4 pr-16 rounded-2xl text-sm transition-all shadow-inner">
+            <button onclick="prosesChat()" class="absolute right-2 bg-blue-600 hover:bg-blue-500 text-white p-2 px-4 rounded-xl text-xs font-bold transition-all">
+                KIRIM
             </button>
         </div>
-    </div>
+        <p class="text-[9px] text-center text-gray-600 mt-2 tracking-widest uppercase">Powered by Alan Neural Logic • Offline Database</p>
+    </footer>
 
     <script src="otakai.js"></script>
-
     <script>
-        function prosesChat() {
-            const input = document.getElementById('userInput');
-            const chatBox = document.getElementById('chatBox');
-            const teks = input.value.trim();
+        /** * SISTEM INTELEGENSI NEURAL v2.0
+         * Dibuat khusus untuk performa tinggi di HP 4GB
+         */
+        class NeuralEngine {
+            constructor() {
+                this.weights = {};
+            }
 
-            if (!teks) return;
-
-            chatBox.innerHTML += `<div class="user-bubble p-4 text-sm">${teks}</div>`;
-            
-            const typingId = "typing-" + Date.now();
-            chatBox.innerHTML += `
-                <div id="${typingId}" class="typing px-2 mt-2">
-                    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-                    <span>Sedang merakit jawaban...</span>
-                </div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            setTimeout(() => {
-                const typingElem = document.getElementById(typingId);
-                if(typingElem) typingElem.remove();
-
-                let jawaban = "";
-                try {
-                    const query = teks.toLowerCase();
-                    const temuan = dataMemori.find(item => 
-                        query.includes(item.topic.toLowerCase()) || 
-                        item.topic.toLowerCase().includes(query)
-                    );
-
-                    if (temuan) {
-                        // LOGIKA PEMILIH ACAK (ANTI-ABSEN)
-                        const variasi = temuan.summary.split('/');
-                        const pilihan = variasi[Math.floor(Math.random() * variasi.length)].trim();
-                        
-                        const sapaanPintar = [
-                            "Berdasarkan memori saya: ",
-                            "Tentu Kak, ini penjelasannya: ",
-                            "Saya menemukan informasi ini: ",
-                            "Berikut detail yang saya temukan, Kak: ",
-                            "Menurut catatan saya: "
-                        ];
-                        const pembuka = sapaanPintar[Math.floor(Math.random() * sapaanPintar.length)];
-
-                        jawaban = `<strong>${temuan.topic.toUpperCase()}</strong><br><br>${pembuka}${pilihan.replace(/\n/g, '<br>')}`;
-                    } else {
-                        jawaban = "Mohon maaf Kak, informasi tersebut belum ada di basis data saya. Silakan tambahkan materi baru di tambang.txt.";
-                    }
-                } catch (e) {
-                    jawaban = "Terjadi kesalahan saat mengakses memori otak AI.";
+            // Vektorisasi: Mengubah teks menjadi nilai matematika
+            vektor(t) {
+                let s = 0;
+                const txt = t.toLowerCase();
+                for (let i = 0; i < txt.length; i++) {
+                    s += txt.charCodeAt(i) * (i + 1);
                 }
+                return (s % 1000) / 1000;
+            }
 
-                chatBox.innerHTML += `<div class="ai-bubble p-4 text-sm leading-relaxed shadow-sm">${jawaban}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 800);
+            // Fuzzy Logic: Menghitung kemiripan karakter
+            fuzzy(s1, s2) {
+                const a = s1.toLowerCase();
+                const b = s2.toLowerCase();
+                let match = 0;
+                for (let char of a) { if (b.includes(char)) match++; }
+                return match / Math.max(a.length, b.length);
+            }
 
-            input.value = "";
+            // Engine Utama: Menggabungkan Neural & Fuzzy
+            pikirkan(input, db) {
+                let topScore = -1;
+                let topIndex = -1;
+                const inputV = this.vektor(input);
+
+                db.forEach((item, i) => {
+                    const topicV = this.vektor(item.topic);
+                    const fuzzyS = this.fuzzy(input, item.topic);
+                    
+                    // Skor Neural (40%) + Skor Fuzzy (60%)
+                    const neuralS = (1 - Math.abs(inputV - topicV)) * 0.4;
+                    const totalS = (fuzzyS * 0.6) + neuralS;
+
+                    if (totalS > topScore) {
+                        topScore = totalS;
+                        topIndex = i;
+                    }
+                });
+
+                return topScore > 0.25 ? db[topIndex] : null;
+            }
         }
 
-        document.getElementById('userInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') prosesChat();
-        });
+        const Engine = new NeuralEngine();
+
+        function handleKey(e) { if (e.key === 'Enter') prosesChat(); }
+
+        function tampilkanChat(teks, sender, id = null) {
+            const box = document.getElementById('chatBox');
+            const wrap = document.createElement('div');
+            wrap.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            const div = document.createElement('div');
+            div.className = `p-4 text-sm max-w-[85%] ${sender === 'user' ? 'msg-user' : 'msg-ai'}`;
+            if (id) div.id = id;
+            div.innerHTML = teks;
+            
+            wrap.appendChild(div);
+            box.appendChild(wrap);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function prosesChat() {
+            const input = document.getElementById('userInput');
+            const userText = input.value.trim();
+            if (!userText) return;
+
+            tampilkanChat(userText, 'user');
+            input.value = '';
+
+            const loadId = "ai-" + Date.now();
+            tampilkanChat("<span class='animate-pulse text-blue-400'>Memproses memori...</span>", 'ai', loadId);
+
+            setTimeout(() => {
+                const hasil = Engine.pikirkan(userText, typeof dataMemori !== 'undefined' ? dataMemori : []);
+                const aiDiv = document.getElementById(loadId);
+
+                if (hasil) {
+                    const variasi = hasil.summary.split(' / ');
+                    const final = variasi[Math.floor(Math.random() * variasi.length)];
+                    aiDiv.innerHTML = `<b class="text-blue-400"># ${hasil.topic}</b><br>${final}`;
+                } else {
+                    aiDiv.innerHTML = "Maaf Kak, data tersebut tidak ditemukan di memori saya. Silakan tambahkan materinya ke database GitHub dulu ya! ⛏️";
+                }
+            }, 800);
+        }
     </script>
 </body>
 </html>
