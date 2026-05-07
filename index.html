@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart AI - Deep Chat</title>
+    <title>Smart AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
@@ -11,13 +11,12 @@
         .chat-container { height: calc(100vh - 140px); scrollbar-width: none; }
         .chat-container::-webkit-scrollbar { display: none; }
         .user-row { display: flex; justify-content: flex-end; margin-bottom: 24px; animation: slideUp 0.3s ease; }
-        .user-bubble { background: #2b2d31; border-radius: 20px; padding: 12px 20px; max-width: 80%; font-size: 15px; color: #fff; }
+        .user-bubble { background: #2b2d31; border-radius: 20px; padding: 12px 20px; max-width: 80%; font-size: 15px; }
         .ai-row { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 32px; animation: fadeIn 0.5s ease; }
         .ai-name { font-size: 11px; font-weight: 600; color: #8ab4f8; letter-spacing: 1px; margin-bottom: 6px; text-transform: uppercase; }
         .ai-text { font-size: 16px; line-height: 1.7; color: #d1d1d1; max-width: 95%; white-space: pre-line; }
         .footer-input { background: #131314; padding: 15px 20px; border-top: 1px solid #333; }
-        .input-bar { background: #1e1f20; border-radius: 32px; padding: 10px 24px; display: flex; align-items: center; gap: 12px; transition: 0.2s; border: 1px solid transparent; }
-        .input-bar:focus-within { border-color: #8ab4f8; background: #282a2c; }
+        .input-bar { background: #1e1f20; border-radius: 32px; padding: 10px 24px; display: flex; align-items: center; gap: 12px; }
         input { background: transparent; border: none; outline: none; color: white; width: 100%; height: 44px; font-size: 16px; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -28,30 +27,29 @@
 </head>
 <body class="flex flex-col h-screen">
 
-    <header class="p-5 flex justify-between items-center border-b border-white/5 bg-[#131314]">
+    <header class="p-5 flex justify-between items-center border-b border-white/5">
         <h1 class="text-sm font-bold tracking-[3px]">SMART <span class="text-[#8ab4f8]">AI</span></h1>
-        <div id="mem-count" class="text-[9px] font-mono text-gray-600 uppercase">Neural Context Active</div>
+        <div class="text-[9px] font-mono text-gray-600 uppercase">Neural Context Active</div>
     </header>
 
-    <main id="chatArea" class="chat-container p-5 flex flex-col overflow-y-auto">
-        </main>
+    <main id="chatArea" class="chat-container p-5 flex flex-col overflow-y-auto"></main>
 
     <footer class="footer-input">
-        <div class="input-bar shadow-xl">
+        <div class="input-bar">
             <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startInference()" placeholder="Mulai obrolan baru...">
             <button onclick="startInference()" class="text-[#8ab4f8] hover:scale-110 transition-all">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
             </button>
         </div>
-        <p class="text-[8px] text-center mt-3 text-gray-600 uppercase tracking-[2px]">On-Device Neural Context v12.0</p>
+        <p class="text-[8px] text-center mt-3 text-gray-600 uppercase tracking-[2px]">On-Device Neural Context v13.0</p>
     </footer>
 
     <script src="otakai.js"></script>
     <script>
-        class DeepEngine {
+        class GeminiSenseEngine {
             constructor() {
                 this.noiseWords = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang', 'bisa', 'tolong'];
-                this.historyBuffer = []; // NYIMPAN RIWAYAT OBROLAN
+                this.context = ""; // Hanya simpan 1 konteks terakhir yang valid
             }
 
             clean(t) {
@@ -60,40 +58,41 @@
             }
 
             think(query, db) {
-                // Kumpulkan semua kata kunci dari obrolan sebelumnya (History)
-                const historyTokens = this.historyBuffer.join(" ");
-                const currentTokens = this.clean(query).join(" ");
-                const combinedInput = historyTokens + " " + currentTokens;
+                const currentTokens = this.clean(query);
                 
-                const tokens = this.clean(combinedInput);
-                let candidates = [];
+                // --- STRATEGI BARU: PRIORITAS PERTANYAAN BARU ---
+                // 1. Coba cari tanpa konteks dulu (Biar gak "halusinasi")
+                let result = this.search(currentTokens, db);
+                
+                // 2. Kalau gak ketemu, baru coba pake bantuan konteks
+                if (!result && this.context) {
+                    const combinedTokens = this.clean(this.context + " " + query);
+                    result = this.search(combinedTokens, db);
+                }
 
+                if (result) this.context = result.topic; // Simpan konteks buat nanti
+                return result;
+            }
+
+            search(tokens, db) {
+                let candidates = [];
                 db.forEach(entry => {
                     let score = 0;
                     const topicStr = entry.topic.toLowerCase();
                     const summaryStr = entry.summary.toLowerCase();
 
                     tokens.forEach(tok => {
-                        if (topicStr.includes(tok)) score += 10.0;
-                        if (summaryStr.includes(tok)) score += 1.5;
+                        if (topicStr.includes(tok)) score += 15.0; // Skor Topic dinaikkan
+                        if (summaryStr.includes(tok)) score += 2.0;
                     });
 
-                    if (score > 1.0) candidates.push({ ...entry, power: score });
+                    if (score > 1.5) candidates.push({ ...entry, pwr: score });
                 });
-
-                const bestMatch = candidates.sort((a, b) => b.power - a.power)[0];
-
-                if (bestMatch) {
-                    // Update History Buffer (Maksimal 3 topik terakhir biar gak pusing)
-                    this.historyBuffer.push(bestMatch.topic);
-                    if (this.historyBuffer.length > 3) this.historyBuffer.shift();
-                }
-
-                return bestMatch;
+                return candidates.sort((a, b) => b.pwr - a.pwr)[0];
             }
         }
 
-        const AI = new DeepEngine();
+        const AI = new GeminiSenseEngine();
 
         function startInference() {
             const el = document.getElementById('userInput');
@@ -118,11 +117,10 @@
                     }
                     box.innerHTML = `<div class="ai-name">Smart AI</div><div class="ai-text">${finalRes}</div>`;
                 } else {
-                    box.innerHTML = `<div class="ai-name">Smart AI</div><div class="ai-text italic opacity-40">Maaf Kak Alan, saya belum punya data yang nyambung untuk itu.</div>`;
+                    box.innerHTML = `<div class="ai-name">Smart AI</div><div class="ai-text italic opacity-40">Maaf Kak Alan, saya belum paham konteksnya.</div>`;
                 }
-                const area = document.getElementById('chatArea');
-                area.scrollTop = area.scrollHeight;
-            }, 800);
+                document.getElementById('chatArea').scrollTop = document.getElementById('chatArea').scrollHeight;
+            }, 700);
         }
 
         function addChat(text, type, id = null) {
