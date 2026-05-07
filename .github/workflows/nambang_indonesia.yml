@@ -1,4 +1,4 @@
-name: Kuli Tambang Brutal v3 - Murni Tambah Terus
+name: Kuli Tambang Brutal v3 - Jalur Folder Benar
 
 on:
   schedule:
@@ -31,8 +31,9 @@ jobs:
           wikipedia.set_lang("id")
           tgl_sekarang = time.strftime('%Y-%m-%d')
           
+          # PATH DISESUAIKAN DENGAN FOLDER KAMU
           path_data = 'data.yml'
-          path_keys = 'keywords.yml'
+          path_keys = 'basis data/keywords.yml' # <--- Ini kuncinya, Lan!
           path_otak_js = 'otakai.js'
 
           def load_yml(path):
@@ -44,12 +45,13 @@ jobs:
                       except: return []
               return []
 
-          # 1. BACA KEYWORDS & PILIH ACAK
+          # 1. BACA KEYWORDS DARI FOLDER 'basis data'
           all_keywords = load_yml(path_keys)
+          
           if not all_keywords:
+              print("❌ ERROR: File keywords.yml di folder 'basis data' kosong atau gak ketemu!")
               all_keywords = ["HTML", "Sejarah", "Fakta Unik"]
           
-          # Robot pilih 2 topik acak tiap sesi biar gak bosan
           selected_keys = random.sample(all_keywords, min(len(all_keywords), 2))
           print(f"🎯 Sesi ini nambang topik: {selected_keys}")
 
@@ -72,33 +74,30 @@ jobs:
                       except: continue
               except: continue
 
-          # 3. UPDATE GUDANG (data.yml) - MURNI TAMBAH (APPEND)
+          # 3. UPDATE GUDANG (data.yml) - MURNI TAMBAH
           gudang_lama = load_yml(path_data)
           topik_lama = [item.get('topic') for item in gudang_lama if isinstance(item, dict)]
           
-          # Cek duplikat biar gak ada yang kembar
           data_fix_masuk = [n for n in hasil_nambang_baru if n['topic'] not in topik_lama]
-          
-          # LOGIKA BARU: Gabungkan tanpa batas sama sekali (Murni nambah ke bawah)
           data_total_final = gudang_lama + data_fix_masuk
 
           with open(path_data, 'w', encoding='utf-8') as f:
               yaml.dump(data_total_final, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
           # 4. UPDATE OTAK (otakai.js)
-          # Tetap ambil 100 terbaru buat JS biar Web Alan gak berat pas dibuka di HP
-          # Tapi di data.yml semua data lama tetep ada ribuan baris
           memori_web = data_total_final[-100:]
           js_content = "const dataMemori = " + json.dumps(memori_web, indent=2, ensure_ascii=False) + ";"
           with open(path_otak_js, 'w', encoding='utf-8') as f:
               f.write(js_content)
 
-          print(f"✅ BERHASIL! Gudang nambah jadi {len(data_total_final)} data.")
+          print(f"✅ BERHASIL! Database nambah jadi {len(data_total_final)} data.")
           EOF
 
       - name: Push ke GitHub
         run: |
           git config --local user.name "Kuli Tambang Robot"
           git config --local user.email "robot@smartai.alan"
+          # Kita hapus keywords.yml yang nyasar di root kalau ada
+          rm -f keywords.yml 
           git add data.yml otakai.js
-          git diff --staged --quiet || (git commit -m "Mining: Update data baru tanpa batas" && git push)
+          git diff --staged --quiet || (git commit -m "Mining: Pakai keyword dari folder basis data" && git push)
