@@ -3,149 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXON-X</title>
+    <title>AX-X PRO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-        body { background: #212121; color: #ececec; font-family: 'Inter', sans-serif; }
-        .chat-container { max-width: 768px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; }
-        .scroll-area { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: none; }
-        .scroll-area::-webkit-scrollbar { display: none; }
-        
-        /* Gaya Baris Chat */
-        .user-row { display: flex; justify-content: flex-end; margin-bottom: 24px; animation: fadeIn 0.3s ease; }
-        .ai-row { display: flex; justify-content: flex-start; margin-bottom: 32px; animation: fadeIn 0.5s ease; }
-        
-        /* Bubble Chat */
-        .user-bubble { background: #303030; padding: 12px 20px; border-radius: 24px; max-width: 85%; font-size: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .ai-content { max-width: 90%; font-size: 16px; line-height: 1.7; color: #d1d1d1; }
-        
-        /* Input Area */
-        .input-wrapper { padding: 16px; background: #212121; }
-        .input-box { 
-            background: #2f2f2f; border-radius: 32px; padding: 12px 20px; 
-            display: flex; items-center; gap: 12px; transition: 0.2s;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .input-box:focus-within { border-color: rgba(255,255,255,0.2); }
-        input { background: transparent; border: none; color: white; width: 100%; outline: none; font-size: 15px; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .typing { display: flex; gap: 4px; padding: 10px 0; }
-        .dot { width: 4px; height: 4px; background: #888; border-radius: 50%; animation: blink 1.4s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-    </style>
+        body { background: #1a1a1a; color: #e5e5e5; font-family: 'Inter', sans-serif; }
+        .chat-container { max-width: 700px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; }
+        .message-area { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: none; }
+        .ai-message { line-height: 1.7; margin-bottom: 25px; border-left: 2px solid #4f46e5; padding-left: 15px; }
+        .user-message { background: #262626; border-radius: 15px; padding: 10px 15px; align-self: flex-end; margin-bottom: 25px; }
+        .input-box { background: #262626; border-radius: 25px; padding: 12px 20px; display: flex; gap: 10px; }
+        input { background: transparent; border: none; outline: none; color: white; width: 100%; }
+            </style>
 </head>
 <body>
 
-    <div class="chat-container">
-        <main id="chatArea" class="scroll-area">
-            <div class="ai-row">
-                <div class="ai-content">
-                    <p class="font-medium text-white mb-2">AXON-X v6.0</p>
-                    Apa yang bisa saya bantu hari ini, Kak Alan?
-                </div>
-            </div>
-        </main>
+<div class="chat-container">
+    <header class="p-4 border-b border-white/5 text-center">
+        <h1 class="text-[10px] tracking-[4px] uppercase font-bold text-indigo-400">Axon-X Neural Core v7.0</h1>
+    </header>
 
-        <footer class="input-wrapper">
-            <div class="input-box">
-                <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startInference()" placeholder="Ketik pesan...">
-                <button onclick="startInference()" class="text-white opacity-40 hover:opacity-100 transition-all">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
-                </button>
-            </div>
-            <p class="text-[10px] text-center mt-3 text-gray-500">Alan Neural Core • Eksperimen AI Lokal</p>
-        </footer>
-    </div>
+    <main id="chatArea" class="message-area flex flex-col"></main>
 
-    <script src="otakai.js"></script>
-    <script>
-        /** * AXON-X ENGINE (SILENT MODE) 
-         * Semua kode berat & skor dijalankan di belakang layar.
-         */
-        class NeuralEngine {
-            constructor() {
-                this.threshold = 0.15;
-            }
+    <footer class="p-4">
+        <div class="input-box">
+            <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startThink()" placeholder="Apa itu Bumi?">
+            <button onclick="startThink()" class="text-indigo-400 font-bold">SEND</button>
+        </div>
+    </footer>
+</div>
 
-            tokenize(t) {
-                return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2);
-            }
+<script src="otakai.js"></script>
+<script>
+    class AxonPro {
+        constructor() {
+            this.lastTopic = null;
+        }
 
-            // Proses "Mikir" tersembunyi
-            think(prompt, database) {
-                // Background Encoding: Ubah input jadi tag secara otomatis
-                let encodedPrompt = prompt.toLowerCase();
-                if(encodedPrompt.includes("halo") || encodedPrompt.includes("hai")) encodedPrompt += " TAG_GREET";
-                if(encodedPrompt.includes("indonesia")) encodedPrompt += " TAG_HISTORY";
+        tokenize(t) {
+            return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2);
+        }
 
-                const tokens = this.tokenize(encodedPrompt);
-                let ranking = [];
+        process(query, db) {
+            const tokens = this.tokenize(query);
+            let candidates = [];
 
-                database.forEach(mem => {
-                    let score = 0;
-                    const fullText = (mem.topic + " " + mem.summary).toLowerCase();
-                    
-                    tokens.forEach(tok => {
-                        if (fullText.includes(tok)) {
-                            const isHeading = mem.topic.toLowerCase().includes(tok);
-                            score += isHeading ? 3.0 : 0.7;
-                        }
-                    });
-                    if (score > this.threshold) ranking.push({ ...mem, power: score });
+            db.forEach(entry => {
+                let score = 0;
+                const topicWords = this.tokenize(entry.topic);
+                const contentWords = this.tokenize(entry.summary);
+
+                tokens.forEach(q => {
+                    // Skor tinggi untuk kecocokan di Topik (DNA)
+                    if (topicWords.some(tw => tw.includes(q))) score += 10;
+                    // Skor tambahan untuk kecocokan di isi
+                    if (contentWords.some(cw => cw.includes(q))) score += 2;
                 });
 
-                return ranking.sort((a, b) => b.power - a.power)[0];
+                if (score > 5) candidates.push({ ...entry, score });
+            });
+
+            // Urutkan dan hindari pengulangan topik yang sama
+            const sorted = candidates.sort((a, b) => b.score - a.score);
+            return sorted.length > 0 ? sorted[0] : null;
+        }
+    }
+
+    const AI = new AxonPro();
+
+    function startThink() {
+        const input = document.getElementById('userInput');
+        const q = input.value.trim();
+        if (!q) return;
+
+        addChat(q, 'user');
+        input.value = '';
+
+        setTimeout(() => {
+            const data = AI.process(q, typeof dataMemori !== 'undefined' ? dataMemori : []);
+            if (data) {
+                // LOGIKA CERDAS: Pisahkan jawaban berdasarkan "/" dan pilih satu
+                const parts = data.summary.split(' / ');
+                const finalAnswer = parts[Math.floor(Math.random() * parts.length)];
+                addChat(`<b>${data.topic}</b><br>${finalAnswer}`, 'ai');
+            } else {
+                addChat("Saya belum memiliki data spesifik tentang itu. Silakan tambahkan ke tambang.txt.", 'ai');
             }
-        }
+        }, 500);
+    }
 
-        const AXON = new NeuralEngine();
-
-        function startInference() {
-            const el = document.getElementById('userInput');
-            const prompt = el.value.trim();
-            if (!prompt) return;
-
-            // Tampilkan Pesan User
-            addChat(prompt, 'user');
-            el.value = '';
-
-            // Animasi Mengetik
-            const tid = "ai-" + Date.now();
-            addChat(`<div class="typing"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', tid);
-
-            setTimeout(() => {
-                const result = AXON.think(prompt, typeof dataMemori !== 'undefined' ? dataMemori : []);
-                const box = document.getElementById(tid);
-
-                if (result) {
-                    const variants = result.summary.split(' / ');
-                    const finalResponse = variants[Math.floor(Math.random() * variants.length)];
-                    box.innerHTML = finalResponse;
-                } else {
-                    box.innerHTML = "Maaf Kak, saya tidak menemukan data yang relevan di database lokal.";
-                }
-                // Auto scroll
-                const area = document.getElementById('chatArea');
-                area.scrollTop = area.scrollHeight;
-            }, 800);
-        }
-
-        function addChat(text, sender, id = null) {
-            const area = document.getElementById('chatArea');
-            const row = document.createElement('div');
-            row.className = sender === 'user' ? 'user-row' : 'ai-row';
-            
-            const content = document.createElement('div');
-            content.className = sender === 'user' ? 'user-bubble' : 'ai-content';
-            if (id) content.id = id;
-            content.innerHTML = text;
-
-            row.appendChild(content);
-            area.appendChild(row);
-            area.scrollTop = area.scrollHeight;
-        }
-    </script>
+    function addChat(text, type) {
+        const area = document.getElementById('chatArea');
+        const div = document.createElement('div');
+        div.className = type === 'user' ? 'user-message' : 'ai-message';
+        div.innerHTML = text;
+        area.appendChild(div);
+        area.scrollTop = area.scrollHeight;
+    }
+</script>
 </body>
 </html>
