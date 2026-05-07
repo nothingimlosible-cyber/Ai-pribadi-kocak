@@ -1,0 +1,79 @@
+- id: 1778123119572
+  topic: Apa Itu Trading Crypto
+  summary: Trading crypto adalah aktivitas jual beli aset kripto seperti Bitcoin dan
+    Ethereum di pasar exchange untuk mendapat keuntungan dari perubahan harga. / Prosesnya
+    dilakukan secara online 24/7 dan harga sangat fluktuatif sehingga bisa untung
+    besar tapi juga rugi besar dalam waktu singkat. / Trader biasanya memakai analisis
+    teknikal, analisis fundamental, dan manajemen risiko agar keputusan jual-beli
+    lebih terukur.
+  date: '2026-05-07'
+- id: 1778123119573
+  topic: Perbedaan Trading dan Investasi Crypto
+  summary: Trading crypto fokus pada keuntungan jangka pendek lewat jual-beli cepat
+    berdasarkan pergerakan harga harian atau mingguan. / Investasi crypto bertujuan
+    menyimpan aset dalam jangka panjang karena yakin nilainya akan naik seiring adopsi
+    teknologi blockchain. / Risiko trading lebih tinggi karena butuh waktu pantau
+    pasar, sementara investasi lebih pasif tapi tetap terdampak volatilitas pasar.
+  date: '2026-05-07'
+- id: 1778123119574
+  topic: Analisis Teknikal Dasar
+  summary: Analisis teknikal menggunakan grafik harga, volume, dan indikator seperti
+    MA, RSI, MACD untuk memprediksi arah pergerakan harga selanjutnya. / Trader membaca
+    pola candlestick seperti doji, hammer, atau engulfing untuk menemukan sinyal entry
+    dan exit. / Kelemahannya, analisis teknikal tidak menjamin 100% akurat karena
+    pasar crypto mudah dipengaruhi sentimen dan berita mendadak.
+  date: '2026-05-07'
+- id: 1778123119575
+  topic: Analisis Fundamental Crypto
+  summary: Analisis fundamental menilai nilai proyek dari tim developer, teknologi,
+    utilitas token, total supply, dan roadmap pengembangannya. / Berita kemitraan,
+    update jaringan, atau regulasi pemerintah bisa membuat harga token naik atau turun
+    drastis. / Trader fundamental biasanya memegang posisi lebih lama karena menunggu
+    realisasi nilai dari perkembangan proyek tersebut.
+  date: '2026-05-07'
+- id: 1778123119576
+  topic: Manajemen Risiko Trading
+  summary: Manajemen risiko wajib dengan cara menentukan stop loss, take profit, dan
+    hanya memakai 1-2% modal per transaksi. / Diversifikasi ke beberapa koin mengurangi
+    risiko jika satu aset anjlok tiba-tiba. / Emosi seperti FOMO dan panic sell harus
+    dikontrol agar tidak membuat keputusan impulsif yang merugikan.
+  date: '2026-05-07'
+- id: 1778123119577
+  topic: Jenis Order di Exchange
+  summary: Market order langsung mengeksekusi beli/jual di harga pasar saat itu, cocok
+    untuk kecepatan tapi rawan slippage. / Limit order memungkinkan trader menentukan
+    harga beli atau jual sendiri, tapi belum tentu langsung tereksekusi. / Stop-limit
+    dan OCO order membantu otomatisasi strategi untuk membatasi kerugian dan mengunci
+    profit.
+  date: '2026-05-07'
+- id: 1778123119578
+  topic: Leverage dan Margin Trading
+  summary: Leverage memungkinkan trader meminjam dana dari exchange untuk memperbesar
+    posisi, misal 10x dari modal awal. / Keuntungan bisa berlipat, tapi kerugian juga
+    diperbesar dan bisa terkena likuidasi jika harga bergerak berlawanan. / Margin
+    trading sangat berisiko dan tidak disarankan untuk pemula tanpa pemahaman manajemen
+    risiko yang kuat.
+  date: '2026-05-07'
+- id: 1778123119579
+  topic: Psikologi Trading
+  summary: Psikologi stabil penting karena rasa serakah dan takut sering membuat trader
+    keluar dari rencana awal. / Disiplin mengikuti trading plan, jurnal trading, dan
+    evaluasi rutin membantu meningkatkan konsistensi hasil. / Istirahat dari layar
+    saat market terlalu volatile juga bagian dari menjaga mental tetap jernih.
+  date: '2026-05-07'
+- id: 1778123119580
+  topic: Keamanan Aset Crypto
+  summary: Simpan aset jangka panjang di hardware wallet atau cold wallet, bukan di
+    exchange untuk menghindari risiko hack. / Aktifkan 2FA, pakai password kuat, dan
+    waspada phishing yang mengatasnamakan exchange atau proyek kripto. / Jangan pernah
+    bagikan seed phrase ke siapa pun karena itu sama dengan memberikan akses penuh
+    ke wallet kamu.
+  date: '2026-05-07'
+- id: 1778123119581
+  topic: Pajak dan Regulasi Crypto di Indonesia
+  summary: Di Indonesia, crypto diakui sebagai komoditas yang diawasi Bappebti dan
+    transaksi di exchange terdaftar dikenakan PPN dan PPh. / Setiap keuntungan trading
+    wajib dilaporkan dalam SPT Tahunan sebagai bagian dari penghasilan. / Regulasi
+    bisa berubah, jadi trader perlu update aturan terbaru dari Bappebti, OJK, dan
+    Ditjen Pajak agar tetap patuh.
+  date: '2026-05-07'
