@@ -7,71 +7,60 @@ module.exports = async (req, res) => {
     if (message && message.text) {
       const chatId = message.chat.id;
       const userMsg = message.text;
-      
-      // Token bot Kakak (Pastikan sudah diisi di Environment Variable Vercel)
       const BOT_TOKEN = process.env.BOT_TOKEN; 
       
-      // LINK RAW GITHUB KAK ALAN (Sudah Fix)
+      // LINK RAW YANG SUDAH DI-TEST
       const GITHUB_RAW_URL = "https://raw.githubusercontent.com/nothingimlosible-cyber/Ai-pribadi-kocak/main/otakai.js";
 
       try {
-        // 1. Ambil Data Memori dari GitHub
+        // 1. Ambil data dari server otak (GitHub)
         const response = await axios.get(GITHUB_RAW_URL);
-        
-        // Pembersihan Saraf: Hapus 'const dataMemori =' agar jadi JSON murni
-        const rawContent = response.data
-          .replace(/const\s+dataMemori\s*=\s*/, '')
-          .replace(/;$/, '')
-          .trim();
-        
-        const dataMemori = JSON.parse(rawContent);
+        let rawData = response.data;
 
-        // 2. JEROAN ALGORITMA v10.5 (STRICT HEURISTIC)
+        // Mesin pencari data JSON otomatis
+        const startIndex = rawData.indexOf('[');
+        const endIndex = rawData.lastIndexOf(']');
+        
+        if (startIndex === -1 || endIndex === -1) {
+          throw new Error("Gagal nemu data di server otak. Pastikan ada [ dan ]");
+        }
+
+        const cleanJson = rawData.substring(startIndex, endIndex + 1);
+        const dataMemori = JSON.parse(cleanJson);
+
+        // 2. ALGORITMA v10.5
         let bestMatch = null;
         let maxScore = 0;
-        const noise = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang', 'tolong'];
-        
-        const tokens = userMsg.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/)
-                       .filter(w => w.length > 2 && !noise.includes(w));
+        const noise = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang'];
+        const tokens = userMsg.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2 && !noise.includes(w));
 
         dataMemori.forEach(entry => {
           let score = 0;
-          const topicStr = entry.topic.toLowerCase();
-          const summaryStr = entry.summary.toLowerCase();
-
           tokens.forEach(tok => {
-            if (topicStr.includes(tok)) score += 10.0;
-            if (summaryStr.includes(tok)) score += 1.5;
+            if (entry.topic.toLowerCase().includes(tok)) score += 10.0;
+            if (entry.summary.toLowerCase().includes(tok)) score += 1.5;
           });
-
-          if (score > maxScore) {
-            maxScore = score;
-            bestMatch = entry;
-          }
+          if (score > maxScore) { maxScore = score; bestMatch = entry; }
         });
 
-        // 3. Siapkan Jawaban
-        let finalAnswer = "Maaf Kak Alan, data saraf saya belum sinkron untuk itu. 😭";
-        if (bestMatch && maxScore > 1.2) {
-          finalAnswer = bestMatch.summary;
-          // Smart Slicer (Acak kalau ada '/')
-          if (finalAnswer.includes('/')) {
-            const parts = finalAnswer.split('/');
-            finalAnswer = parts[Math.floor(Math.random() * parts.length)].trim();
-          }
+        // 3. Penentuan Jawaban
+        let output = (bestMatch && maxScore > 1.2) ? bestMatch.summary : "Duh, saraf saya belum nangkep maksudnya, Kak Alan. 😭";
+        if (output.includes('/')) {
+          const p = output.split('/');
+          output = p[Math.floor(Math.random() * p.length)].trim();
         }
 
-        // 4. Kirim ke Telegram API
+        // 4. Kirim Balasan
         await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           chat_id: chatId,
-          text: finalAnswer
+          text: output
         });
 
       } catch (error) {
-        // Laporkan error ke Telegram Kakak kalau ada masalah
+        // Biar kita tau server mana yang salah, bot bakal lapor:
         await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           chat_id: chatId,
-          text: "⚠️ Laporan Error: " + error.message
+          text: "⚠️ Saraf Error: " + error.message
         });
       }
     }
