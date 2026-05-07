@@ -1,9 +1,9 @@
-name: Kuli Tambang Brutal v2 - Hybrid DB
+name: Kuli Tambang Brutal v3 - Final Indonesia
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Jalan otomatis tiap 6 jam
-  workflow_dispatch: 
+    - cron: '0 */6 * * *' # Jalan tiap 6 jam otomatis
+  workflow_dispatch: # Bisa diklik manual
 
 permissions:
   contents: write
@@ -13,87 +13,94 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
-        uses: actions/checkout@v4 # Perbaikan sedikit di sini (ambassadors -> actions)
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Alat Tambang
+      - name: Install Tools
         run: pip install requests beautifulsoup4 wikipedia pyyaml
 
-      - name: Eksekusi Robot Tambang
+      - name: Proses Tambang & Sinkronisasi
         run: |
           python << 'EOF'
           import wikipedia, requests, os, time, random, yaml, json
           from bs4 import BeautifulSoup
 
+          # Setup
           wikipedia.set_lang("id")
-          hasil_tambang = []
-          tgl = time.strftime('%Y-%m-%d')
-
-          # --- TAHAP 1: NAMBANG DATA ---
-          print("⛏️ Nambang Wikipedia...")
-          try:
-              random_pages = wikipedia.random(pages=20) # Kurangi dikit biar gak limit
-              for p in random_pages:
-                  try:
-                      pg = wikipedia.page(p)
-                      sumry = pg.summary.split('\n')[0]
-                      if len(sumry) > 50:
-                          hasil_tambang.append({"topic": pg.title, "summary": sumry[:250]})
-                  except: pass
-          except: pass
-
-          print("⛏️ Nambang Berita Terkini...")
-          try:
-              r = requests.get('https://www.detik.com/terpopuler', timeout=10)
-              soup = BeautifulSoup(r.text, 'html.parser')
-              for jdl in soup.select('.media__title a')[:20]:
-                  teks = jdl.get_text().strip()
-                  if teks:
-                      hasil_tambang.append({"topic": "Berita Terkini", "summary": teks})
-          except: pass
-
-          # --- TAHAP 2: SIMPAN KE GUDANG (YAML) ---
-          file_yml = 'database/otakai.yml'
+          tgl_sekarang = time.strftime('%Y-%m-%d')
           os.makedirs('database', exist_ok=True)
           
-          data_lama = []
-          if os.path.exists(file_yml):
-              with open(file_yml, 'r', encoding='utf-8') as f:
-                  data_lama = yaml.safe_load(f) or []
+          path_data = 'database/data.yml'
+          path_sapaan = 'database/sapaan.yml'
+          path_otak_js = 'otakai.js' # File di ROOT
 
-          new_entries = []
-          for item in hasil_tambang:
-              new_entries.append({
+          hasil_baru = []
+
+          # 1. PROSES NAMBANG
+          print("⛏️ Memulai penambangan Indonesia...")
+          try:
+              # Wikipedia id
+              random_titles = wikipedia.random(pages=25)
+              for title in random_titles:
+                  try:
+                      p = wikipedia.page(title)
+                      hasil_baru.append({"t": p.title, "s": p.summary.split('\n')[0][:250]})
+                  except: pass
+              
+              # Detik Terpopuler
+              r = requests.get('https://www.detik.com/terpopuler', timeout=10)
+              soup = BeautifulSoup(r.text, 'html.parser')
+              for link in soup.select('.media__title a')[:20]:
+                  hasil_baru.append({"t": "Berita Terkini", "s": link.get_text().strip()})
+          except Exception as e:
+              print(f"⚠️ Skip nambang karena: {e}")
+
+          # 2. BACA DATABASE LAMA (Gudang)
+          def load_yml(path):
+              if os.path.exists(path):
+                  with open(path, 'r', encoding='utf-8') as f:
+                      try:
+                          return yaml.safe_load(f) or []
+                      except: return []
+              return []
+
+          data_lama = load_yml(path_data)
+          sapaan_lama = load_yml(path_sapaan)
+
+          # 3. KONVERSI HASIL BARU KE FORMAT YAML
+          for item in hasil_baru:
+              data_lama.append({
                   "id": int(time.time() * 1000) + random.randint(1, 9999),
-                  "topic": item["topic"],
-                  "summary": item["summary"],
-                  "date": tgl
+                  "topic": item["t"],
+                  "summary": item["s"],
+                  "date": tgl_sekarang
               })
 
-          data_total = data_lama + new_entries
-          # UBAH LIMIT KE 100 BIAR RINGAN
-          data_final = data_total[-100:] 
+          # Simpan kembali ke database/data.yml (Limit 500 baris agar file gudang gak meledak)
+          data_gudang = data_lama[-500:]
+          with open(path_data, 'w', encoding='utf-8') as f:
+              yaml.dump(data_gudang, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
-          with open(file_yml, 'w', encoding='utf-8') as f:
-              yaml.dump(data_final, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
-
-          # --- TAHAP 3: BAGI KE OTAK (JS) ---
-          file_js = 'database/otakai.js'
-          js_content = "const dataMemori = " + json.dumps(data_final, indent=2, ensure_ascii=False) + ";"
+          # 4. MERACIK OTAKAI.JS (Sapaan + Data Terbaru)
+          # Ambil semua sapaan + 100 data hasil tambang terbaru
+          gabungan_final = sapaan_lama + data_gudang[-100:]
           
-          with open(file_js, 'w', encoding='utf-8') as f:
-              f.write(js_content)
+          # Tulis ke ROOT sebagai otakai.js
+          js_output = "const dataMemori = " + json.dumps(gabungan_final, indent=2, ensure_ascii=False) + ";"
+          with open(path_otak_js, 'w', encoding='utf-8') as f:
+              f.write(js_output)
 
-          print(f"✅ Selesai! {len(new_entries)} data baru masuk. Total database: {len(data_final)} baris.")
+          print(f"✅ SUKSES: {len(hasil_baru)} data ditambang. otakai.js diupdate di root!")
           EOF
 
-      - name: Push Perubahan ke Repo
+      - name: Simpan ke GitHub
         run: |
           git config --local user.name "Kuli Tambang Robot"
           git config --local user.email "robot@smartai.alan"
-          git add database/otakai.yml database/otakai.js
-          git diff --staged --quiet || (git commit -m "Robot Update: Database 100 baris terbaru" && git push)
+          # Git add spesifik ke file-file penting
+          git add database/data.yml database/sapaan.yml otakai.js
+          git diff --staged --quiet || (git commit -m "Robot Brutal: Sinkronisasi Gudang & Otak AI" && git push)
