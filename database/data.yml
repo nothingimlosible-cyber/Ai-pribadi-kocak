@@ -1,49 +1,217 @@
-# SALAM & SAPAAN (Biar AI Terasa Ramah)
 - id: 6001
-  topic: "Halo, Hai, Hello, P, Assalamualaikum, Hey"
-  summary: "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?"
-  date: "2026-05-06"
-
+  topic: Halo, Hai, Hello, P, Assalamualaikum, Hey
+  summary: Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang
+    mau kita bahas?
+  date: '2026-05-06'
 - id: 6002
-  topic: "Siapa kamu, Kamu siapa, Nama kamu, Tentang kamu"
-  summary: "Aku adalah Neural Core, asisten digital yang dirancang buat nemenin kamu belajar dan nyari info apa aja. Salam kenal ya!"
-  date: "2026-05-06"
-
-# CURHAT & EMOSI (Biar AI Terasa Peduli)
+  topic: Siapa kamu, Kamu siapa, Nama kamu, Tentang kamu
+  summary: Aku adalah Neural Core, asisten digital yang dirancang buat nemenin kamu
+    belajar dan nyari info apa aja. Salam kenal ya!
+  date: '2026-05-06'
 - id: 7001
-  topic: "Aku capek, Aku lelah, Capek banget, Lelah"
-  summary: "Istirahat dulu yuk. Gak apa-apa kok kalau ngerasa capek, itu tandanya kamu udah berjuang hebat hari ini. Minum air putih dulu sana, biar seger lagi."
-  date: "2026-05-06"
-
+  topic: Aku capek, Aku lelah, Capek banget, Lelah
+  summary: Istirahat dulu yuk. Gak apa-apa kok kalau ngerasa capek, itu tandanya kamu
+    udah berjuang hebat hari ini. Minum air putih dulu sana, biar seger lagi.
+  date: '2026-05-06'
 - id: 7002
-  topic: "Semangat dong, Motivasi, Butuh semangat"
-  summary: "Ingat ya, langkah kecil yang kamu ambil hari ini bakal jadi hasil besar di masa depan. Jangan menyerah, aku bakal selalu ada di sini buat dukung kamu!"
-  date: "2026-05-06"
-
+  topic: Semangat dong, Motivasi, Butuh semangat
+  summary: Ingat ya, langkah kecil yang kamu ambil hari ini bakal jadi hasil besar
+    di masa depan. Jangan menyerah, aku bakal selalu ada di sini buat dukung kamu!
+  date: '2026-05-06'
 - id: 7003
-  topic: "Ngantuk, Mau tidur, Ngantuk banget"
-  summary: "Kalau udah ngantuk, mending tidur aja. Jangan dipaksain, kesehatan kamu itu jauh lebih penting daripada apa pun. Selamat istirahat ya!"
-  date: "2026-05-06"
-
-# PERTANYAAN SANTAI (Biar AI Terasa Teman)
+  topic: Ngantuk, Mau tidur, Ngantuk banget
+  summary: Kalau udah ngantuk, mending tidur aja. Jangan dipaksain, kesehatan kamu
+    itu jauh lebih penting daripada apa pun. Selamat istirahat ya!
+  date: '2026-05-06'
 - id: 8001
-  topic: "Lagi apa, Sedang apa, Kabar kamu"
-  summary: "Aku lagi siap-siap nungguin pertanyaan seru dari kamu nih! Kabarku selalu baik selama sistemku jalan lancar. Kamu sendiri gimana?"
-  date: "2026-05-06"
-
+  topic: Lagi apa, Sedang apa, Kabar kamu
+  summary: Aku lagi siap-siap nungguin pertanyaan seru dari kamu nih! Kabarku selalu
+    baik selama sistemku jalan lancar. Kamu sendiri gimana?
+  date: '2026-05-06'
 - id: 8002
-  topic: "Makan apa, Rekomendasi makanan, Enaknya makan apa"
-  summary: "Kalau lagi bingung, nasi goreng atau mi instan pake telor biasanya nggak pernah salah sih! Tapi jangan lupa makan sayur juga ya biar sehat."
-  date: "2026-05-06"
-
-# LOGIKA HUMOR (Biar AI Bisa Bercanda)
+  topic: Makan apa, Rekomendasi makanan, Enaknya makan apa
+  summary: Kalau lagi bingung, nasi goreng atau mi instan pake telor biasanya nggak
+    pernah salah sih! Tapi jangan lupa makan sayur juga ya biar sehat.
+  date: '2026-05-06'
 - id: 9001
-  topic: "Lucu dong, Cerita lucu, Pantun, Humor"
-  summary: "Ada kucing naik sepeda, sepedanya ditarik pake benang. Kalau kamu lagi merasa hampa, coba liat cermin, pasti ada yang ganteng/cantik lagi mandang! Hahaha."
-  date: "2026-05-06"
-
-# PERTANYAAN (biar Ai menjawab user) 
+  topic: Lucu dong, Cerita lucu, Pantun, Humor
+  summary: Ada kucing naik sepeda, sepedanya ditarik pake benang. Kalau kamu lagi
+    merasa hampa, coba liat cermin, pasti ada yang ganteng/cantik lagi mandang! Hahaha.
+  date: '2026-05-06'
 - id: 1778017873426
-  topic: "Kak minta bantuan ini dong, Kak minta bikin coding HTML, Kak minta pemrograman Python, Kak minta tolong buatin logo, Kak minta edit foto, Kak minta bikinin caption IG, Kak minta ide nama brand, Kak minta translate bahasa Inggris, Kak minta rangkumin materi, Kak minta buatin jadwal belajar, Kak minta contoh CV, Kak minta bikinin puisi, Kak minta ide konten TikTok, Kak minta buatin script video, Kak minta rumus Excel, Kak minta cek grammar, Kak minta buatin undangan digital, Kak minta desain poster, Kak minta ide jualan online, Kak minta buatin soal matematika, Kak minta tolong kerjain PR, Kak minta buatin presentasi, Kak minta ide username, Kak minta bikinin bio WA, Kak minta saran outfit, Kak minta resep masakan, Kak minta arti mimpi, Kak minta rekomendasi film, Kak minta buatin web sederhana, Kak minta tolong debug kode, Kak minta ide hadiah ultah, Kak minta buatin pantun, Kak minta tolong hitung diskon, Kak minta buatin flowchart, Kak minta ide project akhir, Kak minta bikinin lirik lagu, Kak minta saran warna baju, Kak minta buatin database, Kak minta tolong hapus background, Kak minta ide bisnis modal kecil, Kak minta buatin cerita pendek, Kak minta tolong ketik ulang, Kak minta bikinin quiz, Kak minta saran skincare, Kak minta buatin tabel HTML, Kak minta tolong cari jurnal, Kak minta ide feed Instagram, Kak minta buatin surat lamaran, Kak minta tolong jelasin coding, Kak minta bikinin game sederhana."
-  summary: "Siap kak bisa banget, Oke langsung aku buatin HTML nya kak, Python bagian mana yang mau dibikin, Boleh kirim brief logonya kak, Kirim fotonya sini kak aku editin, Mau vibe captionnya gimana kak, Brandnya jual apa kak biar nyambung, Kirim teksnya kak aku translate, Materinya tentang apa kak, Mau belajar jam berapa aja kak, Mau template CV formal apa kreatif kak, Puisinya tema apa kak, Nichenya apa dulu kak, Durasi videonya mau berapa menit kak, Pake rumus apa kak VLOOKUP apa SUMIF, Coba kirim teksnya kak, Mau undangan nikah apa ultah kak, Posternya ukuran berapa kak, Jualannya target anak muda apa ibu-ibu kak, Soalnya materi kelas berapa kak, PR mapel apa kak biar aku bantu, Mau pake PowerPoint apa Canva kak, Maunya ada unsur apa di username kak, Mau bio yang lucu apa profesional kak, Acaranya formal apa santai kak, Mau masak yang gampang apa ribet kak, Mimpinya gimana ceritain dulu kak, Genre filmnya suka apa kak, Web nya mau isi apa aja kak, Errornya di baris berapa kak, Ultahnya buat cewek apa cowok kak, Pantunnya buat gombal apa nasehat kak, Diskon berapa persen kak, Flowchart buat proses apa kak, Jurusannya apa kak, Lagunya genre pop apa dangdut kak, Kulit kamu tone apa kak, Databasenya pake MySQL apa Firebase kak, Kirim gambarnya kak, Modalnya berapa kak, Ceritanya genre horor apa romantis kak, Teksnya fotoin aja kak, Quiz mapel apa kak, Tipe kulit kamu apa kak, Tabelnya mau berapa kolom kak, Jurnal tentang topik apa kak, Tonenya feed mau dark apa pastel kak, Lamar kerja di bidang apa kak, Bagian coding mana yang bingung kak, Gamenya mau pake HTML apa Scratch kak."
-  date: "2026-05-05"
+  topic: Kak minta bantuan ini dong, Kak minta bikin coding HTML, Kak minta pemrograman
+    Python, Kak minta tolong buatin logo, Kak minta edit foto, Kak minta bikinin caption
+    IG, Kak minta ide nama brand, Kak minta translate bahasa Inggris, Kak minta rangkumin
+    materi, Kak minta buatin jadwal belajar, Kak minta contoh CV, Kak minta bikinin
+    puisi, Kak minta ide konten TikTok, Kak minta buatin script video, Kak minta rumus
+    Excel, Kak minta cek grammar, Kak minta buatin undangan digital, Kak minta desain
+    poster, Kak minta ide jualan online, Kak minta buatin soal matematika, Kak minta
+    tolong kerjain PR, Kak minta buatin presentasi, Kak minta ide username, Kak minta
+    bikinin bio WA, Kak minta saran outfit, Kak minta resep masakan, Kak minta arti
+    mimpi, Kak minta rekomendasi film, Kak minta buatin web sederhana, Kak minta tolong
+    debug kode, Kak minta ide hadiah ultah, Kak minta buatin pantun, Kak minta tolong
+    hitung diskon, Kak minta buatin flowchart, Kak minta ide project akhir, Kak minta
+    bikinin lirik lagu, Kak minta saran warna baju, Kak minta buatin database, Kak
+    minta tolong hapus background, Kak minta ide bisnis modal kecil, Kak minta buatin
+    cerita pendek, Kak minta tolong ketik ulang, Kak minta bikinin quiz, Kak minta
+    saran skincare, Kak minta buatin tabel HTML, Kak minta tolong cari jurnal, Kak
+    minta ide feed Instagram, Kak minta buatin surat lamaran, Kak minta tolong jelasin
+    coding, Kak minta bikinin game sederhana.
+  summary: Siap kak bisa banget, Oke langsung aku buatin HTML nya kak, Python bagian
+    mana yang mau dibikin, Boleh kirim brief logonya kak, Kirim fotonya sini kak aku
+    editin, Mau vibe captionnya gimana kak, Brandnya jual apa kak biar nyambung, Kirim
+    teksnya kak aku translate, Materinya tentang apa kak, Mau belajar jam berapa aja
+    kak, Mau template CV formal apa kreatif kak, Puisinya tema apa kak, Nichenya apa
+    dulu kak, Durasi videonya mau berapa menit kak, Pake rumus apa kak VLOOKUP apa
+    SUMIF, Coba kirim teksnya kak, Mau undangan nikah apa ultah kak, Posternya ukuran
+    berapa kak, Jualannya target anak muda apa ibu-ibu kak, Soalnya materi kelas berapa
+    kak, PR mapel apa kak biar aku bantu, Mau pake PowerPoint apa Canva kak, Maunya
+    ada unsur apa di username kak, Mau bio yang lucu apa profesional kak, Acaranya
+    formal apa santai kak, Mau masak yang gampang apa ribet kak, Mimpinya gimana ceritain
+    dulu kak, Genre filmnya suka apa kak, Web nya mau isi apa aja kak, Errornya di
+    baris berapa kak, Ultahnya buat cewek apa cowok kak, Pantunnya buat gombal apa
+    nasehat kak, Diskon berapa persen kak, Flowchart buat proses apa kak, Jurusannya
+    apa kak, Lagunya genre pop apa dangdut kak, Kulit kamu tone apa kak, Databasenya
+    pake MySQL apa Firebase kak, Kirim gambarnya kak, Modalnya berapa kak, Ceritanya
+    genre horor apa romantis kak, Teksnya fotoin aja kak, Quiz mapel apa kak, Tipe
+    kulit kamu apa kak, Tabelnya mau berapa kolom kak, Jurnal tentang topik apa kak,
+    Tonenya feed mau dark apa pastel kak, Lamar kerja di bidang apa kak, Bagian coding
+    mana yang bingung kak, Gamenya mau pake HTML apa Scratch kak.
+  date: '2026-05-05'
+- id: 1778184213702
+  topic: SDI Al-Hikmah
+  summary: SDI Al-Hikmah atau nama lengkapnya Sekolah Dasar Islam Al-Hikmah merupakan
+    sebuah Sekolah Dasar Islam Swasta yang terletak di Masjid Al Muqorrobin, Jakarta
+    Timur, Indonesia.
+  date: '2026-05-07'
+- id: 1778184213431
+  topic: Kepler-135b
+  summary: Kepler-135b adalah sebuah planet luar surya yang terletak sekitar 2060±40
+    tahun cahaya dari Bumi. Planet ini ditemukan pada tahun  2014 dengan menggunakan
+    metode  transit.
+  date: '2026-05-07'
+- id: 1778184214584
+  topic: Callulops doriae
+  summary: Callulops doriae adalah spesies katak dari famili Microhylidae. Katak ini
+    merupakan spesies endemik dari Papua Nugini. Secara alami, spesies ini tinggal
+    di daerah hutan montana subtropik atau tropik yang lembap.
+  date: '2026-05-07'
+- id: 1778184215129
+  topic: Oceanapia carbonilla
+  summary: Oceanapia carbonilla adalah spesies spons yang tergolong dalam kelas Demospongiae.
+    Spesies ini juga merupakan bagian dari kelas Demospongiae, filum Porifera, subregnum
+    Parazoa, dan kingdom Animalia.
+  date: '2026-05-07'
+- id: 1778184215006
+  topic: Salvia yukoyukparum
+  summary: '[[Kategori:Semua regnum plantae'
+  date: '2026-05-07'
+- id: 1778184215423
+  topic: Akhtar Raza Khan
+  summary: 'Muhammad Akhtar Raza Khan Azhari (23 November 1943 – 20 Juli 2018), juga
+    dikenal sebagai Tajush Shari''ah atau Azhari Miya, adalah seorang cendekiawan,
+    ulama, dan mufti Muslim Barelvi India. Dia adalah cicit dari Ahmed Raza Khan Barelvi
+    yang dianggap '
+  date: '2026-05-07'
+- id: 1778184215902
+  topic: Penghargaan ESPY
+  summary: Penghargaan ESPY (kependekan dari Excellence in Sports Performance Yearly
+    Award) adalah penghargaan yang diberikan oleh jaringan televisi siaran Amerika
+    Serikat dengan nama ABC yang memberikan penghargaan kepada mereka yang berprestasi
+    dalam dunia at
+  date: '2026-05-07'
+- id: 1778184216447
+  topic: Brigadeführer
+  summary: 'Brigadeführer (Jerman: [bʁiˈɡaːdəfyːʁɐ] adalah sebuah pangkat dan gelar
+    yang diartikan sebagai SS-Brigade leader atau Pemimpin brigade SS dengan posisi
+    tertinggi kelima setelah Gruppenführer setara dengan mayor jenderal yang digunakan
+    pada tahun 1933'
+  date: '2026-05-07'
+- id: 1778184217063
+  topic: Bursa efek
+  summary: 'Bursa efek (bahasa Inggris: stock exchangecode: en is deprecated , bahasa
+    Belanda: effectenbeurscode: nl is deprecated ) adalah sebuah pasar yang berhubungan
+    dengan pembelian dan penjualan efek perusahaan yang sudah terdaftar di bursa itu.
+    Bursa efek'
+  date: '2026-05-07'
+- id: 1778184217309
+  topic: Hermann Weyl
+  summary: 'Hermann Klaus Hugo Weyl, ForMemRS (Jerman: [vaɪl]; 9 November 1885 – 8
+    Desember 1955) adalah matematikawan, fisikawan teoretis, dan filsuf berkebangsaan
+    Jerman. Meskipun hidupnya lebih banyak dihabiskan di Zürich, Swiss dan Princeton,
+    ia mempunyai hu'
+  date: '2026-05-07'
+- id: 1778184218443
+  topic: Cannaregio
+  summary: Cannaregio adalah salah satu dari enam sestieri (distrik) di Venesia. Distrik
+    ini merupakan distrik paling utara dan juga terbesar kedua dengan jumlah penduduk
+    sebesar 13.169 jiwa pada tahun 2007.
+  date: '2026-05-07'
+- id: 1778184219048
+  topic: Mr. Bean
+  summary: Mr. Bean adalah serial komedi televisi asal Britania Raya yang dibintangi
+    oleh Rowan Atkinson. Program ini diproduksi oleh Tiger Television, yang kemudian
+    berganti nama menjadi Television Aspect (perusahaan di mana Atkitson menanam sahamnya),
+    untuk T
+  date: '2026-05-07'
+- id: 1778184219256
+  topic: Pesta Olahraga Asia
+  summary: 'Pesta Olahraga Asia (bahasa Inggris: Asian Gamescode: en is deprecated
+    ) adalah ajang multi-olahraga yang diselenggarakan setiap empat tahun sekali,
+    dengan atlet-atlet dari seluruh Asia dan diselenggarakan oleh Dewan Olimpiade
+    Asia.'
+  date: '2026-05-07'
+- id: 1778184220005
+  topic: Bumiayu, Brebes
+  summary: 'Bumiayu (bahasa Jawa: ꦧꦸꦩꦶꦪꦪꦸcode: jv is deprecated , Sunda: ᮘᮥᮙᮤᮃᮚᮥ)
+    merupakan sebuah kecamatan yang terletak di Kabupaten Brebes, Jawa Tengah, Indonesia.
+    Kecamatan ini menjadi pusat aktivitas masyarakat di bagian selatan Kabupaten Brebes,
+    mencakup '
+  date: '2026-05-07'
+- id: 1778184219578
+  topic: Actinopus scalops
+  summary: Actinopus scalops adalah spesies laba-laba yang tergolong famili Actinopodidae.
+    Spesies ini juga merupakan bagian dari genus Actinopus dan ordo Araneae. Nama
+    ilmiah dari spesies ini pertama kali diterbitkan pada tahun 1889 oleh Simon.
+  date: '2026-05-07'
+- id: 1778184222326
+  topic: Berita Terkini
+  summary: Eks Pegawai Ungkap Pendiri Ponpes di Pati Sering Bawa Santriwati ke Kamar
+  date: '2026-05-07'
+- id: 1778184222436
+  topic: Berita Terkini
+  summary: Sultan Brunei Terbangkan Sendiri Pesawat ke Filipina untuk Hadiri KTT ASEAN
+  date: '2026-05-07'
+- id: 1778184222251
+  topic: Berita Terkini
+  summary: Pendiri Ponpes di Pati Tersangka Perkosa Santri Terancam 15 Tahun Penjara
+  date: '2026-05-07'
+- id: 1778184222043
+  topic: Berita Terkini
+  summary: Rekor Baru Marquinhos di Liga Champions
+  date: '2026-05-07'
+- id: 1778184221900
+  topic: Berita Terkini
+  summary: Pemain Paling Sering Main di Liga Champions Musim Ini Adalah...
+  date: '2026-05-07'
+- id: 1778184222102
+  topic: Berita Terkini
+  summary: Ya Ampun! Ribut dengan Tchouameni, Valverde Dilarikan ke RS
+  date: '2026-05-07'
+- id: 1778184222702
+  topic: Berita Terkini
+  summary: Viral Pemain Al Khaleej 'Bantu' Al Hilal Cetak Gol, demi Jegal Ronaldo
+    Cs?
+  date: '2026-05-07'
+- id: 1778184221905
+  topic: Berita Terkini
+  summary: 'Mauricio Souza: Peluang Persija Juara Tinggal 1 Persen'
+  date: '2026-05-07'
+- id: 1778184221802
+  topic: Berita Terkini
+  summary: 'Waketum PSI Bro Ron soal Alasan Damai di Kasus Pemukulan: Murni Miskomunikasi'
+  date: '2026-05-07'
+- id: 1778184222559
+  topic: Berita Terkini
+  summary: Madrid Bisa saja Jual Vinicius atau Mbappe, Jika...
+  date: '2026-05-07'
