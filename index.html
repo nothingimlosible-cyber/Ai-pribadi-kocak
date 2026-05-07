@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART AI - Pro</title>
+    <title>SMART AI - Fixed UI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,66 +15,90 @@
             --border: rgba(255,255,255,0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); overflow: hidden; }
 
-        .app-container { display: flex; height: 100vh; width: 100vw; position: relative; }
+        .app-container { display: flex; height: 100vh; width: 100vw; overflow: hidden; position: relative; }
 
-        /* SIDEBAR KIRI (History) */
-        .sidebar-left {
-            width: 260px; background: var(--sidebar-bg);
-            transition: all 0.3s ease; display: flex; flex-direction: column;
-            border-right: 1px solid var(--border); z-index: 100;
+        /* SIDEBAR BASE */
+        .sidebar {
+            width: 260px; 
+            background: var(--sidebar-bg);
+            height: 100%;
+            position: fixed;
+            top: 0;
+            transition: 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
         }
-        .sidebar-left.closed { margin-left: -260px; }
 
-        /* SIDEBAR KANAN (Settings/Info) */
-        .sidebar-right {
-            width: 260px; background: var(--sidebar-bg);
-            transition: all 0.3s ease; display: flex; flex-direction: column;
-            border-left: 1px solid var(--border); z-index: 100;
+        #sb-left { left: -260px; }
+        #sb-right { right: -260px; }
+
+        /* KELUAR MASUK LOGIC */
+        #sb-left.open { left: 0; }
+        #sb-right.open { right: 0; }
+
+        .sidebar-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
         }
-        .sidebar-right.closed { margin-right: -260px; }
 
-        .sidebar-content { padding: 15px; flex: 1; }
+        .sidebar-content { padding: 15px; flex: 1; overflow-y: auto; }
+
         .sidebar-item {
-            padding: 10px; border-radius: 8px; margin-bottom: 5px;
-            cursor: pointer; font-size: 14px; transition: 0.2s;
+            padding: 12px; border-radius: 8px; margin-bottom: 8px;
+            cursor: pointer; font-size: 14px; color: #ccc; transition: 0.2s;
         }
-        .sidebar-item:hover { background: #2b2b2b; }
+        .sidebar-item:hover { background: #2b2b2b; color: white; }
 
-        /* MAIN AREA */
-        .main-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-        
+        /* MAIN CONTENT */
+        .main-content { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            height: 100%;
+            transition: 0.3s ease;
+            width: 100%;
+        }
+
         header {
-            padding: 10px 20px; display: flex; align-items: center; 
-            justify-content: space-between; border-bottom: 1px solid var(--border);
+            padding: 10px 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            background: var(--bg-dark);
+            z-index: 100;
         }
 
-        .btn-icon {
-            background: none; border: none; color: white; 
-            font-size: 18px; cursor: pointer; padding: 8px;
-        }
+        .btn-icon { background: none; border: none; color: white; font-size: 18px; cursor: pointer; padding: 10px; }
 
         /* CHAT WINDOW */
-        #chat-window { flex: 1; overflow-y: auto; padding-bottom: 100px; }
-        .message-row { width: 100%; display: flex; justify-content: center; padding: 24px 20px; }
+        #chat-window { flex: 1; overflow-y: auto; padding-bottom: 120px; }
+        .message-row { width: 100%; display: flex; justify-content: center; padding: 25px 20px; }
         .ai-row { background-color: #343541; }
-        .message-content { max-width: 768px; width: 100%; display: flex; gap: 20px; }
-        .avatar { width: 30px; height: 30px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; }
+        .message-content { max-width: 800px; width: 100%; display: flex; gap: 20px; }
+        .avatar { width: 32px; height: 32px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
         .u-av { background: #5436da; }
         .a-av { background: #10a37f; }
 
         /* INPUT AREA */
         .input-container {
             position: absolute; bottom: 0; left: 0; width: 100%;
-            background: linear-gradient(transparent, var(--bg-dark) 50%);
+            background: linear-gradient(transparent, var(--bg-dark) 40%);
             padding: 20px; display: flex; justify-content: center;
+            z-index: 50;
         }
         .input-box {
-            max-width: 768px; width: 100%; background: var(--input-bg);
-            border-radius: 15px; border: 1px solid var(--border); 
-            padding: 12px 18px; display: flex; align-items: flex-end;
+            max-width: 800px; width: 100%; background: var(--input-bg);
+            border-radius: 12px; border: 1px solid var(--border); 
+            padding: 12px 15px; display: flex; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         textarea {
             flex: 1; background: none; border: none; color: white;
@@ -82,127 +106,127 @@
         }
         #send-btn { color: var(--accent); background: none; border: none; font-size: 20px; cursor: pointer; margin-left: 10px; }
 
-        /* SCROLLBAR */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        /* Overlay saat sidebar buka */
+        .overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 500;
+        }
+        .overlay.active { display: block; }
     </style>
 </head>
 <body>
 
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
     <div class="app-container">
-        <aside id="sb-left" class="sidebar-left">
+        <aside id="sb-left" class="sidebar">
+            <div class="sidebar-header">
+                <span>Riwayat Chat</span>
+                <button class="btn-icon" onclick="closeAll()"><i class="fas fa-times"></i></button>
+            </div>
             <div class="sidebar-content">
-                <button class="sidebar-item" style="width:100%; border:1px solid var(--border); background:none; color:white; text-align:left;">
-                    <i class="fas fa-plus"></i> Chat Baru
-                </button>
-                <div style="margin-top:20px; color:#888; font-size:12px;">Riwayat</div>
-                <div class="sidebar-item">Ide Konten</div>
-                <div class="sidebar-item">Script Dokumenter</div>
+                <div class="sidebar-item"><i class="fas fa-plus"></i> Chat Baru</div>
+                <div class="sidebar-item"><i class="far fa-comment"></i> Ide Konten Hoodie</div>
+                <div class="sidebar-item"><i class="far fa-comment"></i> Strategi Affiliate</div>
             </div>
         </aside>
 
         <main class="main-content">
             <header>
-                <button class="btn-icon" onclick="toggleLeft()"><i class="fas fa-bars"></i></button>
+                <button class="btn-icon" onclick="openLeft()"><i class="fas fa-bars"></i></button>
                 <div style="font-weight:600; font-size:18px;">SMART AI</div>
-                <button class="btn-icon" onclick="toggleRight()"><i class="fas fa-cog"></i></button>
+                <button class="btn-icon" onclick="openRight()"><i class="fas fa-cog"></i></button>
             </header>
 
             <div id="chat-window">
                 <div class="message-row ai-row">
                     <div class="message-content">
                         <div class="avatar a-av">S</div>
-                        <div class="text">Selamat datang, Alan. Ada yang bisa SMART AI bantu hari ini?</div>
+                        <div class="text">Halo Alan! Silakan ketik pesanmu di bawah. Proses berpikir saya sudah otomatis di balik layar.</div>
                     </div>
                 </div>
             </div>
 
             <div class="input-container">
                 <div class="input-box">
-                    <textarea id="user-input" placeholder="Tanyakan sesuatu..." rows="1"></textarea>
+                    <textarea id="user-input" placeholder="Tulis pesan..." rows="1"></textarea>
                     <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </main>
 
-        <aside id="sb-right" class="sidebar-right">
+        <aside id="sb-right" class="sidebar">
+            <div class="sidebar-header">
+                <span>Pengaturan AI</span>
+                <button class="btn-icon" onclick="closeAll()"><i class="fas fa-times"></i></button>
+            </div>
             <div class="sidebar-content">
-                <h3 style="font-size:16px; margin-bottom:15px;">Pengaturan AI</h3>
-                <div class="sidebar-item">Model: GPT-4 Turbo</div>
-                <div class="sidebar-item">Kreativitas: Tinggi</div>
-                <hr style="border:0; border-top:1px solid var(--border); margin:15px 0;">
-                <div style="font-size:12px; color:#888;">DATABASE: connected to otakai.js</div>
+                <p style="font-size: 14px; margin-bottom: 10px;">Model: <b>GPT-4 Turbo</b></p>
+                <p style="font-size: 14px; margin-bottom: 20px;">Database: <span style="color:var(--accent)">otakai.js connected</span></p>
+                <hr style="border:0; border-top:1px solid var(--border); margin-bottom:20px;">
+                <div class="sidebar-item"><i class="fas fa-trash"></i> Hapus Semua Chat</div>
             </div>
         </aside>
     </div>
 
     <script src="otakai.js"></script>
-
     <script>
+        const left = document.getElementById('sb-left');
+        const right = document.getElementById('sb-right');
+        const overlay = document.getElementById('overlay');
         const chatWindow = document.getElementById('chat-window');
         const userInput = document.getElementById('user-input');
-        const sendBtn = document.getElementById('send-btn');
 
-        // Toggle Functions
-        function toggleLeft() { document.getElementById('sb-left').classList.toggle('closed'); }
-        function toggleRight() { document.getElementById('sb-right').classList.toggle('closed'); }
+        function openLeft() { left.classList.add('open'); overlay.classList.add('active'); }
+        function openRight() { right.classList.add('open'); overlay.classList.add('active'); }
+        function closeAll() { 
+            left.classList.remove('open'); 
+            right.classList.remove('open'); 
+            overlay.classList.remove('active'); 
+        }
 
-        // Auto-size textarea
         userInput.oninput = function() {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
         };
 
-        async function processChat() {
+        async function handleSend() {
             const val = userInput.value.trim();
             if(!val) return;
 
-            // Tampilkan user chat
-            appendMessage('user', val);
+            // User Chat
+            appendMsg('user', val);
             userInput.value = '';
             userInput.style.height = 'auto';
 
-            // AI Berpikir di balik layar
-            const aiRow = appendMessage('ai', '...');
-            const textElement = aiRow.querySelector('.text');
-            textElement.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+            // AI Berpikir (Silent Process)
+            const aiMsg = appendMsg('ai', '<i class="fas fa-circle-notch fa-spin"></i>');
+            const textDiv = aiMsg.querySelector('.text');
 
-            /* LOGIKA PROSES (IN BACKGROUND):
-               1. Pahami Maksud
-               2. Ubah Jadi Konsep
-               3. Generate & Nilai Jawaban (Otakai.js)
-               4. Pilih Terbaik & Susun Natural
-            */
             try {
-                // Simulasi pemanggilan database otakai.js
-                // let response = await Otakai.query(val); 
-                
-                await new Promise(r => setTimeout(r, 1500)); // Delay agar terasa natural
-
-                textElement.innerText = "Selesai diproses secara internal. Ini adalah jawaban terbaik untuk Anda.";
+                // Di sini letak proses otakai.js & logic step-by-step kamu
+                await new Promise(r => setTimeout(r, 1200)); 
+                textDiv.innerText = "Ini adalah jawaban terbaik yang sudah disusun SMART AI tanpa mengganggu layar chat kamu.";
             } catch (e) {
-                textElement.innerText = "Error menyambungkan ke database.";
+                textDiv.innerText = "Koneksi database terputus.";
             }
-            
-            chatWindow.scrollTop = chatWindow.scrollHeight;
         }
 
-        function appendMessage(role, text) {
+        function appendMsg(role, text) {
             const row = document.createElement('div');
-            row.className = `message-row ${role === 'ai' ? 'ai-row' : 'user-row'}`;
+            row.className = `message-row ${role === 'ai' ? 'ai-row' : ''}`;
             row.innerHTML = `
                 <div class="message-content">
                     <div class="avatar ${role === 'user' ? 'u-av' : 'a-av'}">${role === 'user' ? 'A' : 'S'}</div>
                     <div class="text">${text}</div>
-                </div>
-            `;
+                </div>`;
             chatWindow.appendChild(row);
             chatWindow.scrollTop = chatWindow.scrollHeight;
             return row;
         }
 
-        sendBtn.onclick = processChat;
-        userInput.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); processChat(); } };
+        document.getElementById('send-btn').onclick = handleSend;
+        userInput.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } };
     </script>
 </body>
 </html>
