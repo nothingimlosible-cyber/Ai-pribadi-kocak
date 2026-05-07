@@ -3,71 +3,41 @@ const axios = require('axios');
 module.exports = async (req, res) => {
   if (req.method === 'POST') {
     const { message } = req.body;
-
     if (message && message.text) {
       const chatId = message.chat.id;
-      const userMsg = message.text;
+      const userMsg = message.text.toLowerCase();
       const BOT_TOKEN = process.env.BOT_TOKEN; 
-      
       const GITHUB_RAW_URL = "https://raw.githubusercontent.com/nothingimlosible-cyber/Ai-pribadi-kocak/main/otakai.js";
 
       try {
         const response = await axios.get(GITHUB_RAW_URL);
-        let rawData = response.data.toString();
+        const dataMemori = response.data;
 
-        // --- PROSES PEMBERSIHAN DATA ALAN ---
-        const start = rawData.indexOf('[');
-        const end = rawData.lastIndexOf(']');
-        
-        if (start === -1 || end === -1) {
-          throw new Error("Gagal nemu tanda [ atau ] di otakai.js");
-        }
-
-        let jsonString = rawData.substring(start, end + 1);
-        
-        // Hapus koma liar sebelum penutup ] (Ini biang kerok biasanya)
-        jsonString = jsonString.replace(/,\s*\]/g, ']').replace(/,\s*}/g, '}'); 
-        
-        const dataMemori = JSON.parse(jsonString);
-
-        // --- ALGORITMA v10.5 ---
         let bestMatch = null;
-        let maxScore = 0;
-        const tokens = userMsg.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 1);
-
         dataMemori.forEach(entry => {
-          let score = 0;
-          tokens.forEach(tok => {
-            if (entry.topic.toLowerCase().includes(tok)) score += 10.0;
-            if (entry.summary.toLowerCase().includes(tok)) score += 1.5;
+          const keywords = entry.topic.toLowerCase().split(',');
+          keywords.forEach(key => {
+            if (userMsg.includes(key.trim())) bestMatch = entry;
           });
-          if (score > maxScore) { maxScore = score; bestMatch = entry; }
         });
 
-        // --- BALASAN ---
-        let output = (bestMatch && maxScore > 0.5) ? bestMatch.summary : "Duh, saraf saya belum nangkep nih Kak Alan. Coba nambang kata lain! 😭";
-        
-        if (output.includes('/')) {
-          const parts = output.split('/');
-          output = parts[Math.floor(Math.random() * parts.length)].trim();
+        let reply = bestMatch ? bestMatch.summary : "Duh, belum nangkep nih Kak Alan. 😭";
+        if (reply.includes('/')) {
+          const parts = reply.split('/');
+          reply = parts[Math.floor(Math.random() * parts.length)].trim();
         }
 
         await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           chat_id: chatId,
-          text: output
+          text: reply
         });
-
-      } catch (error) {
-        // KALO MASIH GAK BALAS, BERARTI TOKEN SALAH. 
-        // KALO BALAS INI, BERARTI DATA GITHUB SALAH.
+      } catch (e) {
         await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           chat_id: chatId,
-          text: "⚠️ LAPORAN RUSAK: " + error.message
-        }).catch(err => console.log("Token Bot di Vercel Salah!"));
+          text: "Saraf Error: " + e.message
+        });
       }
     }
     res.status(200).send('ok');
-  } else {
-    res.status(200).send('Gunakan POST');
   }
 };
