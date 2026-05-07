@@ -1,0 +1,110 @@
+name: Kuli Tambang Indonesia v2
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Nambang tiap 6 jam otomatis
+  workflow_dispatch: # Tombol manual di tab Actions
+
+permissions:
+  contents: write
+
+jobs:
+  nambang-nasional:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install alat tambang
+        run: pip install requests beautifulsoup4 wikipedia
+
+      - name: Eksekusi Tambang Nasional
+        run: |
+          python << 'EOF'
+          import wikipedia, requests, json, os, random
+          from bs4 import BeautifulSoup
+
+          # Set bahasa ke Indonesia
+          wikipedia.set_lang("id")
+          database_tambang = []
+
+          def bersihkan(teks):
+              return teks.replace('"', '\\"').replace('\n', ' ').strip()
+
+          # 1. TAMBANG WIKIPEDIA (Ensiklopedia)
+          print("⛏️ Nambang Wikipedia Indonesia...")
+          for i in range(50): # Ambil 50 artikel random tiap run (biar gak kena limit)
+              try:
+                  pilih = wikipedia.random()
+                  page = wikipedia.page(pilih)
+                  summary = page.summary.split('\n')[0]
+                  if len(summary) > 50:
+                      database_tambang.append({"t": page.title, "s": summary})
+              except: pass
+
+          # 2. TAMBANG DETIK (Berita Populer)
+          print("⛏️ Nambang Detik.com...")
+          try:
+              r = requests.get('https://www.detik.com/terpopuler', timeout=15)
+              soup = BeautifulSoup(r.text, 'html.parser')
+              for item in soup.select('.media__title a'):
+                  judul = item.get_text()
+                  if judul:
+                      database_tambang.append({"t": "Berita Terkini", "s": judul})
+          except: pass
+
+          # 3. TAMBANG ANTARA NEWS (Sumber Bebas/RSS Feed)
+          print("⛏️ Nambang Antara News...")
+          rss_urls = [
+              'https://www.antaranews.com/rss/top-news.xml',
+              'https://www.antaranews.com/rss/tekno.xml'
+          ]
+          for url in rss_urls:
+              try:
+                  r = requests.get(url, timeout=15)
+                  soup = BeautifulSoup(r.content, 'xml')
+                  for item in soup.find_all('item'):
+                      judul = item.title.get_text()
+                      desc = item.description.get_text() if item.description else "Klik untuk detail"
+                      database_tambang.append({"t": judul, "s": desc[:200]})
+              except: pass
+
+          # 4. SIMPAN KE TXT (Backup Data Mentah)
+          with open('tambang.txt', 'a', encoding='utf-8') as f:
+              for data in database_tambang:
+                  f.write(f"{data['t']}: {data['s']}\n")
+
+          # 5. CONVERT KE dataMemori.js (Otak AI)
+          print("⚙️ Mengonversi ke Otak AI...")
+          # Baca ulang file txt untuk ambil data terbaru (limit 5000 baris agar ringan di web)
+          if os.path.exists('tambang.txt'):
+              with open('tambang.txt', 'r', encoding='utf-8') as f:
+                  baris_akhir = f.readlines()[-5000:]
+              
+              js_content = "const dataMemori = [\n"
+              for line in baris_akhir:
+                  if ':' in line:
+                      parts = line.split(':', 1)
+                      topic = bersihkan(parts[0])
+                      summary = bersihkan(parts[1])
+                      js_content += f'  {{topic: "{topic}", summary: "{summary}"}},\n'
+              js_content += "];"
+
+              os.makedirs('database', exist_ok=True)
+              with open('database/dataMemori.js', 'w', encoding='utf-8') as f:
+                  f.write(js_content)
+
+          print(f"✅ Berhasil nambang {len(database_tambang)} data baru!")
+          EOF
+
+      - name: Commit & Push ke Repo
+        run: |
+          git config --local user.name "Kuli Tambang AI"
+          git config --local user.email "kuli@ai.indonesia"
+          git add tambang.txt database/dataMemori.js
+          git diff --staged --quiet || (git commit -m "Nambang Otomatis: +Data Indonesia Terkini" && git push)
