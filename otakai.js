@@ -1,4 +1,4 @@
-const otakAI = [
+const dataMemori = [
   {
     "date": "2026-05-05",
     "id": 1778018809,
@@ -774,3 +774,16 @@ const otakAI = [
     "date": "2026-05-05"
   }
 ];
+function balas(pesan) {
+    const input = pesan.toLowerCase();
+    const hasil = dataMemori.find(item => 
+        input.includes(item.topic.toLowerCase()) || 
+        item.summary.toLowerCase().includes(input)
+    );
+    if (hasil) {
+        return "[ALAN-AI] Mengenai " + hasil.topic + ": " + hasil.summary + " (Diperbarui: " + hasil.date + ")";
+    } else {
+        return "Maaf Bos Alan, data itu belum ada di tambang. Isi tambang.txt dulu ya!";
+    }
+}
+module.exports = { dataMemori, balas };
