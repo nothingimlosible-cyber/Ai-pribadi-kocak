@@ -1746,6 +1746,246 @@ const dataMemori = [
     "date": "2026-05-07"
   },
   {
+    "id": 1778147107147,
+    "topic": "Daftar Wakil Bupati Pandeglang",
+    "summary": "Wakil Bupati Pandeglang adalah posisi kedua yang memerintah Kabupaten Pandeglang, Jawa Barat di bawah Bupati Pandeglang.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107148,
+    "topic": "Semanotus undatus",
+    "summary": "Semanotus undatus adalah spesies kumbang tanduk panjang yang tergolong famili Cerambycidae. Spesies ini juga merupakan bagian dari genus Semanotus, ordo Coleoptera, kelas Insecta, filum Arthropoda, dan kingdom Animalia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107149,
+    "topic": "Mahmud Khalil Al-Hussary",
+    "summary": "Syech Mahmud Khalil Al-Hussary, adalah seorang qari' terkemuka dari Mesir. Ia dikenal sebagai tokoh pertama yang bacaan al-Qur'an dalam bermacam-macam variasi gaya. Ia bergelar al-Maqari, sebab bacaan al-Qur'annya menjadi rujukan para qari' hampir di seluruh penjuru dunia. Dia adalah pembuat dari shalawat terkenal yang biasa didengar sebelum shubuh, yaitu Shalawat Tarhim. Selain itu, ia terkenal dengan bacaan al-Qur'an-nya yang pelan, tenang, bernyawa,dan penuh penghayatan, sehingga memberikan dampak yang cukup besar bagi perkembangan al-Qur'an di dunia Muslim.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107150,
+    "topic": "Lenna Tan",
+    "summary": "Lenna Tan adalah model, pembawa acara, dan aktris Indonesia yang berdarah Tionghoa-Indonesia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107151,
+    "topic": "Nojorono Tobacco International",
+    "summary": "PT Nojorono Tobacco International merupakan produsen pelopor rokok kretek di Indonesia. Didirikan oleh Bapak Ko Djee Siong dan Bapak Tan Djing Thay. Perusahaan dikukuhkan pada 14 Oktober 1932 dan berpusat di Kota Kudus, Jawa Tengah. Saat ini, PT Nojorono Tobacco International termasuk dalam kategori industri sigaret lima besar di Indonesia. PT Nojorono Tobacco International dikenal sebagai pemilik merek dagang Minak Djinggo yang diluncurkan tahun 1932. Minak Djinggo merupakan pelopor inovasi sigaret kretek tangan (SKT). Minak Djinggo bertahan di industri SKT hingga saat ini, cukup dikenal di kalangan petani dan nelayan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107152,
+    "topic": "99% Muhrim: Get Married 5",
+    "summary": "99% Muhrim: Get Married 5 adalah film drama/film komedi Indonesia yang dirilis pada 30 Juli 2015 yang diproduksi oleh Starvision. Film ini disutradarai oleh Fajar Bustomi dan dibintangi oleh Nirina Zubir, Aming, Nino Fernandez, Ricky Harun, Meriam Bellina, Jaja Mihardja, Ira Wibowo, dan juga memperkenalkan pemeran Sophie yang pada seri ini diperankan oleh Anggika Bolsterli. Film ini menjadi film terakhir dari bagian seri Get Married.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107153,
+    "topic": "Ksenia Solo",
+    "summary": "Ksenia Solo adalah seorang aktris Latvia-Kanada, yang dikenal karena memerankan Mackenzie \"Kenzi\" Malikov dalam Lost Girl. Ia memerankan Peggy Shippen dalam Turn: Washington's Spies. Solo juga memerankan karakter \"Natasha\" dalam seri televisi Amerika Serikat tahun 2010 Life Unexpected dan Shay Davydov dalam Musim 3 dari Orphan Black.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107154,
+    "topic": "Johannes Liku Ada'",
+    "summary": "Mgr. Johannes Liku Ada' Lahir di Desa Saluallo, Kecamatan Sangalla Utara, Tana toraja. Ia Uskup Agung Makassar sejak ditunjuk sebagai Uskup Agung Makassar pada 11 November 1994 hingga 17 Oktober 2024.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107155,
+    "topic": "Lizard",
+    "summary": "Lizard adalah sebuah karakter fiksi, penjahat super yang muncul dalam buku-buku komik Amerika yang diterbitkan oleh Marvel Comics. Karakter tersebut biasanya digambarkan sebagai seorang musuh dari Spider-Man. Pada 2009, Lizard dimasukkan sebagai Penjahat Komik Terbesar ke-62 Sepanjang Masa menurut IGN.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107156,
+    "topic": "Stasiun FujimichÅ",
+    "summary": "Stasiun FujimichÅ  adalah stasiun monorel di Jalur Monorel ShÅnan Enoshima terletak di Kamakura, Prefektur Kanagawa, Jepang. Stasiun ini berlokasi sekitar 0,9 kilometer dari terminus utara Jalur Monorel ShÅnan Enoshima di Stasiun ÅŒfuna.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107157,
+    "topic": "Sungai Ambawang Kuala, Sungai Ambawang, Kubu Raya",
+    "summary": "Sungai Ambawang Kuala adalah salah satu desa di kecamatan Sungai Ambawang, Kabupaten Kubu Raya, Kalimantan Barat, Indonesia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107158,
+    "topic": "Wes Anderson",
+    "summary": "Wesley Wales Anderson adalah seorang pembuat film asal Amerika Serikat. Film-filmnya terkenal karena keunikan gaya visual dan narasi, serta penggunaan pemeran ensambel. Tema-tema seperti berduka, kehilangan kepolosan, dan dinamika keluarga yang tidak berfungsi sering muncul dalam karyanya. Beberapa kritikus menilai Anderson sebagai contoh auteur dengan gaya modern. Tiga filmnya masuk dalam jajak pendapat BBC Culture tahun 2016 sebagai film terhebat sejak tahun 2000.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107159,
+    "topic": "Pulau Robinson Crusoe, Fiji",
+    "summary": "Pulau Robinson Crusoe adalah pulau kecil di pantai barat daya pulau utama Fiji, pulau Viti Levu.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107160,
+    "topic": "The Day I Died: Unclosed Case",
+    "summary": "The Day I Died: Unclosed Case adalah sebuah film drama Korea Selatan tahun 2020 garapan Park Ji-wan dalam debut penyutradaraannya. Film tersebut menampilkan Kim Hye-soo, Lee Jung-eun, Roh Jeong-eui dan Kim Sun-young. Film tersebut mengisahkan tentang gadis hilang yang tewas dalam sebuah tebing pada malam gelap berbadai. Film tersebut dirilis di bioskop pada 12 November 2020.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107161,
+    "topic": "Stadion Inter&Co",
+    "summary": "'Stadion Exploria adalah stadion khusus sepak bola di pusat kota Orlando, Florida. Stadion ini terletak di sepanjang West Church Street di lingkungan Parramore di sebelah barat Downtown Orlando. Stadion ini adalah rumah bagi Orlando City SC yang memasukkan Major League Soccer (MLS) sebagai ekspansi waralaba pada tahun 2015, dan klub afiliasi National Women's Soccer League (NWSL) mereka, Orlando Pride. Stadion ini selesai tepat waktu untuk pertandingan pembukaan kandang Orlando City di musim 2017 pada tanggal 5 Maret dan menjadi tempat pertama yang secara permanen menjadi tuan rumah MLS, NWSL, dan USL berada di lokasi yang sama tahun itu. Awalnya stadion dikenal sebagai Orlando City Stadium, pada 4 Juni 2019, diumumkan bahwa Exploria Resorts telah memperoleh hak penamaan untuk stadion tersebut.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107162,
+    "topic": "Metropolis Kartago",
+    "summary": "Metropolis Kartago adalah sebuah eparki yang berada di bawah yurisdiksi Gereja Ortodoks Yunani Aleksandria dan Seluruh Afrika. Teritorialnya meliputi paroki-paroki dan misi-misinya terletak di Tunisia, Aljazair, Mauritania, dan Maroko. Metropolis Kartago didirikan sebagai keuskupan agung pada 1931 lewat dekrit patriarkat dan sinodal.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107163,
+    "topic": "Otoritas Jasa Keuangan",
+    "summary": "Otoritas Jasa Keuangan (OJK) adalah lembaga independen yang mempunyai fungsi, tugas, dan wewenang pengaturan, pengawasan, pemeriksaan, dan penyidikan. OJK dibentuk berdasarkan UU Nomor 21 Tahun 2011 yang berfungsi menyelenggarakan sistem pengaturan dan pengawasan yang terintegrasi terhadap keseluruhan kegiatan di dalam sektor jasa keuangan. OJK didirikan untuk menggantikan peran Bapepam-LK dalam pengaturan dan pengawasan pasar modal dan lembaga keuangan, serta menggantikan peran Bank Indonesia dalam pengaturan dan pengawasan bank, serta untuk melindungi konsumen industri jasa keuangan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107164,
+    "topic": "Lugh",
+    "summary": "Lugus, sering disebut sebagai Lugh atau Lug menurut mitos celtic adalah dewa utama bagi Bangsa Celtic kuno, raja penguasa Tuatha DÃ© Danann. Dalam beberapa catatan oleh Julius Caesar, ia disandingkan dengan Mercury, dewa utama dalam mitologi Romawi karena memiliki kesamaan yang serupa. Ia juga dijuluki sebagai pejuang karena kemampuan bertarungnya di medan perang serta memiliki keahlian dalam membuat segala keterampilan pandai besi. Dalam peperangan Lugh dilengkapi dengan senjata tombak petir Assal atau Assail - seperti julukan pada namanya \"Lugh Lama-fada\" atau \"Lug LÃ¡mfota\", yang merujuk pada tombak petir-panjang miliknya yang tidak bisa dilawan oleh musuh manapun dan ahli dalam menggunakannya. Ia mempunyai dua tempat tinggal yang berada di Tara di County Meath dan di Moytura, di County Sligo. Bangsa Celtic kuno memperingati setiap tanggal 1 Agustus yang disebut dengan Lughnasa, yang diyakini mereka sebagai hari suci untuk Dewa Laugh. Kultusnya tersebar luas di seluruh Celtic kuno dan namanya hingga saat ini sering digunakan sebagai nama suatu tempat atau lokasi di berbagai wilayah di Eropa dan Britania Raya seperti Lyon, Laon, Leiden, dan Carlisle. Di sebagian tempat yang tidak pernah diduduki Bangsa Romawi seperti di Isle of Man dan Irlandia, ia diberi nama Sam Ildanach yang memiliki arti terampil menguasai berbagai seni dan kemampuan sekaligus. Di Wales, Lugh dikenal dengan nama Lleu Llaw Gyffes.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107165,
+    "topic": "Karl Abraham",
+    "summary": "Karl Abraham adalah seorang psikoanalis Jerman berpengaruh, dan kolaborator Sigmund Freud, yang menyebutnya 'murid terbaiknya'.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107166,
+    "topic": "Babi Buta yang Ingin Terbang",
+    "summary": "Babi Buta yang Ingin Terbang adalah film drama dari Indonesia yang dirilis pada 3 Oktober 2008 dengan disutradarai oleh Edwin dan dibintangi oleh Ladya Cheryl dan Pong Hardjatmo.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107167,
+    "topic": "Tambak Sarinah, Kurau, Tanah Laut",
+    "summary": "Tambak Sarinah adalah salah satu desa di Kecamatan Kurau, Kabupaten Tanah Laut, Kalimantan Selatan, Indonesia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107168,
+    "topic": "Grand Prix F1 Britania 1978",
+    "summary": "Grand Prix F1 Britania 1978 adalah sebuah balapan Formula Satu yang diselenggarakan di Brands Hatch pada tanggal 16 Juli 1978. Balapan ini merupakan balapan ke-10 dalam musim 1978. Balapan ini dimenangkan oleh Carlos Reutemann dari tim Ferrari.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107169,
+    "topic": "Kuala Lumpur, Paguyaman, Boalemo",
+    "summary": "Kuala Lumpur adalah sebuah desa yang berada di kecamatan Paguyaman, Kabupaten Boalemo, Gorontalo, Indonesia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107170,
+    "topic": "Open (film 2019)",
+    "summary": "Open adalah film drama romansa Filipina tahun 2019 yang disutradarai oleh Andoy Ranay starring JC Santos dan Arci MuÃ±oz. Film ini diproduksi oleh Black Sheep Productions dan T-Rex Entertainment dan didistribusikan oleh Star Cinema. Film ini juga diproduksi oleh produser eksekutif Carlo L. Katigbak, Olivia M. Lamasan dan Rex A. Tiri. Film ini adalah salah satu entri untuk Pista ng Pelikulang Pilipino 2019. Film ini dirilis pada tanggal 13 September 2019.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107171,
+    "topic": "Keuskupan Lamezia Terme",
+    "summary": "Keuskupan Lamezia Terme berada di Calabria. Pada 1818, tahta kuno Martirano, dulunya Mamertum, digabung dengan keuskupan Nicastro. Keuskupan tersebut kemudian menjadi sebuah suffragan dari Keuskupan Agung Reggio di Calabria. Pada 1986, Keuskupan Nicastro mengubah namanya. Keuskupan tersebut sekarang disebut Keuskupan Lamezia Terme, dan merupakan sebuah suffragan dari Keuskupan Agung Catanzaro-Squillace. Perubahan nama tersebut merefleksikan penggabungan komune Nicastro ke dalam Lamezia Terme, sebuah perubahan administratif tahun 1968 pada bagian dari Negara Italia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107172,
+    "topic": "Universitas 45 Mataram",
+    "summary": "Universitas 45 Mataram atau disebut juga Upatma merupakan perguruan tinggi swasta di Kota Mataram, Provinsi Nusa Tenggara Barat, Indonesia, Universitas 45 Mataram berdiri pada 17 September 1982. Rektor Universitas 45 Mataram saat ini adalah Ismak Subardan, S.Pd.,M.H.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107173,
+    "topic": "25 Primata Paling Terancam Punah di Dunia",
+    "summary": "25 Primata Paling Terancam Punah di Dunia adalah daftar spesies primata paling terancam punah yang dipilih dan diterbitkan oleh International Union for Conservation of Nature Species Survival Commission Primate Specialist Group, International Primatological Society (IPS), dan Conservation International (CI). Daftar 2012â€“2014 ditambahkan Bristol Conservation and Science Foundation (BCSF) kepada daftar penerbit. IUCN/SSC PSG bekerja sama dengan CI untuk memulai daftar tersebut pada 2000, tetapi pada 2002, saat Kongres International Primatological Society ke-19, para primatologis meninjau dan memperdebatkan daftar tersebut, menghasilkan revisi 2002â€“2004 dan dorongan dari IPS. Publikasi tersebut sejak itu telah menjadi proyek bersama antara tiga organisasi konservasi dan telah direvisi setiap dua tahun setelah Kongres dwitahunan IPS. Dimulai dengan laporan 2004â€“2006, judulnya diubah menjadi \"Primates in Peril: The World's 25 Most Endangered Primates\". Pada tahun yang sama, daftar tersebut melaui menyediakan informasi tentang setiap spesies, termasuk status konservasi mereka dan ancaman-ancaman yang mereka hadapi di alam liar. Teks spesies ditulis dalam kolaborasi dengan para pakar dalam bidang tersebut, dengan 60Â orang berkontribusi pada laporan 2006â€“2008 dan 85Â orang berkontribusi pada laporan 2008â€“2010. Laporan 2004â€“2006 dan 2006â€“2008 diterbitkan dalam jurnal IUCN/SSC PSG Primate Conservation, sementara laporan 2008â€“2010 dan 2010-2012 diterbitkan sebagai publikasi-publikasi independen oleh seluruh tiga organisasi yang berkontribusi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107174,
+    "topic": "Gereja Gembala Baik, Seng Hie",
+    "summary": "Gereja Gembala Baik, Seng Hie adalah sebuah gereja Katolik yang berlokasi di Kota Pontianak, Kalimantan Barat, Indonesia. Gereja ini berada di bawah pengelolaan Keuskupan Agung Pontianak. Secara parokial, Gereja Gembala Baik Seng Hie merupakan pusat dari Paroki Seng Hie. Gereja ini didedikasikan kepada Yesus Kristus sebagai Gembala Baik, sebuah gelar Kristologis yang melambangkan peran Kristus sebagai pemimpin dan pelindung umat beriman. Gereja ini dikelola oleh para imam dari ordo Kapusin.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107175,
+    "topic": "Wilayah ekonomi Kaliningrad",
+    "summary": "Wilayah ekonomi Kaliningrad terletak di ujung barat Distrik Federal Barat Laut.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107176,
+    "topic": "Perjanjian Ottawa",
+    "summary": "Konvensi tentang Larangan Penggunaan, Penimbunan, Produksi, dan Transfer Ranjau Anti-personel dan tentang Penghancurannya, yang dikenal secara informal sebagai Perjanjian Ottawa, Konvensi Larangan Ranjau Anti-personel, atau sering hanya Perjanjian Larangan Ranjau, bertujuan untuk melenyapkan ranjau darat anti-personel (AP-mine) di seluruh dunia. Sampai saat ini, ada 164 negara yang mendukung perjanjian tersebut. Salah satu negara telah menandatangani tetapi belum meratifikasi perjanjian tersebut, sementara 32 negara PBB, termasuk Amerika Serikat, Rusia, Tiongkok, dan India tidak ikut menandatangani, sehingga terdapat total 33 negara anggota PBB yang tidak mendukung traktat tersebut.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107177,
+    "topic": "Kampung Mentiri",
+    "summary": "Mentiri, secara resmi Kampung Mentiri adalah sebuah desa di Daerah Brunei-Muara, Brunei Darussalam. Jumlah penduduknya adalah 1.215 jiwa pada tahun 2016. Ini adalah sub bagian tingkat desa di bawah Mukim Mentiri, mukim atau sub distrik Brunei-Muara. Kode posnya adalah BU1929.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107178,
+    "topic": "Masiela Lusha",
+    "summary": "Masiela Lusha adalah seorang pemeran, penyair, novelis, dan cerpenis Amerika Serikat. Dia merupakan pemenang Young Artist Award.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107179,
+    "topic": "Pocapaglia",
+    "summary": "Pocapaglia adalah komune yang terletak di distrik Provinsi Cuneo, Italia. Kota Pocapaglia memiliki luas sebesar 17,4 kmÂ². Pada tahun 2004, Pocapaglia memiliki penduduk sebanyak 2.880 jiwa.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107180,
+    "topic": "Stasiun Duri",
+    "summary": "Stasiun Duri (DU) merupakan stasiun kereta api kelas I yang terletak di Jalan Duri Utara, tepatnya di perbatasan antara Duri Utara dengan Kali Anyar, Tambora, Jakarta Barat; terletak pada ketinggian +9 m; melayani kereta api komuter serta bandara menghubungkan DKI Jakarta dengan wilayah barat Jabodetabek meliputi Kota Tangerang, Banten dengan jarak 5 km arah timur laut dari Kampung Bandan.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107181,
+    "topic": "Politeknik Sawunggalih Aji",
+    "summary": "Politeknik Sawunggalih Aji (POLSA)  atau juga dikenal dengan \"Politeknik Kutoarjo\" adalah perguruan tinggi vokasi yang menyelenggarakan pendidikan Program S1 - Vokasi dan Program Diploma III yang berorientasi pada dunia usaha dan industri guna menyiapkan tenaga ahli terampil dan siap kerja. Oleh karena itu, POLSA menitikberatkan pada ilmu terapan dengan sistem pendidikan berbasis kompetensi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107183,
+    "topic": "Wajah Tiga Perempuan",
+    "summary": "Wajah Tiga Perempuan adalah film Indonesia tahun 1976 dengan disutradarai oleh Nico Pelamonia serta dibintangi oleh Rima Melati dan Dana Christina.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107184,
+    "topic": "Tunnel (seri televisi)",
+    "summary": "Tunnel adalah serial televisi Korea Selatan tahun 2017 yang dibintangi oleh Choi Jin-hyuk, Yoon Hyun-min dan Lee Yoo-young. Serial televisi ini menggantikan Voice dan disiarkan di saluran kabel OCN setiap Sabtu dan Minggu pada pukul 22:00 (WSK) untuk 16 episode mulai 25 Maret 2017.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107185,
+    "topic": "Lisa Sparxxx",
+    "summary": "Lisa Sparxxx adalah aktris, sutradara dan model porno asal Amerika Serikat. Ia merupakan salah satu peraih gelar Guinness World Record terkenal dalam industri seks.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107186,
+    "topic": "Galang Suka, Galang, Deli Serdang",
+    "summary": "Galang Suka merupakan salah satu desa yang ada di kecamatan Galang, Kabupaten Deli Serdang, provinsi Sumatera Utara, Indonesia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778147107187,
+    "topic": "Rumah Sakit Universitas Nasional",
+    "summary": "Rumah Sakit Universitas Nasional adalah sebuah rumah sakit di Singapura yang didirikan pada tahun 1985. Rumah sakit ini berfungsi sebagai rumah sakit tersier, pusat pelatihan klinis, dan pusat penelitian untuk fakultas kedokteran dan kedokteran gigi dari Universitas Nasional Singapura (NUS).",
+    "date": "2026-05-07"
+  },
+  {
     "id": 6001,
     "topic": "Halo, Hai, Hello, P, Assalamualaikum, Hey",
     "summary": "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?",
