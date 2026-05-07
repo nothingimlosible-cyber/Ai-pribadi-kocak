@@ -1326,6 +1326,126 @@ const dataMemori = [
     "date": "2026-05-07"
   },
   {
+    "id": 1778146749665,
+    "topic": "Nefron",
+    "summary": "Nefron adalah unit kerja terkecil ginjal. Nefron terdiri dari korpuskula renalis dan tubulus renalis. Korpuskula renalis terdiri dari kumpulan pembuluh kapiler yang disebut dengan nama glomerulus dan sebuah struktur mangkuk yang bernama kapsul Bowman. Tubulus renalis memanjang dari kapsul. Kapsul dan tubulus terhubung dan terdiri dari sel epitel dengan lumen. Seorang manusia dewasa memiliki 1 sampai 1.5 juta nefron pada tiap ginjal. Darah disaring saat melewati tiga lapisan: sel endotelial pada dinding kapilari, membran basalnya, dan di antara proses kaki podosit pada lapisan kapsul tersebut.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749666,
+    "topic": "William Merritt Chase",
+    "summary": "William Merritt Chase adalah seorang pelukis Amerika, yang dikenal sebagai eksponen Impresionisme dan sebagai guru. Dia juga bertanggung jawab untuk mendirikan Sekolah Chase, yang kemudian menjadi Sekolah Desain Parsons.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749667,
+    "topic": "Belkibolang",
+    "summary": "Belkibolang merupakan film antologi Indonesia yang dirilis pada tahun 2011. Film ini dibintangi antara lain oleh Marsha Timothy, Dwi Sasono, Deddy Mahendra Desta, Vindy, Sapto Soetardjo, Alexa, dan Panji Rahadi.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749668,
+    "topic": "Chang Kiha",
+    "summary": "Chang Kiha adalah seorang musisi asal Korea Selatan. Ia aktif juga sebagai penyiar radio yang kerap mengundang para bintang KPop sebagai tamu. Ia dikenal sebagai penyanyi dan penulis lagu dan aktif di kancah musik indie bersama grup musik rock Kiha & The Faces.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749669,
+    "topic": "Pengakuan Petrus",
+    "summary": "Pengakuan Petrus, dalam agama Kristen, merujuk kepada sebuah kisah dalam Perjanjian Baru dalam kehidupan Yesus.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749670,
+    "topic": "Hotel Mumbai",
+    "summary": "Hotel Mumbai adalah sebuah film cerita seru biografi tahun 2018 yang disutradarai oleh Anthony Maras dan ditulis oleh John Collee dan Maras. Film tersebut berdasarkan pada dokumenter tahun 2009 Surviving Mumbai tentang serangan Mumbai 2008 di Taj Mahal Palace Hotel, India. Film tersebut dibintangi oleh Dev Patel, Armie Hammer, Nazanin Boniadi, Anupam Kher, Tilda Cobham-Hervey, Jason Isaacs, Suhail Nayyar, dan Natasha Liu Bordizzo.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749671,
+    "topic": "Rhopalophora tenuis",
+    "summary": "Rhopalophora tenuis adalah spesies kumbang tanduk panjang yang tergolong famili Cerambycidae. Spesies ini juga merupakan bagian dari genus Rhopalophora, ordo Coleoptera, kelas Insecta, filum Arthropoda, dan kingdom Animalia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749672,
+    "topic": "Edman Ayvazyan",
+    "summary": "Edman Ayvazyan adalah seorang pelukis beradarah Iran-Armenia. Ia meninggal pada 25 Maret 2020, di London, Inggris. Diakibatkan COVID-19.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749673,
+    "topic": "Celle",
+    "summary": "Celle adalah sebuah kota yang terletak di provinsi Niedersachsen, Jerman. Kota ini merupakan ibu kota distrik Celle. Celle terletak di tepi sungai Aller dan memiliki jumlah penduduk sebesar 71.000 jiwa. Di kota ini terdapat Istana Celle yang dibangun dengan gaya renaissance dan baroque, serta kota tua (Altstadt) dengan lebih dari 400 rumah berbingkai kayu. Dari tahun 1378 hingga 1705, Celle merupakan kediaman resmi adipati-adipati Braunschweig-LÃ¼neburg cabang LÃ¼neburg.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749674,
+    "topic": "Anie Carera",
+    "summary": "Anie Carera adalah seorang penyanyi slowrock Indonesia yang terkenal pada dekade '90-an.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749675,
+    "topic": "Gereja Bunda Maria dari Gunung Karmel, Cruz Bay",
+    "summary": "Gereja Bunda Maria dari Gunung Karmel adalah sebuah gereja paroki Katolik yang terletak di Cruz Bay, Kepulauan Virgin Amerika Serikat. Gereja ini didedikasikan kepada gelar Bunda Maria dari Gunung Karmel. Gereja ini berada dalam naungan yurisdiksi Keuskupan Saint Thomas.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749676,
+    "topic": "Chaley",
+    "summary": "Chaley merupakan sebuah komune di departemen Ain yang terletak pada sebelah timur Prancis.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749677,
+    "topic": "Soraya Esfandiary-Bakhtiary",
+    "summary": "Soraya Esfandiary-Bakhtiary merupakan Permaisuri Kerajaan Iran setelah menikah dengan Mohammad Reza Syah Pahlavi pada tahun 1951 sebagai istri keduanya. Pernikahan mereka dihujani berbagai tekanan, terutama setelah diketahui bahwa Soraya sulit untuk memiliki keturunan. Ketika suaminya mengusulkan untuk menikah lagi demi mendapatkan seorang penerus, Soraya menentang keras usulan tersebut. Di sisi lain, suaminya juga tidak setuju dengan ide Soraya yang menyarankan agar ia turun takhta dan menyerahkan kekuasaan kepada saudara tirinya. Pada bulan Maret 1958, mereka memutuskan untuk bercerai. Setelah itu, Soraya sempat menekuni karier sebagai pemeran dan menjalin hubungan dengan sutradara Italia, Franco Indovina, sebelum akhirnya hidup sebatang kara di Paris hingga akhir hayatnya.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749678,
+    "topic": "Daftar duta besar Swedia untuk Indonesia",
+    "summary": "Berikut adalah daftar duta besar Kerajaan Swedia untuk Republik Indonesia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749679,
+    "topic": "Obon",
+    "summary": "Obon  atau disebut pula dengan Bon  adalah serangkaian upacara dan tradisi di Jepang untuk merayakan kedatangan arwah leluhur yang dilakukan seputar tanggal 15 Juli menurut kalender TempÅ. Pada umumnya, Obon dikenal sebagai upacara yang berkaitan dengan agama Buddha Jepang, tetapi banyak sekali tradisi dalam perayaan Obon yang tidak bisa dijelaskan dengan dogma agama Buddha. Obon dalam bentuk seperti sekarang ini merupakan sinkretisme dari tradisi turun temurun masyarakat Jepang dengan upacara agama Buddha yang disebut Urabon.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749680,
+    "topic": "Charles K. Kao",
+    "summary": "Sir Charles Kuen Kao, GBM, KBE, FRS, FREng adalah seorang fisikawan dan insinyur elektro Hong Kong-Amerika-Britania yang menjadi perintis pengembangan dan penggunaan serat optik dalam telekomunikasi. Pada tahun 1960an, Kao membuat berbagai macam metode untuk menggabungkan serat kaca dengan laser untuk mengirim data digital, yang merupakan dasar bagi evolusi internet. \"Komunikasi seperti yang kita tahu, termasuk internet, tidak akan ada tanpa serat optik,\" kata William Wulf, presiden National Academy of Engineering pada tahun 1999.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749681,
+    "topic": "Honda Beat (mobil)",
+    "summary": "Honda Beat adalah sebuah mobil berpenggerak roda belakang, mobil roadster dua pintu dengan konfigurasi mesin ditengah (mid-engine) yang diproduksi sejak tahun 1991-1996. Honda Beat itu adalah mobil terakhir yang disetujui oleh Soichiro Honda sebelum ia meninggal pada tahun 1991. Jumlah total mobil yang saat itu diproduksi sekitar 33.600 unit. Sebagian besar produksi terjadi pada tahun pertama, dan kemudian produksi dan penjualan turun secara drastis. Desain mobil berasal dari Pininfarina, yang kemudian menjual rencana desain ke Honda. Honda Beat adalah salah satu dari banyak mobil yang dirancang untuk memanfaatkan kelas Keicar, yakni sebuah segmen mobil rendah emisi atau di indonesia seperti LCGC tetapi peraturannya lebih ketat, bahkan ukuran dimensi pada mobil itu sendiri dihitung. [2]",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749682,
+    "topic": "Napajoring, Nassau, Toba",
+    "summary": "Napajoring adalah salah satu desa di Kecamatan Nassau, Kabupaten Toba, Provinsi Sumatera Utara, Indonesia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749683,
+    "topic": "Giarole",
+    "summary": "Giarole adalah komune yang terletak di distrik Provinsi Alessandria, Italia.",
+    "date": "2026-05-07"
+  },
+  {
+    "id": 1778146749684,
+    "topic": "Daftar wilayah otonom menurut negara",
+    "summary": "Daftar wilayah otonom yang diangkat oleh negara meliputi wilayah otonom di seluruh dunia. Sebuah wilayah otonom didefinisikan sebagai sebuah wilayah dari sebuah negara yang memiliki tingkat otonomi, atau memiliki kebebasan dari otoritas luar. Wilayah tersebut biasanya memiliki jarak geografi yang jauh dari negaranya, atau ditempati oleh minoritas nasional. Negara-negara yang meliputi wilayah-wilayah otonomi sering kali adalah federasi. Wilayah otonomi berbeda dengan unit federal dan negara independen yang dalam esensinya mereka menikmati status istimewa, dalam hubungannya dengan mayoritas teritorial sub-nasional di negara yang sama, yang meliputi beberapa kekuasaan legislatif, di dalam negara tersebut.",
+    "date": "2026-05-07"
+  },
+  {
     "id": 6001,
     "topic": "Halo, Hai, Hello, P, Assalamualaikum, Hey",
     "summary": "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?",
