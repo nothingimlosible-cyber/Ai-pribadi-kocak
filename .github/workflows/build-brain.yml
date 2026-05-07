@@ -1,4 +1,4 @@
-      - name: Auto Mining & Merging
+      - name: Smart Mining v2.0
         run: |
           python -c "
           import yaml, json, os, time
@@ -10,39 +10,41 @@
                   raw_content = f.read().strip()
               
               if raw_content:
-                  blocks = raw_content.split('---')
+                  # Pisah per blok materi
+                  blocks = [b.strip() for b in raw_content.split('---') if b.strip()]
                   new_entries = []
                   for block in blocks:
-                      lines = block.strip().split('\n')
+                      lines = block.split('\n')
                       if len(lines) >= 2:
                           topic = lines[0].strip()
-                          # LOGIKA PINTER: Otomatis ringkas teks jadi maksimal 250 karakter
-                          body = ' '.join(lines[1:])
-                          summary = (body[:250] + '.. [Ringkasan Otomatis]') if len(body) > 250 else body
-                          summary = summary.replace('\"', '\\\"')
+                          # Gabungin sisa baris jadi satu summary, bersihin spasi double
+                          body = ' '.join([l.strip() for l in lines[1:] if l.strip()])
                           
                           new_entries.append({
                               'id': int(time.time()) + len(new_entries),
                               'topic': topic,
-                              'summary': summary,
+                              'summary': body,
                               'date': time.strftime('%Y-%m-%d')
                           })
+                  
                   if new_entries:
-                      filename = f'mine_bulk_{int(time.time())}.yml'
+                      filename = f'mine_v2_{int(time.time())}.yml'
                       with open(os.path.join(db_path, filename), 'w', encoding='utf-8') as f:
-                          yaml.dump(new_entries, f)
+                          yaml.dump(new_entries, f, allow_unicode=True)
+                      print(f'✅ Berhasil nambang {len(new_entries)} materi baru.')
+                  
+                  # Kosongkan tambang setelah sukses
                   open('tambang.txt', 'w').close()
 
-          # GABUNGIN SEMUA KE OTAKAI.JS
+          # MERGE SEMUA KE OTAKAI.JS (Sistem Database Utama)
           merged_data = []
           if os.path.exists(db_path):
-              for filename in sorted(os.listdir(db_path)):
-                  if filename.endswith(('.yml', '.yaml')):
-                      with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
-                          content = yaml.safe_load(f)
-                          if isinstance(content, list): merged_data.extend(content)
+              files = sorted([f for f in os.listdir(db_path) if f.endswith(('.yml', '.yaml'))])
+              for filename in files:
+                  with open(os.path.join(db_path, filename), 'r', encoding='utf-8') as f:
+                      content = yaml.safe_load(f)
+                      if isinstance(content, list): merged_data.extend(content)
           
-          # Tulis file JS yang siap dibaca Index.html
           with open('otakai.js', 'w', encoding='utf-8') as f:
               f.write(f'const dataMemori = {json.dumps(merged_data, indent=2, ensure_ascii=False)};')
           "
