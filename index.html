@@ -3,102 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AX-X PRO</title>
+    <title>Smart AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #1a1a1a; color: #e5e5e5; font-family: 'Inter', sans-serif; }
-        .chat-container { max-width: 700px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; }
-        .message-area { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: none; }
-        .ai-message { line-height: 1.7; margin-bottom: 25px; border-left: 2px solid #4f46e5; padding-left: 15px; }
-        .user-message { background: #262626; border-radius: 15px; padding: 10px 15px; align-self: flex-end; margin-bottom: 25px; }
-        .input-box { background: #262626; border-radius: 25px; padding: 12px 20px; display: flex; gap: 10px; }
-        input { background: transparent; border: none; outline: none; color: white; width: 100%; }
-            </style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+        
+        body { background: #131314; color: #e3e3e3; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
+        .chat-container { height: calc(100vh - 140px); scrollbar-width: none; }
+        .chat-container::-webkit-scrollbar { display: none; }
+        
+        .user-bubble { background: #2b2d31; border-radius: 20px; padding: 12px 20px; max-width: 85%; align-self: flex-end; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .ai-wrapper { width: 100%; display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
+        .ai-name { font-size: 12px; font-weight: 600; color: #8ab4f8; letter-spacing: 0.5px; }
+        .ai-text { font-size: 16px; line-height: 1.6; color: #e3e3e3; max-width: 95%; white-space: pre-line; }
+        
+        .input-container { background: #131314; padding: 15px 20px; border-top: 1px solid #333; }
+        .input-bar { background: #1e1f20; border-radius: 30px; padding: 8px 24px; display: flex; align-items: center; gap: 12px; transition: 0.3s; border: 1px solid transparent; }
+        .input-bar:focus-within { background: #282a2c; border-color: #8ab4f8; }
+        input { background: transparent; border: none; outline: none; color: white; width: 100%; height: 48px; font-size: 16px; }
+        
+        .typing-anim { display: flex; gap: 4px; padding: 10px 0; }
+        .dot { width: 4px; height: 4px; background: #8ab4f8; border-radius: 50%; animation: blink 1.4s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+    </style>
 </head>
-<body>
+<body class="flex flex-col h-screen">
 
-<div class="chat-container">
-    <header class="p-4 border-b border-white/5 text-center">
-        <h1 class="text-[10px] tracking-[4px] uppercase font-bold text-indigo-400">Axon-X Neural Core v7.0</h1>
+    <header class="p-5 flex justify-between items-center border-b border-white/5 bg-[#131314]/80 backdrop-blur-md">
+        <h1 class="text-sm font-bold tracking-[2px] text-white uppercase">Smart <span class="text-[#8ab4f8]">AI</span></h1>
+        <div id="mem-status" class="text-[10px] font-mono text-gray-500 italic">MEMORY_SYNCING...</div>
     </header>
 
-    <main id="chatArea" class="message-area flex flex-col"></main>
-
-    <footer class="p-4">
-        <div class="input-box">
-            <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startThink()" placeholder="Apa itu Bumi?">
-            <button onclick="startThink()" class="text-indigo-400 font-bold">SEND</button>
+    <main id="chatBox" class="chat-container p-5 flex flex-col space-y-6 overflow-y-auto">
+        <div class="ai-wrapper">
+            <div class="ai-name">Smart AI</div>
+            <div class="ai-text">Halo Kak Alan! Saya siap membantu mencari informasi dari ribuan database kita. Apa yang ingin Kakak tanyakan?</div>
         </div>
+    </main>
+
+    <footer class="input-container">
+        <div class="input-bar shadow-2xl">
+            <input type="text" id="userInput" onkeypress="if(event.key==='Enter') startNeuralProcess()" placeholder="Ketik pertanyaan...">
+            <button onclick="startNeuralProcess()" class="text-[#8ab4f8] font-bold p-2 hover:scale-110 transition-transform">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+            </button>
+        </div>
+        <p class="text-[9px] text-center mt-3 text-gray-600 uppercase tracking-[2px]">Neural Core v9.0 • On-Device</p>
     </footer>
-</div>
 
-<script src="otakai.js"></script>
-<script>
-    class AxonPro {
-        constructor() {
-            this.lastTopic = null;
-        }
+    <script src="otakai.js"></script>
+    <script>
+        class SmartEngine {
+            constructor() {
+                this.noiseWords = ['apakah', 'bagaimana', 'apa', 'itu', 'saya', 'kak', 'dong', 'bang', 'bisa', 'tolong'];
+                this.threshold = 1.0;
+            }
 
-        tokenize(t) {
-            return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2);
-        }
+            // Membersihkan input agar fokus ke kata kunci
+            clean(t) {
+                return t.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/)
+                    .filter(w => w.length > 2 && !this.noiseWords.includes(w));
+            }
 
-        process(query, db) {
-            const tokens = this.tokenize(query);
-            let candidates = [];
+            // Proses Berpikir Deep-Scan
+            think(query, db) {
+                const tokens = this.clean(query);
+                let candidates = [];
 
-            db.forEach(entry => {
-                let score = 0;
-                const topicWords = this.tokenize(entry.topic);
-                const contentWords = this.tokenize(entry.summary);
+                db.forEach(entry => {
+                    let score = 0;
+                    const topicClean = this.clean(entry.topic);
+                    const summaryClean = entry.summary.toLowerCase();
 
-                tokens.forEach(q => {
-                    // Skor tinggi untuk kecocokan di Topik (DNA)
-                    if (topicWords.some(tw => tw.includes(q))) score += 10;
-                    // Skor tambahan untuk kecocokan di isi
-                    if (contentWords.some(cw => cw.includes(q))) score += 2;
+                    tokens.forEach(tok => {
+                        // Skor 10 jika ada di Judul (Topic)
+                        if (topicClean.some(t => t.includes(tok))) score += 10.0;
+                        // Skor 1.5 jika ada di Isi (Summary)
+                        if (summaryClean.includes(tok)) score += 1.5;
+                    });
+
+                    if (score > this.threshold) {
+                        candidates.push({ ...entry, pwr: score });
+                    }
                 });
 
-                if (score > 5) candidates.push({ ...entry, score });
-            });
-
-            // Urutkan dan hindari pengulangan topik yang sama
-            const sorted = candidates.sort((a, b) => b.score - a.score);
-            return sorted.length > 0 ? sorted[0] : null;
-        }
-    }
-
-    const AI = new AxonPro();
-
-    function startThink() {
-        const input = document.getElementById('userInput');
-        const q = input.value.trim();
-        if (!q) return;
-
-        addChat(q, 'user');
-        input.value = '';
-
-        setTimeout(() => {
-            const data = AI.process(q, typeof dataMemori !== 'undefined' ? dataMemori : []);
-            if (data) {
-                // LOGIKA CERDAS: Pisahkan jawaban berdasarkan "/" dan pilih satu
-                const parts = data.summary.split(' / ');
-                const finalAnswer = parts[Math.floor(Math.random() * parts.length)];
-                addChat(`<b>${data.topic}</b><br>${finalAnswer}`, 'ai');
-            } else {
-                addChat("Saya belum memiliki data spesifik tentang itu. Silakan tambahkan ke tambang.txt.", 'ai');
+                // Urutkan dan ambil yang paling akurat
+                return candidates.sort((a, b) => b.pwr - a.pwr)[0];
             }
-        }, 500);
-    }
+        }
 
-    function addChat(text, type) {
-        const area = document.getElementById('chatArea');
-        const div = document.createElement('div');
-        div.className = type === 'user' ? 'user-message' : 'ai-message';
-        div.innerHTML = text;
-        area.appendChild(div);
-        area.scrollTop = area.scrollHeight;
-    }
-</script>
+        const Engine = new SmartEngine();
+
+        // Update status memori
+        window.onload = () => {
+            const count = typeof dataMemori !== 'undefined' ? dataMemori.length : 0;
+            document.getElementById('mem-status').innerText = `LOCAL_MEM: ${count}`;
+        };
+
+        function startNeuralProcess() {
+            const input = document.getElementById('userInput');
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            render(prompt, 'user');
+            input.value = '';
+
+            const rid = "ai-" + Date.now();
+            render(`<div class="typing-anim"><div class="dot"></div><div class="dot" style="animation-delay:0.2s"></div><div class="dot" style="animation-delay:0.4s"></div></div>`, 'ai', rid);
+
+            setTimeout(() => {
+                const result = Engine.think(prompt, typeof dataMemori !== 'undefined' ? dataMemori : []);
+                const box = document.getElementById(rid);
+
+                if (result) {
+                    // Logic Slicer: Ambil jawaban variasi atau potong jika kepanjangan
+                    let output = result.summary;
+                    if (output.includes(' / ')) {
+                        const parts = output.split(' / ');
+                        output = parts[Math.floor(Math.random() * parts.length)];
+                    } else if (output.length > 400) {
+                        output = output.split('. ').slice(0, 4).join('. ') + '.';
+                    }
+
+                    box.innerHTML = `
+                        <div class="ai-name uppercase tracking-tighter">${result.topic}</div>
+                        <div class="ai-text">${output}</div>
+                    `;
+                } else {
+                    box.innerHTML = `<div class="ai-text italic opacity-40">Maaf Kak, pola saraf Smart AI tidak menemukan data yang cocok untuk "${prompt}".</div>`;
+                }
+                document.getElementById('chatBox').scrollTop = document.getElementById('chatBox').scrollHeight;
+            }, 800);
+        }
+
+        function render(text, type, id = null) {
+            const area = document.getElementById('chatBox');
+            const div = document.createElement('div');
+            div.className = type === 'user' ? 'user-bubble' : 'ai-wrapper';
+            if (id) div.id = id;
+            div.innerHTML = text;
+            area.appendChild(div);
+            area.scrollTop = area.scrollHeight;
+        }
+    </script>
 </body>
 </html>
