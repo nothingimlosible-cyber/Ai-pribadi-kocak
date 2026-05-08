@@ -574,5 +574,29 @@ const dataMemori = [
     "topic": "Night Has Come",
     "summary": "Night Has Come (Hangul: 밤이 되었습니다code: ko is deprecated ) adalah serial televisi Korea Selatan tahun 2023 yang ditulis oleh Kang Min-ji, disutradarai oleh Lim Dae-woong, dan dibintangi oleh Lee Jae-in, Kim Woo-seok, Choi Ye-bin, Cha Woo-min, Ahn Ji Ho",
     "date": "2026-05-08"
+  },
+  {
+    "id": 1778213143904,
+    "topic": "Muzammil Hasballah",
+    "summary": "Muzammil Hasballah, S.T. (lahir 21 September 1993) adalah seorang arsitek, muazin, qari, dan pengusaha asal Indonesia.",
+    "date": "2026-05-08"
+  },
+  {
+    "id": 1778213146452,
+    "topic": "Retorika",
+    "summary": "Retorika (bahasa Belanda: retoricacode: nl is deprecated , bahasa Inggris: rhetoriccode: en is deprecated ) atau keterampilan berbicara adalah cabang dari ilmu dialektika yang membahas mengenai kemampuan dalam membuat argumen dalam bahasa sebagai ala",
+    "date": "2026-05-08"
+  },
+  {
+    "id": 1778213150105,
+    "topic": "Pengelabuan",
+    "summary": "Pengelabuan (Inggris: phishing) dalam istilah komputer adalah penipuan yang dicirikan dengan percobaan untuk mendapatkan informasi yang sensitif, seperti kata sandi dan kartu kredit, dengan menyamar sebagai seseorang atau pebisnis tepercaya melalui k",
+    "date": "2026-05-08"
+  },
+  {
+    "id": 1778213148214,
+    "topic": "Retorika",
+    "summary": "Retorika (bahasa Belanda: retoricacode: nl is deprecated , bahasa Inggris: rhetoriccode: en is deprecated ) atau keterampilan berbicara adalah cabang dari ilmu dialektika yang membahas mengenai kemampuan dalam membuat argumen dalam bahasa sebagai ala",
+    "date": "2026-05-08"
   }
 ];
