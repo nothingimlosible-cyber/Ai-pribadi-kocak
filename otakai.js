@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778259192864,
+    "t": "Gempa bumi Jawa 1867",
+    "s": "Gempa bumi besar Jawa 1867 adalah peristiwa gempa bumi yang sangat dahsyat yang mengguncang Pulau Jawa pada 10 Juni 1867, hari senin, pada pagi hari p",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778259193382,
+    "t": "Tiongkok",
+    "s": "Tiongkok (Hanzi: 中国; Pinyin: Zhōngguó), dengan nama resmi Republik Rakyat Tiongkok (RRT) atau Republik Rakyat Cina (RRC), adalah sebuah negara yang te",
+    "d": "2026-05-08"
+  },
+  {
     "id": 1778227756158,
     "t": "Tujuh Kebiasaan Manusia yang Sangat Efektif",
     "s": "Tujuh Kebiasaan Manusia yang Sangat Efektif, untuk pertama kali terbit pada tahun 1989, adalah sebuah buku pengembangan diri yang ditulis oleh Stephen",
