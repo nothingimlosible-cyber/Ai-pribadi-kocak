@@ -1,4 +1,4 @@
-name: Kuli Tambang Brutal v3 - Fix Jalur Database
+name: Robot Kuli v5 - Penumpuk Memori Abadi
 
 on:
   schedule:
@@ -23,18 +23,15 @@ jobs:
       - name: Install Tools
         run: pip install wikipedia pyyaml
 
-      - name: Eksekusi Tambah Data
+      - name: Eksekusi Tumpuk Ilmu
         run: |
           python << 'EOF'
-          import wikipedia, os, time, random, yaml, json
+          import wikipedia, os, time, random, yaml, json, re
 
           wikipedia.set_lang("id")
-          tgl_sekarang = time.strftime('%Y-%m-%d')
-          
-          # DISINI KUNCINYA: Folder harus disebut (database/)
-          path_data = 'database/data.yml'
-          path_keys = 'database/keywords.yml'
-          path_otak_js = 'otakai.js' # Otak tetep di luar sesuai request
+          folder_db = 'database'
+          path_keys = os.path.join(folder_db, 'keywords.yml')
+          path_otak_js = 'otakai.js'
 
           def load_yml(path):
               if os.path.exists(path):
@@ -45,59 +42,59 @@ jobs:
                       except: return []
               return []
 
-          # 1. Baca Keyword dari folder database
+          # 1. BACA MEMORI LAMA DARI OTAKAI.JS (Biar bisa nambahin)
+          memori_sekarang = []
+          if os.path.exists(path_otak_js):
+              with open(path_otak_js, 'r', encoding='utf-8') as f:
+                  konten_js = f.read()
+                  # Ekstrak JSON dari dalam variabel JS menggunakan Regex
+                  match = re.search(r'const dataMemori = (\[.*\]);', konten_js, re.DOTALL)
+                  if match:
+                      try:
+                          memori_sekarang = json.loads(match.group(1))
+                      except: memori_sekarang = []
+
+          # 2. NAMBANG ILMU BARU
           all_keywords = load_yml(path_keys)
-          if not all_keywords:
-              all_keywords = ["HTML", "Sejarah", "Fakta Unik"]
-          
+          if not all_keywords: all_keywords = ["Teknologi", "Sejarah"]
           selected_keys = random.sample(all_keywords, min(len(all_keywords), 2))
-          print(f"🎯 Robot masuk ke folder database, ambil topik: {selected_keys}")
-
-          hasil_nambang_baru = []
-
-          # 2. Proses Search
+          
+          hasil_baru = []
           for key in selected_keys:
               try:
-                  search_results = wikipedia.search(key, results=5)
-                  random.shuffle(search_results)
+                  search_results = wikipedia.search(key, results=3)
                   for title in search_results[:2]:
-                      try:
-                          p = wikipedia.page(title)
-                          hasil_nambang_baru.append({
-                              "id": int(time.time() * 1000) + random.randint(1, 9999),
-                              "topic": p.title,
-                              "summary": p.summary.split('\n')[0][:250],
-                              "date": tgl_sekarang
-                          })
-                      except: continue
+                      p = wikipedia.page(title)
+                      hasil_baru.append({
+                          "id": int(time.time() * 1000) + random.randint(1, 999),
+                          "t": p.title,
+                          "s": p.summary.split('\n')[0][:150],
+                          "d": time.strftime('%Y-%m-%d')
+                      })
               except: continue
 
-          # 3. Update Gudang (database/data.yml)
-          gudang_lama = load_yml(path_data)
-          topik_lama = [item.get('topic') for item in gudang_lama if isinstance(item, dict)]
+          # 3. GABUNGKAN (TUMPUK)
+          # Cek duplikat biar gak ada judul yang sama masuk dua kali
+          existing_titles = {str(item.get('t') or item.get('topic')).lower() for item in memori_sekarang}
+          data_unik = [n for n in hasil_baru if n['t'].lower() not in existing_titles]
           
-          data_fix_masuk = [n for n in hasil_nambang_baru if n['topic'] not in topik_lama]
-          data_total_final = gudang_lama + data_fix_masuk
+          # Tumpuk data baru di ATAS data lama (biar yang paling baru di paling atas)
+          memori_total = data_unik + memori_sekarang
 
-          # Pastikan foldernya ada sebelum nulis
-          os.makedirs('database', exist_ok=True)
-
-          with open(path_data, 'w', encoding='utf-8') as f:
-              yaml.dump(data_total_final, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
-
-          # 4. Update Otak (otakai.js di luar)
-          memori_web = data_total_final[-100:]
-          js_content = "const dataMemori = " + json.dumps(memori_web, indent=2, ensure_ascii=False) + ";"
+          # 4. SIMPAN KEMBALI KE OTAKAI.JS (TANPA BATAS 100)
+          # Kita kasih limit longgar 2000 data biar web tetep lancar tapi pinter banget
+          memori_final = memori_total[:2000] 
+          
+          js_content = "const dataMemori = " + json.dumps(memori_final, indent=2, ensure_ascii=False) + ";"
           with open(path_otak_js, 'w', encoding='utf-8') as f:
               f.write(js_content)
 
-          print(f"✅ Database nambah jadi {len(data_total_final)} data.")
+          print(f"✅ Memori bertambah! Total ilmu di otak: {len(memori_final)}")
           EOF
 
-      - name: Push ke GitHub
+      - name: Push Update
         run: |
-          git config --local user.name "Kuli Tambang Robot"
+          git config --local user.name "Robot Kuli v5"
           git config --local user.email "robot@smartai.alan"
-          # KUNCI TERAKHIR: Tambahin database/*.yml biar file di dalem folder ikut
-          git add database/*.yml otakai.js
-          git diff --staged --quiet || (git commit -m "Mining: Update database dan otak js" && git push)
+          git add otakai.js
+          git diff --staged --quiet || (git commit -m "Memory: Menambah ilmu baru ke otak" && git push)
