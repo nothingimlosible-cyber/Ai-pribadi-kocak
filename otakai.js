@@ -1,5 +1,29 @@
 const dataMemori = [
   {
+    "id": 1778221147839,
+    "t": "Alam semesta",
+    "s": "Alam semesta merupakan keseluruhan dari ruang dan waktu beserta seluruh isinya. Alam semesta mencakup seluruh eksistensi, setiap bentuk interaksi fund",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778221148538,
+    "t": "Aristoteles dan Dante Temukan Rahasia Alam Semesta",
+    "s": "Aristotle and Dante Discover the Secrets of the Universe adalah sebuah novel beranjak dewasa karangan Benjamin Alire Sáenz. Bercerita tentang dua rema",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778221148686,
+    "t": "Dilan 1983: Wo Ai Ni",
+    "s": "Dilan 1983: Wo Ai Ni adalah film drama keluarga Indonesia tahun 2024 yang disutradarai oleh Fajar Bustomi dan Pidi Baiq. Film ini merupakan prekuel da",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778221149092,
+    "t": "Shiva (seri televisi)",
+    "s": "Shiva adalah serial televisi aksi animasi India yang ditayangkan di Nickelodeon. Serial yang diproduksi oleh Cosmos-Maya dan Viacom18. Ini adalah sala",
+    "d": "2026-05-08"
+  },
+  {
     "id": 1778217444858,
     "t": "UFO",
     "s": "UFO (bahasa Inggris: unidentified flying objectcode: en is deprecated ) atau juga dikenal sebagai benda terbang aneh (disingkat BETA) adalah istilah y",
