@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778227756158,
+    "t": "Tujuh Kebiasaan Manusia yang Sangat Efektif",
+    "s": "Tujuh Kebiasaan Manusia yang Sangat Efektif, untuk pertama kali terbit pada tahun 1989, adalah sebuah buku pengembangan diri yang ditulis oleh Stephen",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778227757085,
+    "t": "Sore: Istri dari Masa Depan (film)",
+    "s": "Sore: Istri dari Masa Depan adalah film fantasi ilmiah romantis Indonesia tahun 2025 yang disutradarai oleh Yandy Laurens berdasarkan serial web berju",
+    "d": "2026-05-08"
+  },
+  {
     "id": 1778227622786,
     "t": "Sangkan paraning dumadi",
     "s": "Sangkan paraning dumadi (aksara Jawa: ꦱꦁꦏꦤ꧀ꦥꦫꦤꦶꦁꦣꦸꦩꦣꦶ) merupakan pengertian atau ajaran dalam falsafah Jawa untuk memahami dari mana seseorang berasal",
