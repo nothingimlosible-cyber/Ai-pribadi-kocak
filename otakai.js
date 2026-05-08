@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1778276195735,
+    "t": "Lailatulqadar",
+    "s": "Lailatulqadar atau Lailat Al-Qadar (bahasa Arab: لَيْلَةِ الْقَدْرِ, malam ketetapan) adalah satu malam penting yang terjadi pada bulan Ramadan, yang ",
+    "d": "2026-05-08"
+  },
+  {
     "id": 1778259192864,
     "t": "Gempa bumi Jawa 1867",
     "s": "Gempa bumi besar Jawa 1867 adalah peristiwa gempa bumi yang sangat dahsyat yang mengguncang Pulau Jawa pada 10 Juni 1867, hari senin, pada pagi hari p",
