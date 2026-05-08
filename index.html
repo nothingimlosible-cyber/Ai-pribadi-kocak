@@ -3,147 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alan GPT - Neural Brain</title>
+    <title>LITE AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .typing-dot { width: 4px; height: 4px; background: #8e8ea0; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; }
-        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+        body { background-color: #050505; color: #ececec; }
+        .chat-bubble { max-width: 85%; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .hide-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-[#343541] text-gray-100 font-sans">
+<body class="font-sans flex flex-col h-screen">
 
-    <div class="flex flex-col h-screen">
-        <div class="p-3 text-center text-xs text-gray-400 border-b border-white/10">
-            Algoritma: Jaringan Saraf Kontekstual v2 | Memori: <span id="mem-count">0</span> Data
-        </div>
+    <header class="p-4 border-b border-white/5 flex justify-between items-center bg-[#050505]">
+        <h1 class="text-lg font-semibold tracking-tight text-emerald-500">LITE AI</h1>
+        <div class="text-[10px] text-gray-500 uppercase tracking-widest">Neural Core v3</div>
+    </header>
 
-        <div id="chat-box" class="flex-1 overflow-y-auto p-4 space-y-6 md:px-64">
-            <div class="flex gap-4">
-                <div class="w-8 h-8 bg-emerald-600 rounded-sm flex items-center justify-center text-xs">AI</div>
-                <div class="flex-1 space-y-2">
-                    <p class="text-gray-100">Halo Lan. Jaringan saraf saya sudah terhubung ke database. Apa yang mau kita bedah hari ini?</p>
-                </div>
-            </div>
+    <main id="chat-box" class="flex-1 overflow-y-auto p-4 space-y-6 md:px-64 hide-scroll">
+        <div class="chat-bubble space-y-2">
+            <p class="text-sm leading-relaxed text-gray-300">Halo Lan. Saya sudah siap. Mau bahas apa kita hari ini?</p>
         </div>
+    </main>
 
-        <div class="p-4 bg-[#343541] border-t border-white/10 md:px-64 pb-8">
-            <div class="relative flex items-center">
-                <input type="text" id="userInput" placeholder="Ketik perintah atau tanya apapun..." 
-                       class="w-full bg-[#40414f] text-white p-3 pr-12 rounded-xl border border-white/10 focus:border-emerald-500 outline-none shadow-xl">
-                <button onclick="prosesSaraf()" class="absolute right-3 text-emerald-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                    </svg>
-                </button>
-            </div>
-            <p class="text-[10px] text-gray-500 mt-2 text-center text-xs">Smart AI Alan: Berpikir menggunakan algoritma scoring kontekstual.</p>
+    <footer class="p-6 md:px-64">
+        <div class="relative max-w-4xl mx-auto">
+            <input type="text" id="userInput" placeholder="Tanya sesuatu..." 
+                   class="w-full bg-[#121212] border border-white/10 p-4 pr-14 rounded-2xl focus:outline-none focus:border-emerald-600 transition-all text-sm">
+            <button onclick="pikirkan()" class="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-emerald-500 hover:text-emerald-400">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                </svg>
+            </button>
         </div>
-    </div>
+    </footer>
 
     <script src="otakai.js"></script>
 
     <script>
         const chatBox = document.getElementById('chat-box');
-        const userInput = document.getElementById('userInput');
-        const memCount = document.getElementById('mem-count');
+        const input = document.getElementById('userInput');
 
-        // Load Kapasitas Memori
-        if (typeof dataMemori !== 'undefined') {
-            memCount.innerText = dataMemori.length;
-        }
+        input.addEventListener("keypress", (e) => { if (e.key === "Enter") pikirkan(); });
 
-        userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") prosesSaraf(); });
+        // --- SISTEM SARAF MANUSIA (Balik Layar) ---
+        function pikirkan() {
+            const pesan = input.value.trim();
+            if(!pesan) return;
 
-        async function prosesSaraf() {
-            const pesan = userInput.value.trim();
-            if (!pesan) return;
-
-            // Tampilkan Chat User
             tambahChat("user", pesan);
-            userInput.value = "";
+            input.value = "";
 
-            // Animasi Berpikir (Simulasi Kerja Saraf)
-            const loadingId = addLoading();
-            
-            // --- ALGORITMA JARINGAN SARAF (Logic Core) ---
+            // Simulasi "Mikir" (Biar kerasa kayak manusia mikir dulu)
             setTimeout(() => {
-                const hasil = hitungLogika(pesan);
-                removeLoading(loadingId);
-                tambahChat("bot", hasil);
-            }, 1200); 
+                const jawaban = algoritmaSaraf(pesan);
+                tambahChat("bot", jawaban);
+            }, 600 + Math.random() * 1000); 
         }
 
-        function hitungLogika(input) {
-            if (typeof dataMemori === 'undefined' || dataMemori.length === 0) {
-                return "Saraf saya mendeteksi kegagalan koneksi ke database. Pastikan otakai.js sudah terisi.";
-            }
+        function algoritmaSaraf(input) {
+            if (typeof dataMemori === 'undefined') return "Maaf Lan, saraf saya belum terhubung ke database.";
 
-            const tokens = input.toLowerCase().split(/\s+/);
-            let kandidat = [];
+            const kataKunci = input.toLowerCase().split(/\s+/);
+            let memoriTerkait = [];
 
-            // 1. Scoring Engine (Layer 1)
+            // 1. SCANNING DATA (Layer 1)
             dataMemori.forEach(item => {
-                let score = 0;
-                const judul = (item.t || item.topic || "").toLowerCase();
-                const isi = (item.s || item.summary || "").toLowerCase();
-
-                tokens.forEach(t => {
-                    if (judul.includes(t)) score += 10; // Bobot tinggi buat judul
-                    if (isi.includes(t)) score += 2;   // Bobot pendukung buat isi
-                });
-
-                if (score > 0) {
-                    kandidat.push({ ...item, finalScore: score });
-                }
+                let matchCount = 0;
+                const konten = (item.t + " " + item.s).toLowerCase();
+                kataKunci.forEach(kata => { if(konten.includes(kata)) matchCount++; });
+                
+                if(matchCount > 0) memoriTerkait.push({...item, power: matchCount});
             });
 
-            // 2. Sorting & Adaptabilitas (Layer 2)
-            kandidat.sort((a, b) => b.finalScore - a.finalScore);
+            // 2. EMPATHY & PERSONALITY LAYER (Kemanusiaan)
+            const pembuka = [
+                "Oke Lan, coba saya pahami ya... ",
+                "Wah menarik nih. Jadi gini, ",
+                "Menurut ingatan saya, ",
+                "Siap Lan, ini yang saya tau: ",
+                "Berdasarkan apa yang saya pelajari, "
+            ];
+            
+            const emosi = pembuka[Math.floor(Math.random() * pembuka.length)];
 
-            if (kandidat.length > 0) {
-                const top = kandidat[0];
-                // Algoritma response generator
-                return `${top.s || top.summary} \n\n(Relevansi Saraf: ${Math.min(top.finalScore * 5, 99)}%)`;
+            // 3. SELECTION LAYER
+            if (memoriTerkait.length > 0) {
+                memoriTerkait.sort((a, b) => b.power - a.power);
+                const hasil = memoriTerkait[0];
+                
+                // Rakit Jawaban agar tidak kaku
+                return emosi + hasil.s + (hasil.s.length < 50 ? ". Ada lagi yang mau kamu tanya soal ini?" : "");
             }
 
-            return "Maaf Lan, input tersebut belum terpetakan dalam jaringan saraf saya. Coba gunakan kata kunci koding atau sejarah yang lebih spesifik.";
+            // 4. ADAPTABILITY (Jika data tidak ada)
+            return "Waduh, saya coba cari di memori tapi belum ketemu. Sepertinya saya perlu belajar lebih banyak soal itu, Lan.";
         }
 
         function tambahChat(sender, teks) {
             const isBot = sender === 'bot';
-            const html = `
-                <div class="flex gap-4 ${isBot ? '' : 'flex-row-reverse'} animate-fadeIn">
-                    <div class="w-8 h-8 ${isBot ? 'bg-emerald-600' : 'bg-blue-600'} rounded-sm flex items-center justify-center text-[10px] shrink-0">
-                        ${isBot ? 'AI' : 'ALAN'}
-                    </div>
-                    <div class="flex-1 space-y-2 ${isBot ? '' : 'text-right'}">
-                        <div class="inline-block text-gray-200 text-sm leading-relaxed">${teks.replace(/\n/g, '<br>')}</div>
-                    </div>
+            const div = document.createElement('div');
+            div.className = `flex ${isBot ? 'justify-start' : 'justify-end'} animate-fadeIn`;
+            
+            div.innerHTML = `
+                <div class="${isBot ? 'bg-transparent text-gray-200' : 'bg-emerald-600 text-white rounded-2xl'} p-3 px-4 chat-bubble text-sm leading-relaxed shadow-sm">
+                    ${isBot ? '<span class="text-emerald-500 font-bold block text-[10px] mb-1">LITE AI</span>' : ''}
+                    ${teks.replace(/\n/g, '<br>')}
                 </div>
             `;
-            chatBox.innerHTML += html;
+            chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function addLoading() {
-            const id = "load-" + Date.now();
-            const loadingHtml = `
-                <div id="${id}" class="flex gap-4 animate-pulse">
-                    <div class="w-8 h-8 bg-emerald-600 rounded-sm flex items-center justify-center text-[10px]">AI</div>
-                    <div class="flex gap-1 items-center">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot" style="animation-delay: 0.2s"></div>
-                        <div class="typing-dot" style="animation-delay: 0.4s"></div>
-                    </div>
-                </div>`;
-            chatBox.innerHTML += loadingHtml;
-            chatBox.scrollTop = chatBox.scrollHeight;
-            return id;
-        }
-
-        function removeLoading(id) {
-            const el = document.getElementById(id);
-            if (el) el.remove();
         }
     </script>
 </body>
