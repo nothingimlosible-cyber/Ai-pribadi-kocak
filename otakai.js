@@ -1,5 +1,23 @@
 const dataMemori = [
   {
+    "id": 1778227622786,
+    "t": "Sangkan paraning dumadi",
+    "s": "Sangkan paraning dumadi (aksara Jawa: ꦱꦁꦏꦤ꧀ꦥꦫꦤꦶꦁꦣꦸꦩꦣꦶ) merupakan pengertian atau ajaran dalam falsafah Jawa untuk memahami dari mana seseorang berasal",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778227623932,
+    "t": "Anthony Leong",
+    "s": "Anthony Leong (lahir 14 Maret 1992) adalah seorang pengusaha dan pakar komunikasi digital berdarah Tionghoa Indonesia. Kiprahnya dikenal masyarakat ke",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778227625122,
+    "t": "Pendidikan inklusif",
+    "s": "Pendidikan Inklusif adalah sistem layanan pendidikan yang mengatur agar siswa dapat dilayani di sekolah terdekat, di kelas reguler bersama-sama teman ",
+    "d": "2026-05-08"
+  },
+  {
     "id": 1778221147839,
     "t": "Alam semesta",
     "s": "Alam semesta merupakan keseluruhan dari ruang dan waktu beserta seluruh isinya. Alam semesta mencakup seluruh eksistensi, setiap bentuk interaksi fund",
