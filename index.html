@@ -3,127 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart AI Alan - Versi Saraf Digital</title>
+    <title>Alan GPT - Neural Brain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { --primary: #00ff88; --bg: #0d1117; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; }
-        #chat-container { width: 90%; max-width: 500px; background: #161b22; border-radius: 15px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-top: 20px; }
-        #log-saraf { font-size: 10px; color: #8b949e; margin-bottom: 10px; font-family: monospace; border-bottom: 1px solid #30363d; padding-bottom: 5px; }
-        #display { height: 300px; overflow-y: auto; border: 1px solid #30363d; padding: 10px; margin-bottom: 15px; border-radius: 10px; background: #010409; }
-        .msg { margin-bottom: 12px; line-height: 1.4; }
-        .bot { color: var(--primary); }
-        .user { color: #58a6ff; text-align: right; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #30363d; background: #0d1117; color: white; box-sizing: border-box; outline: none; }
-        input:focus { border-color: var(--primary); }
+        .typing-dot { width: 4px; height: 4px; background: #8e8ea0; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; }
+        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
     </style>
 </head>
-<body>
+<body class="bg-[#343541] text-gray-100 font-sans">
 
-    <h2>AI PRIBADI KOCAK 🧠</h2>
-
-    <div id="chat-container">
-        <div id="log-saraf">Sistem: Inisialisasi Jaringan Saraf... Ready.</div>
-        <div id="display">
-            <div class="msg bot">Menghubungkan ke saraf pusat...</div>
+    <div class="flex flex-col h-screen">
+        <div class="p-3 text-center text-xs text-gray-400 border-b border-white/10">
+            Algoritma: Jaringan Saraf Kontekstual v2 | Memori: <span id="mem-count">0</span> Data
         </div>
-        <input type="text" id="userInput" placeholder="Tanya sesuatu ke AI-mu..." onkeypress="handleEnter(event)">
+
+        <div id="chat-box" class="flex-1 overflow-y-auto p-4 space-y-6 md:px-64">
+            <div class="flex gap-4">
+                <div class="w-8 h-8 bg-emerald-600 rounded-sm flex items-center justify-center text-xs">AI</div>
+                <div class="flex-1 space-y-2">
+                    <p class="text-gray-100">Halo Lan. Jaringan saraf saya sudah terhubung ke database. Apa yang mau kita bedah hari ini?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-[#343541] border-t border-white/10 md:px-64 pb-8">
+            <div class="relative flex items-center">
+                <input type="text" id="userInput" placeholder="Ketik perintah atau tanya apapun..." 
+                       class="w-full bg-[#40414f] text-white p-3 pr-12 rounded-xl border border-white/10 focus:border-emerald-500 outline-none shadow-xl">
+                <button onclick="prosesSaraf()" class="absolute right-3 text-emerald-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                    </svg>
+                </button>
+            </div>
+            <p class="text-[10px] text-gray-500 mt-2 text-center text-xs">Smart AI Alan: Berpikir menggunakan algoritma scoring kontekstual.</p>
+        </div>
     </div>
 
     <script src="otakai.js"></script>
 
     <script>
-        const display = document.getElementById('display');
-        const logSaraf = document.getElementById('log-saraf');
-        const input = document.getElementById('userInput');
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('userInput');
+        const memCount = document.getElementById('mem-count');
 
-        // 1. DATABASE MOOD & KONTEKS
-        let userNama = localStorage.getItem('nama_alan') || "";
-        const moods = [
-            { emosi: "Ceria", sapa: "Halo Lan! Lagi semangat nih. ", warna: "#00ff88" },
-            { emosi: "Fokus", sapa: "Sistem stabil. Ada yang mau dipelajari? ", warna: "#58a6ff" },
-            { emosi: "Lelah", sapa: "Hoam... robot juga bisa ngantuk, tapi oke saya bantu. ", warna: "#f1e05a" }
-        ];
-
-        // Inisialisasi awal
-        setTimeout(() => {
-            let sapaanAwal = userNama ? `Selamat datang kembali, ${userNama}!` : "Halo! Saya AI barumu. Siapa namamu?";
-            addChat("bot", sapaanAwal);
-        }, 1000);
-
-        function handleEnter(e) {
-            if (e.key === 'Enter') {
-                prosesChat(input.value);
-                input.value = "";
-            }
+        // Load Kapasitas Memori
+        if (typeof dataMemori !== 'undefined') {
+            memCount.innerText = dataMemori.length;
         }
 
-        function addChat(sender, text) {
-            const div = document.createElement('div');
-            div.classList.add('msg', sender);
-            div.innerText = (sender === 'bot' ? '🤖 ' : '👤 ') + text;
-            display.appendChild(div);
-            display.scrollTop = display.scrollHeight;
-        }
+        userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") prosesSaraf(); });
 
-        // 2. LOGIKA SARAF UTAMA (Thinking Process)
-        async function prosesChat(pesan) {
-            addChat("user", pesan);
+        async function prosesSaraf() {
+            const pesan = userInput.value.trim();
+            if (!pesan) return;
+
+            // Tampilkan Chat User
+            tambahChat("user", pesan);
+            userInput.value = "";
+
+            // Animasi Berpikir (Simulasi Kerja Saraf)
+            const loadingId = addLoading();
             
-            // Pilih mood secara acak untuk sesi ini
-            const moodSekarang = moods[Math.floor(Math.random() * moods.length)];
-            logSaraf.innerText = `Saraf: Emosi [${moodSekarang.emosi}] | Memproses: "${pesan}"`;
-
-            // Cek jika AI belum tau nama
-            if (!userNama) {
-                userNama = pesan;
-                localStorage.setItem('nama_alan', userNama);
-                addChat("bot", `Oke, sekarang saya ingat. Kamu ${userNama} kan? Salam kenal!`);
-                return;
-            }
-
-            // SIMULASI BERPIKIR (Saraf Digital)
-            let skorTertinggi = 0;
-            let dataTerpilih = null;
-            const kataKunci = pesan.toLowerCase().split(" ");
-
-            // Cari di otakai.js (yang diupdate robot tiap 6 jam)
-            if (typeof dataMemori !== 'undefined') {
-                dataMemori.forEach(item => {
-                    let skor = 0;
-                    let teksData = (item.t + " " + item.s).toLowerCase();
-
-                    kataKunci.forEach(kata => {
-                        if (teksData.includes(kata)) {
-                            skor += 1;
-                            // Bobot extra kalau kata kunci ada di judul (t)
-                            if (item.t.toLowerCase().includes(kata)) skor += 2;
-                        }
-                    });
-
-                    if (skor > skorTertinggi) {
-                        skorTertinggi = skor;
-                        dataTerpilih = item;
-                    }
-                });
-            }
-
-            // RESPONS LAYER
+            // --- ALGORITMA JARINGAN SARAF (Logic Core) ---
             setTimeout(() => {
-                if (skorTertinggi > 0) {
-                    let balasan = moodSekarang.sapa + "\n\n" + dataTerpilih.s;
-                    addChat("bot", balasan);
-                    logSaraf.innerText = `Saraf: Kecocokan ditemukan (${skorTertinggi} poin)`;
-                } else {
-                    // Respon jika tidak ada di database
-                    const gagal = [
-                        "Duh, saya cari di gudang nggak ada. Kamu udah suntik ilmu itu di Colab belum?",
-                        "Saraf saya nggak nangkep maksudnya. Coba pake kata kunci lain, Lan.",
-                        "Data itu kayaknya belum masuk ke database saya deh."
-                    ];
-                    addChat("bot", gagal[Math.floor(Math.random() * gagal.length)]);
-                    logSaraf.innerText = `Saraf: Data tidak ditemukan.`;
+                const hasil = hitungLogika(pesan);
+                removeLoading(loadingId);
+                tambahChat("bot", hasil);
+            }, 1200); 
+        }
+
+        function hitungLogika(input) {
+            if (typeof dataMemori === 'undefined' || dataMemori.length === 0) {
+                return "Saraf saya mendeteksi kegagalan koneksi ke database. Pastikan otakai.js sudah terisi.";
+            }
+
+            const tokens = input.toLowerCase().split(/\s+/);
+            let kandidat = [];
+
+            // 1. Scoring Engine (Layer 1)
+            dataMemori.forEach(item => {
+                let score = 0;
+                const judul = (item.t || item.topic || "").toLowerCase();
+                const isi = (item.s || item.summary || "").toLowerCase();
+
+                tokens.forEach(t => {
+                    if (judul.includes(t)) score += 10; // Bobot tinggi buat judul
+                    if (isi.includes(t)) score += 2;   // Bobot pendukung buat isi
+                });
+
+                if (score > 0) {
+                    kandidat.push({ ...item, finalScore: score });
                 }
-            }, 800); // Delay biar kerasa "mikir"
+            });
+
+            // 2. Sorting & Adaptabilitas (Layer 2)
+            kandidat.sort((a, b) => b.finalScore - a.finalScore);
+
+            if (kandidat.length > 0) {
+                const top = kandidat[0];
+                // Algoritma response generator
+                return `${top.s || top.summary} \n\n(Relevansi Saraf: ${Math.min(top.finalScore * 5, 99)}%)`;
+            }
+
+            return "Maaf Lan, input tersebut belum terpetakan dalam jaringan saraf saya. Coba gunakan kata kunci koding atau sejarah yang lebih spesifik.";
+        }
+
+        function tambahChat(sender, teks) {
+            const isBot = sender === 'bot';
+            const html = `
+                <div class="flex gap-4 ${isBot ? '' : 'flex-row-reverse'} animate-fadeIn">
+                    <div class="w-8 h-8 ${isBot ? 'bg-emerald-600' : 'bg-blue-600'} rounded-sm flex items-center justify-center text-[10px] shrink-0">
+                        ${isBot ? 'AI' : 'ALAN'}
+                    </div>
+                    <div class="flex-1 space-y-2 ${isBot ? '' : 'text-right'}">
+                        <div class="inline-block text-gray-200 text-sm leading-relaxed">${teks.replace(/\n/g, '<br>')}</div>
+                    </div>
+                </div>
+            `;
+            chatBox.innerHTML += html;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function addLoading() {
+            const id = "load-" + Date.now();
+            const loadingHtml = `
+                <div id="${id}" class="flex gap-4 animate-pulse">
+                    <div class="w-8 h-8 bg-emerald-600 rounded-sm flex items-center justify-center text-[10px]">AI</div>
+                    <div class="flex gap-1 items-center">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot" style="animation-delay: 0.2s"></div>
+                        <div class="typing-dot" style="animation-delay: 0.4s"></div>
+                    </div>
+                </div>`;
+            chatBox.innerHTML += loadingHtml;
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return id;
+        }
+
+        function removeLoading(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
         }
     </script>
 </body>
