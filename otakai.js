@@ -1,5 +1,29 @@
 const dataMemori = [
   {
+    "id": 1778217444858,
+    "t": "UFO",
+    "s": "UFO (bahasa Inggris: unidentified flying objectcode: en is deprecated ) atau juga dikenal sebagai benda terbang aneh (disingkat BETA) adalah istilah y",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778217445495,
+    "t": "Percandian Batujaya",
+    "s": "Kompleks Percandian Batujaya adalah sebuah kompleks percandian Buddha kuno yang terletak di Kecamatan Batujaya dan Kecamatan Pakisjaya, Kabupaten Kara",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778217446174,
+    "t": "Titik terpencil",
+    "s": "Titik terpencil merupakan tempat yang paling menantang atau sulit untuk dicapai karena sangat jauh dari suatu bentang geografis. Umumnya istilah ini m",
+    "d": "2026-05-08"
+  },
+  {
+    "id": 1778217447188,
+    "t": "Pukapuka",
+    "s": "Pukapuka, sebelumnya dikenal Pulau Bahaya, adalah atol karang di kelompok utara Kepulauan Cook di Samudra Pasifik. Ini adalah salah satu pulau paling ",
+    "d": "2026-05-08"
+  },
+  {
     "id": 6001,
     "topic": "Halo, Hai, Hello, P, Assalamualaikum, Hey",
     "summary": "Halo juga! Seneng banget bisa nemenin kamu hari ini. Ada hal seru apa yang mau kita bahas?",
