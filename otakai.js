@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778357328938,
+    "t": "Nabi dan rasul dalam Islam",
+    "s": "Nabi dan rasul adalah manusia yang dipilih secara langsung oleh Allah untuk mengajarkan tauhid kepada umat manusia melalui penerimaan wahyu. Dalam Isl",
+    "d": "2026-05-09"
+  },
+  {
+    "id": 1778357330508,
+    "t": "Daud",
+    "s": "Daud (bahasa Ibrani: דָּוִד bermakna yang dikasihi; bahasa Inggris Davíd; bahasa Tiberia Dāwíð; bahasa Arab: داوودcode: ar is deprecated , translit. D",
+    "d": "2026-05-09"
+  },
+  {
     "id": 1778337730743,
     "t": "Hari Buruh",
     "s": "Hari Buruh pada umumnya dirayakan pada tanggal 1 Mei, dan dikenal dengan sebutan May Day. Hari buruh ini adalah sebuah hari libur (di beberapa negara)",
