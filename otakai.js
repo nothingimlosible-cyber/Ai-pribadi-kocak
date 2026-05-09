@@ -1,5 +1,29 @@
 const dataMemori = [
   {
+    "id": 1778337730743,
+    "t": "Hari Buruh",
+    "s": "Hari Buruh pada umumnya dirayakan pada tanggal 1 Mei, dan dikenal dengan sebutan May Day. Hari buruh ini adalah sebuah hari libur (di beberapa negara)",
+    "d": "2026-05-09"
+  },
+  {
+    "id": 1778337731073,
+    "t": "Galungan",
+    "s": "Hari raya Galungan dirayakan oleh umat Hindu Bali setiap 210 hari sekali, dengan menggunakan perhitungan kalender Bali yaitu pada hari Budha Kliwon Du",
+    "d": "2026-05-09"
+  },
+  {
+    "id": 1778337731793,
+    "t": "Five Nights at Freddy's 2 (film)",
+    "s": "Five Nights at Freddy's 2 adalah film horor supernatural Amerika Serikat tahun 2025 yang didasarkan pada seri permainan video Five Nights at Freddy's ",
+    "d": "2026-05-09"
+  },
+  {
+    "id": 1778337731474,
+    "t": "Ojek Bule",
+    "s": "Anton Lucanus, lebih dikenal sebagai Ojek Bule, adalah seorang komedian yang berasal dari Australia yang menjadi viral di Indonesia setelah dia berpos",
+    "d": "2026-05-09"
+  },
+  {
     "id": 1778311403471,
     "t": "Sigālovāda Sutta",
     "s": "Sigālovāda Sutta adalah teks ke-31 yang diuraikan dalam kitab Dīghanikāya (\"Khotbah Panjang Buddha\"). Teks ini juga dikenal sebagai Sīgāla Sutta, Sīgā",
