@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778311403471,
+    "t": "Sigālovāda Sutta",
+    "s": "Sigālovāda Sutta adalah teks ke-31 yang diuraikan dalam kitab Dīghanikāya (\"Khotbah Panjang Buddha\"). Teks ini juga dikenal sebagai Sīgāla Sutta, Sīgā",
+    "d": "2026-05-09"
+  },
+  {
+    "id": 1778311404584,
+    "t": "Bivitri Susanti",
+    "s": "Bivitri Susanti (lahir 5 Oktober 1974) adalah akademisi dan pakar hukum tata negara berkebangsaan Indonesia. Ia merupakan salah satu pendiri Pusat Stu",
+    "d": "2026-05-09"
+  },
+  {
     "id": 1778276195735,
     "t": "Lailatulqadar",
     "s": "Lailatulqadar atau Lailat Al-Qadar (bahasa Arab: لَيْلَةِ الْقَدْرِ, malam ketetapan) adalah satu malam penting yang terjadi pada bulan Ramadan, yang ",
