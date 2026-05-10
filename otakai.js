@@ -1,5 +1,29 @@
 const dataMemori = [
   {
+    "id": 1778443892502,
+    "t": "Suku Dayak",
+    "s": "Suku Dayak ( ; ejaan lama: Dajak atau Dyak) adalah suku bangsa atau kelompok multi etnik yang mendiami pedalaman Pulau Kalimantan terutama digunakan d",
+    "d": "2026-05-10"
+  },
+  {
+    "id": 1778443893476,
+    "t": "Kelompok etnik di Indonesia",
+    "s": "Terdapat lebih dari 600 kelompok etnis di kepulauan Indonesia yang multikultural, menjadikannya salah satu negara paling beragam di dunia. Sebagian be",
+    "d": "2026-05-10"
+  },
+  {
+    "id": 1778443894220,
+    "t": "HTML5",
+    "s": "HTML5 adalah sebuah bahasa markah untuk menstrukturkan dan menampilkan isi dari World Wide Web, sebuah teknologi inti dari Internet. HTML5 adalah revi",
+    "d": "2026-05-10"
+  },
+  {
+    "id": 1778443894537,
+    "t": "Tipe data boolean",
+    "s": "Tipe data boolean adalah tipe data paling standar yang hanya menyatakan kebenaran, apakah TRUE (benar) atau FALSE (salah). Tipe data boolean disebut j",
+    "d": "2026-05-10"
+  },
+  {
     "id": 1778399354789,
     "t": "Sejarah India",
     "s": "Sejarah India dimulai dari Peradaban Lembah Indus, yang menyebar di bagian barat laut subbenua India, dari tahun 3300 sampai 1700 SM. Peradaban Zaman ",
