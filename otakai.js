@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778399354789,
+    "t": "Sejarah India",
+    "s": "Sejarah India dimulai dari Peradaban Lembah Indus, yang menyebar di bagian barat laut subbenua India, dari tahun 3300 sampai 1700 SM. Peradaban Zaman ",
+    "d": "2026-05-10"
+  },
+  {
+    "id": 1778399355195,
+    "t": "Sejarah Tiongkok",
+    "s": "Sejarah Tiongkok adalah salah satu sejarah kebudayaan tertua di dunia. Dari penemuan arkeologi dan antropologi, daerah Tiongkok telah didiami oleh man",
+    "d": "2026-05-10"
+  },
+  {
     "id": 1778357328938,
     "t": "Nabi dan rasul dalam Islam",
     "s": "Nabi dan rasul adalah manusia yang dipilih secara langsung oleh Allah untuk mengajarkan tauhid kepada umat manusia melalui penerimaan wahyu. Dalam Isl",
