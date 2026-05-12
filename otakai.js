@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1778610322932,
+    "t": "Bank Indonesia",
+    "s": "Bank Indonesia (BI) adalah bank sentral Republik Indonesia sesuai Pasal 23D Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 dan Undang-Undang",
+    "d": "2026-05-12"
+  },
+  {
     "id": 1778443892502,
     "t": "Suku Dayak",
     "s": "Suku Dayak ( ; ejaan lama: Dajak atau Dyak) adalah suku bangsa atau kelompok multi etnik yang mendiami pedalaman Pulau Kalimantan terutama digunakan d",
