@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778666461098,
+    "t": "No Na",
+    "s": "No Na (ditampilkan dalam huruf kecil semua) adalah grup vokal wanita asal Indonesia yang berada di bawah naungan 88rising. Grup ini terdiri dari empat",
+    "d": "2026-05-13"
+  },
+  {
+    "id": 1778666461783,
+    "t": "Kehidupan sehari-hari",
+    "s": "Kehidupan sehari-hari, aktivitas harian, atau rutinitas hidup mencakup cara-cara manusia bertindak, berpikir, dan merasakan dalam keseharian mereka. K",
+    "d": "2026-05-13"
+  },
+  {
     "id": 1778610322932,
     "t": "Bank Indonesia",
     "s": "Bank Indonesia (BI) adalah bank sentral Republik Indonesia sesuai Pasal 23D Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 dan Undang-Undang",
