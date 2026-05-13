@@ -1,5 +1,23 @@
 const dataMemori = [
   {
+    "id": 1778696900889,
+    "t": "HTML",
+    "s": "HyperText Markup Language (HTML) adalah bahasa markah standar untuk dokumen yang dirancang untuk ditampilkan di peramban internet. Ini dapat dibantu o",
+    "d": "2026-05-13"
+  },
+  {
+    "id": 1778696902017,
+    "t": "Komunikasi lintas budaya",
+    "s": "Komunikasi lintas budaya adalah proses di mana dialihkan ide atau gagasan suatu budaya yang satu kepada budaya yang lainnya dan sebaliknya, dan hal in",
+    "d": "2026-05-13"
+  },
+  {
+    "id": 1778696903056,
+    "t": "Mekari",
+    "s": "Mekari atau PT Mid Solusi Nusantara adalah perusahaan perangkat lunak sebagai layanan (SaaS) komputasi awan yang beroperasi di Indonesia dan didirikan",
+    "d": "2026-05-13"
+  },
+  {
     "id": 1778666461098,
     "t": "No Na",
     "s": "No Na (ditampilkan dalam huruf kecil semua) adalah grup vokal wanita asal Indonesia yang berada di bawah naungan 88rising. Grup ini terdiri dari empat",
