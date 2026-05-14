@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1778782899421,
+    "t": "Shaun the Sheep",
+    "s": "Shaun the Sheep (Shaun si Domba) adalah serial televisi animasi untuk semua umur. Di Inggris, Shaun si Domba tayang di CBBC dan BBC Two, sedangkan di ",
+    "d": "2026-05-14"
+  },
+  {
     "id": 1778696900889,
     "t": "HTML",
     "s": "HyperText Markup Language (HTML) adalah bahasa markah standar untuk dokumen yang dirancang untuk ditampilkan di peramban internet. Ini dapat dibantu o",
