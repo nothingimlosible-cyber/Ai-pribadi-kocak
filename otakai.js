@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778839225647,
+    "t": "Penyelesaian masalah",
+    "s": "Penyelesaian masalah atau pemecahan masalah adalah usaha mencari penjelasan dan jawaban dari setiap masalah yang dihadapi. Upaya penyelesaian masalah ",
+    "d": "2026-05-15"
+  },
+  {
+    "id": 1778839225656,
+    "t": "Manusia",
+    "s": "Manusia (Homo sapiens), adalah spesies primata yang jumlahnya paling banyak dan tersebar luas. Mereka adalah jenis kera besar yang dicirikan oleh gaya",
+    "d": "2026-05-15"
+  },
+  {
     "id": 1778782899421,
     "t": "Shaun the Sheep",
     "s": "Shaun the Sheep (Shaun si Domba) adalah serial televisi animasi untuk semua umur. Di Inggris, Shaun si Domba tayang di CBBC dan BBC Two, sedangkan di ",
