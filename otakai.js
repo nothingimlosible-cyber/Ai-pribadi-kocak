@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1778865387357,
+    "t": "Nabi",
+    "s": "Dalam agama, seorang nabi atau nabiah adalah individu yang dianggap berhubungan dengan makhluk ilahi dan dikatakan berbicara atas nama makhluk tersebu",
+    "d": "2026-05-15"
+  },
+  {
     "id": 1778839225647,
     "t": "Penyelesaian masalah",
     "s": "Penyelesaian masalah atau pemecahan masalah adalah usaha mencari penjelasan dan jawaban dari setiap masalah yang dihadapi. Upaya penyelesaian masalah ",
