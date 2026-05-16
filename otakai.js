@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1778916735787,
+    "t": "Genba",
+    "s": "Genba (現場code: ja is deprecated , genba)dalam bahasa Jepang secara umum bermakna \"lokasi kejadian\" atau \"lokasi sebenarnya\", sedangkan dalam manajemen",
+    "d": "2026-05-16"
+  },
+  {
     "id": 1778865387357,
     "t": "Nabi",
     "s": "Dalam agama, seorang nabi atau nabiah adalah individu yang dianggap berhubungan dengan makhluk ilahi dan dikatakan berbicara atas nama makhluk tersebu",
