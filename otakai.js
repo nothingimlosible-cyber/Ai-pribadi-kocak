@@ -1,5 +1,29 @@
 const dataMemori = [
   {
+    "id": 1778963537357,
+    "t": "Lubang hitam",
+    "s": "Lubang hitam (bahasa Inggris: black holecode: en is deprecated ) adalah bagian dari ruang waktu yang memiliki gravitasi paling kuat, bahkan cahaya sek",
+    "d": "2026-05-16"
+  },
+  {
+    "id": 1778963538002,
+    "t": "Galaksi",
+    "s": "Galaksi (serapan dari bahasa Yunani  γαλαξίας, artinya \"semacam susu\", merujuk kepada Bimasakti) adalah sebuah sistem masif yang terikat gaya gravitas",
+    "d": "2026-05-16"
+  },
+  {
+    "id": 1778963538404,
+    "t": "Desain web responsif",
+    "s": "Desain web responsif (bahasa Inggris: responsive web design (RWD)) adalah sebuah metode atau pendekatan sistem web desain yang bertujuan memberikan pe",
+    "d": "2026-05-16"
+  },
+  {
+    "id": 1778963539245,
+    "t": "Waring Wera Wanua",
+    "s": "Waring Wera Wanua (WWW atau W3, bahasa Inggris: World Wide Webcode: en is deprecated ) adalah suatu ruang informasi yang dipakai oleh pengenal global ",
+    "d": "2026-05-16"
+  },
+  {
     "id": 1778945897509,
     "t": "Arya Saloka",
     "s": "Arya Saloka Yuda Prawira Surowilogo (lahir 27 Juni 1991) adalah pemeran dan model Indonesia. Arya dikenal publik lewat perannya sebagai Aldebaran dala",
