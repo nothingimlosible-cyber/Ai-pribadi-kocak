@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1778945897509,
+    "t": "Arya Saloka",
+    "s": "Arya Saloka Yuda Prawira Surowilogo (lahir 27 Juni 1991) adalah pemeran dan model Indonesia. Arya dikenal publik lewat perannya sebagai Aldebaran dala",
+    "d": "2026-05-16"
+  },
+  {
+    "id": 1778945898018,
+    "t": "Penganiayaan David Ozora Latumahina",
+    "s": "Pada 20 Februari 2023, seorang pemuda bernama Cristalino David Ozora Latumahina dianiaya oleh pria bernama Mario Dandy Satriyo bersama rekannya, Shane",
+    "d": "2026-05-16"
+  },
+  {
     "id": 1778916735787,
     "t": "Genba",
     "s": "Genba (現場code: ja is deprecated , genba)dalam bahasa Jepang secara umum bermakna \"lokasi kejadian\" atau \"lokasi sebenarnya\", sedangkan dalam manajemen",
