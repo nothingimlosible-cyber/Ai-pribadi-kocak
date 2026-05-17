@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1779032541525,
+    "t": "Sejarah manusia",
+    "s": "Sejarah manusia atau sejarah dunia adalah sejarah umat manusia di seluruh dunia, semua daerah di Bumi, dirunut dari era Paleolitikum (zaman batu tua).",
+    "d": "2026-05-17"
+  },
+  {
+    "id": 1779032542216,
+    "t": "Daftar gempa bumi terkuat sepanjang sejarah",
+    "s": "Gempa bumi disebabkan oleh pergerakan lempeng tektonik di dalam kerak bumi dan mantel paling atas. Mulai dari peristiwa lemah, dirasakan ringan, dan h",
+    "d": "2026-05-17"
+  },
+  {
     "id": 1778963537357,
     "t": "Lubang hitam",
     "s": "Lubang hitam (bahasa Inggris: black holecode: en is deprecated ) adalah bagian dari ruang waktu yang memiliki gravitasi paling kuat, bahkan cahaya sek",
