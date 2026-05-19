@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1779215188731,
+    "t": "Kisah Para Rasul",
+    "s": "Kisah Para Rasul (Yunani Koine: Πράξεις Ἀποστόλων}}, Práxeis Apostólōn dan {{Latin: Actūs Apostolōrum}}) adalah kitab kelima dalam Perjanjian Baru pad",
+    "d": "2026-05-19"
+  },
+  {
     "id": 1779032541525,
     "t": "Sejarah manusia",
     "s": "Sejarah manusia atau sejarah dunia adalah sejarah umat manusia di seluruh dunia, semua daerah di Bumi, dirunut dari era Paleolitikum (zaman batu tua).",
