@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1779273493271,
+    "t": "Saum",
+    "s": "Saum (bahasa Arab: صومcode: ar is deprecated , translit. ṣawm) atau puasa adalah menahan diri dari makan dan minum serta segala perbuatan yang bisa me",
+    "d": "2026-05-20"
+  },
+  {
     "id": 1779215188731,
     "t": "Kisah Para Rasul",
     "s": "Kisah Para Rasul (Yunani Koine: Πράξεις Ἀποστόλων}}, Práxeis Apostólōn dan {{Latin: Actūs Apostolōrum}}) adalah kitab kelima dalam Perjanjian Baru pad",
