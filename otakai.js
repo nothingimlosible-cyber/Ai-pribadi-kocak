@@ -1,5 +1,29 @@
 const dataMemori = [
   {
+    "id": 1779306919097,
+    "t": "Doa Bapa Kami",
+    "s": "Doa Bapa Kami (bahasa Latin: Pater Nostercode: la is deprecated ; bahasa Yunani Kuno: Πάτερ Ἡμῶνcode: grc is deprecated , translit. Páter Hēmôn), yang",
+    "d": "2026-05-20"
+  },
+  {
+    "id": 1779306919759,
+    "t": "Minyak bumi",
+    "s": "Minyak bumi (juga disebut minyak mentah atau petroleum), sering dijuluki sebagai \"emas hitam\", adalah cairan kental berwarna coklat pekat/gelap atau k",
+    "d": "2026-05-20"
+  },
+  {
+    "id": 1779306922515,
+    "t": "Timbal",
+    "s": "Timbal atau timbel (disebut juga plumbum atau timah hitam) adalah unsur kimia dengan lambang Pb dan nomor atom 82. Unsur ini merupakan logam berat den",
+    "d": "2026-05-20"
+  },
+  {
+    "id": 1779306922529,
+    "t": "Hidrogen",
+    "s": "Hidrogen (bahasa Latin: hydrogeniumcode: la is deprecated ; bahasa Inggris: hydrogencode: en is deprecated ), yang juga disebut zat air, adalah unsur ",
+    "d": "2026-05-20"
+  },
+  {
     "id": 1779273493271,
     "t": "Saum",
     "s": "Saum (bahasa Arab: صومcode: ar is deprecated , translit. ṣawm) atau puasa adalah menahan diri dari makan dan minum serta segala perbuatan yang bisa me",
