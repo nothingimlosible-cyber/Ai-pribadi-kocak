@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1779388043772,
+    "t": "Koiyocabe",
+    "s": "Akhmad Steivano atau lebih dikenal dengan mononim Koiyocabe (lahir 4 Juli 1988) adalah seorang kreator konten, YouTouber, dan komedian asal Indonesia.",
+    "d": "2026-05-21"
+  },
+  {
     "id": 1779364579160,
     "t": "Sejarah Nusantara pada era kerajaan Islam",
     "s": "Kerajaan Islam di Nusantara khususnya Indonesia kejayaannya diperkirakan berlangsung antara abad ke-12 sampai dengan abad ke-13. Berkembangnya kerajaa",
