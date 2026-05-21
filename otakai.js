@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1779364579160,
+    "t": "Sejarah Nusantara pada era kerajaan Islam",
+    "s": "Kerajaan Islam di Nusantara khususnya Indonesia kejayaannya diperkirakan berlangsung antara abad ke-12 sampai dengan abad ke-13. Berkembangnya kerajaa",
+    "d": "2026-05-21"
+  },
+  {
+    "id": 1779364580372,
+    "t": "Sejarah Islam",
+    "s": "Sejarah Islam meliputi perkembangan politik, sosial, ekonomi, militer, dan budaya peradaban Islam. Islam didirikan pada awal abad ke-7 di Arabia oleh ",
+    "d": "2026-05-21"
+  },
+  {
     "id": 1779306919097,
     "t": "Doa Bapa Kami",
     "s": "Doa Bapa Kami (bahasa Latin: Pater Nostercode: la is deprecated ; bahasa Yunani Kuno: Πάτερ Ἡμῶνcode: grc is deprecated , translit. Páter Hēmôn), yang",
