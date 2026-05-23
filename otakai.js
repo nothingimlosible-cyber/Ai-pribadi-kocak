@@ -1,5 +1,23 @@
 const dataMemori = [
   {
+    "id": 1779523165646,
+    "t": "Sold Out on You",
+    "s": "Sold Out on You (Hangul: 오늘도 매진했습니다) adalah seri televisi komedi romantis bertema tempat kerja Korea Selatan tahun 2026 yang ditulis oleh Jin Seung-he",
+    "d": "2026-05-23"
+  },
+  {
+    "id": 1779523167135,
+    "t": "Anwar Zahid",
+    "s": "K.H. Ahmad Anwar Zahid atau dikenal juga dengan Abah Anza (lahir 11 Maret 1974 di Bojonegoro) adalah pengasuh Pondok Pesantren Sabilunnajah sekaligus ",
+    "d": "2026-05-23"
+  },
+  {
+    "id": 1779523167433,
+    "t": "Muhammad bin Abdul Wahhab",
+    "s": "Muḥammad bin ʿAbdul Wahhāb at-Tamīmī (; bahasa Arab: محمد بن عبد الوهاب التميميcode: ar is deprecated ; 1703 – 1792) adalah seorang ulama Islam, pemim",
+    "d": "2026-05-23"
+  },
+  {
     "id": 1779388043772,
     "t": "Koiyocabe",
     "s": "Akhmad Steivano atau lebih dikenal dengan mononim Koiyocabe (lahir 4 Juli 1988) adalah seorang kreator konten, YouTouber, dan komedian asal Indonesia.",
