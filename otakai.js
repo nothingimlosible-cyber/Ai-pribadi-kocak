@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1779637663605,
+    "t": "Situs Adan-Adan",
+    "s": "Situs Adan-adan atau Candi Adan-adan disebut juga dengan Candi Gempur oleh masyarakat sekitar, merupakan salah satu lokasi situs arkeologi berupa temu",
+    "d": "2026-05-24"
+  },
+  {
     "id": 1779523165646,
     "t": "Sold Out on You",
     "s": "Sold Out on You (Hangul: 오늘도 매진했습니다) adalah seri televisi komedi romantis bertema tempat kerja Korea Selatan tahun 2026 yang ditulis oleh Jin Seung-he",
