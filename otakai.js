@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1779675311893,
+    "t": "Pertanyaan orang Saduki tentang kebangkitan",
+    "s": "Pertanyaan orang Saduki tentang kebangkitan adalah sebuah peristiwa dalam kehidupan Yesus yang muncul dalam seluruh tiga Injil Sinoptik: Matius 22:23–",
+    "d": "2026-05-25"
+  },
+  {
     "id": 1779637663605,
     "t": "Situs Adan-Adan",
     "s": "Situs Adan-adan atau Candi Adan-adan disebut juga dengan Candi Gempur oleh masyarakat sekitar, merupakan salah satu lokasi situs arkeologi berupa temu",
