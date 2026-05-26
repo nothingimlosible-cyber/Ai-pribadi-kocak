@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1779806359329,
+    "t": "Achmad Valen Akbar",
+    "s": "Achmad Valen Akbar yang lebih dikenal dengan Valen Akbar atau Valen DA7 (lahir 16 Januari 2007) adalah seorang penyanyi dangdut berkebangsaan Indonesi",
+    "d": "2026-05-26"
+  },
+  {
     "id": 1779675311893,
     "t": "Pertanyaan orang Saduki tentang kebangkitan",
     "s": "Pertanyaan orang Saduki tentang kebangkitan adalah sebuah peristiwa dalam kehidupan Yesus yang muncul dalam seluruh tiga Injil Sinoptik: Matius 22:23–",
