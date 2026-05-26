@@ -1,5 +1,23 @@
 const dataMemori = [
   {
+    "id": 1779825231352,
+    "t": "Mukjizat",
+    "s": "Mukjizat (bentuk tidak baku: Mujizat, Arab معجزة, Baca Mu'jizah) adalah perkara di luar kebiasaan yang dilakukan oleh Allah melalui para nabi dan rasu",
+    "d": "2026-05-26"
+  },
+  {
+    "id": 1779825233013,
+    "t": "Kesultanan Melaka",
+    "s": "Kesultanan Melaka atau Kesultanan Malaka adalah sebuah kerajaan Melayu yang pernah berdiri di Melaka, Malaysia. Kerajaan ini didirikan oleh Parameswar",
+    "d": "2026-05-26"
+  },
+  {
+    "id": 1779825233144,
+    "t": "Indonesia",
+    "s": "Indonesia, dengan nama resmi Republik Indonesia, adalah sebuah negara di Asia Tenggara dan Oseania, yang terletak di antara Samudra Hindia dan Samudra",
+    "d": "2026-05-26"
+  },
+  {
     "id": 1779806359329,
     "t": "Achmad Valen Akbar",
     "s": "Achmad Valen Akbar yang lebih dikenal dengan Valen Akbar atau Valen DA7 (lahir 16 Januari 2007) adalah seorang penyanyi dangdut berkebangsaan Indonesi",
