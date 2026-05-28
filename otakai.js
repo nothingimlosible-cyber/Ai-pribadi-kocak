@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1779981912561,
+    "t": "Daftar rekor cuaca",
+    "s": "Ini adalah daftar rekor cuaca, sebuah daftar kejadian dari fenomena cuaca paling ekstrem dalam berbagai kategori. Banyak rekor cuaca diukur berdasarka",
+    "d": "2026-05-28"
+  },
+  {
     "id": 1779825231352,
     "t": "Mukjizat",
     "s": "Mukjizat (bentuk tidak baku: Mujizat, Arab معجزة, Baca Mu'jizah) adalah perkara di luar kebiasaan yang dilakukan oleh Allah melalui para nabi dan rasu",
