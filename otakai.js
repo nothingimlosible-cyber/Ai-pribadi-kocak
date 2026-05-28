@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1779998661734,
+    "t": "JavaScript",
+    "s": "JavaScript () (disingkat JS) adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian ",
+    "d": "2026-05-28"
+  },
+  {
+    "id": 1779998661473,
+    "t": "Packet Tracer",
+    "s": "Packet Tracer adalah simulator alat-alat jaringan Cisco yang sering digunakan sebagai media pembelajaran dan pelatihan, dan juga dalam bidang peneliti",
+    "d": "2026-05-28"
+  },
+  {
     "id": 1779981912561,
     "t": "Daftar rekor cuaca",
     "s": "Ini adalah daftar rekor cuaca, sebuah daftar kejadian dari fenomena cuaca paling ekstrem dalam berbagai kategori. Banyak rekor cuaca diukur berdasarka",
