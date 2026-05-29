@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1780085238344,
+    "t": "Shabrina Leonita",
+    "s": "Shabrina Leonita atau lebih dikenal dengan Shabrina Leanor (lahir 23 Juli 2000) adalah seorang penyanyi berkebangsaan Indonesia. Ia merupakan pemenang",
+    "d": "2026-05-29"
+  },
+  {
     "id": 1779998661734,
     "t": "JavaScript",
     "s": "JavaScript () (disingkat JS) adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian ",
