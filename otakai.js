@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1780519569307,
+    "t": "Mechamato Movie",
+    "s": "Mechamato Movie adalah sebuah film komedi laga animasi komputer 3D asal Malaysia tahun 2022 yang diproduksi oleh Animonsta Studios dan Astro Shaw bers",
+    "d": "2026-06-03"
+  },
+  {
     "id": 1780085238344,
     "t": "Shabrina Leonita",
     "s": "Shabrina Leonita atau lebih dikenal dengan Shabrina Leanor (lahir 23 Juli 2000) adalah seorang penyanyi berkebangsaan Indonesia. Ia merupakan pemenang",
