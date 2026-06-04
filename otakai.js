@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1780540628782,
+    "t": "Suku terasing di Indonesia",
+    "s": "Suku terasing di Indonesia adalah suku yang berada di daerah yang masih terisolasi dari dunia luar. Dalam konsep pemahaman secara harfiah suku terasin",
+    "d": "2026-06-04"
+  },
+  {
     "id": 1780519569307,
     "t": "Mechamato Movie",
     "s": "Mechamato Movie adalah sebuah film komedi laga animasi komputer 3D asal Malaysia tahun 2022 yang diproduksi oleh Animonsta Studios dan Astro Shaw bers",
