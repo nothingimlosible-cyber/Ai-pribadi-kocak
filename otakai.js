@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1780669406452,
+    "t": "Java",
+    "s": "Java adalah bahasa pemrograman yang dapat dijalankan di berbagai komputer termasuk telepon genggam. Bahasa ini awalnya dibuat oleh James Gosling saat ",
+    "d": "2026-06-05"
+  },
+  {
     "id": 1780540628782,
     "t": "Suku terasing di Indonesia",
     "s": "Suku terasing di Indonesia adalah suku yang berada di daerah yang masih terisolasi dari dunia luar. Dalam konsep pemahaman secara harfiah suku terasin",
