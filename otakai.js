@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1780948793314,
+    "t": "Extensible hypertext markup language",
+    "s": "XHTML merupakan singkatan dari eXtensible HyperText Markup Language. XHTML merupakan bentuk reformulasi dari HTML menggunakan paradigma XML.",
+    "d": "2026-06-08"
+  },
+  {
     "id": 1780932363899,
     "t": "C (bahasa pemrograman)",
     "s": "Bahasa pemrograman C adalah bahasa pemrograman komputer bertujuan umum yang dibuat pada tahun 1972 oleh Dennis Ritchie untuk Sistem Operasi Unix di Be",
