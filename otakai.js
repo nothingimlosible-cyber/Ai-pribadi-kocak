@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1780932363899,
+    "t": "C (bahasa pemrograman)",
+    "s": "Bahasa pemrograman C adalah bahasa pemrograman komputer bertujuan umum yang dibuat pada tahun 1972 oleh Dennis Ritchie untuk Sistem Operasi Unix di Be",
+    "d": "2026-06-08"
+  },
+  {
     "id": 1780669406452,
     "t": "Java",
     "s": "Java adalah bahasa pemrograman yang dapat dijalankan di berbagai komputer termasuk telepon genggam. Bahasa ini awalnya dibuat oleh James Gosling saat ",
