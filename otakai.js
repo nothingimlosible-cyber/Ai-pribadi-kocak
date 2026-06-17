@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1781691860551,
+    "t": "Psikologi",
+    "s": "Psikologi (serapan dari bahasa Belanda: psychologiecode: nl is deprecated ) adalah salah satu bidang ilmu pengetahuan dan ilmu terapan yang mempelajar",
+    "d": "2026-06-17"
+  },
+  {
     "id": 1780948793314,
     "t": "Extensible hypertext markup language",
     "s": "XHTML merupakan singkatan dari eXtensible HyperText Markup Language. XHTML merupakan bentuk reformulasi dari HTML menggunakan paradigma XML.",
