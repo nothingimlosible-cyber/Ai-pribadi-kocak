@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1782329106758,
+    "t": "Pemrograman",
+    "s": "Pemrograman komputer atau pengodean (bahasa Inggris: computer programmingcode: en is deprecated  atau coding) adalah proses penyusunan rangkaian instr",
+    "d": "2026-06-24"
+  },
+  {
     "id": 1781691860551,
     "t": "Psikologi",
     "s": "Psikologi (serapan dari bahasa Belanda: psychologiecode: nl is deprecated ) adalah salah satu bidang ilmu pengetahuan dan ilmu terapan yang mempelajar",
