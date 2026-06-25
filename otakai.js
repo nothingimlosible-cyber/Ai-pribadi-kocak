@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1782377156596,
+    "t": "Kerajaan Koying",
+    "s": "Koying adalah pusat aktivitas perdagangan yang dilakukan oleh Tonkin atau Tongkin, Ton-king dan Vietnam atau Fu-nan dalam abad itu. Catatan yang dibua",
+    "d": "2026-06-25"
+  },
+  {
     "id": 1782353349851,
     "t": "Perumpamaan dalam Al-Qur'an",
     "s": "Perumpamaan dalam Al-Qur'an adalah beberapa kata-kata ungkapan yang disebutkan oleh Allah di dalam Al-Qur'an, yang isinya menyangkut pujian terhadap o",
