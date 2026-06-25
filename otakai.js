@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1782353349851,
+    "t": "Perumpamaan dalam Al-Qur'an",
+    "s": "Perumpamaan dalam Al-Qur'an adalah beberapa kata-kata ungkapan yang disebutkan oleh Allah di dalam Al-Qur'an, yang isinya menyangkut pujian terhadap o",
+    "d": "2026-06-25"
+  },
+  {
     "id": 1782329106758,
     "t": "Pemrograman",
     "s": "Pemrograman komputer atau pengodean (bahasa Inggris: computer programmingcode: en is deprecated  atau coding) adalah proses penyusunan rangkaian instr",
