@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1782746900983,
+    "t": "Kesultanan Samudera Pasai",
+    "s": "Kesultanan Samudera Pasai, juga dikenal dengan Samudera Darussalam atau Pase, adalah kerajaan Islam yang terletak di pesisir pantai utara Sumatra, kur",
+    "d": "2026-06-29"
+  },
+  {
     "id": 1782377156596,
     "t": "Kerajaan Koying",
     "s": "Koying adalah pusat aktivitas perdagangan yang dilakukan oleh Tonkin atau Tongkin, Ton-king dan Vietnam atau Fu-nan dalam abad itu. Catatan yang dibua",
