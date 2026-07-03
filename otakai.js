@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1783043535068,
+    "t": "Sate madura",
+    "s": "Sate Madura (Madura: Satè Mâdhurâ) adalah sate yang memiliki bumbu khas Madura. Sate Madura biasanya terbuat dari ayam. Madura selain terkenal sebagai",
+    "d": "2026-07-03"
+  },
+  {
     "id": 1782746900983,
     "t": "Kesultanan Samudera Pasai",
     "s": "Kesultanan Samudera Pasai, juga dikenal dengan Samudera Darussalam atau Pase, adalah kerajaan Islam yang terletak di pesisir pantai utara Sumatra, kur",
