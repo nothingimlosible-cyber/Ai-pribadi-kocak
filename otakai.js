@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1783153338593,
+    "t": "Hari raya Kuningan",
+    "s": "Hari raya Kuningan adalah hari raya yang dirayakan umat Hindu Dharma di Bali. Perayaan ini jatuh pada hari Saniscara (Sabtu), Kliwon, wuku Kuningan. H",
+    "d": "2026-07-04"
+  },
+  {
     "id": 1783043535068,
     "t": "Sate madura",
     "s": "Sate Madura (Madura: Satè Mâdhurâ) adalah sate yang memiliki bumbu khas Madura. Sate Madura biasanya terbuat dari ayam. Madura selain terkenal sebagai",
