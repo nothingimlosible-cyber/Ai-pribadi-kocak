@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1783216697247,
+    "t": "Stella",
+    "s": "Stella (스텔라), yang memiliki nama asli Kim Da-hyun (김다현) adalah seorang penyanyi dan penari Korea Selatan–Kanada. Ia lahir pada (18 Juni 2007) di Ulsan",
+    "d": "2026-07-05"
+  },
+  {
     "id": 1783153338593,
     "t": "Hari raya Kuningan",
     "s": "Hari raya Kuningan adalah hari raya yang dirayakan umat Hindu Dharma di Bali. Perayaan ini jatuh pada hari Saniscara (Sabtu), Kliwon, wuku Kuningan. H",
