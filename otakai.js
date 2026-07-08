@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1783517314025,
+    "t": "Pasraman",
+    "s": "Pasraman adalah lembaga pendidikan khusus bidang agama Hindu-Buddha. Lembaga ini merupakan alternatif, karena pendidikan agama Hindu yang diajarkan di",
+    "d": "2026-07-08"
+  },
+  {
+    "id": 1783517313981,
+    "t": "Hello world",
+    "s": "Hello world (Halo dunia) umumnya adalah program komputer yang mengeluarkan atau menampilkan pesan \"Hello, World!\". Program semacam itu sangat sederhan",
+    "d": "2026-07-08"
+  },
+  {
     "id": 1783277994294,
     "t": "Pemerintahan Revolusioner Republik Indonesia",
     "s": "Pemerintahan Revolusioner Republik Indonesia (biasa disingkat dengan PRRI) merupakan gerakan oposisi pemerintah daerah terhadap pemerintah pusat yang ",
