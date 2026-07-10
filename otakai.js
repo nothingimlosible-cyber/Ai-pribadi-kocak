@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1783648209838,
+    "t": "Peringkat Dunia FIFA",
+    "s": "Peringkat Dunia FIFA adalah sistem peringkat yang digunakan untuk menilai tim nasional sepak bola pria. Sistem ini saat ini dipimpin oleh Argentina pe",
+    "d": "2026-07-10"
+  },
+  {
     "id": 1783517314025,
     "t": "Pasraman",
     "s": "Pasraman adalah lembaga pendidikan khusus bidang agama Hindu-Buddha. Lembaga ini merupakan alternatif, karena pendidikan agama Hindu yang diajarkan di",
