@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1783820512664,
+    "t": "Pembunuhan Muhamad Rizky Rudiana dan Vina Dewi Arsita",
+    "s": "Pada tanggal 27 Agustus 2016, Muhamad Rizky Rudiana dan Vina Dewi Arsita ditemukan tergeletak di atas jembatan layang Kepongpongan, Talun, Kabupaten C",
+    "d": "2026-07-12"
+  },
+  {
     "id": 1783648209838,
     "t": "Peringkat Dunia FIFA",
     "s": "Peringkat Dunia FIFA adalah sistem peringkat yang digunakan untuk menilai tim nasional sepak bola pria. Sistem ini saat ini dipimpin oleh Argentina pe",
