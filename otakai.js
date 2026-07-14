@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1784055605138,
+    "t": "Surya Sanjaya",
+    "s": "Surya Sanjaya (lahir 17 Februari 1988 di Bandung, Indonesia) adalah seorang analis kesehatan, laboran medis, wartawan, penulis, aktivis, dan paralegal",
+    "d": "2026-07-14"
+  },
+  {
+    "id": 1784055605985,
+    "t": "Hubungan manusia dalam Islam",
+    "s": "Hubungan manusia dalam Islam diatur oleh Allah melalui syariat Islam. Sumber hukumnya berasal dari Al-Qur'an, hadis dan ijtihad. Dalam ajaran Islam, m",
+    "d": "2026-07-14"
+  },
+  {
     "id": 1783820512664,
     "t": "Pembunuhan Muhamad Rizky Rudiana dan Vina Dewi Arsita",
     "s": "Pada tanggal 27 Agustus 2016, Muhamad Rizky Rudiana dan Vina Dewi Arsita ditemukan tergeletak di atas jembatan layang Kepongpongan, Talun, Kabupaten C",
