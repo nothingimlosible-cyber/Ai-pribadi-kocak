@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1784378899874,
+    "t": "Mahkamah Konstitusi Republik Indonesia",
+    "s": "Mahkamah Konstitusi Republik Indonesia (disingkat MKRI) adalah lembaga peradilan di Indonesia yang berfungsi untuk menguji konstitusionalitas undang-u",
+    "d": "2026-07-18"
+  },
+  {
+    "id": 1784378899822,
+    "t": "Republik Maluku Selatan",
+    "s": "Republik Maluku Selatan (bahasa Inggris: Republic of South Malukucode: en is deprecated , bahasa Belanda: Republiek der Zuid-Molukkencode: nl is depre",
+    "d": "2026-07-18"
+  },
+  {
     "id": 1784055605138,
     "t": "Surya Sanjaya",
     "s": "Surya Sanjaya (lahir 17 Februari 1988 di Bandung, Indonesia) adalah seorang analis kesehatan, laboran medis, wartawan, penulis, aktivis, dan paralegal",
