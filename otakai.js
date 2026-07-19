@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1784465497776,
+    "t": "Britania Raya",
+    "s": "Britania Raya, dengan nama resmi Perserikatan Kerajaan Britania Raya dan Irlandia Utara, atau secara kependekannya disebut dengan nama Inggris Raya at",
+    "d": "2026-07-19"
+  },
+  {
     "id": 1784378899874,
     "t": "Mahkamah Konstitusi Republik Indonesia",
     "s": "Mahkamah Konstitusi Republik Indonesia (disingkat MKRI) adalah lembaga peradilan di Indonesia yang berfungsi untuk menguji konstitusionalitas undang-u",
