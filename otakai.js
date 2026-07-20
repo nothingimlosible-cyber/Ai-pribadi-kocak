@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1784555163736,
+    "t": "A-na",
+    "s": "Roh Yu-na (노유나) (20 Desember 2008), lebih dikenal dengan nama panggung A-na (에이나), merupakan salah satu anggota dari girl group baru bernama Hearts2He",
+    "d": "2026-07-20"
+  },
+  {
     "id": 1784465497776,
     "t": "Britania Raya",
     "s": "Britania Raya, dengan nama resmi Perserikatan Kerajaan Britania Raya dan Irlandia Utara, atau secara kependekannya disebut dengan nama Inggris Raya at",
