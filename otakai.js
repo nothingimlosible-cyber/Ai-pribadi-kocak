@@ -1,5 +1,23 @@
 const dataMemori = [
   {
+    "id": 1784639643374,
+    "t": "Kerajaan Sunda",
+    "s": "Kerajaan Sunda (bahasa Sunda: ᮊ (ka)ᮛ (ra)ᮏ (ja)ᮃ (a)ᮔ᮪ (n) ᮞᮥ (su)ᮔ᮪ (n)ᮓ (da)code: su is deprecated , translit. Karajaan Sunda, pengucapan bahasa Su",
+    "d": "2026-07-21"
+  },
+  {
+    "id": 1784639644682,
+    "t": "Biologi",
+    "s": "Biologi adalah kajian ilmiah tentang kehidupan dan makhluk hidup. Biologi merupakan salah satu cabang ilmu alam yang luas, mencakup beragam bidang dan",
+    "d": "2026-07-21"
+  },
+  {
+    "id": 1784639645021,
+    "t": "Etanol",
+    "s": "Etanol, disebut juga etil alkohol, alkohol murni, alkohol absolut, atau alkohol saja, adalah cairan yang mudah menguap, mudah terbakar, tak berwarna, ",
+    "d": "2026-07-21"
+  },
+  {
     "id": 1784555163736,
     "t": "A-na",
     "s": "Roh Yu-na (노유나) (20 Desember 2008), lebih dikenal dengan nama panggung A-na (에이나), merupakan salah satu anggota dari girl group baru bernama Hearts2He",
