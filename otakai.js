@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1784683640089,
+    "t": "Budaya",
+    "s": "Budaya, kebudayaan, atau kultur adalah cara hidup yang berkembang dan dimiliki oleh seseorang atau sekelompok orang dan diwariskan dari generasi ke ge",
+    "d": "2026-07-22"
+  },
+  {
     "id": 1784639643374,
     "t": "Kerajaan Sunda",
     "s": "Kerajaan Sunda (bahasa Sunda: ᮊ (ka)ᮛ (ra)ᮏ (ja)ᮃ (a)ᮔ᮪ (n) ᮞᮥ (su)ᮔ᮪ (n)ᮓ (da)code: su is deprecated , translit. Karajaan Sunda, pengucapan bahasa Su",
