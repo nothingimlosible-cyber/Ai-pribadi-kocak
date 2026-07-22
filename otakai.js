@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1784726351702,
+    "t": "Piala Dunia FIFA 2026",
+    "s": "Piala Dunia FIFA 2026 (bahasa Inggris: 2026 FIFA World Cupcode: en is deprecated , bahasa Spanyol: Copa Mundial de Fútbol de 2026code: es is deprecate",
+    "d": "2026-07-22"
+  },
+  {
+    "id": 1784726353019,
+    "t": "Gempa bumi dan tsunami Jawa 2006",
+    "s": "Gempa bumi Jawa 2006 atau Gempa bumi dan tsunami Pangandaran 2006 adalah peristiwa gempa bumi besar berkekuatan 7.7 pada skala magnitudo yang melanda ",
+    "d": "2026-07-22"
+  },
+  {
     "id": 1784683640089,
     "t": "Budaya",
     "s": "Budaya, kebudayaan, atau kultur adalah cara hidup yang berkembang dan dimiliki oleh seseorang atau sekelompok orang dan diwariskan dari generasi ke ge",
