@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785030317485,
+    "t": "Iqro",
+    "s": "Iqro (bahasa Arab: اقرأcode: ar is deprecated , translit. iqraʾ, har. 'Bacalah!'; judul lengkap: Buku Iqro': Cara Cepat Belajar Membaca Al-Qur’an) ada",
+    "d": "2026-07-26"
+  },
+  {
     "id": 1784726351702,
     "t": "Piala Dunia FIFA 2026",
     "s": "Piala Dunia FIFA 2026 (bahasa Inggris: 2026 FIFA World Cupcode: en is deprecated , bahasa Spanyol: Copa Mundial de Fútbol de 2026code: es is deprecate",
