@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785117131937,
+    "t": "Peradaban",
+    "s": "Peradaban memiliki berbagai arti dalam kaitannya dengan perkembangan manusia. Sering kali istilah ini digunakan untuk merujuk pada suatu masyarakat ya",
+    "d": "2026-07-27"
+  },
+  {
     "id": 1785030317485,
     "t": "Iqro",
     "s": "Iqro (bahasa Arab: اقرأcode: ar is deprecated , translit. iqraʾ, har. 'Bacalah!'; judul lengkap: Buku Iqro': Cara Cepat Belajar Membaca Al-Qur’an) ada",
