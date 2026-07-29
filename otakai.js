@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785332582651,
+    "t": "Islam di Indonesia",
+    "s": "Islam di Indonesia adalah agama terbesar  dengan persentase 87,08% penduduk Indonesia mengidentifikasi diri mereka sebagai Muslim . Indonesia adalah n",
+    "d": "2026-07-29"
+  },
+  {
     "id": 1785288431023,
     "t": "Perang Troya",
     "s": "Dalam mitologi Yunani, Perang Troya, penyerbuan terhadap kota Troya yang terletak di Asia Kecil, oleh pasukan Akhaia (Yunani) Peristiwa ini terjadi ka",
