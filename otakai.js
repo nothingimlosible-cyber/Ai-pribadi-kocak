@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785288431023,
+    "t": "Perang Troya",
+    "s": "Dalam mitologi Yunani, Perang Troya, penyerbuan terhadap kota Troya yang terletak di Asia Kecil, oleh pasukan Akhaia (Yunani) Peristiwa ini terjadi ka",
+    "d": "2026-07-29"
+  },
+  {
     "id": 1785117131937,
     "t": "Peradaban",
     "s": "Peradaban memiliki berbagai arti dalam kaitannya dengan perkembangan manusia. Sering kali istilah ini digunakan untuk merujuk pada suatu masyarakat ya",
