@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785438430184,
+    "t": "Mojolicious",
+    "s": "Mojolicious adalah Real-Time Web Framework berbasis Perl yang ditulis oleh Sebastian Riedel,",
+    "d": "2026-07-30"
+  },
+  {
     "id": 1785332582651,
     "t": "Islam di Indonesia",
     "s": "Islam di Indonesia adalah agama terbesar  dengan persentase 87,08% penduduk Indonesia mengidentifikasi diri mereka sebagai Muslim . Indonesia adalah n",
