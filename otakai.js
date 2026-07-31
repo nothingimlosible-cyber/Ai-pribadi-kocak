@@ -1,5 +1,23 @@
 const dataMemori = [
   {
+    "id": 1785524755973,
+    "t": "Piala Dunia FIFA 1978",
+    "s": "Piala Dunia FIFA 1978 (bahasa Spanyol: Copa Mundial de Fútbol de 1978code: es is deprecated ) adalah edisi Piala Dunia FIFA ke-11, diselenggarakan di ",
+    "d": "2026-07-31"
+  },
+  {
+    "id": 1785524758475,
+    "t": "Kejaksaan Agung Republik Indonesia",
+    "s": "Kejaksaan Agung Republik Indonesia disingkat Kejagung RI adalah sebuah Lembaga Negara yang melaksanakan kekuasaan Pemerintah di bidang Penuntutan, dal",
+    "d": "2026-07-31"
+  },
+  {
+    "id": 1785524761565,
+    "t": "Tokek rumah",
+    "s": "Tokek rumah (Gekko gecko) atau oleh orang awam cukup disebut tokek adalah sejenis kadal dari genus Gekko, suku Gekkonidae. Disebut tokek rumah karena ",
+    "d": "2026-07-31"
+  },
+  {
     "id": 1785504528858,
     "t": "Final Piala Dunia FIFA 1990",
     "s": "Final Piala Dunia FIFA 1990 adalah sebuah pertandingan sepak bola antara Jerman Barat dan Argentina yang diadakan pada tanggal 8 Juli 1990 di Stadio O",
