@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785504528858,
+    "t": "Final Piala Dunia FIFA 1990",
+    "s": "Final Piala Dunia FIFA 1990 adalah sebuah pertandingan sepak bola antara Jerman Barat dan Argentina yang diadakan pada tanggal 8 Juli 1990 di Stadio O",
+    "d": "2026-07-31"
+  },
+  {
     "id": 1785486690375,
     "t": "Freemasonry",
     "s": "Freemasonry (kadang-kadang dieja Free-Masonry) adalah sebuah organisasi persaudaraan yang asal-usulnya tidak jelas antara akhir abad ke-16 hingga awal",
