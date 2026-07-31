@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785486690375,
+    "t": "Freemasonry",
+    "s": "Freemasonry (kadang-kadang dieja Free-Masonry) adalah sebuah organisasi persaudaraan yang asal-usulnya tidak jelas antara akhir abad ke-16 hingga awal",
+    "d": "2026-07-31"
+  },
+  {
     "id": 1785438430184,
     "t": "Mojolicious",
     "s": "Mojolicious adalah Real-Time Web Framework berbasis Perl yang ditulis oleh Sebastian Riedel,",
