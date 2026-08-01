@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785571301695,
+    "t": "Albert Einstein",
+    "s": "Albert Einstein  (  Jerman: [ˈalbɛɐ̯t ˈʔaɪnʃtaɪn] ; 14 Maret 1879 – 18 April 1955) adalah fisikawan teoretis, ilmuwan, filsuf sains, dan tokoh intelek",
+    "d": "2026-08-01"
+  },
+  {
     "id": 1785524755973,
     "t": "Piala Dunia FIFA 1978",
     "s": "Piala Dunia FIFA 1978 (bahasa Spanyol: Copa Mundial de Fútbol de 1978code: es is deprecated ) adalah edisi Piala Dunia FIFA ke-11, diselenggarakan di ",
