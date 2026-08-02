@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785696758331,
+    "t": "Garis waktu Instagram",
+    "s": "Di bawah ini adalah garis waktu layanan jejaring sosial Instagram.",
+    "d": "2026-08-02"
+  },
+  {
     "id": 1785675326168,
     "t": "Daftar tulang pada rangka manusia",
     "s": "Rangka manusia dewasa pada umumnya terdiri dari 206 tulang. Saat lahir, rangka manusia terdiri dari sekitar 270 tulang. Beberapa tulang menyatu menjad",
