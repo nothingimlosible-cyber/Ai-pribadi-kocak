@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785675326168,
+    "t": "Daftar tulang pada rangka manusia",
+    "s": "Rangka manusia dewasa pada umumnya terdiri dari 206 tulang. Saat lahir, rangka manusia terdiri dari sekitar 270 tulang. Beberapa tulang menyatu menjad",
+    "d": "2026-08-02"
+  },
+  {
     "id": 1785571301695,
     "t": "Albert Einstein",
     "s": "Albert Einstein  (  Jerman: [ˈalbɛɐ̯t ˈʔaɪnʃtaɪn] ; 14 Maret 1879 – 18 April 1955) adalah fisikawan teoretis, ilmuwan, filsuf sains, dan tokoh intelek",
