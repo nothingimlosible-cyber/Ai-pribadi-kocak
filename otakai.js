@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785851060456,
+    "t": "Kulup",
+    "s": "Dalam anatomi manusia laki-laki, kulup, yang juga dikenal sebagai preputium, adalah lipatan berlapis ganda yang terdiri atas kulit, jaringan mukosa, d",
+    "d": "2026-08-04"
+  },
+  {
     "id": 1785696758331,
     "t": "Garis waktu Instagram",
     "s": "Di bawah ini adalah garis waktu layanan jejaring sosial Instagram.",
