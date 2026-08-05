@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1785917657467,
+    "t": "Auguste Comte",
+    "s": "Auguste Comte 19 Januari 1798 – 5 September 1857) adalah seorang filsuf Prancis yang dikenal karena memperkenalkan bidang ilmu sosiologi serta aliran ",
+    "d": "2026-08-05"
+  },
+  {
     "id": 1785893285222,
     "t": "Like It",
     "s": "Like It adalah program majalah berita yang menyuguhkan fenomena unik di berbagai belahan dunia. Program ini dikemas dengan ringan dan menghibur.",
