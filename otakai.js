@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1786068219053,
+    "t": "Sejarah sosiologi",
+    "s": "Sosiologi sebagai disiplin ilmu baru muncul terutama sejak pemikiran pencerahan, yang tak lama hadir setelah Revolusi Prancis. Sosiologi disebut juga ",
+    "d": "2026-08-07"
+  },
+  {
     "id": 1785917657467,
     "t": "Auguste Comte",
     "s": "Auguste Comte 19 Januari 1798 – 5 September 1857) adalah seorang filsuf Prancis yang dikenal karena memperkenalkan bidang ilmu sosiologi serta aliran ",
