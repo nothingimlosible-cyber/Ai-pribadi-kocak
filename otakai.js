@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1786213231741,
+    "t": "Daftar film Indonesia tahun 2025",
+    "s": "Berikut ini adalah daftar film panjang Indonesia yang tayang di bioskop dan yang disalurkan di layanan video sesuai permintaan pada 2025.",
+    "d": "2026-08-08"
+  },
+  {
     "id": 1786170734988,
     "t": "Peladen proksi",
     "s": "Peladen proksi atau peladen pewali (bahasa Inggris: proxy servercode: en is deprecated ) adalah sebuah perantara (sistem komputer atau aplikasi) yang ",
