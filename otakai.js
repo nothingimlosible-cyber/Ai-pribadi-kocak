@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1786170734988,
+    "t": "Peladen proksi",
+    "s": "Peladen proksi atau peladen pewali (bahasa Inggris: proxy servercode: en is deprecated ) adalah sebuah perantara (sistem komputer atau aplikasi) yang ",
+    "d": "2026-08-08"
+  },
+  {
     "id": 1786068219053,
     "t": "Sejarah sosiologi",
     "s": "Sosiologi sebagai disiplin ilmu baru muncul terutama sejak pemikiran pencerahan, yang tak lama hadir setelah Revolusi Prancis. Sosiologi disebut juga ",
