@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1786299781780,
+    "t": "Kidung Jemaat",
+    "s": "Kidung Jemaat adalah sebuah buku himne yang dipakai di dalam kebaktian gereja-gereja di Indonesia. Buku ini disusun dan sekarang diterbitkan oleh Yaya",
+    "d": "2026-08-09"
+  },
+  {
     "id": 1786213231741,
     "t": "Daftar film Indonesia tahun 2025",
     "s": "Berikut ini adalah daftar film panjang Indonesia yang tayang di bioskop dan yang disalurkan di layanan video sesuai permintaan pada 2025.",
