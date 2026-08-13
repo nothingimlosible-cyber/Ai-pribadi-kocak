@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1786646778669,
+    "t": "James Lancaster",
+    "s": "Sir James Lancaster (1554—6 Juni 1618) adalah seorang pelaut dan pedagang Inggris yang dikenal sebagai pemimpin ekspedisi pertama East India Company (",
+    "d": "2026-08-13"
+  },
+  {
     "id": 1786299781780,
     "t": "Kidung Jemaat",
     "s": "Kidung Jemaat adalah sebuah buku himne yang dipakai di dalam kebaktian gereja-gereja di Indonesia. Buku ini disusun dan sekarang diterbitkan oleh Yaya",
