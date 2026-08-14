@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1786732730622,
+    "t": "Hud",
+    "s": "Hud (bahasa Arab: هودcode: ar is deprecated , translit. Hūd) adalah seorang tokoh yang disebutkan dalam Al-Qur'an Surah Hud. Dia merupakan seorang ras",
+    "d": "2026-08-14"
+  },
+  {
+    "id": 1786732732610,
+    "t": "Pink Beach Labuan Bajo",
+    "s": "Pink Beach Labuan Bajo atau Pantai Pink adalah sebuah pantai berpasir berwarna merah muda yang terletak di Pulau Komodo, dalam kawasan Taman Nasional ",
+    "d": "2026-08-14"
+  },
+  {
     "id": 1786646778669,
     "t": "James Lancaster",
     "s": "Sir James Lancaster (1554—6 Juni 1618) adalah seorang pelaut dan pedagang Inggris yang dikenal sebagai pemimpin ekspedisi pertama East India Company (",
