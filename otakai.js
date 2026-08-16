@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1786861246680,
+    "t": "Gusti Irwan Wibowo",
+    "s": "Gusti Irwan Wibowo atau Gustiwiw (28 November 1999 – 15 Juni 2025) adalah seorang musisi kelahiran Indonesia, juga berprofesi sebagai penata musik, pe",
+    "d": "2026-08-16"
+  },
+  {
     "id": 1786732730622,
     "t": "Hud",
     "s": "Hud (bahasa Arab: هودcode: ar is deprecated , translit. Hūd) adalah seorang tokoh yang disebutkan dalam Al-Qur'an Surah Hud. Dia merupakan seorang ras",
