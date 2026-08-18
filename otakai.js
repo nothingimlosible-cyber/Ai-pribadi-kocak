@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1787034195313,
+    "t": "Peradaban Lembah Indus",
+    "s": "Peradaban Indus, 2800 SM–1800 SM, merupakan sebuah peradaban kuno yang hidup sepanjang Sungai Indus. Sungai Indus merupakan sungai besar yang sekarang",
+    "d": "2026-08-18"
+  },
+  {
     "id": 1786861246680,
     "t": "Gusti Irwan Wibowo",
     "s": "Gusti Irwan Wibowo atau Gustiwiw (28 November 1999 – 15 Juni 2025) adalah seorang musisi kelahiran Indonesia, juga berprofesi sebagai penata musik, pe",
