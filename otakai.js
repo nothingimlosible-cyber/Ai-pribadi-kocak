@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1787163454850,
+    "t": "Sayur",
+    "s": "Sayur atau sayuran merupakan sebutan umum bagi bahan pangan nabati yang biasanya mengandung kadar air tinggi dan dapat dikonsumsi setelah dimasak atau",
+    "d": "2026-08-19"
+  },
+  {
     "id": 1787142099969,
     "t": "Aljabar Boole",
     "s": "Dalam matematika dan logika matematika, Aljabar Boole adalah struktur aljabar yang \"mencakup intisari\" operasi logika AND, OR, NOR, dan NAND dan juga ",
