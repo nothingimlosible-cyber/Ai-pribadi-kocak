@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1787120651836,
+    "t": "Sejarah komputer",
+    "s": "Sejarah komputer berawal dari abad ke-19, ketika Charles Babbage mencoba untuk mendesain komputer mekanik yang bernama Mesin Analitikal. Desain ini me",
+    "d": "2026-08-19"
+  },
+  {
     "id": 1787034195313,
     "t": "Peradaban Lembah Indus",
     "s": "Peradaban Indus, 2800 SM–1800 SM, merupakan sebuah peradaban kuno yang hidup sepanjang Sungai Indus. Sungai Indus merupakan sungai besar yang sekarang",
