@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1787142099969,
+    "t": "Aljabar Boole",
+    "s": "Dalam matematika dan logika matematika, Aljabar Boole adalah struktur aljabar yang \"mencakup intisari\" operasi logika AND, OR, NOR, dan NAND dan juga ",
+    "d": "2026-08-19"
+  },
+  {
+    "id": 1787142101831,
+    "t": "Sokotra",
+    "s": "Sokotra, yang secara lokal dikenal sebagai Saqatri, adalah sebuah pulau di Yaman yang terletak di Samudra Hindia. Pulau ini berada di antara Teluk Ade",
+    "d": "2026-08-19"
+  },
+  {
     "id": 1787120651836,
     "t": "Sejarah komputer",
     "s": "Sejarah komputer berawal dari abad ke-19, ketika Charles Babbage mencoba untuk mendesain komputer mekanik yang bernama Mesin Analitikal. Desain ini me",
