@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1787772561009,
+    "t": "The Odyssey (film 2026)",
+    "s": "The Odyssey adalah sebuah film aksi epik fantasi tahun 2026 yang ditulis dan disutradarai oleh Christopher Nolan, serta diproduksi bersama istrinya Em",
+    "d": "2026-08-26"
+  },
+  {
     "id": 1787163454850,
     "t": "Sayur",
     "s": "Sayur atau sayuran merupakan sebutan umum bagi bahan pangan nabati yang biasanya mengandung kadar air tinggi dan dapat dikonsumsi setelah dimasak atau",
