@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1787808982950,
+    "t": "Daftar gempa bumi di Indonesia",
+    "s": "Berikut dibawah ini adalah Daftar gempa bumi di Indonesia yang diurutkan dari waktu terlama yang pernah diamati. Berdasarkan data dari USGS dan sumber",
+    "d": "2026-08-27"
+  },
+  {
+    "id": 1787808982913,
+    "t": "Samudra",
+    "s": "Samudra (bahasa Inggris: oceancode: en is deprecated ; bentuk tidak baku: samudera) adalah laut yang luas dan merupakan massa air asin yang sambung-me",
+    "d": "2026-08-27"
+  },
+  {
     "id": 1787772561009,
     "t": "The Odyssey (film 2026)",
     "s": "The Odyssey adalah sebuah film aksi epik fantasi tahun 2026 yang ditulis dan disutradarai oleh Christopher Nolan, serta diproduksi bersama istrinya Em",
