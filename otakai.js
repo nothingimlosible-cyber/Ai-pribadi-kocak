@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1787939442812,
+    "t": "Bobby Kertanegara",
+    "s": "Bobby Kertanegara adalah seekor kucing yang dimiliki oleh Presiden Indonesia ke-8, Prabowo Subianto. Kucing ini menjadi ikon Istana selama pemerintaha",
+    "d": "2026-08-28"
+  },
+  {
     "id": 1787881952128,
     "t": "SMA Negeri 1 Matauli Pandan",
     "s": "SMA Negeri 1 Matauli Pandan merupakan salah satu SMA di Pandan, Tapanuli Tengah, Sumatra Utara, Indonesia.",
