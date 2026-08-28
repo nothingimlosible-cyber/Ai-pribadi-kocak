@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1787881952128,
+    "t": "SMA Negeri 1 Matauli Pandan",
+    "s": "SMA Negeri 1 Matauli Pandan merupakan salah satu SMA di Pandan, Tapanuli Tengah, Sumatra Utara, Indonesia.",
+    "d": "2026-08-28"
+  },
+  {
     "id": 1787808982950,
     "t": "Daftar gempa bumi di Indonesia",
     "s": "Berikut dibawah ini adalah Daftar gempa bumi di Indonesia yang diurutkan dari waktu terlama yang pernah diamati. Berdasarkan data dari USGS dan sumber",
