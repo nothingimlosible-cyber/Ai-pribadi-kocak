@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1788004504930,
+    "t": "Bunga bangkai raksasa",
+    "s": "Bunga bangkai raksasa (Amorphophallus titanum Becc.) adalah tumbuhan dari famili talas-talasan (Araceae) endemik dari daerah hutan tropis dan eksokars",
+    "d": "2026-08-29"
+  },
+  {
     "id": 1787939442812,
     "t": "Bobby Kertanegara",
     "s": "Bobby Kertanegara adalah seekor kucing yang dimiliki oleh Presiden Indonesia ke-8, Prabowo Subianto. Kucing ini menjadi ikon Istana selama pemerintaha",
