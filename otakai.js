@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1788363148740,
+    "t": "Omar Ali Saifuddien III dari Brunei",
+    "s": "Sultan Sir Haji Omar Ali Saifuddien Sa'adul Khairi Waddien III, GCVO, KCMG (23 September 1914 – 7 September 1986) lahir di Istana Kota, Kampong Sultan",
+    "d": "2026-09-02"
+  },
+  {
+    "id": 1788363149716,
+    "t": "Mesir Kuno",
+    "s": "Mesir Kuno adalah peradaban kuno di sebelah timur laut benua Afrika, yang berpusat di daerah hilir Sungai Nil, yakni kawasan yang kini menjadi wilayah",
+    "d": "2026-09-02"
+  },
+  {
     "id": 1788004504930,
     "t": "Bunga bangkai raksasa",
     "s": "Bunga bangkai raksasa (Amorphophallus titanum Becc.) adalah tumbuhan dari famili talas-talasan (Araceae) endemik dari daerah hutan tropis dan eksokars",
