@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1788466518139,
+    "t": "Bahasa pemrograman",
+    "s": "Bahasa pemrograman atau bahasa penataolahan (bahasa Inggris: programming languagecode: en is deprecated ) adalah sistem notasi untuk menulis program k",
+    "d": "2026-09-03"
+  },
+  {
     "id": 1788363148740,
     "t": "Omar Ali Saifuddien III dari Brunei",
     "s": "Sultan Sir Haji Omar Ali Saifuddien Sa'adul Khairi Waddien III, GCVO, KCMG (23 September 1914 – 7 September 1986) lahir di Istana Kota, Kampong Sultan",
