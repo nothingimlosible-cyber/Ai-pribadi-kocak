@@ -1,5 +1,23 @@
 const dataMemori = [
   {
+    "id": 1788600994681,
+    "t": "Bumi Manusia (novel)",
+    "s": "Bumi Manusia (bahasa Inggris: This Earth of Mankindcode: en is deprecated ) adalah buku pertama dari Tetralogi Buru karya Pramoedya Ananta Toer yang p",
+    "d": "2026-09-05"
+  },
+  {
+    "id": 1788600995437,
+    "t": "Farmasi",
+    "s": "Farmasi adalah ilmu yang mempelajari segala seluk-beluk mengenai obat. Ilmu farmasi adalah terapan dari (sedikitnya) tiga bidang ilmu yaitu kedokteran",
+    "d": "2026-09-05"
+  },
+  {
+    "id": 1788600996365,
+    "t": "Amerika Serikat",
+    "s": "Amerika Serikat (AS), atau umumnya Amerika saja, adalah negara republik konstitusional federal yang terdiri dari lima puluh negara bagian dan sebuah d",
+    "d": "2026-09-05"
+  },
+  {
     "id": 1788466518139,
     "t": "Bahasa pemrograman",
     "s": "Bahasa pemrograman atau bahasa penataolahan (bahasa Inggris: programming languagecode: en is deprecated ) adalah sistem notasi untuk menulis program k",
