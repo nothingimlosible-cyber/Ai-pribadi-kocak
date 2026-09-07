@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1788814397204,
+    "t": "Irene Umar",
+    "s": "Irene Umar (lahir 2 November 1984) adalah Wakil Menteri Ekonomi Kreatif Indonesia yang dipilih oleh Presiden Indonesia Prabowo Subianto dan dilantik p",
+    "d": "2026-09-07"
+  },
+  {
+    "id": 1788814399122,
+    "t": "Sistem perekonomian",
+    "s": "Sistem perekonomian adalah sistem yang digunakan oleh suatu negara untuk mengatur dan mengalokasikan sumber daya, jasa dan barang yang dimilikinya bai",
+    "d": "2026-09-07"
+  },
+  {
     "id": 1788600994681,
     "t": "Bumi Manusia (novel)",
     "s": "Bumi Manusia (bahasa Inggris: This Earth of Mankindcode: en is deprecated ) adalah buku pertama dari Tetralogi Buru karya Pramoedya Ananta Toer yang p",
