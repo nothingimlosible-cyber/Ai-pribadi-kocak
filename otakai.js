@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1788862470303,
+    "t": "Kepulauan Mariana Utara",
+    "s": "Persemakmuran Kepulauan Mariana Utara (bahasa Inggris: Commonwealth of the Northern Mariana Islands/CNMI) adalah sebuah persemakmuran milik Amerika Se",
+    "d": "2026-09-08"
+  },
+  {
     "id": 1788814397204,
     "t": "Irene Umar",
     "s": "Irene Umar (lahir 2 November 1984) adalah Wakil Menteri Ekonomi Kreatif Indonesia yang dipilih oleh Presiden Indonesia Prabowo Subianto dan dilantik p",
