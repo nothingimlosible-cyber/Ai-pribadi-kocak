@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1788984602763,
+    "t": "Nabi dalam Kekristenan",
+    "s": "Nabi dalam Kekristenan, adalah tokoh-tokoh yang secara luas diakui sebagai nabi dimana disebutkan dalam Perjanjian Lama dan Perjanjian Baru Alkitab Kr",
+    "d": "2026-09-09"
+  },
+  {
     "id": 1788862470303,
     "t": "Kepulauan Mariana Utara",
     "s": "Persemakmuran Kepulauan Mariana Utara (bahasa Inggris: Commonwealth of the Northern Mariana Islands/CNMI) adalah sebuah persemakmuran milik Amerika Se",
