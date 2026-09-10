@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1789005446259,
+    "t": "Yislam Jaidi",
+    "s": "Yislam Al Jaidi (lahir 31 Juli 1993) atau lebih dikenal sebagai Yislam Jaidi adalah seorang dokter spesialis jantung dan pembuluh darah asal Indonesia",
+    "d": "2026-09-10"
+  },
+  {
     "id": 1788984602763,
     "t": "Nabi dalam Kekristenan",
     "s": "Nabi dalam Kekristenan, adalah tokoh-tokoh yang secara luas diakui sebagai nabi dimana disebutkan dalam Perjanjian Lama dan Perjanjian Baru Alkitab Kr",
