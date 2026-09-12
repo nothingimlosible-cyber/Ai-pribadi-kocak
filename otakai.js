@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1789242571832,
+    "t": "Bahasa markah",
+    "s": "Bahasa markah (bahasa Inggris: markup languagecode: en is deprecated ) adalah sistem penyandian teks yang memberi catatan pada dokumen dengan cara pen",
+    "d": "2026-09-12"
+  },
+  {
     "id": 1789206258201,
     "t": "Abdullah al-Qasemi",
     "s": "Abdullah Al-Qasemi  (1907 – 9 Januari 1996) (bahasa Arab: عبدالله القصيميcode: ar is deprecated ) adalah seorang penulis dan intelektual abad ke-20 as",
