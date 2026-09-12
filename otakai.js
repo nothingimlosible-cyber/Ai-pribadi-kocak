@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1789206258201,
+    "t": "Abdullah al-Qasemi",
+    "s": "Abdullah Al-Qasemi  (1907 – 9 Januari 1996) (bahasa Arab: عبدالله القصيميcode: ar is deprecated ) adalah seorang penulis dan intelektual abad ke-20 as",
+    "d": "2026-09-12"
+  },
+  {
     "id": 1789005446259,
     "t": "Yislam Jaidi",
     "s": "Yislam Al Jaidi (lahir 31 Juli 1993) atau lebih dikenal sebagai Yislam Jaidi adalah seorang dokter spesialis jantung dan pembuluh darah asal Indonesia",
