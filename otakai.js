@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1789468689557,
+    "t": "Islam ala Prabowo",
+    "s": "Islam ala Prabowo: Cara Prabowo Subianto Mengamalkan Ajaran Islam adalah buku berbahasa Indonesia yang membahas kehidupan keagamaan, nilai-nilai Islam",
+    "d": "2026-09-15"
+  },
+  {
+    "id": 1789468690678,
+    "t": "Karl Marx",
+    "s": "Karl Marx (Jerman: [maɐ̯ks]; 5 Mei 1818 – 14 Maret 1883) adalah seorang filsuf, ekonom, sejarawan, pembuat teori politik, sosiolog, jurnalis dan sosia",
+    "d": "2026-09-15"
+  },
+  {
     "id": 1789242571832,
     "t": "Bahasa markah",
     "s": "Bahasa markah (bahasa Inggris: markup languagecode: en is deprecated ) adalah sistem penyandian teks yang memberi catatan pada dokumen dengan cara pen",
