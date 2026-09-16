@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1789590931704,
+    "t": "Bank pusat",
+    "s": "Bank sentral atau bank pusat di suatu negara, pada umumnya adalah sebuah instansi yang bertanggung jawab atas kebijakan moneter di wilayah negara ters",
+    "d": "2026-09-16"
+  },
+  {
     "id": 1789468689557,
     "t": "Islam ala Prabowo",
     "s": "Islam ala Prabowo: Cara Prabowo Subianto Mengamalkan Ajaran Islam adalah buku berbahasa Indonesia yang membahas kehidupan keagamaan, nilai-nilai Islam",
