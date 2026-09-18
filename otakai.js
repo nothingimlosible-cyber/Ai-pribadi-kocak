@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1789696931098,
+    "t": "The Secret (buku)",
+    "s": "The Secret adalah Buku karya Rondha Byrne yang di rilis pada tahun 2006, salah satu buku laris yang didasarkan pada film sebelumnya dengan nama yang s",
+    "d": "2026-09-18"
+  },
+  {
     "id": 1789590931704,
     "t": "Bank pusat",
     "s": "Bank sentral atau bank pusat di suatu negara, pada umumnya adalah sebuah instansi yang bertanggung jawab atas kebijakan moneter di wilayah negara ters",
