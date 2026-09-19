@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1789783605036,
+    "t": "Pancasila",
+    "s": "Pancasila adalah dasar negara serta falsafah negara Republik Indonesia yang terdiri atas lima sila. Nama ini terdiri dari dua kata dari bahasa Sansker",
+    "d": "2026-09-19"
+  },
+  {
     "id": 1789696931098,
     "t": "The Secret (buku)",
     "s": "The Secret adalah Buku karya Rondha Byrne yang di rilis pada tahun 2006, salah satu buku laris yang didasarkan pada film sebelumnya dengan nama yang s",
