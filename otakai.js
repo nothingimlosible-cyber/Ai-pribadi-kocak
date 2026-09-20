@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1789899304399,
+    "t": "Guru Gembul",
+    "s": "Guru Gembul (lahir 1985) adalah persona internet, seorang guru sejarah, YouTuber dan pembuat konten asal Indonesia, yang dikenal dengan konten bertema",
+    "d": "2026-09-20"
+  },
+  {
     "id": 1789783605036,
     "t": "Pancasila",
     "s": "Pancasila adalah dasar negara serta falsafah negara Republik Indonesia yang terdiri atas lima sila. Nama ini terdiri dari dua kata dari bahasa Sansker",
