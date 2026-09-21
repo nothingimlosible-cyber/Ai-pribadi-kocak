@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1790025668082,
+    "t": "Rasul",
+    "s": "Istilah rasul dikenal dalam Islam dan Kristen. Meski demikian, terdapat perbedaan pemahaman mengenai istilah tersebut.",
+    "d": "2026-09-21"
+  },
+  {
     "id": 1789899304399,
     "t": "Guru Gembul",
     "s": "Guru Gembul (lahir 1985) adalah persona internet, seorang guru sejarah, YouTuber dan pembuat konten asal Indonesia, yang dikenal dengan konten bertema",
