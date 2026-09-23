@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1790129834599,
+    "t": "Pengunggahan pikiran",
+    "s": "Emulasi otak penuh (WBE), unggahan pikiran atau unggahan otak (kadang-kadang disebut \"penyalinan pikiran\" atau \"transfer pikiran\") adalah hipotesis pr",
+    "d": "2026-09-23"
+  },
+  {
     "id": 1790025668082,
     "t": "Rasul",
     "s": "Istilah rasul dikenal dalam Islam dan Kristen. Meski demikian, terdapat perbedaan pemahaman mengenai istilah tersebut.",
