@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1790246523154,
+    "t": "Tenggelamnya KM Virgo Transport 8",
+    "s": "Pada tanggal 13 September 2026, feri Virgo Transport 8 berbendera Indonesia terbalik dan tenggelam di Laut Jawa. Feri tersebut sedang berlayar dari Su",
+    "d": "2026-09-24"
+  },
+  {
     "id": 1790215466465,
     "t": "Qadar",
     "s": "Qadar (bahasa Arab: قدر, secara harfiah berarti \"kekuatan\") adalah konsep takdir ilahi dalam Islam. Karena Tuhan Maha Tahu dan Maha Kuasa, segala sesu",
