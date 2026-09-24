@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1790215466465,
+    "t": "Qadar",
+    "s": "Qadar (bahasa Arab: قدر, secara harfiah berarti \"kekuatan\") adalah konsep takdir ilahi dalam Islam. Karena Tuhan Maha Tahu dan Maha Kuasa, segala sesu",
+    "d": "2026-09-24"
+  },
+  {
     "id": 1790129834599,
     "t": "Pengunggahan pikiran",
     "s": "Emulasi otak penuh (WBE), unggahan pikiran atau unggahan otak (kadang-kadang disebut \"penyalinan pikiran\" atau \"transfer pikiran\") adalah hipotesis pr",
