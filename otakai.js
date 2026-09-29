@@ -1,5 +1,17 @@
 const dataMemori = [
   {
+    "id": 1790651364514,
+    "t": "Stasiun hikyō",
+    "s": "Stasiun hikyō (秘境 駅, ひきょうえき, Hikyō-eki, \"stasiun tersembunyi\") adalah stasiun kereta yang terletak di lokasi terpencil, seperti jauh di pegunungan ata",
+    "d": "2026-09-29"
+  },
+  {
+    "id": 1790651365589,
+    "t": "Terlanjur Mencintaimu",
+    "s": "Terlanjur Mencintaimu adalah serial televisi Indonesia produksi MNC Pictures yang ditayangkan perdana pada 4 Juli 2026 pukul 20.30 WIB di RCTI. Serial",
+    "d": "2026-09-29"
+  },
+  {
     "id": 1790246523154,
     "t": "Tenggelamnya KM Virgo Transport 8",
     "s": "Pada tanggal 13 September 2026, feri Virgo Transport 8 berbendera Indonesia terbalik dan tenggelam di Laut Jawa. Feri tersebut sedang berlayar dari Su",
