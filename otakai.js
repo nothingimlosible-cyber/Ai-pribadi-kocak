@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1790878247770,
+    "t": "Silikon",
+    "s": "Silikon (bahasa Latin: silicium), yang juga disebut zat pasir, adalah sebuah unsur kimia dengan lambang Si dan nomor atom 14.",
+    "d": "2026-10-01"
+  },
+  {
     "id": 1790651364514,
     "t": "Stasiun hikyō",
     "s": "Stasiun hikyō (秘境 駅, ひきょうえき, Hikyō-eki, \"stasiun tersembunyi\") adalah stasiun kereta yang terletak di lokasi terpencil, seperti jauh di pegunungan ata",
