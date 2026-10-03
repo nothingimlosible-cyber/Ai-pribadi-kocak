@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791040972051,
+    "t": "Abdullah Syukri Zarkasyi",
+    "s": "Dr. (H.C.) K.H. Abdullah Syukri Zarkasyi, Lc., M.A. (19 September 1942 – 21 Oktober 2020) adalah salah satu dari Pimpinan Pondok Modern Darussalam Gon",
+    "d": "2026-10-03"
+  },
+  {
     "id": 1790878247770,
     "t": "Silikon",
     "s": "Silikon (bahasa Latin: silicium), yang juga disebut zat pasir, adalah sebuah unsur kimia dengan lambang Si dan nomor atom 14.",
