@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791548060894,
+    "t": "The Brothers Karamazov",
+    "s": "The Brothers Karamazov (Rusia: Братья Карамазовы, romanisasi: Brat'ya Karamazovy)—juga diterjemahkan sebagai Para Saudara Karamazov—adalah novel kedel",
+    "d": "2026-10-09"
+  },
+  {
     "id": 1791040972051,
     "t": "Abdullah Syukri Zarkasyi",
     "s": "Dr. (H.C.) K.H. Abdullah Syukri Zarkasyi, Lc., M.A. (19 September 1942 – 21 Oktober 2020) adalah salah satu dari Pimpinan Pondok Modern Darussalam Gon",
