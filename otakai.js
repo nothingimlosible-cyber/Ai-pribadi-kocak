@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791753082833,
+    "t": "Muhammad Quraish Shihab",
+    "s": "Muhammad Quraish Shihab (bahasa Arab: قريش شهاب, translit. Muḥammad Qurayš Šihāb; lahir 16 Februari 1944) adalah seorang cendekiawan Muslim Indonesia ",
+    "d": "2026-10-11"
+  },
+  {
     "id": 1791737845709,
     "t": "Penalaran",
     "s": "Penalaran (bahasa Inggris: reasoning) adalah rangkaian kegiatan yang berkapasitas secara sadar menerapkan ilmu mantik untuk mencapai suatu kesimpulan ",
