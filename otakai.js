@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791719140079,
+    "t": "Gajah Mada",
+    "s": "Gajah Mada (bahasa Jawa: ꦓꦗꦃꦩꦢ; ca 1290 – ca 1364), dikenal juga dengan nama lain Jirnnodhara adalah seorang panglima perang dan Mapatih (Perdana ment",
+    "d": "2026-10-11"
+  },
+  {
     "id": 1791686682324,
     "t": "Agatha Christie",
     "s": "Dame Agatha Mary Clarissa Christie, Lady Mallowan (nama gadis Miller; 15 September 1890 – 12  Januari 1976), adalah seorang penulis Inggris yang diken",
