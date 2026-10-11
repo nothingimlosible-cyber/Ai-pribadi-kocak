@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791737845709,
+    "t": "Penalaran",
+    "s": "Penalaran (bahasa Inggris: reasoning) adalah rangkaian kegiatan yang berkapasitas secara sadar menerapkan ilmu mantik untuk mencapai suatu kesimpulan ",
+    "d": "2026-10-11"
+  },
+  {
     "id": 1791719140079,
     "t": "Gajah Mada",
     "s": "Gajah Mada (bahasa Jawa: ꦓꦗꦃꦩꦢ; ca 1290 – ca 1364), dikenal juga dengan nama lain Jirnnodhara adalah seorang panglima perang dan Mapatih (Perdana ment",
