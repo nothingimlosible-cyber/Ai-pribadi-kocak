@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791686682324,
+    "t": "Agatha Christie",
+    "s": "Dame Agatha Mary Clarissa Christie, Lady Mallowan (nama gadis Miller; 15 September 1890 – 12  Januari 1976), adalah seorang penulis Inggris yang diken",
+    "d": "2026-10-11"
+  },
+  {
     "id": 1791548060894,
     "t": "The Brothers Karamazov",
     "s": "The Brothers Karamazov (Rusia: Братья Карамазовы, romanisasi: Brat'ya Karamazovy)—juga diterjemahkan sebagai Para Saudara Karamazov—adalah novel kedel",
