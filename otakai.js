@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791865703106,
+    "t": "Selebriti Update",
+    "s": "Selebriti Update adalah sebuah program berita hiburan di NET. yang menyajikan berita-berita terkini dan terupdate seputar dunia hiburan. Program ini m",
+    "d": "2026-10-13"
+  },
+  {
     "id": 1791753082833,
     "t": "Muhammad Quraish Shihab",
     "s": "Muhammad Quraish Shihab (bahasa Arab: قريش شهاب, translit. Muḥammad Qurayš Šihāb; lahir 16 Februari 1944) adalah seorang cendekiawan Muslim Indonesia ",
