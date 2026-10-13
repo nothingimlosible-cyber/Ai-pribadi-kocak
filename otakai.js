@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1791929007145,
+    "t": "Picatrix",
+    "s": "Picatrix adalah nama Latin yang digunakan saat ini untuk buku sihir dan astrologi setebal 400 halaman yang awalnya ditulis dalam bahasa Arab dengan ju",
+    "d": "2026-10-13"
+  },
+  {
     "id": 1791865703106,
     "t": "Selebriti Update",
     "s": "Selebriti Update adalah sebuah program berita hiburan di NET. yang menyajikan berita-berita terkini dan terupdate seputar dunia hiburan. Program ini m",
