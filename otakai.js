@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1792096790507,
+    "t": "Batalyon infanteri",
+    "s": "Batalyon Infanteri atau disingkat Yonif merupakan satuan dasar tempur pasukan Infanteri Tentara Nasional Indonesia (TNI) di bawah Kodam, Korem, maupun",
+    "d": "2026-10-15"
+  },
+  {
     "id": 1792079705096,
     "t": "Aktivitas seksual manusia",
     "s": "Kegiatan seksual manusia atau perilaku seksual manusia adalah tindakan yang dilakukan manusia untuk mengalami dan menunjukkan seksualitasnya. Manusia ",
