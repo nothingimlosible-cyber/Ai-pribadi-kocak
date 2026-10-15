@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1792079705096,
+    "t": "Aktivitas seksual manusia",
+    "s": "Kegiatan seksual manusia atau perilaku seksual manusia adalah tindakan yang dilakukan manusia untuk mengalami dan menunjukkan seksualitasnya. Manusia ",
+    "d": "2026-10-15"
+  },
+  {
     "id": 1791929007145,
     "t": "Picatrix",
     "s": "Picatrix adalah nama Latin yang digunakan saat ini untuk buku sihir dan astrologi setebal 400 halaman yang awalnya ditulis dalam bahasa Arab dengan ju",
