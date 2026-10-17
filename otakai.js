@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1792266498837,
+    "t": "D'Academy (musim 8)",
+    "s": "D'Academy (Musim 8) adalah suatu ajang pencarian bakat menyanyi dangdut musim kedelapan dari D'Academy yang ditayangkan di Indosiar. Acara ini mulai t",
+    "d": "2026-10-17"
+  },
+  {
     "id": 1792096790507,
     "t": "Batalyon infanteri",
     "s": "Batalyon Infanteri atau disingkat Yonif merupakan satuan dasar tempur pasukan Infanteri Tentara Nasional Indonesia (TNI) di bawah Kodam, Korem, maupun",
