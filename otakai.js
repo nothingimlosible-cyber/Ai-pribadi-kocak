@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1792352955812,
+    "t": "Kecerdasan buatan",
+    "s": "Kecerdasan buatan (AI) adalah kemampuan sistem komputasi untuk melakukan tugas-tugas yang biasanya berkaitan dengan kecerdasan manusia, seperti belaja",
+    "d": "2026-10-18"
+  },
+  {
     "id": 1792266498837,
     "t": "D'Academy (musim 8)",
     "s": "D'Academy (Musim 8) adalah suatu ajang pencarian bakat menyanyi dangdut musim kedelapan dari D'Academy yang ditayangkan di Indosiar. Acara ini mulai t",
