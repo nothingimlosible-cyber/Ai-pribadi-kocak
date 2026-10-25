@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1792958806353,
+    "t": "Vanuatu",
+    "s": "Vanuatu, dengan nama resmi Republik Vanuatu (bahasa Prancis: République de Vanuatu; bahasa Inggris: Republic of Vanuatu; Bislama: Ripablik blong Vanua",
+    "d": "2026-10-25"
+  },
+  {
     "id": 1792352955812,
     "t": "Kecerdasan buatan",
     "s": "Kecerdasan buatan (AI) adalah kemampuan sistem komputasi untuk melakukan tugas-tugas yang biasanya berkaitan dengan kecerdasan manusia, seperti belaja",
