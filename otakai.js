@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1794085934382,
+    "t": "Ruang Seleb",
+    "s": "Ruang Seleb adalah sebuah informasi dunia hiburan yang ditayangkan di NET. Program ini akan membahas informasi terkini dan terupdate dari dunia selebr",
+    "d": "2026-11-07"
+  },
+  {
     "id": 1792958806353,
     "t": "Vanuatu",
     "s": "Vanuatu, dengan nama resmi Republik Vanuatu (bahasa Prancis: République de Vanuatu; bahasa Inggris: Republic of Vanuatu; Bislama: Ripablik blong Vanua",
