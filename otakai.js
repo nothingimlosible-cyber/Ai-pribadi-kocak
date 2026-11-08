@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1794140596207,
+    "t": "Institutio",
+    "s": "Institutio atau lengkapnya Institutio Christianae religionis (bahasa Inggris: The Institutes of the Christian Religion—Pengajaran Agama Kristen) merup",
+    "d": "2026-11-08"
+  },
+  {
     "id": 1794085934382,
     "t": "Ruang Seleb",
     "s": "Ruang Seleb adalah sebuah informasi dunia hiburan yang ditayangkan di NET. Program ini akan membahas informasi terkini dan terupdate dari dunia selebr",
