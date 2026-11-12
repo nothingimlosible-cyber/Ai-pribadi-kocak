@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1794492675507,
+    "t": "Ki Hadjar Dewantara",
+    "s": "Raden Mas Soewardi Soerjaningrat (EYD: Suwardi Suryaningrat; 2 Mei 1889 – 26 April 1959), atau lebih dikenal sebagai Ki Hadjar Dewantara adalah aktivi",
+    "d": "2026-11-12"
+  },
+  {
     "id": 1794140596207,
     "t": "Institutio",
     "s": "Institutio atau lengkapnya Institutio Christianae religionis (bahasa Inggris: The Institutes of the Christian Religion—Pengajaran Agama Kristen) merup",
