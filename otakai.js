@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1794610743074,
+    "t": "GameMaker",
+    "s": "GameMaker mengakomodasi pembuatan lintas platform dan multi-genre permainan video yang dibuat oleh Mark Overmars pada tahun 1999 dan dikembangkan oleh",
+    "d": "2026-11-13"
+  },
+  {
     "id": 1794542293510,
     "t": "Pemrograman komputer",
     "s": "Pemrograman komputer adalah penyusunan urutan instruksi, yang disebut program, yang dapat diikuti oleh komputer untuk melaksanakan tugas. Pemrograman ",
