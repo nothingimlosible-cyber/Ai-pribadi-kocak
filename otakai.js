@@ -1,5 +1,11 @@
 const dataMemori = [
   {
+    "id": 1794542293510,
+    "t": "Pemrograman komputer",
+    "s": "Pemrograman komputer adalah penyusunan urutan instruksi, yang disebut program, yang dapat diikuti oleh komputer untuk melaksanakan tugas. Pemrograman ",
+    "d": "2026-11-13"
+  },
+  {
     "id": 1794492675507,
     "t": "Ki Hadjar Dewantara",
     "s": "Raden Mas Soewardi Soerjaningrat (EYD: Suwardi Suryaningrat; 2 Mei 1889 – 26 April 1959), atau lebih dikenal sebagai Ki Hadjar Dewantara adalah aktivi",
